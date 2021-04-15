@@ -1,10 +1,12 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
-		"rootDir": "./",
-		"outDir": "../dist",
 		"composite": true,
-		"preserveConstEnums": true
+		"lib": ["ESNext", "WebWorker"],
+		"outDir": "../dist",
+		"preserveConstEnums": true,
+		"rootDir": "./",
+		"sourceMap": false
 	},
-	"include": ["."]
+	"include": [".", "../node_modules/@cloudflare/workers-types/index.d.ts"]
 }

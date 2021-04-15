@@ -1,3 +1,3 @@
-export const main = () => 'this builds and pushes';
-
-export default main;
+addEventListener('fetch', (event) => {
+	event.respondWith(new Response('owo'));
+});

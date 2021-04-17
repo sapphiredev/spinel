@@ -2,17 +2,17 @@
 
 ![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)
 
-# Sapphire CloudFlare Worker Docs
+# Sapphire Cloudflare Worker Docs
 
-**CloudFlare Worker Slash Commands handler for documentation purposes.**
+**Cloudflare Worker Slash Commands handler for documentation purposes.**
 
-[![GitHub](https://img.shields.io/github/license/sapphire-community/template)](https://github.com/sapphire-community/template/blob/main/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/sapphire-community/cf-workers-docs)](https://github.com/sapphire-community/cf-workers-docs/blob/main/LICENSE.md)
 
 </div>
 
 ## Description
 
-This gets deployed to CloudFlare Workers and provides Discord Slash Commands for the Sapphire Community Discord server to get access to Discord.JS, MDN, Node and Sapphire documentation.
+This gets deployed to Cloudflare Workers and provides Discord Slash Commands for the Sapphire Community Discord server to get access to Discord.JS, MDN, Node and Sapphire documentation.
 
 ## Buy us some doughnuts
 

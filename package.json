@@ -1,7 +1,7 @@
 {
 	"name": "@sapphire/cf-workers-slash-commands-docs",
 	"version": "1.0.0",
-	"description": "CloudFlare Worker Slash Commands handler for documentation purposes",
+	"description": "Cloudflare Worker Slash Commands handler for documentation purposes",
 	"main": "dist/index.js",
 	"license": "MIT",
 	"private": true,

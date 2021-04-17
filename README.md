@@ -2,42 +2,17 @@
 
 ![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)
 
-# @sapphire/template
+# Sapphire CloudFlare Worker Docs
 
-**Template for Sapphire Repositories.**
+**CloudFlare Worker Slash Commands handler for documentation purposes.**
 
 [![GitHub](https://img.shields.io/github/license/sapphire-community/template)](https://github.com/sapphire-community/template/blob/main/LICENSE.md)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/sapphire-community/template.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/sapphire-community/template/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/sapphire-community/template.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/sapphire-community/template/context:javascript)
-[![Coverage Status](https://coveralls.io/repos/github/sapphire-community/template/badge.svg?branch=main)](https://coveralls.io/github/sapphire-community/template?branch=main)
-[![npm](https://img.shields.io/npm/v/@sapphire/template?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/template)
-[![Depfu](https://badges.depfu.com/badges/template/count.svg)](https://depfu.com/github/sapphire-community/template?project_id=template)
 
 </div>
 
-# Steps after creating a repo with this template
+## Description
 
-1. Find and replace all instances of `template` with the proper word / ID / etc
-2. Ensure the primary branch is called `main`
-3. Ensure branch protection is on
-4. Disable `Packages` from being included in the repository homepage
-5. Enable LGTM for the repository
-6. Enable Depfu for the repository
-7. Enable Coveralls for the repository
-8. Remove this section from the README
-
-## Features
-
--   This
--   Needs
--   Some
--   More
--   Filling
--   In
-
-## API Documentation
-
-For the full API documentation please refer to the TypeDoc generated [documentation](https://sapphire-community.github.io/template).
+This gets deployed to CloudFlare Workers and provides Discord Slash Commands for the Sapphire Community Discord server to get access to Discord.JS, MDN, Node and Sapphire documentation.
 
 ## Buy us some doughnuts
 

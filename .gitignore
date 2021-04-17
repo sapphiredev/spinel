@@ -16,7 +16,7 @@ dist/
 **/*.d.ts
 !src/**/*.d.ts
 **/*.tsbuildinfo
-!jest.config.ts
+!rollup.config.js
 
 # Ignore heapsnapshot and log files
 *.heapsnapshot

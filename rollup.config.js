@@ -20,7 +20,7 @@ export default {
 		commonjs(),
 		typescript({ tsconfig: resolveDir(process.cwd(), 'src', 'tsconfig.json') }),
 		terser({
-			ecma: 2018,
+			ecma: 2020,
 			// This will ensure that whenever Rollup is in watch (dev) mode, console logs will not be removed
 			compress: { drop_console: !Reflect.has(process.env, 'ROLLUP_WATCH') },
 			format: { comments: false }

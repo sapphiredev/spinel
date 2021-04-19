@@ -16,7 +16,10 @@
 		"prepare": "husky install .github/husky"
 	},
 	"dependencies": {
-		"tslib": "^2.2.0"
+		"discord-api-types": "^0.18.0",
+		"rollup-plugin-inject-process-env": "^1.3.1",
+		"tslib": "^2.2.0",
+		"tweetnacl": "^1.0.3"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^2.2.1",
@@ -29,6 +32,7 @@
 		"@sapphire/prettier-config": "^1.0.9",
 		"@sapphire/ts-config": "^2.1.1",
 		"cz-conventional-changelog": "^3.3.0",
+		"dotenv": "^8.2.0",
 		"husky": "^6.0.0",
 		"lint-staged": "^10.5.4",
 		"prettier": "^2.2.1",

@@ -30,7 +30,7 @@ There are a number of guidelines considered when reviewing Pull Requests to be m
 <!-- Link Dump -->
 
 [discord server]: https://sapphirejs.com/discord
-[here]: https://github.com/sapphire-community/framework/pulls
+[here]: https://github.com/sapphiredev/framework/pulls
 [eslint]: https://eslint.org/
 [node.js]: https://nodejs.org/en/download/
 [yarn]: https://classic.yarnpkg.com/en/docs/install

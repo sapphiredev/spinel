@@ -6,7 +6,7 @@
 
 **Cloudflare Worker Slash Commands handler for documentation purposes.**
 
-[![GitHub](https://img.shields.io/github/license/sapphire-community/cf-workers-docs)](https://github.com/sapphire-community/cf-workers-docs/blob/main/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/sapphiredev/cf-workers-docs)](https://github.com/sapphiredev/cf-workers-docs/blob/main/LICENSE.md)
 
 </div>
 

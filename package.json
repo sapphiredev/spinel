@@ -17,7 +17,7 @@
 	},
 	"dependencies": {
 		"discord-api-types": "^0.18.1",
-		"tslib": "^2.2.0",
+		"tslib": "^2.3.0",
 		"tweetnacl": "^1.0.3"
 	},
 	"devDependencies": {
@@ -27,21 +27,21 @@
 		"@commitlint/config-conventional": "^12.1.4",
 		"@rollup/plugin-commonjs": "^19.0.0",
 		"@rollup/plugin-node-resolve": "^13.0.0",
-		"@sapphire/eslint-config": "^3.1.3",
-		"@sapphire/prettier-config": "^1.1.2",
-		"@sapphire/ts-config": "^2.2.2",
+		"@sapphire/eslint-config": "^3.1.4",
+		"@sapphire/prettier-config": "^1.1.3",
+		"@sapphire/ts-config": "^2.2.3",
 		"cz-conventional-changelog": "^3.3.0",
 		"dotenv": "^10.0.0",
 		"husky": "^6.0.0",
 		"lint-staged": "^11.0.0",
 		"prettier": "^2.3.1",
-		"pretty-quick": "^3.1.0",
-		"rollup": "^2.50.6",
+		"pretty-quick": "^3.1.1",
+		"rollup": "^2.52.1",
 		"rollup-plugin-cleaner": "^1.0.0",
 		"rollup-plugin-terser": "^7.0.2",
 		"rollup-plugin-typescript2": "^0.30.0",
 		"rollup-plugin-inject-process-env": "^1.3.1",
-		"typescript": "^4.3.2"
+		"typescript": "^4.3.4"
 	},
 	"files": [],
 	"engines": {

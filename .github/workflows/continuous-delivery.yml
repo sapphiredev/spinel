@@ -3,7 +3,7 @@ name: Continuous Delivery
 on:
   push:
     branches:
-      - main
+      - feat/full-rewrite # TODO: Reset back to main
 
 jobs:
   Build:

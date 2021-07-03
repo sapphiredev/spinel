@@ -3,7 +3,7 @@ name: Code Scanning
 on:
   push:
     branches:
-      - main
+      - feat/full-rewrite # TODO: Reset back to main
   pull_request:
     branches:
       - main

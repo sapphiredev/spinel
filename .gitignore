@@ -14,7 +14,7 @@ dist/
 **/*.js.map
 **/*.d.ts
 **/*.tsbuildinfo
-!api/**/*.d.ts
+!src/**/*.d.ts
 !scripts/*.mjs
 !jest.config.ts
 

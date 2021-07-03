@@ -33,6 +33,7 @@
 		"@types/node": "^16.0.0",
 		"@types/node-fetch": "^2.5.10",
 		"@vercel/ncc": "^0.28.6",
+		"@vercel/node": "^1.11.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"husky": "^7.0.0",
 		"lint-staged": "^11.0.0",

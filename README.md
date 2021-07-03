@@ -2,17 +2,41 @@
 
 ![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)
 
-# Sapphire Cloudflare Worker Docs
+# Sapphire Slashies
 
-**Cloudflare Worker Slash Commands handler for documentation purposes.**
+**Slash Commands handler Sapphire Discord server.**
 
-[![GitHub](https://img.shields.io/github/license/sapphiredev/cf-workers-docs)](https://github.com/sapphiredev/cf-workers-docs/blob/main/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/sapphiredev/sapphire-slashies)](https://github.com/sapphiredev/sapphire-slashies/blob/main/LICENSE.md)
+[![Depfu](https://badges.depfu.com/badges/6f7201423b0479f06483204bc8dd6ee8/overview.svg)](https://depfu.com/github/sapphiredev/sapphire-slashies?project_id=24233)
 
 </div>
 
 ## Description
 
-This gets deployed to Cloudflare Workers and provides Discord Slash Commands for the Sapphire Community Discord server to get access to Discord.JS, MDN, Node and Sapphire documentation.
+This gets deployed to Vercel and provides Discord Slash Commands for the Sapphire Discord server to get access to:
+
+-   Sapphire Docs
+-   Sapphire Guide
+-   Discord.JS Docs
+-   Discord.JS Guide
+-   MDN Docs
+-   NodeJS Docs
+
+## Usage
+
+### Setup
+
+```sh
+# Install dependencies
+yarn install
+
+# Compile
+yarn build
+```
+
+Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.local). Fill in at least these required environment variables:
+
+-   `PUBLIC_KEY`
 
 ## Buy us some doughnuts
 
@@ -22,10 +46,10 @@ We accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub S
 
 |   Donate With   |                       Address                       |
 | :-------------: | :-------------------------------------------------: |
-| Open Collective | [Click Here](https://sapphirejs.com/opencollective) |
-|      Ko-fi      |      [Click Here](https://sapphirejs.com/kofi)      |
-|     Patreon     |    [Click Here](https://sapphirejs.com/patreon)     |
-|     PayPal      |     [Click Here](https://sapphirejs.com/paypal)     |
+| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |
+|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |
+|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |
+|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |
 
 ## Contributors ✨
 

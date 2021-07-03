@@ -1,7 +1,7 @@
 {
-	"name": "@sapphire/cf-workers-slash-commands-docs",
+	"name": "@sapphire/slashies-handler",
 	"version": "1.0.0",
-	"description": "Cloudflare Worker Slash Commands handler for documentation purposes",
+	"description": "Slash Commands handler Sapphire Discord server",
 	"author": "@sapphire <contact@sapphirejs.dev>",
 	"license": "MIT",
 	"private": true,

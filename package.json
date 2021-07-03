@@ -8,7 +8,7 @@
 	"main": "dist/index.js",
 	"scripts": {
 		"lint": "eslint src --ext ts --fix",
-		"format": "prettier --write src/**/*.ts",
+		"format": "prettier --write src",
 		"build": "tsc -b src",
 		"watch": "tsc -b src -w",
 		"clean": "node scripts/clean.mjs",

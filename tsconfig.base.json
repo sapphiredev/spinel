@@ -1,11 +1,3 @@
 {
-	"extends": "@sapphire/ts-config",
-	"compilerOptions": {
-		"module": "ESNext",
-		"target": "ES2020",
-		"lib": ["ESNext", "WebWorker"],
-		"declaration": false,
-		"declarationMap": false,
-		"sourceMap": false
-	}
+	"extends": "@sapphire/ts-config"
 }

@@ -1,8 +1,0 @@
-name = "sapphire-cf-workers-docs"
-type = 'javascript'
-account_id = '254589cc33c8f087773c95cf62a5a54e'
-workers_dev = true
-
-[build]
-upload.format = "service-worker"
-command = "yarn && yarn build"

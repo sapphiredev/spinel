@@ -22,16 +22,21 @@ export interface Route {
 	handler: RouterHandlerFunction;
 }
 
-const MethodIs = (method: string): RouterCondition => (req: Request) => req.method.toLowerCase() === method.toLowerCase();
+const MethodIs =
+	(method: string): RouterCondition =>
+	(req: Request) =>
+		req.method.toLowerCase() === method.toLowerCase();
 
-const PathIs = (expectedRoute: string | RegExp): RouterCondition => (req: Request) => {
-	const url = new URL(req.url);
-	const path = url.pathname;
+const PathIs =
+	(expectedRoute: string | RegExp): RouterCondition =>
+	(req: Request) => {
+		const url = new URL(req.url);
+		const path = url.pathname;
 
-	const matchResult = path.match(expectedRoute);
+		const matchResult = path.match(expectedRoute);
 
-	return matchResult?.[0] === path ?? false;
-};
+		return matchResult?.[0] === path ?? false;
+	};
 
 export const router = new (class Router {
 	private routes: Route[] = [];

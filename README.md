@@ -36,8 +36,10 @@ yarn build
 
 Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.local). Fill in at least these required environment variables:
 
--   `APPLICATION_ID`
--   `APPLICATION_SECRET`
+-   `ALGOLIA_APPLICATION_ID`
+-   `ALGOLIA_APPLICATION_KEY`
+-   `DISCORD_APPLICATION_ID`
+-   `DISCORD_APPLICATION_SECRET`
 -   `PUBLIC_KEY`
 
 ## Buy us some doughnuts

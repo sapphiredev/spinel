@@ -73,5 +73,5 @@ jobs:
       - name: Publish Application Commands
         run: yarn update-guild-slashies #TODO: Change back to update-slashies when commands are finished
         env:
-          APPLICATION_ID: ${{ secrets.APPLICATION_ID }}
-          APPLICATION_SECRET: ${{ secrets.APPLICATION_SECRET }}
+          DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
+          DISCORD_APPLICATION_SECRET: ${{ secrets.DISCORD_APPLICATION_SECRET }}

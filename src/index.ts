@@ -15,6 +15,7 @@ import {
 import { config } from 'dotenv-cra';
 import { join } from 'path';
 import { djsDocs } from './commands/djsDocs';
+import { djsGuide } from './commands/djsGuide';
 import { invite } from './commands/invite';
 import { ping } from './commands/ping';
 import { cast } from './lib/constants';
@@ -62,9 +63,13 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					query: cast<string>(args.query),
 					target: cast<Snowflake>(args.target)
 				});
-			// TODO: Impl
-			// case 'djs-guide':
-			// 	return djsGuide(res, args.query, args.results ?? 2, args.target);
+			case 'djs-guide':
+				return djsGuide({
+					response: res,
+					query: cast<string>(args.query),
+					amountOfResults: cast<number>(args.results ?? 2),
+					target: cast<Snowflake>(args.target)
+				});
 			// case 'mdn':
 			// 	return mdnSearch(res, args.query, args.target);
 			// case 'node':

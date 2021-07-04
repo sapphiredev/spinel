@@ -1,7 +1,7 @@
 import type { VercelRequest } from '@vercel/node';
 import { sign } from 'tweetnacl';
+import { DiscordPublicKeyBuffer } from './env';
 import { HttpCodes } from './HttpCodes';
-import { PublicKeyBuffer } from './env';
 
 export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInteractionResponse | null {
 	const { headers } = req;
@@ -21,7 +21,7 @@ export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInter
 	const isVerified = sign.detached.verify(
 		Buffer.from(body), //
 		Buffer.from(signatureHeader, 'hex'),
-		PublicKeyBuffer
+		DiscordPublicKeyBuffer
 	);
 
 	if (!isVerified) {

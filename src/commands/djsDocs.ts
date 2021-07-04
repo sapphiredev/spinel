@@ -2,8 +2,8 @@ import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/b
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types';
 import Doc from 'discord.js-docs';
-import { errorResponse, interactionResponse } from '../lib/responseHelpers';
 import { DjsDocsDevIcon, DjsDocsStableIcon } from '../lib/emotes';
+import { errorResponse, interactionResponse } from '../lib/responseHelpers';
 
 function escapeMDLinks(s: string): string {
 	return s.replace(/\[(.+?)\]\((.+?)\)/g, '[$1](<$2>)');

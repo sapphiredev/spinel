@@ -28,8 +28,9 @@ const commands = [
  * @type string[]
  * @remark `737141877803057244` = Sapphire
  * @remark `838895946397646850` = Favna's testing server
+ * @remark `541738403230777351` = Skyra Development Suite
  */
-const guilds = ['737141877803057244', '838895946397646850'];
+const guilds = ['737141877803057244', '838895946397646850', '541738403230777351'];
 
 /**
  * Retrieves a client_credentials access token from the Discord OAUTH API

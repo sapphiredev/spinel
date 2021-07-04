@@ -38,6 +38,7 @@ Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.loca
 
 -   `APPLICATION_ID`
 -   `APPLICATION_SECRET`
+-   `PUBLIC_KEY`
 
 ## Buy us some doughnuts
 

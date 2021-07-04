@@ -52,5 +52,7 @@ jobs:
       - name: Install Dependencies if Cache Miss
         if: ${{ !steps.cache-restore.outputs.cache-hit }}
         run: yarn --frozen-lockfile
-      - name: Build Code
+      - name: Build Code (tsc)
         run: yarn build
+      - name: Build Code (vercel)
+        run: yarn vercel-build

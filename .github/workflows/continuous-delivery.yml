@@ -57,10 +57,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Publish Application Commands
         run: |
-          COMMANDS=($(jq -c '.' ./src/interactions/commands.json))
+          COMMANDS=($(jq -r '.' ./src/interactions/commands.json))
 
           for GUILD in $(jq -r '.[]' ./src/interactions/guilds.json); do
             echo "About to send request to: https://discord.com/api/v8/applications/${{ secrets.APPLICATION_ID }}/guilds/${GUILD}/commands"
             echo "With commands data: ${COMMANDS}"
-            curl -s -X PUT -H "Content-Type: application/json" -H "Authorization: Bot ${{ secrets.BOT_TOKEN }}" -d '${COMMANDS}' https://discord.com/api/v8/applications/${{ secrets.APPLICATION_ID }}/guilds/${GUILD}/commands
+            curl -v -X PUT -H "Content-Type: application/json" -H "Authorization: Bot ${{ secrets.BOT_TOKEN }}" -d '${COMMANDS}' https://discord.com/api/v8/applications/${{ secrets.APPLICATION_ID }}/guilds/${GUILD}/commands
           done

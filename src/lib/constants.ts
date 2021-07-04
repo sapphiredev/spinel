@@ -1,5 +1,5 @@
-export const PublicKey = process.env.PUBLIC_KEY;
-export const PublicKeyBuffer = Buffer.from(PublicKey, 'hex');
+export const ApplicationId = process.env.APPLICATION_ID;
+export const PublicKeyBuffer = Buffer.from(process.env.PUBLIC_KEY, 'hex');
 
 export function cast<T>(value: unknown): T {
 	return value as T;

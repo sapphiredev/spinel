@@ -18,18 +18,18 @@ in your text editor or IDE of your choice to ensure builds from GitHub Actions d
 
 **_Before committing and pushing your changes, please ensure that you do not have any linting errors by running `yarn lint`!_**
 
-### Sapphire CF Workers Docs Concept Guidelines
+### Sapphire Slashies Concept Guidelines
 
 There are a number of guidelines considered when reviewing Pull Requests to be merged. _This is by no means an exhaustive list, but here are some things to consider before/while submitting your ideas._
 
--   Everything in Sapphire CF Workers Docs should be generally useful for the majority of users. Don't let that stop you if you've got a good concept though, as your idea still might be a great addition.
+-   Everything in Sapphire Slashies should be generally useful for the majority of users. Don't let that stop you if you've got a good concept though, as your idea still might be a great addition.
 -   Everything should follow [OOP paradigms][oop paradigms] and generally rely on behaviour over state where possible. This generally helps methods be predictable, keeps the codebase simple and understandable, reduces code duplication through abstraction, and leads to efficiency and therefore scalability.
 -   Everything should follow our ESLint rules as closely as possible, and should pass lint tests even if you must disable a rule for a single line.
 -   Scripts that are to be ran outside of the scope of the bot should be added to [scripts] directory and should be in the `.mjs` file format.
 
 <!-- Link Dump -->
 
-[discord server]: https://sapphirejs.com/discord
+[discord server]: https://sapphirejs.dev/discord
 [here]: https://github.com/sapphiredev/framework/pulls
 [eslint]: https://eslint.org/
 [node.js]: https://nodejs.org/en/download/

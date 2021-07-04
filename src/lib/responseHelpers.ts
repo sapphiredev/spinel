@@ -1,4 +1,4 @@
-import { AllowedMentionsTypes, APIInteractionResponse, InteractionResponseType, MessageFlags, Snowflake } from 'discord-api-types';
+import { AllowedMentionsTypes, APIInteractionResponse, InteractionResponseType, MessageFlags, Snowflake } from 'discord-api-types/v8';
 import { FailPrefix } from './constants';
 
 export function interactionResponse({ content, ephemeral = false, users = [], parse = [] }: ResponseParameters): APIInteractionResponse {

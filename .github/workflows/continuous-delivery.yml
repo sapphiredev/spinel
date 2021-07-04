@@ -48,3 +48,17 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git commit -m "build: vercel build for ${GITHUB_SHA}" || true
           git push origin vercel
+
+  PublishCommands:
+    name: Publish Application Commands
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Publish Application Commands
+        run: |
+          COMMANDS=($(jq -c '.' ./src/interactions/commands.json))
+
+          for GUILD in $(jq -c '.[]' ./src/interactions/guilds.json); do
+            curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bot ${{ secrets.BOT_TOKEN }}" -d '${COMMANDS}' https://discord.com/api/v8/applications/${{ secrets.APPLICATION_ID }}/guilds/${GUILD}/commands
+          done

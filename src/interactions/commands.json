@@ -1,0 +1,7 @@
+[
+	{
+		"name": "ping",
+		"description": "Sends a ping and gets a pong back",
+		"default_permission": true
+	}
+]

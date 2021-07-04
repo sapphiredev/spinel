@@ -34,7 +34,7 @@ async function getBearerToken() {
 		OAuth2Routes.tokenURL,
 		{
 			headers: {
-				Authorization: `Basic ${Buffer.from(`${process.env.APPLICATION_ID}:${process.env.APPLICATION_SECRET}`).toString('base64')}`,
+				Authorization: `Basic ${Buffer.from(`${ApplicationId}:${ApplicationSecret}`).toString('base64')}`,
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
 			body: stringify({

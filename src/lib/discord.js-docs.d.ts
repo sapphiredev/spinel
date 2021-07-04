@@ -1,10 +1,10 @@
 declare module 'discord.js-docs' {
 	interface Doc {
+		baseDocsURL: string;
 		fetch(src: string, options: { force: boolean }): Promise<Doc>;
 		formatType(types: DocTypedef[] | DocElement[]): string;
 		get(...query: string[]): DocElement | null;
 		search(...query: string[]): DocElement[] | null;
-		baseDocsURL: string;
 	}
 
 	const Doc: Doc;

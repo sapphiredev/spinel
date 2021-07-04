@@ -2,8 +2,8 @@ import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/b
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types';
 import Doc from 'discord.js-docs';
-import { DjsDocsDevIcon, DjsDocsStableIcon } from '../lib/constants';
 import { errorResponse, interactionResponse } from '../lib/responseHelpers';
+import { DjsDocsDevIcon, DjsDocsStableIcon } from '../lib/emotes';
 
 function escapeMDLinks(s: string): string {
 	return s.replace(/\[(.+?)\]\((.+?)\)/g, '[$1](<$2>)');
@@ -37,7 +37,7 @@ function resolveResultString(results: DocElement[]): string {
 
 export async function djsDocs({ query, response, source, target }: DjsDocsParameters): Promise<VercelResponse> {
 	const doc = await Doc.fetch(source, { force: true });
-	const element = doc.get(...query.split(/\.|#/));
+	const element = doc.get(...query.split(/[.#]/));
 	const icon = source === 'master' ? DjsDocsDevIcon : DjsDocsStableIcon;
 
 	if (element) {

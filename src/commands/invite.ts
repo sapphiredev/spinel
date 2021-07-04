@@ -1,6 +1,6 @@
 import type { APIInteractionResponse } from 'discord-api-types';
-import { ApplicationId } from '../lib/constants';
 import { interactionResponse } from '../lib/responseHelpers';
+import { ApplicationId } from '../lib/env';
 
 export function invite(): APIInteractionResponse {
 	return interactionResponse({

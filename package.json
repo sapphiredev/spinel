@@ -22,7 +22,6 @@
 	},
 	"dependencies": {
 		"@discordjs/builders": "^0.2.0",
-		"@sapphire/utilities": "^1.6.1",
 		"discord-api-types": "^0.18.1",
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^2.1.0",
@@ -36,6 +35,7 @@
 		"@sapphire/fetch": "^1.0.5",
 		"@sapphire/prettier-config": "^1.1.6",
 		"@sapphire/ts-config": "^2.3.1",
+		"@sapphire/utilities": "^1.6.1",
 		"@types/node": "^16.0.0",
 		"@types/node-fetch": "^2.5.10",
 		"@vercel/ncc": "^0.28.6",

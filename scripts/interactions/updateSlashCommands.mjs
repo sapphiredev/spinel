@@ -60,7 +60,7 @@ async function batchUpdateCommands(token) {
 				'Content-Type': 'application/json'
 			},
 			method: FetchMethods.Put,
-			body: stringify(commands)
+			body: JSON.stringify(commands)
 		},
 		FetchResultTypes.Result
 	);

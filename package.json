@@ -21,7 +21,10 @@
 		"prepare": "husky install .github/husky"
 	},
 	"dependencies": {
+		"@discordjs/builders": "^0.2.0",
+		"@sapphire/utilities": "^1.6.1",
 		"discord-api-types": "^0.18.1",
+		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^2.1.0",
 		"tslib": "^2.3.0",
 		"tweetnacl": "^1.0.3"

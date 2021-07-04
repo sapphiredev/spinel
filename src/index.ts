@@ -1,5 +1,6 @@
 process.env.NODE_ENV ??= 'development';
 
+import type { Awaited } from '@sapphire/utilities';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import {
 	APIApplicationCommandInteraction,
@@ -24,7 +25,7 @@ config({
 	path: process.env.NODE_ENV === 'production' ? join(__dirname, '.env') : join(__dirname, '..', '.env')
 });
 
-export default (req: VercelRequest, res: VercelResponse): VercelResponse => {
+export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse> => {
 	const interactionInvalid = verifyDiscordInteraction(req);
 	if (interactionInvalid) {
 		return res.status(interactionInvalid.statusCode).json({ message: interactionInvalid.message });

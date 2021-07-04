@@ -51,7 +51,7 @@
 	"bugs": {
 		"url": "https://github.com/sapphiredev/sapphire-slashies/issues"
 	},
-	"homepage": "https://github.com/sapphiredev/sapphire-slashies#README",
+	"homepage": "https://sapphire-slashies.vercel.app",
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"

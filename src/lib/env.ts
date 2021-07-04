@@ -1,5 +1,5 @@
 export const DiscordApplicationId = process.env.DISCORD_APPLICATION_ID;
-export const DiscordPublicKeyBuffer = Buffer.from(process.env.PUBLIC_KEY, 'hex');
+export const DiscordPublicKeyBuffer = Buffer.from(process.env.DISCORD_PUBLIC_KEY, 'hex');
 export const AlgoliaApplicationId = process.env.ALGOLIA_APPLICATION_ID;
 export const AlgoliaApplicationKey = process.env.ALGOLIA_APPLICATION_KEY;
 
@@ -9,7 +9,7 @@ declare global {
 		interface ProcessEnv {
 			DISCORD_APPLICATION_ID: string;
 			DISCORD_APPLICATION_SECRET: string;
-			PUBLIC_KEY: string;
+			DISCORD_PUBLIC_KEY: string;
 			ALGOLIA_APPLICATION_ID: string;
 			ALGOLIA_APPLICATION_KEY: string;
 		}

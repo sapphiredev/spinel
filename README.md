@@ -40,7 +40,7 @@ Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.loca
 -   `ALGOLIA_APPLICATION_KEY`
 -   `DISCORD_APPLICATION_ID`
 -   `DISCORD_APPLICATION_SECRET`
--   `PUBLIC_KEY`
+-   `DISCORD_PUBLIC_KEY`
 
 ## Buy us some doughnuts
 

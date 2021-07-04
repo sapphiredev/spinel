@@ -36,7 +36,8 @@ yarn build
 
 Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.local). Fill in at least these required environment variables:
 
--   `PUBLIC_KEY`
+-   `APPLICATION_ID`
+-   `APPLICATION_SECRET`
 
 ## Buy us some doughnuts
 

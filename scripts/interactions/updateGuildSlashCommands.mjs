@@ -6,7 +6,7 @@ import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
 import { inspect } from 'node:util';
-import commands from './commands';
+import commands from './commands.mjs';
 
 config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 

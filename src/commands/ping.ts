@@ -1,8 +1,8 @@
-import { APIApplicationCommandInteraction, APIInteractionResponse, InteractionResponseType, MessageFlags } from 'discord-api-types/v8';
+import { APIInteractionResponse, InteractionResponseType, MessageFlags } from 'discord-api-types/v8';
 
-export function ping(interaction: APIApplicationCommandInteraction): APIInteractionResponse {
+export function ping(id: string): APIInteractionResponse {
 	const now = BigInt(Date.now());
-	const bigintId = BigInt(interaction.id);
+	const bigintId = BigInt(id);
 
 	const pingDelay = Number(now - (bigintId >> 22n) - 1420070400000n);
 

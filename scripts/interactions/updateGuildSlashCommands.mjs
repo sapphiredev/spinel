@@ -6,6 +6,7 @@ import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
 import { inspect } from 'node:util';
+import commands from './commands';
 
 config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 
@@ -15,14 +16,6 @@ const ApplicationId = process.env.APPLICATION_ID;
 if (!ApplicationId || !ApplicationSecret) {
 	throw new Error('Please fill in all env variables in your ".env.local" file');
 }
-
-/** @type {import('discord-api-types/v8').RESTPostAPIApplicationCommandsJSONBody[]} */
-const commands = [
-	{
-		name: 'ping',
-		description: 'Sends a ping and gets a pong back'
-	}
-];
 
 /**
  * @type string[]

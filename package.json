@@ -14,6 +14,7 @@
 		"clean": "node scripts/clean.mjs",
 		"vercel-build": "ncc build src/index.ts -o api -m",
 		"update-slashies": "node ./scripts/interactions/updateSlashCommands.mjs",
+		"update-guild-slashies": "node ./scripts/interactions/updateGuildSlashCommands.mjs",
 		"update": "yarn upgrade-interactive --latest",
 		"commit": "git-cz",
 		"cz": "git-cz",

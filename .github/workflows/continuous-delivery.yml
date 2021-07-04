@@ -33,7 +33,7 @@ jobs:
       - name: Build code for Vercel
         run: yarn vercel-build
       - name: Push new code
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feat/full-rewrite' # TODO: Reset back to main
         run: |
           echo -e "\n# Remove any old files in the dist folder"
           rm -rfv out/api/*

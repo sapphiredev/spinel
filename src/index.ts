@@ -37,7 +37,8 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 	if (json.type === InteractionType.Ping) return res.json({ type: InteractionResponseType.Pong });
 
 	const {
-		data: { id, options, name }
+		id,
+		data: { options, name }
 	} = cast<APIApplicationCommandInteraction>(json);
 
 	if (options?.length) {

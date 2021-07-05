@@ -32,7 +32,7 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 	if (!algoliaResponse.hits.length) {
 		return response.json(
 			errorResponse({
-				content: 'Nothing found with provided parameters.'
+				content: 'I was not able to find anything with provided parameters.'
 			})
 		);
 	}

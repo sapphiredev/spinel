@@ -61,7 +61,7 @@ export async function djsDocs({ query, response, source, target }: DjsDocsParame
 
 	return response.json(
 		errorResponse({
-			content: 'Nothing found with provided parameters.'
+			content: 'I was unable to find anything with the provided parameters.'
 		})
 	);
 }

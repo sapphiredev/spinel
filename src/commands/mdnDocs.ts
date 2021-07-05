@@ -22,7 +22,7 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 		if (!hit) {
 			return response.json(
 				errorResponse({
-					content: `No search results for query \`${query}\``
+					content: `there were no search results for the query \`${query}\``
 				})
 			);
 		}
@@ -45,7 +45,7 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 			})
 		);
 	} catch (error) {
-		return response.json(errorResponse({ content: 'Something went wrong' }));
+		return response.json(errorResponse({ content: 'something went wrong' }));
 	}
 }
 

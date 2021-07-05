@@ -1,8 +1,7 @@
-import { inlineCode } from '@discordjs/builders';
 import { RedCross } from './emotes';
 import { AlgoliaApplicationId } from './env';
 
-export const FailPrefix = inlineCode(`${RedCross} Error`);
+export const FailPrefix = `${RedCross} I am sorry, but`;
 export const AlgoliaUrl = `https://${AlgoliaApplicationId}.algolia.net/1/indexes/discordjs/query`;
 export const MdnUrl = `https://developer.mozilla.org`;
 

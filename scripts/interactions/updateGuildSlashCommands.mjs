@@ -54,22 +54,24 @@ async function getBearerToken() {
 
 async function batchUpdateCommands(token) {
 	for (const guild of guilds) {
-		const res = await fetch(
-			`${RouteBases.api}${Routes.applicationGuildCommands(ApplicationId, guild)}`,
-			{
-				headers: {
-					Authorization: `Bearer ${token}`,
-					'Content-Type': 'application/json'
+		try {
+			const res = await fetch(
+				`${RouteBases.api}${Routes.applicationGuildCommands(ApplicationId, guild)}`,
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+						'Content-Type': 'application/json'
+					},
+					method: FetchMethods.Put,
+					body: JSON.stringify(commands)
 				},
-				method: FetchMethods.Put,
-				body: JSON.stringify(commands)
-			},
-			FetchResultTypes.Result
-		);
+				FetchResultTypes.JSON
+			);
 
-		if (!res.ok) throw new Error(`Failed to batch update commands: "${await res.text()}"`);
-
-		console.log(`Processed successfully:\n${inspect(await res.json(), false, 6, true)}`);
+			console.log(`Processed successfully:\n${inspect(res, false, 6, true)}`);
+		} catch (error) {
+			console.error(error);
+		}
 	}
 }
 

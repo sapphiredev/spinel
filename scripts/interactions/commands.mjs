@@ -1,10 +1,8 @@
-// TODO: Impl and re-enable commands
-
 /** @type {import('discord-api-types/v8').RESTPostAPIApplicationCommandsJSONBody[]} */
 export default [
 	{
 		name: 'invite',
-		description: 'Use discord.js docs in your server!'
+		description: 'Use Sapphire in your server!'
 	},
 	{
 		name: 'ping',
@@ -183,7 +181,7 @@ export default [
 	// },
 	{
 		name: 'djs',
-		description: 'Display discord.js documentation',
+		description: 'Search discord.js documentation',
 		options: [
 			{
 				type: 3,

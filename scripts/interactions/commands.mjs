@@ -130,7 +130,7 @@ export default [
 	// 			description: 'User to mention',
 	// 			required: false,
 	// 			type: 6
-	// 		},
+	// 		}
 	// 	]
 	// },
 	// {
@@ -294,7 +294,7 @@ export default [
 				name: 'version',
 				description: 'Which version of Node.js do you want to search?',
 				required: false,
-				type: 4,
+				type: 3,
 				choices: [
 					{
 						name: 'v12',

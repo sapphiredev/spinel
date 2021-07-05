@@ -44,7 +44,7 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 				users: target ? [target] : []
 			})
 		);
-	} catch (error) {
+	} catch {
 		return response.json(errorResponse({ content: 'something went wrong' }));
 	}
 }

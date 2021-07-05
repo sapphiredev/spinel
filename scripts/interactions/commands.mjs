@@ -281,23 +281,23 @@ export default [
 				type: 6
 			}
 		]
+	},
+	{
+		name: 'node',
+		description: 'Search the Node.js documentation',
+		options: [
+			{
+				name: 'query',
+				description: 'Class, method or event to search for',
+				required: true,
+				type: 3
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: 6
+			}
+		]
 	}
-	// {
-	// 	name: 'node',
-	// 	description: 'Search the Node.js documentation',
-	// 	options: [
-	// 		{
-	// 			name: 'query',
-	// 			description: 'Class, method or event to search for',
-	// 			required: true,
-	// 			type: 3
-	// 		},
-	// 		{
-	// 			name: 'target',
-	// 			description: 'User to mention',
-	// 			required: false,
-	// 			type: 6
-	// 		}
-	// 	]
-	// }
 ];

@@ -18,6 +18,7 @@ import { djsDocs } from './commands/djsDocs';
 import { djsGuide } from './commands/djsGuide';
 import { invite } from './commands/invite';
 import { mdnSearch } from './commands/mdnDocs';
+import { nodeSearch } from './commands/nodeDocs';
 import { ping } from './commands/ping';
 import { cast } from './lib/constants';
 import { HttpCodes } from './lib/HttpCodes';
@@ -78,8 +79,12 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					query: cast<string>(args.query),
 					target: cast<Snowflake>(args.target)
 				});
-			// case 'node':
-			// 	return nodeSearch(res, args.query, args.target);
+			case 'node':
+				return nodeSearch({
+					response: res,
+					query: cast<string>(args.query),
+					target: cast<Snowflake>(args.target)
+				});
 		}
 	}
 

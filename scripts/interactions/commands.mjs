@@ -1,3 +1,5 @@
+import { ApplicationCommandOptionType } from 'discord-api-types/v8';
+
 /** @type {import('discord-api-types/v8').RESTPostAPIApplicationCommandsJSONBody[]} */
 export default [
 	{
@@ -13,13 +15,13 @@ export default [
 	// 	description: 'Display Sapphire documentation',
 	// 	options: [
 	// 		{
-	// 			type: 3,
+	// 			type: ApplicationCommandOptionType.STRING,
 	// 			name: 'query',
 	// 			description: 'Query to search for',
 	// 			required: true
 	// 		},
 	// 		{
-	// 			type: 3,
+	// 			type: ApplicationCommandOptionType.STRING,
 	// 			name: 'source',
 	// 			description: 'Source repository to use',
 	// 			choices: [
@@ -129,7 +131,7 @@ export default [
 	// 			name: 'target',
 	// 			description: 'User to mention',
 	// 			required: false,
-	// 			type: 6
+	// 			type: ApplicationCommandOptionType.USER
 	// 		}
 	// 	]
 	// },
@@ -141,7 +143,7 @@ export default [
 	// 			name: 'query',
 	// 			description: 'Phrase to search for',
 	// 			required: true,
-	// 			type: 3
+	// 			type: ApplicationCommandOptionType.STRING
 	// 		},
 	// 		{
 	// 			name: 'results',
@@ -175,7 +177,7 @@ export default [
 	// 			name: 'target',
 	// 			description: 'User to mention',
 	// 			required: false,
-	// 			type: 6
+	// 			type: ApplicationCommandOptionType.USER
 	// 		}
 	// 	]
 	// },
@@ -184,13 +186,13 @@ export default [
 		description: 'Search discord.js documentation',
 		options: [
 			{
-				type: 3,
+				type: ApplicationCommandOptionType.STRING,
 				name: 'query',
 				description: 'Class or Class#method combination to search for',
 				required: true
 			},
 			{
-				type: 3,
+				type: ApplicationCommandOptionType.STRING,
 				name: 'source',
 				description: 'Source repository to use',
 				choices: [
@@ -212,7 +214,7 @@ export default [
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: 6
+				type: ApplicationCommandOptionType.USER
 			}
 		]
 	},
@@ -224,7 +226,7 @@ export default [
 				name: 'query',
 				description: 'Phrase to search for',
 				required: true,
-				type: 3
+				type: ApplicationCommandOptionType.STRING
 			},
 			{
 				name: 'results',
@@ -258,7 +260,7 @@ export default [
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: 6
+				type: ApplicationCommandOptionType.USER
 			}
 		]
 	},
@@ -270,13 +272,13 @@ export default [
 				name: 'query',
 				description: 'Class or method to search for',
 				required: true,
-				type: 3
+				type: ApplicationCommandOptionType.STRING
 			},
 			{
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: 6
+				type: ApplicationCommandOptionType.USER
 			}
 		]
 	},
@@ -288,13 +290,13 @@ export default [
 				name: 'query',
 				description: 'Class, method or event to search for',
 				required: true,
-				type: 3
+				type: ApplicationCommandOptionType.STRING
 			},
 			{
 				name: 'version',
 				description: 'Which version of Node.js do you want to search?',
 				required: false,
-				type: 3,
+				type: ApplicationCommandOptionType.STRING,
 				choices: [
 					{
 						name: 'v12',
@@ -314,7 +316,7 @@ export default [
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: 6
+				type: ApplicationCommandOptionType.USER
 			}
 		]
 	}

@@ -81,7 +81,7 @@ export async function nodeSearch({ response, query, version, target }: NodeSearc
 			);
 		}
 
-		const moduleURL = `${NodeUrl}/api/${result.module as string}`;
+		const moduleURL = `${NodeUrl}/docs/${version}/api/${result.module as string}`;
 		const fullURL = `${moduleURL}.html${result.type === 'module' ? '' : `#${anchor(result.textRaw, result.module)}`}`;
 		const parts = [`${NodeIcon} \ ${underscore(hyperlink(bold(result.textRaw as string), hideLinkEmbed(fullURL)))}`];
 

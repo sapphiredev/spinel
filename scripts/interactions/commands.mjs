@@ -263,25 +263,25 @@ export default [
 				]
 			}
 		]
+	},
+	{
+		name: 'mdn',
+		description: 'Search the Mozilla Developer Network documentation',
+		options: [
+			{
+				name: 'query',
+				description: 'Class or method to search for',
+				required: true,
+				type: 3
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: 6
+			}
+		]
 	}
-	// {
-	// 	name: 'mdn',
-	// 	description: 'Search the Mozilla Developer Network documentation',
-	// 	options: [
-	// 		{
-	// 			name: 'query',
-	// 			description: 'Class or method to search for',
-	// 			required: true,
-	// 			type: 3
-	// 		},
-	// 		{
-	// 			name: 'target',
-	// 			description: 'User to mention',
-	// 			required: false,
-	// 			type: 6
-	// 		}
-	// 	]
-	// },
 	// {
 	// 	name: 'node',
 	// 	description: 'Search the Node.js documentation',

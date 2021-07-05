@@ -27,6 +27,7 @@
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^2.1.0",
 		"tslib": "^2.3.0",
+		"turndown": "^7.1.1",
 		"tweetnacl": "^1.0.3"
 	},
 	"devDependencies": {
@@ -38,6 +39,7 @@
 		"@sapphire/utilities": "^1.6.1",
 		"@types/node": "^16.0.0",
 		"@types/node-fetch": "^2.5.10",
+		"@types/turndown": "^5.0.1",
 		"@vercel/ncc": "^0.28.6",
 		"@vercel/node": "^1.11.1",
 		"cz-conventional-changelog": "^3.3.0",

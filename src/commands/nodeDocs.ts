@@ -40,12 +40,22 @@ function anchor(text: string, module: string): string {
 	return `${module}_${method}`;
 }
 
-let allNodeData: NodeDocs | null = null;
+const cache: Map<string, NodeDocs> = new Map();
 
-export async function nodeSearch({ response, query, target }: NodeSearchParameters): Promise<VercelResponse> {
+export async function nodeSearch({ response, query, version, target }: NodeSearchParameters): Promise<VercelResponse> {
 	try {
+		const url = `${NodeUrl}/dist/${version}/docs/api/all.json`;
+		let allNodeData = cache.get(url);
+
 		if (!allNodeData) {
-			allNodeData = await fetch<NodeDocs>(`${NodeUrl}/dist/latest/docs/api/all.json`, FetchResultTypes.JSON);
+			// Get the data for this version
+			const data = await fetch<NodeDocs>(url, FetchResultTypes.JSON);
+
+			// Set it to the map for caching
+			cache.set(url, data);
+
+			// Set the local parameter for further processing
+			allNodeData = data;
 		}
 
 		const queryParts = query.split(/#|\.|\s/);
@@ -99,5 +109,6 @@ export async function nodeSearch({ response, query, target }: NodeSearchParamete
 interface NodeSearchParameters {
 	response: VercelResponse;
 	query: string;
+	version: 'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x';
 	target: Snowflake;
 }

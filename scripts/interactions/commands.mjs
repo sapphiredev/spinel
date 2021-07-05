@@ -19,12 +19,6 @@ export default [
 	// 			required: true
 	// 		},
 	// 		{
-	// 			name: 'target',
-	// 			description: 'User to mention',
-	// 			required: false,
-	// 			type: 6
-	// 		},
-	// 		{
 	// 			type: 3,
 	// 			name: 'source',
 	// 			description: 'Source repository to use',
@@ -130,7 +124,13 @@ export default [
 	// 					value: 'pieces#main'
 	// 				}
 	// 			]
-	// 		}
+	// 		},
+	// 		{
+	// 			name: 'target',
+	// 			description: 'User to mention',
+	// 			required: false,
+	// 			type: 6
+	// 		},
 	// 	]
 	// },
 	// {
@@ -142,12 +142,6 @@ export default [
 	// 			description: 'Phrase to search for',
 	// 			required: true,
 	// 			type: 3
-	// 		},
-	// 		{
-	// 			name: 'target',
-	// 			description: 'User to mention',
-	// 			required: false,
-	// 			type: 6
 	// 		},
 	// 		{
 	// 			name: 'results',
@@ -176,6 +170,12 @@ export default [
 	// 					value: 5
 	// 				}
 	// 			]
+	// 		},
+	// 		{
+	// 			name: 'target',
+	// 			description: 'User to mention',
+	// 			required: false,
+	// 			type: 6
 	// 		}
 	// 	]
 	// },
@@ -188,12 +188,6 @@ export default [
 				name: 'query',
 				description: 'Class or Class#method combination to search for',
 				required: true
-			},
-			{
-				name: 'target',
-				description: 'User to mention',
-				required: false,
-				type: 6
 			},
 			{
 				type: 3,
@@ -213,6 +207,12 @@ export default [
 						value: 'stable'
 					}
 				]
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: 6
 			}
 		]
 	},
@@ -225,12 +225,6 @@ export default [
 				description: 'Phrase to search for',
 				required: true,
 				type: 3
-			},
-			{
-				name: 'target',
-				description: 'User to mention',
-				required: false,
-				type: 6
 			},
 			{
 				name: 'results',
@@ -259,6 +253,12 @@ export default [
 						value: 5
 					}
 				]
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: 6
 			}
 		]
 	},
@@ -289,6 +289,26 @@ export default [
 				description: 'Class, method or event to search for',
 				required: true,
 				type: 3
+			},
+			{
+				name: 'version',
+				description: 'Which version of Node.js do you want to search?',
+				required: false,
+				type: 4,
+				choices: [
+					{
+						name: 'v12',
+						value: 'latest-v12.x'
+					},
+					{
+						name: 'v14',
+						value: 'latest-v14.x'
+					},
+					{
+						name: 'v16 (default)',
+						value: 'latest-v16.x'
+					}
+				]
 			},
 			{
 				name: 'target',

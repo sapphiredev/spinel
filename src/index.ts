@@ -83,6 +83,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 				return nodeSearch({
 					response: res,
 					query: cast<string>(args.query),
+					version: cast<'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x'>(args.version),
 					target: cast<Snowflake>(args.target)
 				});
 		}

@@ -71,7 +71,7 @@ jobs:
         if: ${{ !steps.cache-restore.outputs.cache-hit }}
         run: yarn --frozen-lockfile
       - name: Publish Application Commands
-        run: yarn update-guild-slashies #TODO: Change back to update-slashies when commands are finished
+        run: yarn update-slashies
         env:
           DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
           DISCORD_APPLICATION_SECRET: ${{ secrets.DISCORD_APPLICATION_SECRET }}

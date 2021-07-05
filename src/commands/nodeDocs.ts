@@ -5,8 +5,8 @@ import type { Snowflake } from 'discord-api-types/v8';
 import TurndownService from 'turndown';
 import { NodeUrl } from '../lib/constants';
 import { NodeIcon } from '../lib/emotes';
-import type { NodeDocs } from '../lib/NodeDocs';
 import { errorResponse, interactionResponse } from '../lib/responseHelpers';
+import type { NodeDocs } from '../lib/types/NodeDocs';
 
 const td = new TurndownService({ codeBlockStyle: 'fenced' });
 

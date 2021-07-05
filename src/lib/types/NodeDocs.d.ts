@@ -8,7 +8,7 @@ export interface NodeDocs {
 
 export interface PurpleClass {
 	textRaw: string;
-	type: NameEnum;
+	type: TypeEnum;
 	name: string;
 	desc?: string;
 	methods?: PurpleMethod[];
@@ -18,6 +18,7 @@ export interface PurpleClass {
 	modules?: PurpleModule[];
 	displayName?: string;
 	meta?: PurpleMeta;
+	[key: string]: any;
 }
 
 export interface PurpleMeta {
@@ -66,11 +67,11 @@ export interface PurpleModule {
 	textRaw: string;
 	name: string;
 	desc: string;
-	type: NameEnum;
+	type: TypeEnum;
 	displayName: string;
 }
 
-export enum NameEnum {
+export enum TypeEnum {
 	Class = 'class',
 	Misc = 'misc',
 	Module = 'module'
@@ -251,7 +252,7 @@ export interface NodeDocsGlobal {
 
 export interface GlobalClass {
 	textRaw: string;
-	type: NameEnum;
+	type: TypeEnum;
 	name: string;
 	meta?: PurpleMeta;
 	desc?: string;
@@ -366,7 +367,7 @@ export interface NodeDocsMisc {
 	textRaw: string;
 	name: string;
 	introduced_in: string;
-	type: NameEnum;
+	type: TypeEnum;
 	desc?: string;
 	miscs: PurpleMisc[];
 	source: string;
@@ -394,7 +395,7 @@ export interface PurpleMisc {
 	textRaw: string;
 	name: string;
 	desc?: string;
-	type: NameEnum;
+	type: TypeEnum;
 	displayName?: string;
 	meta?: PurpleMeta;
 	modules?: MiscModule[];
@@ -409,7 +410,7 @@ export interface MiscModule {
 	name: string;
 	desc?: string;
 	modules?: FluffyModule[];
-	type: NameEnum;
+	type: TypeEnum;
 	displayName: string;
 	properties?: MethodElement[];
 	meta?: TentacledMeta;
@@ -436,7 +437,7 @@ export interface FluffyModule {
 	name: string;
 	meta?: StickyMeta;
 	desc: string;
-	type: NameEnum;
+	type: TypeEnum;
 	displayName: string;
 	stability?: number;
 	stabilityText?: MethodStabilityText;
@@ -469,7 +470,7 @@ export interface NodeDocsModule {
 	name: string;
 	introduced_in?: string;
 	miscs?: ModuleMisc[];
-	type: NameEnum;
+	type: TypeEnum;
 	displayName?: string;
 	source: string;
 	stability?: number;
@@ -486,7 +487,7 @@ export interface NodeDocsModule {
 
 export interface FluffyClass {
 	textRaw: string;
-	type: NameEnum;
+	type: TypeEnum;
 	name: string;
 	desc?: string;
 	signatures?: IndecentSignature[];
@@ -527,7 +528,7 @@ export interface ClassModule {
 	textRaw: string;
 	name: string;
 	desc: string;
-	type: NameEnum;
+	type: TypeEnum;
 	displayName: string;
 	methods?: EventElement[];
 	stability?: number;
@@ -587,7 +588,7 @@ export interface ModuleMisc {
 	textRaw: string;
 	name: string;
 	introduced_in?: string;
-	type: NameEnum;
+	type: TypeEnum;
 	desc?: string;
 	miscs?: FluffyMisc[];
 	meta?: PurpleMeta;
@@ -597,7 +598,7 @@ export interface ModuleMisc {
 export interface FluffyMisc {
 	textRaw: string;
 	name: string;
-	type: NameEnum;
+	type: TypeEnum;
 	desc?: string;
 	classes?: GlobalClass[];
 	displayName?: string;
@@ -629,7 +630,7 @@ export interface TentacledModule {
 	name: string;
 	meta?: PurpleMeta;
 	desc?: string;
-	type: NameEnum;
+	type: TypeEnum;
 	displayName: string;
 	classes?: TentacledClass[];
 	methods?: IndecentMethod[];
@@ -643,7 +644,7 @@ export interface TentacledModule {
 
 export interface TentacledClass {
 	textRaw: string;
-	type: NameEnum;
+	type: TypeEnum;
 	name: string;
 	desc?: string;
 	meta?: IndigoMeta;
@@ -698,7 +699,7 @@ export interface StickyModule {
 	name: string;
 	meta?: PurpleMeta;
 	properties?: PropertyElement[];
-	type: NameEnum;
+	type: TypeEnum;
 	displayName: string;
 	desc?: string;
 	methods?: ModuleElement[];
@@ -762,7 +763,7 @@ export interface IndigoProperty {
 
 export interface FluffyVar {
 	textRaw: string;
-	name: NameEnum;
+	name: TypeEnum;
 	meta: PurpleMeta;
 	type: string;
 	desc: string;

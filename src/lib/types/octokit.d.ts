@@ -86,7 +86,6 @@ export interface PullRequest {
 interface Actor {
 	/** The username of the actor. */
 	login: Scalars['String'];
-
 	/** The HTTP URL for this actor. */
 	url: Scalars['URI'];
 }

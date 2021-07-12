@@ -319,5 +319,35 @@ export default [
 				type: ApplicationCommandOptionType.USER
 			}
 		]
+	},
+	{
+		name: 'github',
+		description: 'Get information on an Issue or Pull Request from the provided repository',
+		options: [
+			{
+				name: 'number',
+				description: 'The number of the Issue or Pull Request',
+				required: true,
+				type: ApplicationCommandOptionType.INTEGER
+			},
+			{
+				name: 'repository',
+				description: 'The repository for which to get this Issue or Pull Request',
+				required: true,
+				type: ApplicationCommandOptionType.STRING
+			},
+			{
+				name: 'owner',
+				description: 'The owner of the repository to query. Defaults to `sapphiredev`',
+				required: false,
+				type: ApplicationCommandOptionType.STRING
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: ApplicationCommandOptionType.USER
+			}
+		]
 	}
 ];

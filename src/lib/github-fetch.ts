@@ -39,6 +39,10 @@ const durationFormatter = new DurationFormatter({
 const issuesAndPrQuery = gql`
 	query ($repository: String!, $owner: String!, $number: Int!) {
 		repository(owner: $owner, name: $repository) {
+			name
+			owner {
+				login
+			}
 			issue(number: $number) {
 				number
 				title
@@ -88,7 +92,7 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 
 	console.error('Received Data from API: ', data);
 	console.error('Received PR: ', Boolean(data.repository?.pullRequest));
-	console.error('Received PR: ', Boolean(data.repository?.issue));
+	console.error('Received Issue: ', Boolean(data.repository?.issue));
 
 	if (data.repository?.pullRequest) {
 		return getDataForPullRequest(data.repository);

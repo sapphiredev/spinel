@@ -8,9 +8,7 @@ export async function githubSearch({ repository, owner, number, response, target
 	try {
 		const data = await fetchIssuesAndPrs({ repository, owner, number });
 
-		console.error('Parsed Data: ', data);
 		if (!data.author.login || !data.author.url || !data.number || !data.state || !data.title) {
-			console.error('DATA ERROR!!');
 			return response.json(errorResponse({ content: 'something went wrong' }));
 		}
 
@@ -31,8 +29,6 @@ export async function githubSearch({ repository, owner, number, response, target
 			})
 		);
 	} catch (error) {
-		console.error(error);
-
 		// First we check if we need to handle a no data error
 		if ((error as Error).message === 'no-data') {
 			return response.json(

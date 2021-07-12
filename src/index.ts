@@ -87,9 +87,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					version: cast<'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x'>(args.version),
 					target: cast<Snowflake>(args.target)
 				});
-			case 'github': {
-				console.error(args);
-
+			case 'github':
 				return githubSearch({
 					response: res,
 					number: parseInt(cast<string>(args.number), 10),
@@ -97,7 +95,6 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					repository: cast<string>(args.repository),
 					target: cast<Snowflake>(args.target)
 				});
-			}
 		}
 	}
 

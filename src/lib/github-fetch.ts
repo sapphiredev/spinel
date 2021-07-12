@@ -90,10 +90,6 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 		FetchResultTypes.JSON
 	);
 
-	console.error('Received Data from API: ', data);
-	console.error('Received PR: ', Boolean(data.repository?.pullRequest));
-	console.error('Received Issue: ', Boolean(data.repository?.issue));
-
 	if (data.repository?.pullRequest) {
 		return getDataForPullRequest(data.repository);
 	} else if (data.repository?.issue) {
@@ -109,10 +105,6 @@ function getDataForIssue({ issue, ...repository }: Repository): IssueOrPrDetails
 	const dateOffset = durationFormatter.format(dateToUse - Date.now(), 2).slice(1);
 	const dateStringPrefix = issue?.state === 'CLOSED' ? 'closed' : 'opened';
 	const dateString = `${dateStringPrefix} ${dateOffset} ago`;
-
-	console.error('parsing issue with: ', issue);
-	console.error('parsing author with: ', issue?.author);
-	console.error('and repository is: ', repository);
 
 	return {
 		author: {

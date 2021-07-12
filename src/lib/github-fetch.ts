@@ -74,13 +74,15 @@ export class GithubApi {
 	public constructor() {
 		this.apolloClient = new ApolloClient({
 			uri: 'https://api.github.com/graphql',
-			fetchOptions: {
-				headers: {
-					'User-Agent': 'Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)',
-					Authorization: `Bearer ${GitHubBearerToken}`
-				}
-			},
-			fetch: crossFetch
+			fetch: crossFetch,
+			request: (operation) => {
+				operation.setContext({
+					headers: {
+						'User-Agent': 'Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)',
+						Authorization: `Bearer ${GitHubBearerToken}`
+					}
+				});
+			}
 		});
 	}
 

@@ -16,6 +16,8 @@ export async function githubSearch({
 		const data = await githubApiInstance.fetchIssuesAndPrs({ repository, owner, number });
 
 		if (!data.author.login || !data.author.url || !data.number || !data.state || !data.title) {
+			console.error('DATA ERROR!!');
+			console.error(data);
 			return response.json(errorResponse({ content: 'something went wrong' }));
 		}
 

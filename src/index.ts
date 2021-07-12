@@ -90,7 +90,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 			case 'github':
 				return githubSearch({
 					response: res,
-					number: parseInt(cast<string>(args.number), 10),
+					number: cast<number>(args.number),
 					owner: cast<string>(args.owner ?? 'sapphiredev'),
 					repository: cast<string>(args.repository),
 					target: cast<Snowflake>(args.target)

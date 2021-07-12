@@ -22,7 +22,6 @@ import { mdnSearch } from './commands/mdnDocs';
 import { nodeSearch } from './commands/nodeDocs';
 import { ping } from './commands/ping';
 import { cast } from './lib/constants';
-import { GithubApi } from './lib/github-fetch';
 import { HttpCodes } from './lib/HttpCodes';
 import { verifyDiscordInteraction } from './lib/verifyDiscordInteraction';
 
@@ -44,7 +43,6 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 		id,
 		data: { options, name }
 	} = cast<APIApplicationCommandInteraction>(json);
-	const ghApiInstance = new GithubApi();
 
 	if (options?.length) {
 		const args = Object.fromEntries(
@@ -97,8 +95,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					number: parseInt(cast<string>(args.number), 10),
 					owner: cast<string>(args.owner ?? 'sapphiredev'),
 					repository: cast<string>(args.repository),
-					target: cast<Snowflake>(args.target),
-					githubApiInstance: ghApiInstance
+					target: cast<Snowflake>(args.target)
 				});
 			}
 		}

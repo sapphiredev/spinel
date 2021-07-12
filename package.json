@@ -23,13 +23,11 @@
 	"dependencies": {
 		"@discordjs/builders": "^0.2.0",
 		"@sapphire/fetch": "^1.0.5",
+		"@sapphire/utilities": "^1.7.0",
 		"@sapphire/time-utilities": "^1.3.6",
-		"apollo-boost": "^0.4.9",
-		"cross-fetch": "^3.1.4",
 		"discord-api-types": "^0.18.1",
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^3.0.1",
-		"graphql": "^15.5.1",
 		"tslib": "^2.3.0",
 		"turndown": "^7.1.1",
 		"tweetnacl": "^1.0.3"
@@ -40,7 +38,6 @@
 		"@sapphire/eslint-config": "^3.2.2",
 		"@sapphire/prettier-config": "^1.1.6",
 		"@sapphire/ts-config": "^2.3.2",
-		"@sapphire/utilities": "^1.7.0",
 		"@types/node": "^16.3.1",
 		"@types/node-fetch": "^2.5.11",
 		"@types/turndown": "^5.0.1",

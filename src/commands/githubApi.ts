@@ -1,19 +1,12 @@
 import { hideLinkEmbed, hyperlink, italic } from '@discordjs/builders';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v8';
-import type { GithubApi } from '../lib/github-fetch';
+import { fetchIssuesAndPrs } from '../lib/github-fetch';
 import { errorResponse, interactionResponse } from '../lib/responseHelpers';
 
-export async function githubSearch({
-	repository,
-	owner,
-	number,
-	response,
-	githubApiInstance,
-	target
-}: GitHubSearchParameters): Promise<VercelResponse> {
+export async function githubSearch({ repository, owner, number, response, target }: GitHubSearchParameters): Promise<VercelResponse> {
 	try {
-		const data = await githubApiInstance.fetchIssuesAndPrs({ repository, owner, number });
+		const data = await fetchIssuesAndPrs({ repository, owner, number });
 
 		if (!data.author.login || !data.author.url || !data.number || !data.state || !data.title) {
 			console.error('DATA ERROR!!');
@@ -60,5 +53,4 @@ interface GitHubSearchParameters {
 	owner: string;
 	number: number;
 	target: Snowflake;
-	githubApiInstance: GithubApi;
 }

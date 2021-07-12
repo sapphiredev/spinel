@@ -8,9 +8,9 @@ export async function githubSearch({ repository, owner, number, response, target
 	try {
 		const data = await fetchIssuesAndPrs({ repository, owner, number });
 
+		console.error('Parsed Data: ', data);
 		if (!data.author.login || !data.author.url || !data.number || !data.state || !data.title) {
 			console.error('DATA ERROR!!');
-			console.error(data);
 			return response.json(errorResponse({ content: 'something went wrong' }));
 		}
 

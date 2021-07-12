@@ -86,6 +86,8 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 		FetchResultTypes.JSON
 	);
 
+	console.error('Received Data from API: ', data);
+
 	if (data.repository?.pullRequest) {
 		return getDataForPullRequest(data.repository);
 	} else if (data.repository?.issue) {

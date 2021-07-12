@@ -36,6 +36,8 @@ export async function githubSearch({
 			})
 		);
 	} catch (error) {
+		console.error(error);
+
 		// First we check if we need to handle a no data error
 		if ((error as Error).message === 'no-data') {
 			return response.json(

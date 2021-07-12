@@ -89,15 +89,18 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					version: cast<'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x'>(args.version),
 					target: cast<Snowflake>(args.target)
 				});
-			case 'github':
+			case 'github': {
+				console.log(args);
+
 				return githubSearch({
 					response: res,
 					number: cast<number>(args.number),
-					owner: cast<string>(args.owner),
+					owner: cast<string>(args.owner ?? 'sapphiredev'),
 					repository: cast<string>(args.repository),
 					target: cast<Snowflake>(args.target),
 					githubApiInstance: ghApiInstance
 				});
+			}
 		}
 	}
 

@@ -16,11 +16,13 @@ import { config } from 'dotenv-cra';
 import { join } from 'path';
 import { djsDocs } from './commands/djsDocs';
 import { djsGuide } from './commands/djsGuide';
+import { githubSearch } from './commands/githubApi';
 import { invite } from './commands/invite';
 import { mdnSearch } from './commands/mdnDocs';
 import { nodeSearch } from './commands/nodeDocs';
 import { ping } from './commands/ping';
 import { cast } from './lib/constants';
+import { GithubApi } from './lib/github-fetch';
 import { HttpCodes } from './lib/HttpCodes';
 import { verifyDiscordInteraction } from './lib/verifyDiscordInteraction';
 
@@ -42,6 +44,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 		id,
 		data: { options, name }
 	} = cast<APIApplicationCommandInteraction>(json);
+	const ghApiInstance = new GithubApi();
 
 	if (options?.length) {
 		const args = Object.fromEntries(
@@ -85,6 +88,15 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					query: cast<string>(args.query),
 					version: cast<'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x'>(args.version),
 					target: cast<Snowflake>(args.target)
+				});
+			case 'github':
+				return githubSearch({
+					response: res,
+					number: cast<number>(args.number),
+					owner: cast<string>(args.owner),
+					repository: cast<string>(args.repository),
+					target: cast<Snowflake>(args.target),
+					githubApiInstance: ghApiInstance
 				});
 		}
 	}

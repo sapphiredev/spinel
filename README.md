@@ -41,6 +41,7 @@ Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.loca
 -   `DISCORD_APPLICATION_ID`
 -   `DISCORD_APPLICATION_SECRET`
 -   `DISCORD_PUBLIC_KEY`
+-   `GH_API_KEY`
 
 ## Buy us some doughnuts
 

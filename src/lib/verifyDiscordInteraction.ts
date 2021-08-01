@@ -5,7 +5,6 @@ import { HttpCodes } from './HttpCodes';
 
 export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInteractionResponse | null {
 	const { headers } = req;
-	console.error(headers);
 	const signatureHeader = headers['x-signature-ed25519'];
 	const timestampHeader = headers['x-signature-timestamp'];
 

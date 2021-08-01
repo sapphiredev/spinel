@@ -40,7 +40,7 @@ jobs:
           rm -rfv out/public/*
 
           echo -e "\n# Move the generated docs to the newly-checked-out repo, to be committed and pushed"
-          rsync -vaI api/ out/api
+          rsync -vaI api/index.js out/api/slashies.js
           rsync -vaI public/ out/public
 
           echo -e "\n# Commit and push"

@@ -1,9 +1,4 @@
 process.env.NODE_ENV ??= 'development';
-import { config } from 'dotenv-cra';
-
-config({
-	path: process.env.NODE_ENV === 'production' ? join(__dirname, '.env') : join(__dirname, '..', '.env')
-});
 
 import type { Awaited } from '@sapphire/utilities';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
@@ -17,6 +12,7 @@ import {
 	InteractionType,
 	Snowflake
 } from 'discord-api-types/v9';
+import { config } from 'dotenv-cra';
 import { join } from 'path';
 import { djsDocs } from './commands/djsDocs';
 import { djsGuide } from './commands/djsGuide';
@@ -29,8 +25,11 @@ import { cast } from './lib/constants';
 import { HttpCodes } from './lib/HttpCodes';
 import { verifyDiscordInteraction } from './lib/verifyDiscordInteraction';
 
+config({
+	path: process.env.NODE_ENV === 'production' ? join(__dirname, '.env') : join(__dirname, '..', '.env')
+});
+
 export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse> => {
-	console.error(req);
 	const interactionInvalid = verifyDiscordInteraction(req);
 	if (interactionInvalid) {
 		return res //

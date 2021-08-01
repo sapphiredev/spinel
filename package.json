@@ -12,7 +12,7 @@
 		"build": "tsc -b src",
 		"watch": "tsc -b src -w",
 		"clean": "node scripts/clean.mjs",
-		"vercel-build": "ncc build src/index.ts -o api --target es2019",
+		"vercel-build": "ncc build src/index.ts -o api -m --target es2019",
 		"update-slashies": "node ./scripts/interactions/updateSlashCommands.mjs",
 		"update-guild-slashies": "node ./scripts/interactions/updateGuildSlashCommands.mjs",
 		"update": "yarn upgrade-interactive --latest",

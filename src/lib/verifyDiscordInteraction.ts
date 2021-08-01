@@ -11,7 +11,7 @@ export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInter
 	if (!signatureHeader || !timestampHeader) {
 		return {
 			statusCode: HttpCodes.BadRequest,
-			message: 'Bad request - Are you actually Discord sending me a request?'
+			message: 'are you actually Discord sending me a request, or is Discord trolling me by sending Bad Requests?'
 		};
 	}
 
@@ -26,7 +26,7 @@ export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInter
 	if (!isVerified) {
 		return {
 			statusCode: HttpCodes.Unauthorized,
-			message: 'Unauthorized - Better get authorized mate.'
+			message: "you're very much unauthorized you naughty naughty thing."
 		};
 	}
 

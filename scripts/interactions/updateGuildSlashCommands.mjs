@@ -1,7 +1,7 @@
 process.env.NODE_ENV ??= 'production';
 
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v8';
+import { OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v9';
 import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
@@ -30,7 +30,7 @@ const guilds = ['737141877803057244', '838895946397646850', '541738403230777351'
  * @returns {Promise<string>} The access token to be used
  */
 async function getBearerToken() {
-	/** @type {import('discord-api-types/v8').RESTPostOAuth2ClientCredentialsResult} */
+	/** @type {import('discord-api-types/v9').RESTPostOAuth2ClientCredentialsResult} */
 	const body = await fetch(
 		OAuth2Routes.tokenURL,
 		{
@@ -56,7 +56,7 @@ async function batchUpdateCommands(token) {
 	for (const guild of guilds) {
 		try {
 			const res = await fetch(
-				`${RouteBases.api}/v8/${Routes.applicationGuildCommands(ApplicationId, guild)}`,
+				`${RouteBases.api}/${Routes.applicationGuildCommands(ApplicationId, guild)}`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,

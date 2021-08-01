@@ -11,7 +11,7 @@ import {
 	InteractionResponseType,
 	InteractionType,
 	Snowflake
-} from 'discord-api-types/v8';
+} from 'discord-api-types/v9';
 import { config } from 'dotenv-cra';
 import { join } from 'path';
 import { djsDocs } from './commands/djsDocs';
@@ -23,6 +23,7 @@ import { nodeSearch } from './commands/nodeDocs';
 import { ping } from './commands/ping';
 import { cast } from './lib/constants';
 import { HttpCodes } from './lib/HttpCodes';
+import { errorResponse } from './lib/responseHelpers';
 import { verifyDiscordInteraction } from './lib/verifyDiscordInteraction';
 
 config({
@@ -32,7 +33,9 @@ config({
 export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse> => {
 	const interactionInvalid = verifyDiscordInteraction(req);
 	if (interactionInvalid) {
-		return res.status(interactionInvalid.statusCode).json({ message: interactionInvalid.message });
+		return res //
+			.status(interactionInvalid.statusCode)
+			.json(errorResponse({ content: interactionInvalid.message }));
 	}
 
 	const json = cast<APIInteraction>(req.body);

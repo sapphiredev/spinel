@@ -1,9 +1,9 @@
-import { bold, hyperlink, hideLinkEmbed } from '@discordjs/builders';
-import type { APIInteractionResponse } from 'discord-api-types';
+import { bold, hideLinkEmbed, hyperlink } from '@discordjs/builders';
+import type { APIInteractionResponseChannelMessageWithSource } from 'discord-api-types/v9';
 import { DiscordApplicationId } from '../lib/env';
 import { interactionResponse } from '../lib/responseHelpers';
 
-export function invite(): APIInteractionResponse {
+export function invite(): APIInteractionResponseChannelMessageWithSource {
 	return interactionResponse({
 		content: `Add the Sapphire interaction to your server: ${hyperlink(
 			bold('click here'),

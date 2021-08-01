@@ -11,8 +11,7 @@ export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInter
 	if (!signatureHeader || !timestampHeader) {
 		return {
 			statusCode: HttpCodes.BadRequest,
-			message: 'Bad request',
-			statusText: 'Bad request'
+			message: 'Bad request - Are you actually Discord sending me a request?'
 		};
 	}
 
@@ -27,8 +26,7 @@ export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInter
 	if (!isVerified) {
 		return {
 			statusCode: HttpCodes.Unauthorized,
-			message: 'Unauthorized',
-			statusText: 'Unauthorized'
+			message: 'Unauthorized - Better get authorized mate.'
 		};
 	}
 
@@ -38,7 +36,6 @@ export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInter
 export interface VerifyDiscordInteractionResponse {
 	statusCode: HttpCodes;
 	message: string;
-	statusText?: string;
 }
 
 declare module 'http' {

@@ -1,7 +1,7 @@
 process.env.NODE_ENV ??= 'production';
 
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v8';
+import { OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v9';
 import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
@@ -22,7 +22,7 @@ if (!ApplicationId || !ApplicationSecret) {
  * @returns {Promise<string>} The access token to be used
  */
 async function getBearerToken() {
-	/** @type {import('discord-api-types/v8').RESTPostOAuth2ClientCredentialsResult} */
+	/** @type {import('discord-api-types/v9').RESTPostOAuth2ClientCredentialsResult} */
 	const body = await fetch(
 		OAuth2Routes.tokenURL,
 		{

@@ -1,6 +1,6 @@
 import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/builders';
 import type { VercelResponse } from '@vercel/node';
-import type { Snowflake } from 'discord-api-types';
+import type { Snowflake } from 'discord-api-types/v9';
 import Doc from 'discord.js-docs';
 import { DjsDocsDevIcon, DjsDocsStableIcon } from '../lib/emotes';
 import { errorResponse, interactionResponse } from '../lib/responseHelpers';

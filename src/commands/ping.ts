@@ -1,7 +1,7 @@
-import type { APIInteractionResponse } from 'discord-api-types/v8';
+import type { APIInteractionResponseChannelMessageWithSource } from 'discord-api-types/v9';
 import { interactionResponse } from '../lib/responseHelpers';
 
-export function ping(id: string): APIInteractionResponse {
+export function ping(id: string): APIInteractionResponseChannelMessageWithSource {
 	const now = BigInt(Date.now());
 	const bigintId = BigInt(id);
 

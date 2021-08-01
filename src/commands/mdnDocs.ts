@@ -1,7 +1,7 @@
 import { bold, italic, hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
-import type { Snowflake } from 'discord-api-types/v8';
+import type { Snowflake } from 'discord-api-types/v9';
 import { encode } from 'querystring';
 import { MdnUrl } from '../lib/constants';
 import { MdnIcon } from '../lib/emotes';

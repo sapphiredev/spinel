@@ -1,6 +1,6 @@
-import { ApplicationCommandOptionType } from 'discord-api-types/v8';
+import { ApplicationCommandOptionType } from 'discord-api-types/v9';
 
-/** @type {import('discord-api-types/v8').RESTPostAPIApplicationCommandsJSONBody[]} */
+/** @type {import('discord-api-types/v9').RESTPostAPIApplicationCommandsJSONBody[]} */
 export default [
 	{
 		name: 'invite',
@@ -15,13 +15,13 @@ export default [
 	// 	description: 'Display Sapphire documentation',
 	// 	options: [
 	// 		{
-	// 			type: ApplicationCommandOptionType.STRING,
+	// 			type: ApplicationCommandOptionType.String,
 	// 			name: 'query',
 	// 			description: 'Query to search for',
 	// 			required: true
 	// 		},
 	// 		{
-	// 			type: ApplicationCommandOptionType.STRING,
+	// 			type: ApplicationCommandOptionType.String,
 	// 			name: 'source',
 	// 			description: 'Source repository to use',
 	// 			choices: [
@@ -131,7 +131,7 @@ export default [
 	// 			name: 'target',
 	// 			description: 'User to mention',
 	// 			required: false,
-	// 			type: ApplicationCommandOptionType.USER
+	// 			type: ApplicationCommandOptionType.User
 	// 		}
 	// 	]
 	// },
@@ -143,7 +143,7 @@ export default [
 	// 			name: 'query',
 	// 			description: 'Phrase to search for',
 	// 			required: true,
-	// 			type: ApplicationCommandOptionType.STRING
+	// 			type: ApplicationCommandOptionType.String
 	// 		},
 	// 		{
 	// 			name: 'results',
@@ -177,7 +177,7 @@ export default [
 	// 			name: 'target',
 	// 			description: 'User to mention',
 	// 			required: false,
-	// 			type: ApplicationCommandOptionType.USER
+	// 			type: ApplicationCommandOptionType.User
 	// 		}
 	// 	]
 	// },
@@ -186,13 +186,13 @@ export default [
 		description: 'Search discord.js documentation',
 		options: [
 			{
-				type: ApplicationCommandOptionType.STRING,
+				type: ApplicationCommandOptionType.String,
 				name: 'query',
 				description: 'Class or Class#method combination to search for',
 				required: true
 			},
 			{
-				type: ApplicationCommandOptionType.STRING,
+				type: ApplicationCommandOptionType.String,
 				name: 'source',
 				description: 'Source repository to use',
 				choices: [
@@ -214,7 +214,7 @@ export default [
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: ApplicationCommandOptionType.USER
+				type: ApplicationCommandOptionType.User
 			}
 		]
 	},
@@ -226,7 +226,7 @@ export default [
 				name: 'query',
 				description: 'Phrase to search for',
 				required: true,
-				type: ApplicationCommandOptionType.STRING
+				type: ApplicationCommandOptionType.String
 			},
 			{
 				name: 'results',
@@ -260,7 +260,7 @@ export default [
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: ApplicationCommandOptionType.USER
+				type: ApplicationCommandOptionType.User
 			}
 		]
 	},
@@ -272,13 +272,13 @@ export default [
 				name: 'query',
 				description: 'Class or method to search for',
 				required: true,
-				type: ApplicationCommandOptionType.STRING
+				type: ApplicationCommandOptionType.String
 			},
 			{
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: ApplicationCommandOptionType.USER
+				type: ApplicationCommandOptionType.User
 			}
 		]
 	},
@@ -290,13 +290,13 @@ export default [
 				name: 'query',
 				description: 'Class, method or event to search for',
 				required: true,
-				type: ApplicationCommandOptionType.STRING
+				type: ApplicationCommandOptionType.String
 			},
 			{
 				name: 'version',
 				description: 'Which version of Node.js do you want to search?',
 				required: false,
-				type: ApplicationCommandOptionType.STRING,
+				type: ApplicationCommandOptionType.String,
 				choices: [
 					{
 						name: 'v12',
@@ -316,7 +316,7 @@ export default [
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: ApplicationCommandOptionType.USER
+				type: ApplicationCommandOptionType.User
 			}
 		]
 	},
@@ -328,25 +328,25 @@ export default [
 				name: 'number',
 				description: 'The number of the Issue or Pull Request',
 				required: true,
-				type: ApplicationCommandOptionType.INTEGER
+				type: ApplicationCommandOptionType.Integer
 			},
 			{
 				name: 'repository',
 				description: 'The repository for which to get this Issue or Pull Request',
 				required: true,
-				type: ApplicationCommandOptionType.STRING
+				type: ApplicationCommandOptionType.String
 			},
 			{
 				name: 'owner',
 				description: 'The owner of the repository to query. Defaults to `sapphiredev`',
 				required: false,
-				type: ApplicationCommandOptionType.STRING
+				type: ApplicationCommandOptionType.String
 			},
 			{
 				name: 'target',
 				description: 'User to mention',
 				required: false,
-				type: ApplicationCommandOptionType.USER
+				type: ApplicationCommandOptionType.User
 			}
 		]
 	}

@@ -1,7 +1,7 @@
 import { bold, hideLinkEmbed, hyperlink, italic } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
-import type { Snowflake } from 'discord-api-types/v8';
+import type { Snowflake } from 'discord-api-types/v9';
 import { stringify } from 'querystring';
 import { AlgoliaUrl } from '../lib/constants';
 import { DjsGuideIcon } from '../lib/emotes';

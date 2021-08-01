@@ -1,7 +1,7 @@
-import { bold, italic, hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
+import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
-import type { Snowflake } from 'discord-api-types/v9';
+import { AllowedMentionsTypes, Snowflake } from 'discord-api-types/v9';
 import { encode } from 'querystring';
 import { MdnUrl } from '../lib/constants';
 import { MdnIcon } from '../lib/emotes';
@@ -41,7 +41,8 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 		return response.json(
 			interactionResponse({
 				content: `${target ? `${italic(`Documentation suggestion for <@${target}>:`)}\n` : ''}${parts.join('\n')}`,
-				users: target ? [target] : []
+				users: target ? [target] : [],
+				parse: target ? [AllowedMentionsTypes.User] : []
 			})
 		);
 	} catch {

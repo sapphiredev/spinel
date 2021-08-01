@@ -23,7 +23,6 @@ import { nodeSearch } from './commands/nodeDocs';
 import { ping } from './commands/ping';
 import { cast } from './lib/constants';
 import { HttpCodes } from './lib/HttpCodes';
-import { errorResponse } from './lib/responseHelpers';
 import { verifyDiscordInteraction } from './lib/verifyDiscordInteraction';
 
 config({

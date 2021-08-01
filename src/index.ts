@@ -30,6 +30,7 @@ import { HttpCodes } from './lib/HttpCodes';
 import { verifyDiscordInteraction } from './lib/verifyDiscordInteraction';
 
 export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse> => {
+	console.error(req);
 	const interactionInvalid = verifyDiscordInteraction(req);
 	if (interactionInvalid) {
 		return res //

@@ -35,7 +35,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 	if (interactionInvalid) {
 		return res //
 			.status(interactionInvalid.statusCode)
-			.json(errorResponse({ content: interactionInvalid.message }));
+			.json({ message: interactionInvalid.message });
 	}
 
 	const json = cast<APIInteraction>(req.body);

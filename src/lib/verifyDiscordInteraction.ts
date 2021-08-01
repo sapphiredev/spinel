@@ -6,8 +6,8 @@ import { HttpCodes } from './HttpCodes';
 export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInteractionResponse | null {
 	const { headers } = req;
 	console.error(headers);
-	const signatureHeader = headers['X-Signature-Ed25519'];
-	const timestampHeader = headers['X-Signature-Timestamp'];
+	const signatureHeader = headers['x-signature-ed25519'];
+	const timestampHeader = headers['x-signature-timestamp'];
 
 	if (!signatureHeader || !timestampHeader) {
 		return {
@@ -41,7 +41,7 @@ export interface VerifyDiscordInteractionResponse {
 
 declare module 'http' {
 	interface IncomingHttpHeaders {
-		'X-Signature-Ed25519'?: string;
-		'X-Signature-Timestamp'?: string;
+		'x-signature-ed25519'?: string;
+		'x-signature-timestamp'?: string;
 	}
 }

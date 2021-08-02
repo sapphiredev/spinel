@@ -1,6 +1,6 @@
 import { hideLinkEmbed, hyperlink, italic } from '@discordjs/builders';
 import type { VercelResponse } from '@vercel/node';
-import { AllowedMentionsTypes, Snowflake } from 'discord-api-types/v9';
+import type { Snowflake } from 'discord-api-types/v9';
 import { fetchIssuesAndPrs } from '../lib/github-fetch';
 import { errorResponse, interactionResponse } from '../lib/responseHelpers';
 
@@ -25,8 +25,7 @@ export async function githubSearch({ repository, owner, number, response, target
 				content: `${
 					target ? `${italic(`GitHub ${data.issueOrPr === 'PR' ? 'Pull Request' : 'Issue'} data for <@${target}>:`)}\n` : ''
 				}${parts.join('\n')}`,
-				users: target ? [target] : [],
-				parse: target ? [AllowedMentionsTypes.User] : []
+				users: target ? [target] : []
 			})
 		);
 	} catch (error) {

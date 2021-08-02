@@ -1,5 +1,4 @@
 import {
-	AllowedMentionsTypes,
 	APIInteractionResponse,
 	APIInteractionResponseChannelMessageWithSource,
 	InteractionResponseType,
@@ -8,18 +7,13 @@ import {
 } from 'discord-api-types/v9';
 import { FailPrefix } from './constants';
 
-export function interactionResponse({
-	content,
-	ephemeral = false,
-	users = [],
-	parse = []
-}: ResponseParameters): APIInteractionResponseChannelMessageWithSource {
+export function interactionResponse({ content, ephemeral = false, users = [] }: ResponseParameters): APIInteractionResponseChannelMessageWithSource {
 	return {
 		type: InteractionResponseType.ChannelMessageWithSource,
 		data: {
 			content,
 			flags: ephemeral ? MessageFlags.Ephemeral : 0,
-			allowed_mentions: { parse, users }
+			allowed_mentions: { users }
 		}
 	};
 }
@@ -32,5 +26,4 @@ interface ResponseParameters {
 	content: string;
 	ephemeral?: boolean;
 	users?: Snowflake[];
-	parse?: AllowedMentionsTypes[];
 }

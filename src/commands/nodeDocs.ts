@@ -1,7 +1,7 @@
 import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
-import { AllowedMentionsTypes, Snowflake } from 'discord-api-types/v9';
+import type { Snowflake } from 'discord-api-types/v9';
 import TurndownService from 'turndown';
 import { NodeUrl } from '../lib/constants';
 import { NodeIcon } from '../lib/emotes';
@@ -98,8 +98,7 @@ export async function nodeSearch({ response, query, version, target }: NodeSearc
 		return response.json(
 			interactionResponse({
 				content: `${target ? `${italic(`Documentation suggestion for <@${target}>:`)}\n` : ''}${parts.join('\n')}`,
-				users: target ? [target] : [],
-				parse: target ? [AllowedMentionsTypes.User] : []
+				users: target ? [target] : []
 			})
 		);
 	} catch {

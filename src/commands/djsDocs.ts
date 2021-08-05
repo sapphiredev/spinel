@@ -16,16 +16,16 @@ function formatInheritance(prefix: string, inherits: DocElement[], doc: Doc): st
 
 function resolveElementString(element: DocElement, doc: Doc): string {
 	const parts = [];
-	if (element.docType === 'event') parts.push('**(event)** ');
-	if (element.static) parts.push('**(static)** ');
-	parts.push(`__**${escapeMDLinks(element.link ?? '')}**__`);
+	if (element.docType === 'event') parts.push(`${bold('(event)')} `);
+	if (element.static) parts.push(`${bold('(static)')} `);
+	parts.push(underscore(bold(escapeMDLinks(element.link ?? ''))));
 	if (element.extends) parts.push(formatInheritance('extends', element.extends, doc));
 	if (element.implements) parts.push(formatInheritance('implements', element.implements, doc));
-	if (element.access === 'private') parts.push(' **PRIVATE**');
-	if (element.deprecated) parts.push(' **DEPRECATED**');
+	if (element.access === 'private') parts.push(` ${bold('PRIVATE')}`);
+	if (element.deprecated) parts.push(` ${bold('DEPRECATED')}`);
 
 	const s = escapeMDLinks(element.formattedDescription ?? element.description ?? '').split('\n');
-	const description = s.length > 1 ? `${s[0]} [(more...)](<${element.url ?? ''}>)` : s[0];
+	const description = s.length > 1 ? `${s[0]} ${hyperlink('(more...)', hideLinkEmbed(element.url ?? ''))}` : s[0];
 
 	return `${parts.join('')}\n${description}`;
 }

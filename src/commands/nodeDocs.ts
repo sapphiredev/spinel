@@ -67,7 +67,7 @@ function findResult(data: NodeDocs, query: string) {
 
 const cache: Map<string, NodeDocs> = new Map();
 
-export async function nodeSearch({ response, query, version, target }: NodeSearchParameters): Promise<VercelResponse> {
+export async function nodeSearch({ response, query, version = 'latest-v16.x', target }: NodeSearchParameters): Promise<VercelResponse> {
 	try {
 		const url = `${NodeUrl}/dist/${version}/docs/api/all.json`;
 		let allNodeData = cache.get(url);
@@ -101,7 +101,7 @@ export async function nodeSearch({ response, query, version, target }: NodeSearc
 		}`;
 		const anchor = ['module', 'misc'].includes(result.type) ? '' : formatAnchor(result.textRaw, moduleName as string);
 		const fullUrl = `${moduleUrl}.html${anchor}`;
-		const parts = [`${NodeIcon} \ ${underscore(hyperlink(bold(result.textRaw as string), hideLinkEmbed(fullUrl)))}`];
+		const parts = [`${NodeIcon} \ ${hyperlink(underscore(bold(result.textRaw as string)), hideLinkEmbed(fullUrl))}`];
 
 		const intro = td.turndown(result.desc ?? '').split('\n\n')[0];
 		const linkReplaceRegex = /\[(.+?)\]\((.+?)\)/g;

@@ -2,6 +2,7 @@ import { bold, hideLinkEmbed, hyperlink, italic } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
+import { decode } from 'he';
 import { stringify } from 'querystring';
 import { AlgoliaUrl } from '../lib/constants';
 import { DjsGuideIcon } from '../lib/emotes';
@@ -39,11 +40,12 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 
 	const slicedHits = algoliaResponse.hits.slice(0, amountOfResults);
 
-	const result = slicedHits.map(
-		({ hierarchy, url }) =>
+	const result = slicedHits.map(({ hierarchy, url }) =>
+		decode(
 			`• ${hierarchy.lvl0 ?? hierarchy.lvl1 ?? ''}: ${hyperlink(`${hierarchy.lvl2 ?? hierarchy.lvl1 ?? 'click here'}`, hideLinkEmbed(url))}${
 				hierarchy.lvl3 ? ` - ${hierarchy.lvl3}` : ''
 			}`
+		)
 	);
 
 	const content = [

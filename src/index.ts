@@ -66,26 +66,26 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 				return djsDocs({
 					response: res,
 					source: cast<string>(args.source ?? 'stable'),
-					query: cast<string>(args.query),
+					query: cast<string>(args.query).trim(),
 					target: cast<Snowflake>(args.target)
 				});
 			case 'djs-guide':
 				return djsGuide({
 					response: res,
-					query: cast<string>(args.query),
+					query: cast<string>(args.query).trim(),
 					amountOfResults: cast<number>(args.results ?? 2),
 					target: cast<Snowflake>(args.target)
 				});
 			case 'mdn':
 				return mdnSearch({
 					response: res,
-					query: cast<string>(args.query),
+					query: cast<string>(args.query).trim(),
 					target: cast<Snowflake>(args.target)
 				});
 			case 'node':
 				return nodeSearch({
 					response: res,
-					query: cast<string>(args.query),
+					query: cast<string>(args.query).trim(),
 					version: cast<'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x'>(args.version),
 					target: cast<Snowflake>(args.target)
 				});
@@ -93,8 +93,8 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 				return githubSearch({
 					response: res,
 					number: cast<number>(args.number),
-					owner: cast<string>(args.owner ?? 'sapphiredev'),
-					repository: cast<string>(args.repository),
+					owner: cast<string>(args.owner ?? 'sapphiredev').trim(),
+					repository: cast<string>(args.repository).trim(),
 					target: cast<Snowflake>(args.target)
 				});
 		}

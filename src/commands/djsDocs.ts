@@ -5,7 +5,7 @@ import Doc from 'discord.js-docs';
 import { DjsDocsDevIcon, DjsDocsStableIcon } from '../lib/emotes';
 import { errorResponse, interactionResponse } from '../lib/responseHelpers';
 
-function escapeMDLinks(s: string): string {
+function escapeMDLinks(s = ''): string {
 	return s.replace(/\[(.+?)\]\((.+?)\)/g, '[$1](<$2>)');
 }
 
@@ -16,22 +16,22 @@ function formatInheritance(prefix: string, inherits: DocElement[], doc: Doc): st
 
 function resolveElementString(element: DocElement, doc: Doc): string {
 	const parts = [];
-	if (element?.docType === 'event') parts.push(bold('(event) '));
-	if (element?.static) parts.push(bold('(static) '));
-	parts.push(bold(underscore(`${escapeMDLinks(element?.link ?? '')}`)));
-	if (element?.extends) parts.push(formatInheritance('extends', element.extends, doc));
-	if (element?.implements) parts.push(formatInheritance('implements', element.implements, doc));
-	if (element?.access === 'private') parts.push(bold(' PRIVATE'));
-	if (element?.deprecated) parts.push(bold(' DEPRECATED'));
+	if (element.docType === 'event') parts.push('**(event)** ');
+	if (element.static) parts.push('**(static)** ');
+	parts.push(`__**${escapeMDLinks(element.link ?? '')}**__`);
+	if (element.extends) parts.push(formatInheritance('extends', element.extends, doc));
+	if (element.implements) parts.push(formatInheritance('implements', element.implements, doc));
+	if (element.access === 'private') parts.push(' **PRIVATE**');
+	if (element.deprecated) parts.push(' **DEPRECATED**');
 
-	const s = escapeMDLinks(element.formattedDescription).split('\n');
-	const description = s.length > 1 ? `${s[0]} ${hyperlink('more...', hideLinkEmbed(element?.url ?? ''))}` : s[0];
+	const s = escapeMDLinks(element.formattedDescription ?? element.description ?? '').split('\n');
+	const description = s.length > 1 ? `${s[0]} [(more...)](<${element.url ?? ''}>)` : s[0];
 
 	return `${parts.join('')}\n${description}`;
 }
 
 function resolveResultString(results: DocElement[]): string {
-	const res = [`No match. Here are some search results:`, ...results.map((res) => `• ${bold(escapeMDLinks(res?.link ?? ''))}`)];
+	const res = [`No match. Here are some search results:`, ...results.map((res) => `• ${bold(escapeMDLinks(res.link ?? ''))}`)];
 	return res.join('\n');
 }
 

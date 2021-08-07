@@ -1,4 +1,4 @@
-import { bold, italic, underscore, hyperlink, hideLinkEmbed } from '@discordjs/builders';
+import { bold, italic, underscore, hyperlink, hideLinkEmbed, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
@@ -14,7 +14,7 @@ type QueryType = 'class' | 'classMethod' | 'method' | 'event' | 'module' | 'glob
 
 function urlReplacer(_: string, label: string, link: string, version: string) {
 	link = link.startsWith('http') ? link : `${NodeUrl}/docs/${version}/api/${link}`;
-	return `[${label}](<${link}>)`;
+	return hyperlink(label, hideLinkEmbed(link));
 }
 
 function findRec(o: any, name: string, type: QueryType, module?: string, source?: string): any {
@@ -115,7 +115,7 @@ export async function nodeSearch({ response, query, version = 'latest-v16.x', ta
 
 		return response.json(
 			interactionResponse({
-				content: `${target ? `${italic(`Documentation suggestion for <@${target}>:`)}\n` : ''}${parts.join('\n')}`,
+				content: `${target ? `${italic(`Documentation suggestion for ${userMention(target)}:`)}\n` : ''}${parts.join('\n')}`,
 				users: target ? [target] : []
 			})
 		);

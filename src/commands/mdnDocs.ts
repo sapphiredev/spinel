@@ -1,4 +1,4 @@
-import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/builders';
+import { bold, hideLinkEmbed, hyperlink, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
@@ -16,7 +16,10 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 		if (!hit) {
 			const result = await fetch<MdnAPI>(qString, FetchResultTypes.JSON);
 			hit = result.documents?.[0];
-			cache.set(qString, hit);
+
+			if (hit) {
+				cache.set(qString, hit);
+			}
 		}
 
 		if (!hit) {
@@ -36,11 +39,11 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 			.replace(linkReplaceRegex, hyperlink('$1', hideLinkEmbed(`${MdnUrl}$2`))) //
 			.replace(boldCodeBlockRegex, bold('`$1`'));
 
-		const parts = [`${MdnIcon} \ ${underscore(hyperlink(bold(hit.title), hideLinkEmbed(url)))}`, intro];
+		const parts = [`${MdnIcon} \ ${underscore(bold(hyperlink(hit.title, hideLinkEmbed(url))))}`, intro];
 
 		return response.json(
 			interactionResponse({
-				content: `${target ? `${italic(`Documentation suggestion for <@${target}>:`)}\n` : ''}${parts.join('\n')}`,
+				content: `${target ? `${italic(`Documentation suggestion for ${userMention(target)}:`)}\n` : ''}${parts.join('\n')}`,
 				users: target ? [target] : []
 			})
 		);
@@ -56,7 +59,7 @@ interface MdnSearchParameters {
 }
 
 interface MdnAPI {
-	documents: Document[];
+	documents?: Document[];
 	metadata: Metadata;
 	suggestions: any[];
 }

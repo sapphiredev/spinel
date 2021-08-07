@@ -1,4 +1,4 @@
-import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/builders';
+import { bold, hideLinkEmbed, hyperlink, italic, underscore, userMention } from '@discordjs/builders';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import Doc from 'discord.js-docs';
@@ -43,7 +43,10 @@ export async function djsDocs({ query, response, source, target }: DjsDocsParame
 	if (element) {
 		return response.json(
 			interactionResponse({
-				content: `${target ? `${italic(`Documentation suggestion for <@${target}>:`)}\n` : ''}${icon} ${resolveElementString(element, doc)}`,
+				content: `${target ? `${italic(`Documentation suggestion for ${userMention(target)}:`)}\n` : ''}${icon} ${resolveElementString(
+					element,
+					doc
+				)}`,
 				users: target ? [target] : []
 			})
 		);

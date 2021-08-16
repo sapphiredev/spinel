@@ -1,40 +1,9 @@
-import { DurationFormatter, TimeTypes } from '@sapphire/time-utilities';
+import { time, TimestampStyles } from '@discordjs/builders';
+import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { gql } from './constants';
 import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrMerged, GhPrOpen } from './emotes';
-import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { GitHubBearerToken } from './env';
 import type { IssueState, PullRequestState, Query, Repository } from './types/octokit';
-
-const durationFormatter = new DurationFormatter({
-	[TimeTypes.Year]: {
-		1: 'year',
-		DEFAULT: 'years'
-	},
-	[TimeTypes.Month]: {
-		1: 'month',
-		DEFAULT: 'months'
-	},
-	[TimeTypes.Week]: {
-		1: 'week',
-		DEFAULT: 'weeks'
-	},
-	[TimeTypes.Day]: {
-		1: 'day',
-		DEFAULT: 'days'
-	},
-	[TimeTypes.Hour]: {
-		1: 'hour',
-		DEFAULT: 'hours'
-	},
-	[TimeTypes.Minute]: {
-		1: 'minute',
-		DEFAULT: 'minutes'
-	},
-	[TimeTypes.Second]: {
-		1: 'second',
-		DEFAULT: 'seconds'
-	}
-});
 
 const issuesAndPrQuery = gql`
 	query ($repository: String!, $owner: String!, $number: Int!) {
@@ -101,8 +70,8 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 }
 
 function getDataForIssue({ issue, ...repository }: Repository): IssueOrPrDetails {
-	const dateToUse = issue?.state === 'CLOSED' ? new Date(issue?.closedAt).getTime() : new Date(issue?.createdAt).getTime();
-	const dateOffset = durationFormatter.format(dateToUse - Date.now(), 2).slice(1);
+	const dateToUse = issue?.state === 'CLOSED' ? new Date(issue?.closedAt) : new Date(issue?.createdAt);
+	const dateOffset = time(dateToUse, TimestampStyles.RelativeTime);
 	const dateStringPrefix = issue?.state === 'CLOSED' ? 'closed' : 'opened';
 	const dateString = `${dateStringPrefix} ${dateOffset} ago`;
 
@@ -126,11 +95,11 @@ function getDataForIssue({ issue, ...repository }: Repository): IssueOrPrDetails
 function getDataForPullRequest({ pullRequest, ...repository }: Repository): IssueOrPrDetails {
 	const dateToUse =
 		pullRequest?.state === 'CLOSED'
-			? new Date(pullRequest?.closedAt).getTime()
+			? new Date(pullRequest?.closedAt)
 			: pullRequest?.state === 'OPEN'
-			? new Date(pullRequest?.createdAt).getTime()
-			: new Date(pullRequest?.mergedAt).getTime();
-	const dateOffset = durationFormatter.format(dateToUse - Date.now(), 2).slice(1);
+			? new Date(pullRequest?.createdAt)
+			: new Date(pullRequest?.mergedAt);
+	const dateOffset = time(dateToUse, TimestampStyles.RelativeTime);
 	const dateStringPrefix = pullRequest?.state === 'CLOSED' ? 'closed' : pullRequest?.state === 'OPEN' ? 'opened' : 'merged';
 	const dateString = `${dateStringPrefix} ${dateOffset} ago`;
 

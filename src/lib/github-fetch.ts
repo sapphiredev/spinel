@@ -73,7 +73,7 @@ function getDataForIssue({ issue, ...repository }: Repository): IssueOrPrDetails
 	const dateToUse = issue?.state === 'CLOSED' ? new Date(issue?.closedAt) : new Date(issue?.createdAt);
 	const dateOffset = time(dateToUse, TimestampStyles.RelativeTime);
 	const dateStringPrefix = issue?.state === 'CLOSED' ? 'closed' : 'opened';
-	const dateString = `${dateStringPrefix} ${dateOffset} ago`;
+	const dateString = `${dateStringPrefix} ${dateOffset}`;
 
 	return {
 		author: {
@@ -101,7 +101,7 @@ function getDataForPullRequest({ pullRequest, ...repository }: Repository): Issu
 			: new Date(pullRequest?.mergedAt);
 	const dateOffset = time(dateToUse, TimestampStyles.RelativeTime);
 	const dateStringPrefix = pullRequest?.state === 'CLOSED' ? 'closed' : pullRequest?.state === 'OPEN' ? 'opened' : 'merged';
-	const dateString = `${dateStringPrefix} ${dateOffset} ago`;
+	const dateString = `${dateStringPrefix} ${dateOffset}`;
 
 	return {
 		author: {

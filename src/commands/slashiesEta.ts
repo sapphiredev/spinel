@@ -8,14 +8,20 @@ import { errorResponse, interactionResponse } from '../lib/responseHelpers';
 
 export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<VercelResponse> {
 	try {
+		console.log('starting slashiesEta');
 		const webhookDbMessage = await fetch<RESTGetAPIChannelMessageResult>(DiscordWebhookDbMessage, FetchResultTypes.JSON);
+		console.log('found db message: ', webhookDbMessage);
 		const webhookDbMessageParsed = JSON.parse(webhookDbMessage.content) as WebhookDbStructure;
+		console.log('parsed content: ', webhookDbMessageParsed);
 		let { lastEta } = webhookDbMessageParsed;
+		console.log('lastEta: ', lastEta);
 
 		const currentEta = time(new Date(lastEta), TimestampStyles.RelativeTime);
+		console.log('parsed currentEta: ', currentEta);
 
 		lastEta += Time.Day * 7;
 
+		console.log('about to update webhook msg');
 		await fetch(DiscordWebhookDbMessage, {
 			method: FetchMethods.Patch,
 			body: JSON.stringify({
@@ -23,12 +29,15 @@ export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<
 			})
 		});
 
+		console.log('sending response');
+
 		return response.json(
 			interactionResponse({
 				content: `Slashies will be releasing ${currentEta}`
 			})
 		);
-	} catch {
+	} catch (error) {
+		console.error(error);
 		return response.json(errorResponse({ content: 'something went wrong' }));
 	}
 }

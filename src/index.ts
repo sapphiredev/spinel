@@ -57,6 +57,8 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 			>(options).map(({ name, value }) => [name, value])
 		);
 
+		console.log('parsing in with options');
+
 		switch (name as RegisteredSlashiesWithOptions) {
 			case 'djs':
 				return djsDocs({
@@ -93,13 +95,10 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					repository: cast<string>(args.repository).trim(),
 					target: cast<Snowflake>(args.target)
 				});
-			case 'docs':
-			case 'guide':
-			default:
-				break;
 		}
 	}
 
+	console.log('parsing in without options');
 	switch (name as RegisteredSlashies) {
 		case 'ping':
 			return res.json(ping(id));
@@ -112,5 +111,5 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 	}
 };
 
-type RegisteredSlashiesWithOptions = 'docs' | 'guide' | 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github';
+type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github';
 type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta';

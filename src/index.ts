@@ -57,8 +57,6 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 			>(options).map(({ name, value }) => [name, value])
 		);
 
-		console.log('parsing in with options');
-
 		switch (name as RegisteredSlashiesWithOptions) {
 			case 'djs':
 				return djsDocs({
@@ -98,7 +96,6 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 		}
 	}
 
-	console.log('parsing in without options');
 	switch (name as RegisteredSlashies) {
 		case 'ping':
 			return res.json(ping(id));

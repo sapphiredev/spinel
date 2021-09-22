@@ -21,8 +21,8 @@ import { invite } from './commands/invite';
 import { mdnSearch } from './commands/mdnDocs';
 import { nodeSearch } from './commands/nodeDocs';
 import { ping } from './commands/ping';
+import { slashiesEta } from './commands/slashiesEta';
 import { cast } from './lib/constants';
-import { HttpCodes } from './lib/HttpCodes';
 import { verifyDiscordInteraction } from './lib/verifyDiscordInteraction';
 
 config({
@@ -57,11 +57,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 			>(options).map(({ name, value }) => [name, value])
 		);
 
-		switch (name) {
-			// case 'docs':
-			// 	return sapphireDocs(res, args.source ?? 'framework#latest', args.query, args.target);
-			// case 'guide':
-			// 	return sapphireGuide(res, args.query, args.results ?? 2, args.target);
+		switch (name as RegisteredSlashiesWithOptions) {
 			case 'djs':
 				return djsDocs({
 					response: res,
@@ -97,15 +93,24 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 					repository: cast<string>(args.repository).trim(),
 					target: cast<Snowflake>(args.target)
 				});
+			case 'docs':
+			case 'guide':
+			default:
+				break;
 		}
 	}
 
-	switch (name) {
+	switch (name as RegisteredSlashies) {
 		case 'ping':
 			return res.json(ping(id));
 		case 'invite':
 			return res.json(invite());
+		case 'slashies-eta':
+			return slashiesEta({
+				response: res
+			});
 	}
-
-	return res.status(HttpCodes.NotFound).json({ message: 'Not Found' });
 };
+
+type RegisteredSlashiesWithOptions = 'docs' | 'guide' | 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github';
+type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta';

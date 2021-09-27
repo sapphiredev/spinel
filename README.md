@@ -7,7 +7,6 @@
 **Slash Commands handler Sapphire Discord server.**
 
 [![GitHub](https://img.shields.io/github/license/sapphiredev/sapphire-slashies)](https://github.com/sapphiredev/sapphire-slashies/blob/main/LICENSE.md)
-[![Depfu](https://badges.depfu.com/badges/6f7201423b0479f06483204bc8dd6ee8/overview.svg)](https://depfu.com/github/sapphiredev/sapphire-slashies?project_id=24233)
 
 </div>
 

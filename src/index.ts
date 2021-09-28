@@ -3,7 +3,7 @@ process.env.NODE_ENV ??= 'development';
 import type { Awaited } from '@sapphire/utilities';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import {
-	APIApplicationCommandInteraction,
+	APIChatInputApplicationCommandInteraction,
 	APIInteraction,
 	ApplicationCommandInteractionDataOptionInteger,
 	ApplicationCommandInteractionDataOptionString,
@@ -44,7 +44,7 @@ export default (req: VercelRequest, res: VercelResponse): Awaited<VercelResponse
 	const {
 		id,
 		data: { options, name }
-	} = cast<APIApplicationCommandInteraction>(json);
+	} = cast<APIChatInputApplicationCommandInteraction>(json);
 
 	if (options?.length) {
 		const args = Object.fromEntries(

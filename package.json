@@ -16,7 +16,7 @@
 		"update-slashies": "node ./scripts/interactions/updateSlashCommands.mjs",
 		"update-guild-slashies": "node ./scripts/interactions/updateGuildSlashCommands.mjs",
 		"update": "yarn up \"*\" -i",
-		"validate-tags": "node dist/tags/validateTags.js",
+		"validate-tags": "node scripts/validateTags.mjs",
 		"commit": "git-cz",
 		"cz": "git-cz",
 		"prepare": "husky install .github/husky"

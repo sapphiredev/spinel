@@ -1,4 +1,4 @@
-import { bold, italic, underscore, hyperlink, hideLinkEmbed, userMention } from '@discordjs/builders';
+import { bold, hideLinkEmbed, hyperlink, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
@@ -101,7 +101,7 @@ export async function nodeSearch({ response, query, version = 'latest-v16.x', ta
 		}`;
 		const anchor = ['module', 'misc'].includes(result.type) ? '' : formatAnchor(result.textRaw, moduleName as string);
 		const fullUrl = `${moduleUrl}.html${anchor}`;
-		const parts = [`${NodeIcon} \ ${hyperlink(underscore(bold(result.textRaw as string)), hideLinkEmbed(fullUrl))}`];
+		const parts = [`${NodeIcon} \ ${underscore(bold(hyperlink(result.textRaw as string, hideLinkEmbed(fullUrl))))}`];
 
 		const intro = td.turndown(result.desc ?? '').split('\n\n')[0];
 		const linkReplaceRegex = /\[(.+?)\]\((.+?)\)/g;

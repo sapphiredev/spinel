@@ -5,9 +5,11 @@ import { interactionResponse } from '../lib/responseHelpers';
 
 export function invite(): APIInteractionResponseChannelMessageWithSource {
 	return interactionResponse({
-		content: `Add the Sapphire interaction to your server: ${hyperlink(
-			bold('click here'),
-			hideLinkEmbed(`https://discord.com/api/oauth2/authorize?client_id=${DiscordApplicationId}&scope=applications.commands`)
+		content: `Add the Sapphire interaction to your server: ${bold(
+			hyperlink(
+				'click here',
+				hideLinkEmbed(`https://discord.com/api/oauth2/authorize?client_id=${DiscordApplicationId}&scope=applications.commands`)
+			)
 		)}`,
 		ephemeral: true
 	});

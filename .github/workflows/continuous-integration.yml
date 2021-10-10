@@ -56,3 +56,5 @@ jobs:
         run: yarn build
       - name: Build Code (vercel)
         run: yarn vercel-build
+      - name: Validate tags
+        run: yarn validate-tags

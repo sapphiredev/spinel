@@ -1,15 +1,15 @@
 import { hideLinkEmbed, hyperlink, italic } from '@discordjs/builders';
-import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
+import type { FastifyResponse } from '../lib/types/Api';
 import { fetchIssuesAndPrs } from '../lib/util/github-fetch';
-import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
+import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
-export async function githubSearch({ repository, owner, number, response, target }: GitHubSearchParameters): Promise<VercelResponse> {
+export async function githubSearch({ repository, owner, number, response, target }: GitHubSearchParameters): Promise<FastifyResponse> {
 	try {
 		const data = await fetchIssuesAndPrs({ repository, owner, number });
 
 		if (!data.author.login || !data.author.url || !data.number || !data.state || !data.title) {
-			return response.json(errorResponse({ content: 'something went wrong' }));
+			return sendJson(response, errorResponse({ content: 'something went wrong' }));
 		}
 
 		const parts = [
@@ -20,7 +20,8 @@ export async function githubSearch({ repository, owner, number, response, target
 			data.title
 		];
 
-		return response.json(
+		return sendJson(
+			response,
 			interactionResponse({
 				content: `${
 					target ? `${italic(`GitHub ${data.issueOrPr === 'PR' ? 'Pull Request' : 'Issue'} data for <@${target}>:`)}\n` : ''
@@ -31,7 +32,8 @@ export async function githubSearch({ repository, owner, number, response, target
 	} catch (error) {
 		// First we check if we need to handle a no data error
 		if ((error as Error).message === 'no-data') {
-			return response.json(
+			return sendJson(
+				response,
 				errorResponse({
 					content: `I was unable to find any Issue or Pull Request for http://github.com/${owner}/${repository}/issues/${number}. Be sure to check if that link is actually valid!`
 				})
@@ -39,12 +41,12 @@ export async function githubSearch({ repository, owner, number, response, target
 		}
 
 		// Otherwise we send an unknown error
-		return response.json(errorResponse({ content: 'something went wrong' }));
+		return sendJson(response, errorResponse({ content: 'something went wrong' }));
 	}
 }
 
 interface GitHubSearchParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	repository: string;
 	owner: string;
 	number: number;

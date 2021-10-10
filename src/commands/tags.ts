@@ -1,15 +1,16 @@
 import { inlineCode } from '@discordjs/builders';
-import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { SapphireGemId } from '../lib/constants/emotes';
-import { errorResponse, interactionResponse, selectMenuResponse } from '../lib/util/responseHelpers';
+import type { FastifyResponse } from '../lib/types/Api';
+import { errorResponse, interactionResponse, selectMenuResponse, sendJson } from '../lib/util/responseHelpers';
 import { findSimilar, findTag, mapTagSimilarityEntry } from '../lib/util/tags';
 
-export function showTag({ response, query, target }: ShowTagParameters): VercelResponse {
+export function showTag({ response, query, target }: ShowTagParameters): FastifyResponse {
 	const content = findTag(query, target);
 
 	if (content) {
-		return response.json(
+		return sendJson(
+			response,
 			interactionResponse({
 				content,
 				users: target ? [target] : []
@@ -20,7 +21,8 @@ export function showTag({ response, query, target }: ShowTagParameters): VercelR
 	const similar = findSimilar(query);
 
 	if (similar.length) {
-		return response.json(
+		return sendJson(
+			response,
 			selectMenuResponse({
 				selectMenuOptions: similar.map(mapTagSimilarityEntry),
 				customId: `tag|${target ?? ''}`,
@@ -29,11 +31,11 @@ export function showTag({ response, query, target }: ShowTagParameters): VercelR
 		);
 	}
 
-	return response.json(errorResponse({ content: `Could not find a tag with name or alias similar to ${inlineCode(query)}` }));
+	return sendJson(response, errorResponse({ content: `Could not find a tag with name or alias similar to ${inlineCode(query)}` }));
 }
 
 interface ShowTagParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	query: string;
 	target: Snowflake;
 }

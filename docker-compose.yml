@@ -1,0 +1,15 @@
+version: '2.4'
+
+services:
+  slashies:
+    image: ghcr.io/sapphiredev/sapphire-application-commands:latest
+    container_name: slashies
+    restart: unless-stopped
+    tty: true
+    build: ./
+    environment:
+      PORT: 8000
+    env_file:
+      - '.env.local'
+    ports:
+      - '8000:8000'

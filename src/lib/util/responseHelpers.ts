@@ -7,6 +7,10 @@ import {
 	MessageFlags,
 	Snowflake
 } from 'discord-api-types/v9';
+import type { FastifyReply } from 'fastify';
+import type { RouteGenericInterface } from 'fastify/types/route';
+import type { IncomingMessage, Server, ServerResponse } from 'http';
+import { HttpCodes } from '../api/HttpCodes';
 import { FailPrefix } from '../constants/constants';
 
 export function interactionResponse({
@@ -50,6 +54,14 @@ export function selectMenuResponse({ customId, selectMenuOptions, ...parameters 
 
 export function errorResponse({ content, ...parameters }: ResponseParameters): APIInteractionResponse {
 	return interactionResponse({ ...parameters, content: `${FailPrefix} ${content}`, ephemeral: true });
+}
+
+export function sendJson<T>(
+	response: FastifyReply<Server, IncomingMessage, ServerResponse, RouteGenericInterface, T>,
+	body: T,
+	statusCode: HttpCodes = HttpCodes.OK
+) {
+	return response.status(statusCode).send(body);
 }
 
 interface ResponseParameters {

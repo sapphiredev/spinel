@@ -54,8 +54,6 @@ jobs:
         run: yarn --immutable
       - name: Build Code (tsc)
         run: yarn build
-      - name: Build Code (vercel)
-        run: yarn vercel-build
 
   ValidateTags:
     name: Validate Tags

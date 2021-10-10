@@ -15,16 +15,19 @@
 		"vercel-build": "ncc build src/index.ts -o api -m --target es2019",
 		"update-slashies": "node ./scripts/interactions/updateSlashCommands.mjs",
 		"update-guild-slashies": "node ./scripts/interactions/updateGuildSlashCommands.mjs",
-		"update": "yarn upgrade-interactive --latest",
+		"update": "yarn up \"*\" -i",
+		"validate-tags": "node dist/tags/validateTags.js",
 		"commit": "git-cz",
 		"cz": "git-cz",
 		"prepare": "husky install .github/husky"
 	},
 	"dependencies": {
 		"@discordjs/builders": "^0.6.0",
-		"@sapphire/fetch": "^1.0.5",
+		"@ltd/j-toml": "^1.19.0",
+		"@sapphire/fetch": "^2.0.0",
 		"@sapphire/time-utilities": "^1.4.2",
-		"@sapphire/utilities": "^2.0.1",
+		"@sapphire/utilities": "^3.0.2",
+		"colorette": "^2.0.16",
 		"discord-api-types": "^0.23.1",
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^3.0.2",
@@ -40,15 +43,16 @@
 		"@sapphire/prettier-config": "^1.2.1",
 		"@sapphire/ts-config": "^3.1.0",
 		"@types/he": "^1.1.2",
-		"@types/node": "^16.6.2",
-		"@types/node-fetch": "^2.5.12",
+		"@types/node": "^16.10.3",
 		"@types/turndown": "^5.0.1",
 		"@vercel/ncc": "^0.31.1",
 		"@vercel/node": "^1.12.1",
 		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^7",
 		"husky": "^7.0.2",
 		"lint-staged": "^11.2.2",
 		"npm-run-all": "^4.1.5",
+		"prettier": "^2.4.1",
 		"pretty-quick": "^3.1.1",
 		"typescript": "^4.4.3"
 	},
@@ -86,5 +90,6 @@
 	"prettier": "@sapphire/prettier-config",
 	"eslintConfig": {
 		"extends": "@sapphire/eslint-config"
-	}
+	},
+	"packageManager": "yarn@3.0.2"
 }

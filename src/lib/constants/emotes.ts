@@ -1,0 +1,12 @@
+export const DjsGuideIcon = `<:_:814216203466965052>` as const;
+export const DjsDocsStableIcon = '<:_:851461487498493952>' as const;
+export const DjsDocsDevIcon = '<:_:851461195554619442>' as const;
+export const RedCross = '<:_:637706251257511973>' as const;
+export const MdnIcon = '<:_:861671077365284884>' as const;
+export const NodeIcon = '<:_:765265751703289927>' as const;
+export const GhIssueClosed = '<:_:864240877391052850> ' as const;
+export const GhIssueOpen = '<:_:864240877500497920>' as const;
+export const GhPrClosed = '<:_:864240877064159243>' as const;
+export const GhPrMerged = '<:_:864240877416873984>' as const;
+export const GhPrOpen = '<:_:864240877479657482>' as const;
+export const SapphireGemId = '746069730170896405' as const;

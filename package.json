@@ -23,6 +23,7 @@
 	},
 	"dependencies": {
 		"@discordjs/builders": "^0.6.0",
+		"@discordjs/collection": "^0.2.1",
 		"@ltd/j-toml": "^1.19.0",
 		"@sapphire/fetch": "^2.0.0",
 		"@sapphire/time-utilities": "^1.4.2",
@@ -31,6 +32,7 @@
 		"discord-api-types": "^0.23.1",
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^3.0.2",
+		"fastest-levenshtein": "^1.0.12",
 		"he": "^1.2.0",
 		"tslib": "^2.3.1",
 		"turndown": "^7.1.1",

@@ -1,7 +1,7 @@
 import { bold, hideLinkEmbed, hyperlink } from '@discordjs/builders';
 import type { APIInteractionResponseChannelMessageWithSource } from 'discord-api-types/v9';
-import { DiscordApplicationId } from '../lib/env';
-import { interactionResponse } from '../lib/responseHelpers';
+import { DiscordApplicationId } from '../lib/util/env';
+import { interactionResponse } from '../lib/util/responseHelpers';
 
 export function invite(): APIInteractionResponseChannelMessageWithSource {
 	return interactionResponse({

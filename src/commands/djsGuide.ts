@@ -4,10 +4,10 @@ import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { decode } from 'he';
 import { stringify } from 'querystring';
-import { AlgoliaUrl } from '../lib/constants';
-import { DjsGuideIcon } from '../lib/emotes';
-import { AlgoliaApplicationId, AlgoliaApplicationKey } from '../lib/env';
-import { errorResponse, interactionResponse } from '../lib/responseHelpers';
+import { AlgoliaUrl } from '../lib/constants/constants';
+import { DjsGuideIcon } from '../lib/constants/emotes';
+import { AlgoliaApplicationId, AlgoliaApplicationKey } from '../lib/util/env';
+import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
 
 export async function djsGuide({ response, query, amountOfResults, target }: DjsGuideParameters): Promise<VercelResponse> {
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(

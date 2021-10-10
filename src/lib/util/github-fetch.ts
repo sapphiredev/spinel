@@ -1,9 +1,9 @@
 import { time, TimestampStyles } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { gql } from './constants';
-import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrMerged, GhPrOpen } from './emotes';
+import { gql } from '../constants/constants';
+import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrMerged, GhPrOpen } from '../constants/emotes';
 import { GitHubBearerToken } from './env';
-import type { IssueState, PullRequestState, Query, Repository } from './types/octokit';
+import type { IssueState, PullRequestState, Query, Repository } from '../types/octokit';
 
 const issuesAndPrQuery = gql`
 	query ($repository: String!, $owner: String!, $number: Int!) {

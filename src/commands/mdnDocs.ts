@@ -3,9 +3,9 @@ import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { encode } from 'querystring';
-import { MdnUrl } from '../lib/constants';
-import { MdnIcon } from '../lib/emotes';
-import { errorResponse, interactionResponse } from '../lib/responseHelpers';
+import { MdnUrl } from '../lib/constants/constants';
+import { MdnIcon } from '../lib/constants/emotes';
+import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
 
 const cache = new Map<string, Document>();
 

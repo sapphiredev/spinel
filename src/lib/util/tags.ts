@@ -1,13 +1,13 @@
 import Collection from '@discordjs/collection';
 import { parse as parseToml } from '@ltd/j-toml';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
+import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APISelectMenuOption } from 'discord-api-types/v9';
-import { distance } from 'fastest-levenshtein';
-import { TagUrl } from '../constants/constants';
 import { SapphireGemId } from '../constants/emotes';
 import type { Tag, TagSimilarityEntry } from '../types/Tags';
 import { suggestionString } from './utils';
 
+const TagUrl = 'https://raw.githubusercontent.com/sapphiredev/sapphire-slashies/main/src/tags/tags.toml';
 export const tagCache = new Collection<string, Tag>();
 
 export function mapTagSimilarityEntry(entry: TagSimilarityEntry): APISelectMenuOption {
@@ -34,13 +34,17 @@ export function findTag(query: string, target?: string) {
 	return suggestionString('tag', tag.content, target);
 }
 
-export function findSimilar(query: string): Array<TagSimilarityEntry> {
+export function findSimilar(query: string): TagSimilarityEntry[] {
 	return tagCache
 		.map((tag, key) => {
 			const possible: TagSimilarityEntry[] = [];
-			tag.keywords.forEach((a) => possible.push({ word: a, lev: distance(query, a.toLowerCase()), name: key }));
-			return possible.sort((a, b) => a.lev - b.lev)[0];
+
+			for (const word of tag.keywords) {
+				possible.push({ word, distance: jaroWinkler(query.toLowerCase(), word.toLowerCase()), name: key });
+			}
+
+			return possible.sort((a, b) => b.distance - a.distance)[0];
 		})
-		.sort((a, b) => a.lev - b.lev)
+		.sort((a, b) => b.distance - a.distance)
 		.slice(0, 5);
 }

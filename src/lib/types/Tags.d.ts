@@ -6,7 +6,7 @@ export interface Tag {
 export interface TagSimilarityEntry {
 	word: string;
 	name: string;
-	lev: number;
+	distance: number;
 }
 
 export interface Conflict {

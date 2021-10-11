@@ -5,7 +5,6 @@ export const FailPrefix = `${RedCross} I am sorry, but` as const;
 export const AlgoliaUrl = `https://${AlgoliaApplicationId}.algolia.net/1/indexes/discordjs/query` as const;
 export const MdnUrl = `https://developer.mozilla.org` as const;
 export const NodeUrl = 'https://nodejs.org' as const;
-export const TagUrl = 'https://raw.githubusercontent.com/sapphiredev/sapphire-slashies/main/src/tags/tags.toml';
 export const MaxMessageLength = 4096;
 
 export function cast<T>(value: unknown): T {

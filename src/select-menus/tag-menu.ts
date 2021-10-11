@@ -14,7 +14,7 @@ export async function handleTagSelectMenu({
 	return Promise.allSettled([
 		response.json(
 			interactionResponse({
-				content: 'Suggestion sent',
+				content: 'Tag sent',
 				type: InteractionResponseType.UpdateMessage,
 				extraData: {
 					components: []

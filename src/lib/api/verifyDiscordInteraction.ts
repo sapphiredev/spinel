@@ -1,6 +1,6 @@
 import type { VercelRequest } from '@vercel/node';
 import { sign } from 'tweetnacl';
-import { DiscordPublicKeyBuffer } from './env';
+import { DiscordPublicKeyBuffer } from '../util/env';
 import { HttpCodes } from './HttpCodes';
 
 export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInteractionResponse | null {

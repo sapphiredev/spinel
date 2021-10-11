@@ -182,5 +182,41 @@ export default [
 				type: ApplicationCommandOptionType.User
 			}
 		]
+	},
+	{
+		name: 'tag',
+		description: 'Send a tag by name or alias',
+		options: [
+			{
+				type: ApplicationCommandOptionType.String,
+				name: 'query',
+				description: 'Tag name or alias',
+				required: true
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: ApplicationCommandOptionType.User
+			}
+		]
+	},
+	{
+		name: 'tagsearch',
+		description: 'Query and select a tag by name, alias or content',
+		options: [
+			{
+				type: ApplicationCommandOptionType.String,
+				name: 'query',
+				description: 'Tag name, alias, or content',
+				required: true
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: ApplicationCommandOptionType.User
+			}
+		]
 	}
 ];

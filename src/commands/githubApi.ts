@@ -1,8 +1,8 @@
 import { hideLinkEmbed, hyperlink, italic } from '@discordjs/builders';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
-import { fetchIssuesAndPrs } from '../lib/github-fetch';
-import { errorResponse, interactionResponse } from '../lib/responseHelpers';
+import { fetchIssuesAndPrs } from '../lib/util/github-fetch';
+import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
 
 export async function githubSearch({ repository, owner, number, response, target }: GitHubSearchParameters): Promise<VercelResponse> {
 	try {

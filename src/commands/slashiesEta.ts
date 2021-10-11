@@ -3,8 +3,8 @@ import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { Time } from '@sapphire/time-utilities';
 import type { VercelResponse } from '@vercel/node';
 import type { RESTGetAPIChannelMessageResult } from 'discord-api-types/v9';
-import { DiscordWebhookDbMessage } from '../lib/env';
-import { errorResponse, interactionResponse } from '../lib/responseHelpers';
+import { DiscordWebhookDbMessage } from '../lib/util/env';
+import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
 
 export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<VercelResponse> {
 	try {

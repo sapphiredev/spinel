@@ -4,6 +4,10 @@ node_modules/
 .idea/
 *.iml
 
+# Yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml
+
 # Output directory
 api/
 dist/
@@ -17,6 +21,7 @@ dist/
 !src/**/*.d.ts
 !scripts/**/*.mjs
 !jest.config.ts
+!src/lib/api/
 
 # Ignore heapsnapshot and log files
 *.heapsnapshot
@@ -30,6 +35,3 @@ package-lock.json
 .env.development.local
 .env.test.local
 .env.production.local
-
-# Certificate files
-*.pem

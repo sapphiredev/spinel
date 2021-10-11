@@ -3,9 +3,9 @@ import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import TurndownService from 'turndown';
-import { NodeUrl } from '../lib/constants';
-import { NodeIcon } from '../lib/emotes';
-import { errorResponse, interactionResponse } from '../lib/responseHelpers';
+import { NodeUrl } from '../lib/constants/constants';
+import { NodeIcon } from '../lib/constants/emotes';
+import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
 import type { NodeDocs } from '../lib/types/NodeDocs';
 
 const td = new TurndownService({ codeBlockStyle: 'fenced' });

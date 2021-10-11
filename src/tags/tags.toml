@@ -1,0 +1,179 @@
+[apidocs]
+keywords = ["apidocs", "docs", "api"]
+content = """
+***__Links to all TSDoc pages:__***
+
+**[@sapphire/async-queue](<https://sapphiredev.github.io/utilities/modules/_sapphire_async_queue.html>)**
+**[@sapphire/decorators](<https://sapphiredev.github.io/utilities/modules/_sapphire_decorators.html>)**
+**[@sapphire/discord-utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_discord_utilities.html>)**
+**[@sapphire/discord.js-utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_discord_js_utilities.html>)**
+**[@sapphire/event-iterator](<https://sapphiredev.github.io/utilities/modules/_sapphire_event_iterator.html>)**
+**[@sapphire/framework](<https://sapphiredev.github.io/framework/>)**
+**[@sapphire/pieces](<https://sapphiredev.github.io/pieces/>)**
+**[@sapphire/plugin-api](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_api.html>)**
+**[@sapphire/plugin-i18next](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_i18next.html>)**
+**[@sapphire/plugin-logger](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_logger.html>)**
+**[@sapphire/plugin-subcommands](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_subcommands.html>)**
+**[@sapphire/ratelimits](<https://sapphiredev.github.io/utilities/modules/_sapphire_ratelimits.html>)**
+**[@sapphire/snowflake](<https://sapphiredev.github.io/utilities/modules/_sapphire_snowflake.html>>)**
+**[@sapphire/stopwatch](<https://sapphiredev.github.io/utilities/modules/_sapphire_stopwatch.html>)**
+**[@sapphire/time-utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_time_utilities.html>)**
+**[@sapphire/type](<https://sapphiredev.github.io/utilities/modules/_sapphire_type.html>)**
+**[@sapphire/utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_utilities.html>)**
+"""
+
+[asking]
+keywords = ["asking", "asking questions", "questions", "how to ask questions"]
+content = """
+<:_:746069730170896405> For as far as Discord bot development is concerned, this server is primarily for Sapphire. While we can help you with Discord.js related problems, it is often advisable to join [the official Discord.js server](<https://discord.gg/djs>).
+<:_:746069730170896405> When asking for help, make sure to provide as much detail as possible. What have you tried so far? Do you have stacktraces that you can show us? What are you trying to achieve? Try to answer these questions and others, so we do not have to ask for them afterwards.
+> ❯ For a good guide on how to ask questions, see [the instructions that StackOverflow gives](<https://stackoverflow.com/help/how-to-ask>). You should try to always follow these guidelines.
+> ❯ For an excellent video that shows how **not** to ask technical questions is this, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>). 
+"""
+
+[bots]
+keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples"]
+content = """
+***__Discord bots that use @sapphire/framework__***
+
+- [**Official Bot Examples** **¹** **²** **⁴** **⁵** **ᴶˢ** **ⱽ²**](<https://github.com/sapphiredev/examples>)
+
+- [**Alestra** **⁵**](<https://github.com/skyra-project/alestra>)
+- [**Archangel** **¹** **²** **⁴** **⁵**](<https://github.com/favware/archangel>)
+- [**Dasby**](<https://github.com/dasby-project/Dasby>)
+- [**Debia** **⁵**](<https://github.com/cytrus-re/debia>)
+- [**Evlyn** **⁵**](<https://github.com/skyra-project/evlyn>)
+- [**Godfather** **¹** **³** **⁵**](<https://github.com/Stitch07/godfather>)
+- [**Materia** **²** **⁴** **ⱽ²**](<https://github.com/RealShadowNova/materia>)
+- [**Olivia**](<https://github.com/Chiitoi/Olivia>)
+- [**Pengu**](<https://github.com/PenguBot/bot-sapphire>)
+- [**Sapphire**](<https://github.com/KunoichiZ/Sapphire>)
+- [**SpecteraTS** **¹** **³** **⁴** **ⱽ²**](<https://github.com/Spectera-bot/SpecteraTS>)
+- [**Skyra** **³** **⁴** **⁵** **ⱽ²**](<https://github.com/skyra-project/skyra>)
+- [**Syrus** **ᴶˢ**](<https://github.com/syrus-bot/syrus-bot>)
+- [**Varrock-Stray-Dog** **⁵**](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)
+- [**YliasDiscordBot** **³** **⁴** **ⱽ²**](<https://github.com/FrenchDiscord/YliasDiscordBot>)
+
+**¹**: Uses [ESBuild](<https://esbuild.github.io>) to compile
+**²**: Uses ESM (if not specified then uses CJS)
+**³**: Advanced bot (if not specified it is a simple bot, or not graded)
+**⁴**: Actively developed / maintained with latest Sapphire changes
+**⁵**: Uses Docker in production
+**ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
+**ⱽ²** Bot has been updated for Sapphire Framework V2
+"""
+
+[dotnetfirstjslater]
+keywords = ["dotnetfirstjslater"]
+content = """
+<@203709726322720768> says that JS and TS suck and you should write C# with .NET instead
+"""
+
+[eta]
+keywords = ["eta"]
+content = """
+Estimated time of arrival for <query>:
+When it's ready™️ *(+1 day whenever someone asks for an eta)* <a:_:735070572416991235>
+"""
+
+[good-font]
+keywords = ["good-font", "best-font", "firacode"]
+content = """
+The best coding font is <https://github.com/tonsky/FiraCode>
+"""
+
+[guide]
+keywords = ["guide", "how to"]
+content = """
+The guide for Sapphire is curerntly being worked on and the latest version is available as [a Preview Deploy on Netlify here](<https://deploy-preview-711--discordjs-guide.netlify.app/sapphire/>)
+"""
+
+[jsfirstbotlater]
+keywords = ["jsfirstbotlater", "must know js"]
+content = """
+Before you make a Discord Bot, you should have a good understanding of JavaScript. This means you should have a basic understanding of the following topics:
+
+- read and understand docs
+- debug code
+- syntax
+- NodeJS module system
+
+If you aren't sure that your understanding of JavaScript is truly good enough to make a bot, you should really try to continue learning first. Here are good resources to learn both Javascript and NodeJS:
+
+_Codecademy_: <https://www.codecademy.com/learn/javascript>
+_Udemy_: <https://www.udemy.com/javascript-essentials/>
+_Eloquent JavaScript, free book_: http://eloquentjavascript.net/
+_You-Dont-Know-JS_: <https://github.com/getify/You-Dont-Know-JS>
+_JavaScript Garden_: <https://bonsaiden.github.io/JavaScript-Garden/>
+_JavaScript reference/docs_: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>
+_Nodeschool_: <https://nodeschool.io/>
+_Pluralsight_: <https://www.codeschool.com/courses/real-time-web-with-node-js>
+
+Before you ask a question, you should ask these yourself:
+**1)** Is this question related to JavaScript, or the library I am using? - If it is the library you are using, go to the proper server. You would get better answers there.
+**2)** Have I tried to google and / or check StackOverflow? - Double check that you can't find anywhere that can lead you to a solution online.
+**3)** Have I tried to look on MDN or the library documentation? - You should always check documentations to make sure you aren't missing how any details.
+**4)** Does my question make enough sense so that people can understand it, and do they understand what I am trying to accomplish? - If no, revise your question. Give as much detail as possible. Include any error or code output that can help us help you.
+**5)** Am I aware of what I am doing, and not just mindlessly copy and pasting? - If you are just copy and pasting code from a guide, you are not going to be able to solve anything. Make sure you understand the code you are writing.
+"""
+
+[legacy-deps]
+keywords = ["legacy-deps", "legacy dependencies", "npm v7", "npm v8"]
+content = """
+**Having issues installing packages when using NPM v7?**
+Add `--legacy-peer-deps` to your npm install command (every time) or run `npm config --global set legacy-peer-deps=true` just once to globally configure this same option.
+
+~~or use Yarn which also deduplicates your dependencies automatically and especially Yarn V3 is waaaay faster than npm~~
+"""
+
+[showcode]
+keywords = ["showcode", "talk is cheap, show me the code", "show the code"]
+content = """
+https://i.imgur.com/JGl9k1x.png
+"""
+
+[moduleaug]
+keywords = ["moduleaug", "module augmentation", "typescript declare module", "declare module"]
+content = """
+If you're adding custom properties to your Client class and you want them to be accessible when accessing the client through something like `this.container.client` you'll have to add module augmentation:
+
+<https://gist.github.com/Favna/26ed5b2df82d424203b71b9ffbce85c4>
+
+For more information on module augmentation see: <https://www.typescriptlang.org/docs/handbook/declaration-merging.html>
+"""
+
+[slashies]
+keywords = ["slashies"]
+content = """
+Sapphire Framework currently does not have Slash Command support. That said however, no one is stopping you from just using what is built into DiscordJS. You can view the following examples on how to do so:
+- [**Sapphire-slashies-example**](<https://github.com/YorkAARGH/Sapphire-slashies-example>) from <@!146048938242211840>
+- [**Sapphire-SlashCommands**](<https://github.com/UndiedGamer/Sapphire-SlashCommands>) from <@!564468550727761920>
+- [**Ylias**](<https://github.com/StariusTechnologies/Ylias>) from <@!141288766760288256>
+
+There is currently no ETA as to when Sapphire _will_ have native Slash Command support, but we can guarantee you that it will be _before_ Message Intent will be enforced for **verified** bots **that have not applied for / have not (yet) received Message Intent**
+"""
+
+[i18n]
+keywords = ["i18n", "internationalization", "i18next", "language codes"]
+content = """
+For [`@sapphire/plugin-i18next`](<https://www.npmjs.com/package/@sapphire/plugin-i18next>) we follow the standardized format of [`<ISO-639-1 language code>`](<https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>)`-`[`<ISO3166-1 Country Code>`](<https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes>) for the language directories.
+
+__Examples of valid languages codes are:__
+
+**-** `de-DE` for German as spoken in Germany
+**-** `en-GB` for English as spoken in Great Britain
+**-** `en-US` for English as spoken in The United States
+**-** `es-ES` for Spanish as spoken in Spain
+**-** `fa-IR` for Persian as spoken in Iran
+**-** `pt-BR` for Portuguese as spoken in Brazil
+**-** `es-MX` for Spanish as spoken in Mexico
+**-** `hi-IN` for Hindi as spoken in India
+**-** `hi-Latn-IN` for Hindi, but using Latin characters, as spoken in India (also known as `Hinglish`)
+**-** `ja-JP` for Japanese as spoken in Japan
+**-** `nb-NO` for Norwegian Bokmal as spoken in Norway
+**-** `nl-NL` for Dutch as spoken in The Netherlands
+**-** `ro-RO` for Romanian as spoken in Romania
+**-** `ru-RU` for Russian as spoken in Russia
+**-** `sl-SI` for Slovenian as spoken in Slovenia
+**-** `tr-TR` for Turkish as spoken in Turkey
+"""

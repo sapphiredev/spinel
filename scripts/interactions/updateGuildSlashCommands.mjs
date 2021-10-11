@@ -56,7 +56,7 @@ async function batchUpdateCommands(token) {
 	for (const guild of guilds) {
 		try {
 			const res = await fetch(
-				`${RouteBases.api}/${Routes.applicationGuildCommands(ApplicationId, guild)}`,
+				`${RouteBases.api}${Routes.applicationGuildCommands(ApplicationId, guild)}`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,

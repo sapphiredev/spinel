@@ -85,7 +85,7 @@ The best coding font is <https://github.com/tonsky/FiraCode>
 [guide]
 keywords = ["guide", "how to"]
 content = """
-The guide for Sapphire is curerntly being worked on and the latest version is available as [a Preview Deploy on Netlify here](<https://deploy-preview-711--discordjs-guide.netlify.app/sapphire/>)
+The guide for Sapphire is currently being worked on and the latest version is available as [a Preview Deploy on Netlify here](<https://deploy-preview-711--discordjs-guide.netlify.app/sapphire/>)
 """
 
 [jsfirstbotlater]

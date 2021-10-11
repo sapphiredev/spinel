@@ -15,12 +15,17 @@ export async function handleTagSelectMenu({
 		response.json(
 			interactionResponse({
 				content: 'Suggestion sent',
-				type: InteractionResponseType.UpdateMessage
+				type: InteractionResponseType.UpdateMessage,
+				extraData: {
+					components: []
+				}
 			})
 		),
-		fetch(`${RouteBases.api}/${Routes.webhook(DiscordApplicationId, token)}}`, {
+		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}}`, {
 			method: FetchMethods.Post,
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				'Content-Type': 'application/json'
+			},
 			body: JSON.stringify({
 				content: findTag(selectedValue, target),
 				allowed_mentions: { users: target ? [target] : [] }

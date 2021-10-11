@@ -1,6 +1,5 @@
 process.env.NODE_ENV ??= 'development';
 
-import type { Awaitable } from '@sapphire/utilities';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import {
 	APIChatInputApplicationCommandInteraction,
@@ -27,13 +26,17 @@ import { showTag } from './commands/tags';
 import { verifyDiscordInteraction } from './lib/api/verifyDiscordInteraction';
 import { cast, FailPrefix } from './lib/constants/constants';
 import { errorResponse } from './lib/util/responseHelpers';
+import { loadTags } from './lib/util/tags';
 import { handleTagSelectMenu } from './select-menus/tag-menu';
 
 config({
 	path: process.env.NODE_ENV === 'production' ? join(__dirname, '.env') : join(__dirname, '..', '.env')
 });
 
-export default (req: VercelRequest, res: VercelResponse): Awaitable<VercelResponse> => {
+export default async (req: VercelRequest, res: VercelResponse): Promise<VercelResponse> => {
+	// Load up the tags into the cache
+	await loadTags();
+
 	const interactionInvalid = verifyDiscordInteraction(req);
 	if (interactionInvalid) {
 		return res //

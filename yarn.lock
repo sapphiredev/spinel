@@ -407,7 +407,7 @@ __metadata:
     fastest-levenshtein: ^1.0.12
     he: ^1.2.0
     husky: ^7.0.2
-    lint-staged: ^11.2.2
+    lint-staged: ^11.2.3
     npm-run-all: ^4.1.5
     prettier: ^2.4.1
     pretty-quick: ^3.1.1
@@ -664,12 +664,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.5.0":
-  version: 8.5.0
-  resolution: "acorn@npm:8.5.0"
+"acorn@npm:^7.4.0":
+  version: 7.4.1
+  resolution: "acorn@npm:7.4.1"
   bin:
     acorn: bin/acorn
-  checksum: 2e4c1dbed3da327684863debf31d341bf8882c6893c506653872c00977eee45675feb9129255d6c74c88424d2b20d889ca6de5b39776e5e3cccfc756b3ca1da8
+  checksum: 1860f23c2107c910c6177b7b7be71be350db9e1080d814493fae143ae37605189504152d1ba8743ba3178d0b37269ce1ffc42b101547fdc1827078f82671e407
   languageName: node
   linkType: hard
 
@@ -1447,6 +1447,15 @@ discord.js-docs@teeseal/discord.js-docs:
   version: 2.1.6
   resolution: "domino@npm:2.1.6"
   checksum: 9b1b6d2661efd8bf942b70d5e11ac0de6a63f17e49b7eb227d9a612fa7b7c12b7775520d64f498988a8ee334ea9c59a463c84ea510b0af17dd3e13fdce120410
+  languageName: node
+  linkType: hard
+
+"dot-prop@npm:^5.1.0":
+  version: 5.3.0
+  resolution: "dot-prop@npm:5.3.0"
+  dependencies:
+    is-obj: ^2.0.0
+  checksum: d5775790093c234ef4bfd5fbe40884ff7e6c87573e5339432870616331189f7f5d86575c5b5af2dcf0f61172990f4f734d07844b1f23482fff09e3c4bead05ea
   languageName: node
   linkType: hard
 
@@ -2851,9 +2860,9 @@ discord.js-docs@teeseal/discord.js-docs:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^11.2.2":
-  version: 11.2.2
-  resolution: "lint-staged@npm:11.2.2"
+"lint-staged@npm:^11.2.3":
+  version: 11.2.3
+  resolution: "lint-staged@npm:11.2.3"
   dependencies:
     cli-truncate: 2.1.0
     colorette: ^1.4.0
@@ -2871,7 +2880,7 @@ discord.js-docs@teeseal/discord.js-docs:
     supports-color: 8.1.1
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 53d94e876ed76a6a61c4c54a84a722c8de321cc1b363c7f6decd50e8745019db7f1e90799a09d27d030c9ff4bc653a7eba0e690b24750e3acfc5c49144fd617e
+  checksum: cf3a1612a8cb3790030fb1eaf98071b97be0c71e9ee87f2f65741321974178e9b15b480dac695bb126d2cd8751dd7d72071b13d7ea0e1a97a735d88bd3cc8bb7
   languageName: node
   linkType: hard
 
@@ -3083,7 +3092,7 @@ discord.js-docs@teeseal/discord.js-docs:
   languageName: node
   linkType: hard
 
-"merge@npm:^2.1.1":
+"merge@npm:^2.1.0":
   version: 2.1.1
   resolution: "merge@npm:2.1.1"
   checksum: 9c36b0e25aa53b3f7305d7cf0f330397f1142cf311802b681e5619f12e986a790019b8246c1c0df21701c8652449f9046b0129551030097ef563d1958c823249
@@ -3141,7 +3150,7 @@ discord.js-docs@teeseal/discord.js-docs:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.5":
+"minimist@npm:1.2.5":
   version: 1.2.5
   resolution: "minimist@npm:1.2.5"
   checksum: 86706ce5b36c16bfc35c5fe3dbb01d5acdc9a22f2b6cc810b6680656a1d2c0e44a0159c9a3ba51fb072bb5c203e49e10b51dcd0eec39c481f4c42086719bae52

@@ -26,7 +26,7 @@ export function showTag({ response, query, target }: ShowTagParameters): VercelR
 				customId: `tag|${target ?? ''}`,
 				content: `${formatEmoji(SapphireGemId)} Could not find a tag with name or alias ${inlineCode(
 					query
-				)}. Select a similar result from the list to send it instead:`
+				)}. Select a similar tag to send instead:`
 			})
 		);
 	}

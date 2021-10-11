@@ -1,6 +1,7 @@
 import Collection from '@discordjs/collection';
 import { parse as parseToml } from '@ltd/j-toml';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
+import type { APISelectMenuOption } from 'discord-api-types/v9';
 import { distance } from 'fastest-levenshtein';
 import { TagUrl } from '../constants/constants';
 import { SapphireGemId } from '../constants/emotes';
@@ -9,7 +10,7 @@ import { suggestionString } from './utils';
 
 export const tagCache = new Collection<string, Tag>();
 
-export function mapTagSimilarityEntry(entry: TagSimilarityEntry) {
+export function mapTagSimilarityEntry(entry: TagSimilarityEntry): APISelectMenuOption {
 	return {
 		label: entry.name === entry.word ? entry.name : `${entry.name} (${entry.word})`,
 		value: entry.name,

@@ -21,6 +21,7 @@ import { invite } from './commands/invite';
 import { mdnSearch } from './commands/mdnDocs';
 import { nodeSearch } from './commands/nodeDocs';
 import { ping } from './commands/ping';
+import { searchTag } from './commands/searchTag';
 import { slashiesEta } from './commands/slashiesEta';
 import { showTag } from './commands/tags';
 import { verifyDiscordInteraction } from './lib/api/verifyDiscordInteraction';
@@ -108,6 +109,12 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 							query: cast<string>(args.query).trim().toLowerCase(),
 							target: cast<Snowflake>(args.target)
 						});
+					case 'tagsearch':
+						return searchTag({
+							response: res,
+							query: cast<string>(args.query).trim().toLowerCase(),
+							target: cast<Snowflake>(args.target)
+						});
 				}
 			}
 
@@ -146,6 +153,6 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 	}
 };
 
-type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'tag';
+type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'tag' | 'tagsearch';
 type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta';
 type SelectMenuOpCodes = 'tag';

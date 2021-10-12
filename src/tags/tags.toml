@@ -22,11 +22,16 @@ content = """
 **[@sapphire/utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_utilities.html>)**
 """
 
+[djsquestions]
+keywords = ["djsquestions", "djs", "discordjs"]
+content = """
+For as far as Discord bot development is concerned, this server is primarily for Sapphire. While we can help you with Discord.js related problems, it is often advisable to join [the official Discord.js server](<https://discord.gg/djs>).
+"""
+
 [asking]
 keywords = ["asking", "asking questions", "questions", "how to ask questions"]
 content = """
-<:_:746069730170896405> For as far as Discord bot development is concerned, this server is primarily for Sapphire. While we can help you with Discord.js related problems, it is often advisable to join [the official Discord.js server](<https://discord.gg/djs>).
-<:_:746069730170896405> When asking for help, make sure to provide as much detail as possible. What have you tried so far? Do you have stacktraces that you can show us? What are you trying to achieve? Try to answer these questions and others, so we do not have to ask for them afterwards.
+When asking for help, make sure to provide as much detail as possible. What have you tried so far? Do you have stacktraces that you can show us? What are you trying to achieve? Try to answer these questions and others, so we do not have to ask for them afterwards.
 > ❯ For a good guide on how to ask questions, see [the instructions that StackOverflow gives](<https://stackoverflow.com/help/how-to-ask>). You should try to always follow these guidelines.
 > ❯ For an excellent video that shows how **not** to ask technical questions is this, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>). 
 """
@@ -93,9 +98,9 @@ keywords = ["jsfirstbotlater", "must know js"]
 content = """
 Before you make a Discord Bot, you should have a good understanding of JavaScript. This means you should have a basic understanding of the following topics:
 
-- read and understand docs
-- debug code
-- syntax
+- Read and understand docs
+- Debug code
+- Syntax
 - NodeJS module system
 
 If you aren't sure that your understanding of JavaScript is truly good enough to make a bot, you should really try to continue learning first. Here are good resources to learn both Javascript and NodeJS:
@@ -120,7 +125,7 @@ Before you ask a question, you should ask these yourself:
 [legacy-deps]
 keywords = ["legacy-deps", "legacy dependencies", "npm v7", "npm v8"]
 content = """
-**Having issues installing packages when using NPM v7?**
+**Having issues installing packages when using NPM v7 / v8?**
 Add `--legacy-peer-deps` to your npm install command (every time) or run `npm config --global set legacy-peer-deps=true` just once to globally configure this same option.
 
 ~~or use Yarn which also deduplicates your dependencies automatically and especially Yarn V3 is waaaay faster than npm~~

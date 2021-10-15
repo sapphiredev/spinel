@@ -14,6 +14,7 @@ import {
 } from 'discord-api-types/v9';
 import { config } from 'dotenv-cra';
 import { join } from 'path';
+import { discordDeveloperDocs } from './commands/discordDeveloperDocs';
 import { djsDocs } from './commands/djsDocs';
 import { djsGuide } from './commands/djsGuide';
 import { githubSearch } from './commands/githubApi';
@@ -68,6 +69,13 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 				);
 
 				switch (name as RegisteredSlashiesWithOptions) {
+					case 'ddocs':
+						return discordDeveloperDocs({
+							response: res,
+							query: cast<string>(args.query).trim(),
+							amountOfResults: cast<number>(args.results ?? 2),
+							target: cast<Snowflake>(args.target)
+						});
 					case 'djs':
 						return djsDocs({
 							response: res,
@@ -153,6 +161,6 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 	}
 };
 
-type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'tag' | 'tagsearch';
+type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'tag' | 'tagsearch' | 'ddocs';
 type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta';
 type SelectMenuOpCodes = 'tag';

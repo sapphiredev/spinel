@@ -9,4 +9,5 @@ export const GhIssueOpen = '<:_:864240877500497920>' as const;
 export const GhPrClosed = '<:_:864240877064159243>' as const;
 export const GhPrMerged = '<:_:864240877416873984>' as const;
 export const GhPrOpen = '<:_:864240877479657482>' as const;
+export const DiscordDevelopersIcon = '<a:_:898636681920536576>' as const;
 export const SapphireGemId = '746069730170896405' as const;

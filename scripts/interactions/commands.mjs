@@ -218,5 +218,51 @@ export default [
 				type: ApplicationCommandOptionType.User
 			}
 		]
+	},
+	{
+		name: 'ddocs',
+		description: 'Search discord developer documentation',
+		options: [
+			{
+				name: 'query',
+				description: 'Phrase to search for',
+				required: true,
+				type: ApplicationCommandOptionType.String
+			},
+			{
+				name: 'results',
+				description: 'How many search results to display at most',
+				required: false,
+				type: 4,
+				choices: [
+					{
+						name: '1 result',
+						value: 1
+					},
+					{
+						name: '2 results (default)',
+						value: 2
+					},
+					{
+						name: '3 results',
+						value: 3
+					},
+					{
+						name: '4 results',
+						value: 4
+					},
+					{
+						name: '5 results',
+						value: 5
+					}
+				]
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: ApplicationCommandOptionType.User
+			}
+		]
 	}
 ];

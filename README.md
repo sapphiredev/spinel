@@ -35,11 +35,15 @@ yarn build
 
 Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.local). Fill in at least these required environment variables:
 
--   `ALGOLIA_APPLICATION_ID`
--   `ALGOLIA_APPLICATION_KEY`
 -   `DISCORD_APPLICATION_ID`
 -   `DISCORD_APPLICATION_SECRET`
+-   `DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID`
+-   `DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_KEY`
 -   `DISCORD_PUBLIC_KEY`
+-   `DISCORD_WEBHOOK_DB_MESSAGE_ID`
+-   `DISCORD_WEBHOOK_DB_URL`
+-   `DJS_GUIDE_ALGOLIA_APPLICATION_ID`
+-   `DJS_GUIDE_ALGOLIA_APPLICATION_KEY`
 -   `GH_API_KEY`
 
 ## Buy us some doughnuts

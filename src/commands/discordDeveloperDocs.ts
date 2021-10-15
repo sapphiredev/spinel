@@ -4,28 +4,27 @@ import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { decode } from 'he';
 import { stringify } from 'querystring';
-import { DjsGuideAlgoliaUrl } from '../lib/constants/constants';
-import { DjsGuideIcon } from '../lib/constants/emotes';
+import { DiscordDeveloperDocsAlgoliaUrl } from '../lib/constants/constants';
+import { DiscordDevelopersIcon } from '../lib/constants/emotes';
 import type { AlgoliaSearchResult } from '../lib/types/Algolia';
-import { DjsGuideAlgoliaApplicationId, DjsGuideAlgoliaApplicationKey } from '../lib/util/env';
+import { DiscordDeveloperDocsAlgoliaApplicationId, DiscordDeveloperDocsAlgoliaApplicationKey } from '../lib/util/env';
 import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
 
-export async function djsGuide({ response, query, amountOfResults, target }: DjsGuideParameters): Promise<VercelResponse> {
+export async function discordDeveloperDocs({ response, query, target, amountOfResults }: DiscordDeveloperDocsParameters): Promise<VercelResponse> {
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
-		DjsGuideAlgoliaUrl,
+		DiscordDeveloperDocsAlgoliaUrl,
 		{
 			method: FetchMethods.Post,
 			body: JSON.stringify({
 				params: stringify({
 					query,
-					facetFilters: ['lang:en-US'],
 					hitsPerPage: 5
 				})
 			}),
 			headers: {
 				'Content-Type': 'application/json',
-				'X-Algolia-API-Key': DjsGuideAlgoliaApplicationKey,
-				'X-Algolia-Application-Id': DjsGuideAlgoliaApplicationId
+				'X-Algolia-API-Key': DiscordDeveloperDocsAlgoliaApplicationKey,
+				'X-Algolia-Application-Id': DiscordDeveloperDocsAlgoliaApplicationId
 			}
 		},
 		FetchResultTypes.JSON
@@ -50,10 +49,10 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 	);
 
 	const content = [
-		target ? `${italic(`Guide suggestion for ${userMention(target)}:`)}\n` : undefined, //
-		DjsGuideIcon,
+		target ? `${italic(`Documentation suggestion for ${userMention(target)}:`)}\n` : undefined, //
+		DiscordDevelopersIcon,
 		' ',
-		bold('discordjs.guide results:'),
+		bold('Discord Developer docs results:'),
 		'\n',
 		result.join('\n')
 	]
@@ -68,7 +67,7 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 	);
 }
 
-interface DjsGuideParameters {
+interface DiscordDeveloperDocsParameters {
 	response: VercelResponse;
 	query: string;
 	amountOfResults: number;

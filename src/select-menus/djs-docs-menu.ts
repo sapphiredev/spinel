@@ -24,7 +24,7 @@ export async function handleDjsDocsSelectMenu({
 				}
 			})
 		),
-		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}}`, {
+		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
 			method: FetchMethods.Post,
 			headers: {
 				'Content-Type': 'application/json'

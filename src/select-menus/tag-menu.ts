@@ -10,28 +10,36 @@ export async function handleTagSelectMenu({
 	selectedValue,
 	target,
 	token
-}: HandleTagSelectMenuParameters): Promise<[PromiseSettledResult<VercelResponse>, PromiseSettledResult<unknown>]> {
-	return Promise.allSettled([
-		response.json(
-			interactionResponse({
-				content: 'Tag sent',
-				type: InteractionResponseType.UpdateMessage,
-				extraData: {
-					components: []
-				}
+}: HandleTagSelectMenuParameters): Promise<[PromiseSettledResult<VercelResponse>, PromiseSettledResult<unknown>] | undefined> {
+	try {
+		const promiseResponse = await Promise.allSettled([
+			response.json(
+				interactionResponse({
+					content: 'Tag sent',
+					type: InteractionResponseType.UpdateMessage,
+					extraData: {
+						components: []
+					}
+				})
+			),
+			fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
+				method: FetchMethods.Post,
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					content: findTag(selectedValue, target),
+					allowed_mentions: { users: target ? [target] : [] }
+				})
 			})
-		),
-		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
-			method: FetchMethods.Post,
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				content: findTag(selectedValue, target),
-				allowed_mentions: { users: target ? [target] : [] }
-			})
-		})
-	]);
+		]);
+
+		console.log(promiseResponse);
+		return promiseResponse;
+	} catch (error) {
+		console.error(error);
+		return undefined;
+	}
 }
 
 interface HandleTagSelectMenuParameters {

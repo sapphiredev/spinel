@@ -146,11 +146,11 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 
 			switch (op as SelectMenuOpCodes) {
 				case 'docsearch': {
-					void handleDjsDocsSelectMenu({ response: res, selectedValue: selected[0], token, target, source });
+					await handleDjsDocsSelectMenu({ response: res, selectedValue: selected[0], token, target, source });
 					return res.status(200);
 				}
 				case 'tag': {
-					void handleTagSelectMenu({ response: res, selectedValue: selected[0], token, target });
+					await handleTagSelectMenu({ response: res, selectedValue: selected[0], token, target });
 					return res.status(200);
 				}
 			}
@@ -162,6 +162,7 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 			})
 		);
 	} catch (error) {
+		console.error(error);
 		return res.json(errorResponse({ content: `${FailPrefix} it looks like something went wrong here, please try again later!` }));
 	}
 };

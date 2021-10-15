@@ -11,30 +11,38 @@ export async function handleDjsDocsSelectMenu({
 	target,
 	source,
 	token
-}: HandleDjsDocsSelectMenuParameters): Promise<[PromiseSettledResult<VercelResponse>, PromiseSettledResult<unknown>]> {
+}: HandleDjsDocsSelectMenuParameters): Promise<[PromiseSettledResult<VercelResponse>, PromiseSettledResult<unknown>] | undefined> {
 	const doc = await fetchDocs(source);
 
-	return Promise.allSettled([
-		response.json(
-			interactionResponse({
-				content: 'Documentation entry sent',
-				type: InteractionResponseType.UpdateMessage,
-				extraData: {
-					components: []
-				}
+	try {
+		const promiseResponse = await Promise.allSettled([
+			response.json(
+				interactionResponse({
+					content: 'Documentation entry sent',
+					type: InteractionResponseType.UpdateMessage,
+					extraData: {
+						components: []
+					}
+				})
+			),
+			fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
+				method: FetchMethods.Post,
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					content: fetchDocResult({ source, doc, query: selectedValue, target }),
+					allowed_mentions: { users: target ? [target] : [] }
+				})
 			})
-		),
-		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
-			method: FetchMethods.Post,
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				content: fetchDocResult({ source, doc, query: selectedValue, target }),
-				allowed_mentions: { users: target ? [target] : [] }
-			})
-		})
-	]);
+		]);
+
+		console.log(promiseResponse);
+		return promiseResponse;
+	} catch (error) {
+		console.error(error);
+		return undefined;
+	}
 }
 
 interface HandleDjsDocsSelectMenuParameters {

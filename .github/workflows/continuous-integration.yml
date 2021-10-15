@@ -54,8 +54,6 @@ jobs:
         run: yarn --immutable
       - name: Build Code (tsc)
         run: yarn build
-      - name: Build Code (vercel)
-        run: yarn vercel-build
 
   ValidateTags:
     name: Validate Tags
@@ -102,3 +100,5 @@ jobs:
         run: yarn --immutable
       - name: Run unit tests
         run: yarn test
+        env:
+          DISCORD_PUBLIC_KEY: "nah"

@@ -1,16 +1,16 @@
 import { bold, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { decode } from 'he';
 import { stringify } from 'querystring';
 import { DjsGuideAlgoliaUrl } from '../lib/constants/constants';
 import { DjsGuideIcon } from '../lib/constants/emotes';
 import type { AlgoliaSearchResult } from '../lib/types/Algolia';
+import type { FastifyResponse } from '../lib/types/Api';
 import { DjsGuideAlgoliaApplicationId, DjsGuideAlgoliaApplicationKey } from '../lib/util/env';
-import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
+import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
-export async function djsGuide({ response, query, amountOfResults, target }: DjsGuideParameters): Promise<VercelResponse> {
+export async function djsGuide({ response, query, amountOfResults, target }: DjsGuideParameters): Promise<FastifyResponse> {
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
 		DjsGuideAlgoliaUrl,
 		{
@@ -32,7 +32,8 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 	);
 
 	if (!algoliaResponse.hits.length) {
-		return response.json(
+		return sendJson(
+			response,
 			errorResponse({
 				content: 'I was not able to find anything with provided parameters.'
 			})
@@ -60,7 +61,8 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 		.filter(Boolean)
 		.join('');
 
-	return response.json(
+	return sendJson(
+		response,
 		interactionResponse({
 			content,
 			users: target ? [target] : []
@@ -69,7 +71,7 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 }
 
 interface DjsGuideParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	query: string;
 	amountOfResults: number;
 	target: Snowflake;

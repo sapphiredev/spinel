@@ -1,12 +1,12 @@
 import { bold, hideLinkEmbed, hyperlink, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
-import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import TurndownService from 'turndown';
 import { NodeUrl } from '../lib/constants/constants';
 import { NodeIcon } from '../lib/constants/emotes';
-import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
+import type { FastifyResponse } from '../lib/types/Api';
 import type { NodeDocs } from '../lib/types/NodeDocs';
+import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
 const td = new TurndownService({ codeBlockStyle: 'fenced' });
 
@@ -67,7 +67,7 @@ function findResult(data: NodeDocs, query: string) {
 
 const cache: Map<string, NodeDocs> = new Map();
 
-export async function nodeSearch({ response, query, version = 'latest-v16.x', target }: NodeSearchParameters): Promise<VercelResponse> {
+export async function nodeSearch({ response, query, version = 'latest-v16.x', target }: NodeSearchParameters): Promise<FastifyResponse> {
 	try {
 		const url = `${NodeUrl}/dist/${version}/docs/api/all.json`;
 		let allNodeData = cache.get(url);
@@ -88,7 +88,8 @@ export async function nodeSearch({ response, query, version = 'latest-v16.x', ta
 		const result = findResult(allNodeData, query) ?? findResult(allNodeData, altQuery);
 
 		if (!result) {
-			return response.json(
+			return sendJson(
+				response,
 				errorResponse({
 					content: `there were no search results for the query \`${query}\``
 				})
@@ -113,19 +114,20 @@ export async function nodeSearch({ response, query, version = 'latest-v16.x', ta
 				.replace(boldCodeBlockRegex, bold('`$1`')) //
 		);
 
-		return response.json(
+		return sendJson(
+			response,
 			interactionResponse({
 				content: `${target ? `${italic(`Documentation suggestion for ${userMention(target)}:`)}\n` : ''}${parts.join('\n')}`,
 				users: target ? [target] : []
 			})
 		);
 	} catch {
-		return response.json(errorResponse({ content: 'something went wrong' }));
+		return sendJson(response, errorResponse({ content: 'something went wrong' }));
 	}
 }
 
 interface NodeSearchParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	query: string;
 	version: 'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x';
 	target: Snowflake;

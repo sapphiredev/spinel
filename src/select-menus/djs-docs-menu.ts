@@ -1,9 +1,10 @@
 import { fetch, FetchMethods } from '@sapphire/fetch';
-import type { VercelResponse } from '@vercel/node';
 import { InteractionResponseType, RouteBases, Routes, Snowflake } from 'discord-api-types/v9';
+import { FetchUserAgent } from '../lib/constants/constants';
+import type { FastifyResponse } from '../lib/types/Api';
 import { fetchDocResult, fetchDocs } from '../lib/util/discordjs-docs';
 import { DiscordApplicationId } from '../lib/util/env';
-import { interactionResponse } from '../lib/util/responseHelpers';
+import { interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
 export async function handleDjsDocsSelectMenu({
 	response,
@@ -11,45 +12,36 @@ export async function handleDjsDocsSelectMenu({
 	target,
 	source,
 	token
-}: HandleDjsDocsSelectMenuParameters): Promise<[PromiseSettledResult<VercelResponse>, PromiseSettledResult<unknown>] | undefined> {
+}: HandleDjsDocsSelectMenuParameters): Promise<[PromiseSettledResult<FastifyResponse>, PromiseSettledResult<unknown>]> {
 	const doc = await fetchDocs(source);
 
-	try {
-		const promiseResponse = await Promise.allSettled([
-			response.json(
-				interactionResponse({
-					content: 'Documentation entry sent',
-					type: InteractionResponseType.UpdateMessage,
-					extraData: {
-						components: []
-					}
-				})
-			),
-			fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
-				method: FetchMethods.Post,
-				headers: {
-					'Content-Type': 'application/json',
-					'User-Agent': 'SapphireApplicationCommands/1.0.0 (Linux; x64)'
-				},
-				body: JSON.stringify({
-					content: fetchDocResult({ source, doc, query: selectedValue, target }),
-					allowed_mentions: { users: target ? [target] : [] }
-				})
+	return Promise.allSettled([
+		sendJson(
+			response,
+			interactionResponse({
+				content: 'Documentation entry sent',
+				type: InteractionResponseType.UpdateMessage,
+				extraData: {
+					components: []
+				}
 			})
-		]);
-
-		console.log('SUCCESSFUL FETCH!');
-		console.log(promiseResponse);
-		return promiseResponse;
-	} catch (error) {
-		console.error('FAILED FETCH!');
-		console.error(error);
-		return undefined;
-	}
+		),
+		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
+			method: FetchMethods.Post,
+			headers: {
+				'Content-Type': 'application/json',
+				'User-Agent': FetchUserAgent
+			},
+			body: JSON.stringify({
+				content: fetchDocResult({ source, doc, query: selectedValue, target }),
+				allowed_mentions: { users: target ? [target] : [] }
+			})
+		})
+	]);
 }
 
 interface HandleDjsDocsSelectMenuParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	source: string;
 	token: string;
 	selectedValue: string;

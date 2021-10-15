@@ -1,9 +1,13 @@
-import type { VercelRequest } from '@vercel/node';
+import type { FastifyRequest } from 'fastify';
+import type { RouteGenericInterface } from 'fastify/types/route';
+import type { IncomingMessage, Server } from 'http';
 import { sign } from 'tweetnacl';
 import { DiscordPublicKeyBuffer } from '../util/env';
 import { HttpCodes } from './HttpCodes';
 
-export function verifyDiscordInteraction(req: VercelRequest): VerifyDiscordInteractionResponse | null {
+export function verifyDiscordInteraction(
+	req: FastifyRequest<RouteGenericInterface, Server, IncomingMessage>
+): VerifyDiscordInteractionResponse | null {
 	const { headers } = req;
 	const signatureHeader = headers['x-signature-ed25519'];
 	const timestampHeader = headers['x-signature-timestamp'];

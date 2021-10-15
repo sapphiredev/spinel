@@ -1,16 +1,16 @@
 import { bold, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { decode } from 'he';
 import { stringify } from 'querystring';
 import { DiscordDeveloperDocsAlgoliaUrl } from '../lib/constants/constants';
 import { DiscordDevelopersIcon } from '../lib/constants/emotes';
 import type { AlgoliaSearchResult } from '../lib/types/Algolia';
+import type { FastifyResponse } from '../lib/types/Api';
 import { DiscordDeveloperDocsAlgoliaApplicationId, DiscordDeveloperDocsAlgoliaApplicationKey } from '../lib/util/env';
-import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
+import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
-export async function discordDeveloperDocs({ response, query, target, amountOfResults }: DiscordDeveloperDocsParameters): Promise<VercelResponse> {
+export async function discordDeveloperDocs({ response, query, target, amountOfResults }: DiscordDeveloperDocsParameters): Promise<FastifyResponse> {
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
 		DiscordDeveloperDocsAlgoliaUrl,
 		{
@@ -31,7 +31,8 @@ export async function discordDeveloperDocs({ response, query, target, amountOfRe
 	);
 
 	if (!algoliaResponse.hits.length) {
-		return response.json(
+		return sendJson(
+			response,
 			errorResponse({
 				content: 'I was not able to find anything with provided parameters.'
 			})
@@ -59,7 +60,8 @@ export async function discordDeveloperDocs({ response, query, target, amountOfRe
 		.filter(Boolean)
 		.join('');
 
-	return response.json(
+	return sendJson(
+		response,
 		interactionResponse({
 			content,
 			users: target ? [target] : []
@@ -68,7 +70,7 @@ export async function discordDeveloperDocs({ response, query, target, amountOfRe
 }
 
 interface DiscordDeveloperDocsParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	query: string;
 	amountOfResults: number;
 	target: Snowflake;

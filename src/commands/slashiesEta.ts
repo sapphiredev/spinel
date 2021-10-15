@@ -1,12 +1,13 @@
 import { time, TimestampStyles } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { Time } from '@sapphire/time-utilities';
-import type { VercelResponse } from '@vercel/node';
 import type { RESTGetAPIChannelMessageResult } from 'discord-api-types/v9';
+import { FetchUserAgent } from '../lib/constants/constants';
+import type { FastifyResponse } from '../lib/types/Api';
 import { DiscordWebhookDbMessage } from '../lib/util/env';
-import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
+import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
-export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<VercelResponse> {
+export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<FastifyResponse> {
 	try {
 		const webhookDbMessage = await fetch<RESTGetAPIChannelMessageResult>(DiscordWebhookDbMessage, FetchResultTypes.JSON);
 		const webhookDbMessageParsed = JSON.parse(webhookDbMessage.content) as WebhookDbStructure;
@@ -19,25 +20,27 @@ export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<
 		await fetch(DiscordWebhookDbMessage, {
 			method: FetchMethods.Patch,
 			headers: {
-				'content-type': 'application/json'
+				'content-type': 'application/json',
+				'User-Agent': FetchUserAgent
 			},
 			body: JSON.stringify({
 				content: `{ "lastEta": ${lastEta} }`
 			})
 		});
 
-		return response.json(
+		return sendJson(
+			response,
 			interactionResponse({
 				content: `Slashies will be releasing ${currentEta}`
 			})
 		);
 	} catch {
-		return response.json(errorResponse({ content: 'something went wrong' }));
+		return sendJson(response, errorResponse({ content: 'something went wrong' }));
 	}
 }
 
 interface SlashiesEtaParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 }
 
 interface WebhookDbStructure {

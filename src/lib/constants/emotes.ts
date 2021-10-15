@@ -25,5 +25,5 @@ export const DiscordJsDocsField = '<:_:898645160286646322>' as const;
 export const DiscordJsDocsFieldDev = '<:_:898645160248897586>' as const;
 export const DiscordJsDocsInterfaceDev = '<:_:898645160336977960>' as const;
 export const DiscordJsDocsMethod = '<:_:898645159934316565>' as const;
-export const DiscordJsDocsMethodDev = '<:_:898645160244674560> ' as const;
+export const DiscordJsDocsMethodDev = '<:_:898645160244674560>' as const;
 // #endregion

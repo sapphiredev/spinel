@@ -12,7 +12,7 @@
 
 ## Description
 
-This gets deployed to Vercel and provides Discord Slash Commands for the Sapphire Discord server to get access to:
+This gets deployed to a Docker image in this GH organization and provides Discord Slash Commands for the Sapphire Discord server to get access to:
 
 -   Sapphire Docs
 -   Sapphire Guide
@@ -20,6 +20,7 @@ This gets deployed to Vercel and provides Discord Slash Commands for the Sapphir
 -   Discord.JS Guide
 -   MDN Docs
 -   NodeJS Docs
+-   More
 
 ## Usage
 

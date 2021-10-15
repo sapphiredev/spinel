@@ -1,12 +1,12 @@
 import { inlineCode } from '@discordjs/builders';
-import type { VercelResponse } from '@vercel/node';
 import type { APISelectMenuOption, Snowflake } from 'discord-api-types/v9';
 import { MaxMessageLength } from '../lib/constants/constants';
 import { SapphireGemId } from '../lib/constants/emotes';
-import { errorResponse, selectMenuResponse } from '../lib/util/responseHelpers';
+import type { FastifyResponse } from '../lib/types/Api';
+import { errorResponse, selectMenuResponse, sendJson } from '../lib/util/responseHelpers';
 import { tagCache } from '../lib/util/tags';
 
-export function searchTag({ response, query, target }: SearchTagParameters): VercelResponse {
+export function searchTag({ response, query, target }: SearchTagParameters): FastifyResponse {
 	const results: APISelectMenuOption[] = [];
 
 	for (const [key, tag] of tagCache.entries()) {
@@ -26,7 +26,8 @@ export function searchTag({ response, query, target }: SearchTagParameters): Ver
 	}
 
 	if (results.length) {
-		return response.json(
+		return sendJson(
+			response,
 			selectMenuResponse({
 				selectMenuOptions: results,
 				customId: `tag|${target ?? ''}`,
@@ -35,11 +36,11 @@ export function searchTag({ response, query, target }: SearchTagParameters): Ver
 		);
 	}
 
-	return response.json(errorResponse({ content: `Could not find a tag with name or alias similar to ${inlineCode(query)}` }));
+	return sendJson(response, errorResponse({ content: `Could not find a tag with name or alias similar to ${inlineCode(query)}` }));
 }
 
 interface SearchTagParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	query: string;
 	target: Snowflake;
 }

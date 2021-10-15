@@ -10,10 +10,10 @@
 		"lint": "eslint src --ext ts --fix",
 		"format": "prettier --write src",
 		"test": "jest",
+		"start": "node dist/index.js",
 		"build": "tsc -b src",
 		"watch": "tsc -b src -w",
 		"clean": "node scripts/clean.mjs",
-		"vercel-build": "ncc build src/index.ts -o api -m --target es2019",
 		"update-slashies": "node ./scripts/interactions/updateSlashCommands.mjs",
 		"update-guild-slashies": "node ./scripts/interactions/updateGuildSlashCommands.mjs",
 		"update": "yarn up \"*\" -i",
@@ -34,6 +34,7 @@
 		"discord-api-types": "^0.23.1",
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^3.0.2",
+		"fastify": "^3.22.0",
 		"he": "^1.2.0",
 		"tslib": "^2.3.1",
 		"turndown": "^7.1.1",
@@ -49,8 +50,6 @@
 		"@types/jest": "^27.0.2",
 		"@types/node": "^16.10.3",
 		"@types/turndown": "^5.0.1",
-		"@vercel/ncc": "^0.31.1",
-		"@vercel/node": "^1.12.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"eslint": "^8.0.0",
 		"husky": "^7.0.2",
@@ -70,7 +69,7 @@
 	"bugs": {
 		"url": "https://github.com/sapphiredev/sapphire-slashies/issues"
 	},
-	"homepage": "https://sapphire-slashies.vercel.app",
+	"homepage": "https://github.com/sapphiredev/sapphire-slashies",
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"

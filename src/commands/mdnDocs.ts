@@ -1,15 +1,15 @@
 import { bold, hideLinkEmbed, hyperlink, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
-import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { encode } from 'querystring';
 import { MdnUrl } from '../lib/constants/constants';
 import { MdnIcon } from '../lib/constants/emotes';
-import { errorResponse, interactionResponse } from '../lib/util/responseHelpers';
+import type { FastifyResponse } from '../lib/types/Api';
+import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
 const cache = new Map<string, Document>();
 
-export async function mdnSearch({ response, query, target }: MdnSearchParameters): Promise<VercelResponse> {
+export async function mdnSearch({ response, query, target }: MdnSearchParameters): Promise<FastifyResponse> {
 	try {
 		const qString = `${MdnUrl}/api/v1/search?${encode({ q: query })}`;
 		let hit = cache.get(qString);
@@ -23,7 +23,8 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 		}
 
 		if (!hit) {
-			return response.json(
+			return sendJson(
+				response,
 				errorResponse({
 					content: `there were no search results for the query \`${query}\``
 				})
@@ -41,19 +42,20 @@ export async function mdnSearch({ response, query, target }: MdnSearchParameters
 
 		const parts = [`${MdnIcon} \ ${underscore(bold(hyperlink(hit.title, hideLinkEmbed(url))))}`, intro];
 
-		return response.json(
+		return sendJson(
+			response,
 			interactionResponse({
 				content: `${target ? `${italic(`Documentation suggestion for ${userMention(target)}:`)}\n` : ''}${parts.join('\n')}`,
 				users: target ? [target] : []
 			})
 		);
 	} catch {
-		return response.json(errorResponse({ content: 'something went wrong' }));
+		return sendJson(response, errorResponse({ content: 'something went wrong' }));
 	}
 }
 
 interface MdnSearchParameters {
-	response: VercelResponse;
+	response: FastifyResponse;
 	query: string;
 	target: Snowflake;
 }

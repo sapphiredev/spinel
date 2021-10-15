@@ -7,6 +7,7 @@ export const DiscordDeveloperDocsAlgoliaUrl = `https://${DiscordDeveloperDocsAlg
 export const MdnUrl = `https://developer.mozilla.org` as const;
 export const NodeUrl = 'https://nodejs.org' as const;
 export const MaxMessageLength = 4096;
+export const FetchUserAgent = 'SapphireApplicationCommands/1.0.0 (Linux; x64)';
 
 export function cast<T>(value: unknown): T {
 	return value as T;

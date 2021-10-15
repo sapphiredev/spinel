@@ -3,6 +3,7 @@ import { parse as parseToml } from '@ltd/j-toml';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APISelectMenuOption } from 'discord-api-types/v9';
+import { FetchUserAgent } from '../constants/constants';
 import { ExtractEmojiIdRegex, SapphireGemId } from '../constants/emotes';
 import type { Tag, TagSimilarityEntry } from '../types/Tags';
 import { suggestionString } from './utils';
@@ -21,7 +22,15 @@ export function mapTagSimilarityEntry(entry: TagSimilarityEntry): APISelectMenuO
 }
 
 export async function loadTags() {
-	const file = await fetch(TagUrl, FetchResultTypes.Text);
+	const file = await fetch(
+		TagUrl,
+		{
+			headers: {
+				'User-Agent': FetchUserAgent
+			}
+		},
+		FetchResultTypes.Text
+	);
 	const data = parseToml(file, 1.0, '\n');
 	for (const [key, value] of Object.entries(data)) {
 		tagCache.set(key, value as unknown as Tag);

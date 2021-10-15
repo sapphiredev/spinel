@@ -2,6 +2,7 @@ import { time, TimestampStyles } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { Time } from '@sapphire/time-utilities';
 import type { RESTGetAPIChannelMessageResult } from 'discord-api-types/v9';
+import { FetchUserAgent } from '../lib/constants/constants';
 import type { FastifyResponse } from '../lib/types/Api';
 import { DiscordWebhookDbMessage } from '../lib/util/env';
 import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
@@ -19,7 +20,8 @@ export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<
 		await fetch(DiscordWebhookDbMessage, {
 			method: FetchMethods.Patch,
 			headers: {
-				'content-type': 'application/json'
+				'content-type': 'application/json',
+				'User-Agent': FetchUserAgent
 			},
 			body: JSON.stringify({
 				content: `{ "lastEta": ${lastEta} }`

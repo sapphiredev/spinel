@@ -39,9 +39,6 @@ config({
 export default async (req: VercelRequest, res: VercelResponse): Promise<VercelResponse> => {
 	// Load up the tags into the cache
 	await loadTags();
-	console.log('Handling request!');
-	console.error('Handling request!');
-	console.warn('Handling request!');
 
 	const interactionInvalid = verifyDiscordInteraction(req);
 	if (interactionInvalid) {

@@ -25,7 +25,8 @@ export async function handleTagSelectMenu({
 			fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
 				method: FetchMethods.Post,
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'User-Agent': 'SapphireApplicationCommands/1.0.0 (Linux; x64)'
 				},
 				body: JSON.stringify({
 					content: findTag(selectedValue, target),
@@ -34,9 +35,11 @@ export async function handleTagSelectMenu({
 			})
 		]);
 
+		console.log('SUCCESSFUL FETCH!');
 		console.log(promiseResponse);
 		return promiseResponse;
 	} catch (error) {
+		console.error('FAILED FETCH!');
 		console.error(error);
 		return undefined;
 	}

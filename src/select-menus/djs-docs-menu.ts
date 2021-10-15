@@ -28,7 +28,8 @@ export async function handleDjsDocsSelectMenu({
 			fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
 				method: FetchMethods.Post,
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'User-Agent': 'SapphireApplicationCommands/1.0.0 (Linux; x64)'
 				},
 				body: JSON.stringify({
 					content: fetchDocResult({ source, doc, query: selectedValue, target }),
@@ -37,9 +38,11 @@ export async function handleDjsDocsSelectMenu({
 			})
 		]);
 
+		console.log('SUCCESSFUL FETCH!');
 		console.log(promiseResponse);
 		return promiseResponse;
 	} catch (error) {
+		console.error('FAILED FETCH!');
 		console.error(error);
 		return undefined;
 	}

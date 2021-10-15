@@ -21,11 +21,19 @@ describe('findSimilar', () => {
 		const foundTags = findSimilar('npm');
 
 		expect(foundTags).toEqual([
-			{ distance: 0.8833333333333334, name: 'legacy-deps', word: 'npm v7' },
-			{ distance: 0.5555555555555555, name: 'apidocs', word: 'api' },
-			{ distance: 0.48148148148148145, name: 'moduleaug', word: 'moduleaug' },
-			{ distance: 0.47222222222222215, name: 'bots', word: 'examples' },
-			{ distance: 0.47222222222222215, name: 'jsfirstbotlater', word: 'must know js' }
+			{ word: 'npm v7', distance: 0.8833333333333334, name: 'legacy-deps' },
+			{
+				word: 'hostingproviders',
+				distance: 0.5972222222222222,
+				name: 'hostingproviders'
+			},
+			{ word: 'api', distance: 0.5555555555555555, name: 'apidocs' },
+			{
+				word: 'moduleaug',
+				distance: 0.48148148148148145,
+				name: 'moduleaug'
+			},
+			{ word: 'examples', distance: 0.47222222222222215, name: 'bots' }
 		]);
 	});
 
@@ -33,11 +41,19 @@ describe('findSimilar', () => {
 		const foundTags = findSimilar('dotnet');
 
 		expect(foundTags).toEqual([
-			{ distance: 0.8888888888888888, name: 'dotnetfirstjslater', word: 'dotnetfirstjslater' },
-			{ distance: 0.6888888888888889, name: 'apidocs', word: 'docs' },
-			{ distance: 0.6428571428571429, name: 'i18n', word: 'i18next' },
-			{ distance: 0.611111111111111, name: 'bots', word: 'bots' },
-			{ distance: 0.576923076923077, name: 'showcode', word: 'show the code' }
+			{
+				word: 'dotnetfirstjslater',
+				distance: 0.8888888888888888,
+				name: 'dotnetfirstjslater'
+			},
+			{ word: 'docs', distance: 0.6888888888888889, name: 'apidocs' },
+			{ word: 'i18next', distance: 0.6428571428571429, name: 'i18n' },
+			{
+				word: 'hosting',
+				distance: 0.6428571428571429,
+				name: 'hostingproviders'
+			},
+			{ word: 'bots', distance: 0.611111111111111, name: 'bots' }
 		]);
 	});
 
@@ -49,14 +65,14 @@ describe('findSimilar', () => {
 			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' },
 			{ word: 'asking', distance: 0.5650205761316872, name: 'asking' },
 			{
+				word: 'hosting',
+				distance: 0.5526161081716637,
+				name: 'hostingproviders'
+			},
+			{
 				word: 'jsfirstbotlater',
 				distance: 0.5475150364039253,
 				name: 'jsfirstbotlater'
-			},
-			{
-				word: 'typescript declare module',
-				distance: 0.5387592592592593,
-				name: 'moduleaug'
 			}
 		]);
 	});

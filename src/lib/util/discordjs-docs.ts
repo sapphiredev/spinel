@@ -15,7 +15,8 @@ import {
 	DiscordJsDocsMethod,
 	DiscordJsDocsMethodDev,
 	DjsDocsDevIcon,
-	DjsDocsStableIcon
+	DjsDocsStableIcon,
+	ExtractEmojiIdRegex
 } from '../constants/emotes';
 import { suggestionString } from './utils';
 
@@ -71,7 +72,7 @@ export function buildSelectOption(result: DocElement, dev = false): APISelectMen
 		value: result.formattedName,
 		description: cutText(stripMd(result.description ?? 'No description found'), 95),
 		emoji: {
-			id: docTypeEmojiId(result.docType, dev)
+			id: ExtractEmojiIdRegex.exec(docTypeEmojiId(result.docType, dev))?.groups?.id
 		}
 	};
 }
@@ -84,7 +85,7 @@ export function fetchDocResult({ source, doc, query, target }: FetchDocResultPar
 	const element = doc.get(...query.split(/\.|#/));
 	if (!element) return null;
 	const icon = docTypeEmojiId(element.docType, source === 'main');
-	return suggestionString('DiscordJS Documentation', `${icon} ${resolveElementString(element, doc)}`, target);
+	return suggestionString('documentation', `${icon} ${resolveElementString(element, doc)}`, target);
 }
 
 interface FetchDocResultParameters {

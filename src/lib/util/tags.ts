@@ -3,7 +3,7 @@ import { parse as parseToml } from '@ltd/j-toml';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APISelectMenuOption } from 'discord-api-types/v9';
-import { SapphireGemId } from '../constants/emotes';
+import { ExtractEmojiIdRegex, SapphireGemId } from '../constants/emotes';
 import type { Tag, TagSimilarityEntry } from '../types/Tags';
 import { suggestionString } from './utils';
 
@@ -15,7 +15,7 @@ export function mapTagSimilarityEntry(entry: TagSimilarityEntry): APISelectMenuO
 		label: entry.name === entry.word ? entry.name : `${entry.name} (${entry.word})`,
 		value: entry.name,
 		emoji: {
-			id: SapphireGemId
+			id: ExtractEmojiIdRegex.exec(SapphireGemId)?.groups?.id
 		}
 	};
 }

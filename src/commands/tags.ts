@@ -1,4 +1,4 @@
-import { formatEmoji, inlineCode } from '@discordjs/builders';
+import { inlineCode } from '@discordjs/builders';
 import type { VercelResponse } from '@vercel/node';
 import type { Snowflake } from 'discord-api-types/v9';
 import { SapphireGemId } from '../lib/constants/emotes';
@@ -24,9 +24,7 @@ export function showTag({ response, query, target }: ShowTagParameters): VercelR
 			selectMenuResponse({
 				selectMenuOptions: similar.map(mapTagSimilarityEntry),
 				customId: `tag|${target ?? ''}`,
-				content: `${formatEmoji(SapphireGemId)} Could not find a tag with name or alias ${inlineCode(
-					query
-				)}. Select a similar tag to send instead:`
+				content: `${SapphireGemId} Could not find a tag with name or alias ${inlineCode(query)}. Select a similar tag to send instead:`
 			})
 		);
 	}

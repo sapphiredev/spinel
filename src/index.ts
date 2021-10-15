@@ -27,7 +27,7 @@ import { slashiesEta } from './commands/slashiesEta';
 import { showTag } from './commands/tags';
 import { verifyDiscordInteraction } from './lib/api/verifyDiscordInteraction';
 import { cast, FailPrefix } from './lib/constants/constants';
-import { errorResponse, interactionResponse } from './lib/util/responseHelpers';
+import { errorResponse } from './lib/util/responseHelpers';
 import { loadTags } from './lib/util/tags';
 import { handleDjsDocsSelectMenu } from './select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from './select-menus/tag-menu';
@@ -36,7 +36,7 @@ config({
 	path: process.env.NODE_ENV === 'production' ? join(__dirname, '.env') : join(__dirname, '..', '.env')
 });
 
-export default async (req: VercelRequest, res: VercelResponse): Promise<VercelResponse | undefined> => {
+export default async (req: VercelRequest, res: VercelResponse): Promise<VercelResponse> => {
 	// Load up the tags into the cache
 	await loadTags();
 
@@ -146,34 +146,12 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 
 			switch (op as SelectMenuOpCodes) {
 				case 'docsearch': {
-					res.json(
-						interactionResponse({
-							content: 'Documentation entry sent',
-							type: InteractionResponseType.UpdateMessage,
-							extraData: {
-								components: []
-							}
-						})
-					).end();
-
-					await handleDjsDocsSelectMenu({ selectedValue: selected[0], token, target, source });
-
-					return;
+					void handleDjsDocsSelectMenu({ response: res, selectedValue: selected[0], token, target, source });
+					return res.status(200);
 				}
 				case 'tag': {
-					res.json(
-						interactionResponse({
-							content: 'Tag sent',
-							type: InteractionResponseType.UpdateMessage,
-							extraData: {
-								components: []
-							}
-						})
-					).end();
-
-					await handleTagSelectMenu({ selectedValue: selected[0], token, target });
-
-					return;
+					void handleTagSelectMenu({ response: res, selectedValue: selected[0], token, target });
+					return res.status(200);
 				}
 			}
 		}

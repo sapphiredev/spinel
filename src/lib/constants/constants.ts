@@ -7,7 +7,6 @@ export const DiscordDeveloperDocsAlgoliaUrl = `https://${DiscordDeveloperDocsAlg
 export const MdnUrl = `https://developer.mozilla.org` as const;
 export const NodeUrl = 'https://nodejs.org' as const;
 export const MaxMessageLength = 4096;
-export const ExtractEmojiIdRegex = /<a?:_:(?<id>\d{17,18})>/;
 
 export function cast<T>(value: unknown): T {
 	return value as T;

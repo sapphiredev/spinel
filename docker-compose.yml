@@ -5,7 +5,6 @@ services:
     image: ghcr.io/sapphiredev/sapphire-application-commands:latest
     container_name: slashies
     restart: unless-stopped
-    tty: true
     build: ./
     environment:
       PORT: 8000

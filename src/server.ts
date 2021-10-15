@@ -22,25 +22,15 @@ import { ping } from './commands/ping';
 import { searchTag } from './commands/searchTag';
 import { slashiesEta } from './commands/slashiesEta';
 import { showTag } from './commands/tags';
-import { HttpCodes } from './lib/api/HttpCodes';
 import { verifyDiscordInteraction } from './lib/api/verifyDiscordInteraction';
 import { cast, FailPrefix } from './lib/constants/constants';
 import { errorResponse, sendJson } from './lib/util/responseHelpers';
-import { loadTags } from './lib/util/tags';
 import { handleDjsDocsSelectMenu } from './select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from './select-menus/tag-menu';
 
 const fastify = Fastify({ logger: true });
 
-// eslint-disable-next-line @typescript-eslint/require-await
-fastify.get('/', async (_, res) => {
-	return res.status(HttpCodes.BadRequest).send({ message: 'This API only supports POST requests' });
-});
-
 fastify.post('/', async (req, res) => {
-	// Load up the tags into the cache
-	await loadTags();
-
 	const interactionInvalid = verifyDiscordInteraction(req);
 	if (interactionInvalid) {
 		return res //

@@ -29,6 +29,7 @@ import { verifyDiscordInteraction } from './lib/api/verifyDiscordInteraction';
 import { cast, FailPrefix } from './lib/constants/constants';
 import { errorResponse } from './lib/util/responseHelpers';
 import { loadTags } from './lib/util/tags';
+import { handleDjsDocsSelectMenu } from './select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from './select-menus/tag-menu';
 
 config({
@@ -141,9 +142,13 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 		if (json.type === InteractionType.MessageComponent) {
 			const { token } = json;
 			const { custom_id: customId, values: selected } = json.data as APIMessageSelectMenuInteractionData;
-			const [op, target] = customId.split('|');
+			const [op, target, source] = customId.split('|');
 
 			switch (op as SelectMenuOpCodes) {
+				case 'docsearch': {
+					void handleDjsDocsSelectMenu({ response: res, selectedValue: selected[0], token, target, source });
+					return res.status(200);
+				}
 				case 'tag': {
 					void handleTagSelectMenu({ response: res, selectedValue: selected[0], token, target });
 					return res.status(200);
@@ -163,4 +168,4 @@ export default async (req: VercelRequest, res: VercelResponse): Promise<VercelRe
 
 type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'tag' | 'tagsearch' | 'ddocs';
 type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta';
-type SelectMenuOpCodes = 'tag';
+type SelectMenuOpCodes = 'tag' | 'docsearch';

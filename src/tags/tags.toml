@@ -134,7 +134,7 @@ Add `--legacy-peer-deps` to your npm install command (every time) or run `npm co
 [showcode]
 keywords = ["showcode", "talk is cheap, show me the code", "show the code"]
 content = """
-https://i.imgur.com/JGl9k1x.png
+https://cdn.favware.tech/img/talkischeap.png
 """
 
 [moduleaug]

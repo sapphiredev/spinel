@@ -1000,7 +1000,7 @@ __metadata:
     "@types/turndown": ^5.0.1
     colorette: ^2.0.16
     cz-conventional-changelog: ^3.3.0
-    discord-api-types: ^0.23.1
+    discord-api-types: ^0.24.0
     discord.js-docs: teeseal/discord.js-docs
     dotenv-cra: ^3.0.2
     eslint: ^8.1.0
@@ -2491,13 +2491,6 @@ __metadata:
   dependencies:
     path-type: ^4.0.0
   checksum: fa05e18324510d7283f55862f3161c6759a3f2f8dbce491a2fc14c8324c498286c54282c1f0e933cb930da8419b30679389499b919122952a4f8592362ef4615
-  languageName: node
-  linkType: hard
-
-"discord-api-types@npm:^0.23.1":
-  version: 0.23.1
-  resolution: "discord-api-types@npm:0.23.1"
-  checksum: e2ea574d51bff9f74770194338ba2b981072c6814a4da4c1e9a6b09b5b6bcf4ecf9044397fd4d2d3bf245f7573f22f1c25ff3f57cfc23ed87dfee4629091c29d
   languageName: node
   linkType: hard
 

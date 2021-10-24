@@ -31,7 +31,7 @@
 		"@sapphire/utilities": "^3.0.4",
 		"@skyra/jaro-winkler": "^1.0.0",
 		"colorette": "^2.0.16",
-		"discord-api-types": "^0.23.1",
+		"discord-api-types": "^0.24.0",
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^3.0.2",
 		"fastify": "^3.22.1",

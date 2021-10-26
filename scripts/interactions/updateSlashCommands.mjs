@@ -1,7 +1,7 @@
 process.env.NODE_ENV ??= 'production';
 
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { OAuth2Routes, RouteBases, Routes, ApplicationCommandPermissionType } from 'discord-api-types/v9';
+import { ApplicationCommandPermissionType, OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v9';
 import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
@@ -12,8 +12,8 @@ config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 
 const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
 const ApplicationId = process.env.DISCORD_APPLICATION_ID;
+const SapphireModeratorSnowflake = process.env.MODERATOR_ID;
 const SapphireServerId = '737141877803057244';
-const SapphireModeratorSnowflake = '868612689977569341';
 
 if (!ApplicationId || !ApplicationSecret) {
 	throw new Error('Please fill in all env variables in your ".env.local" file');

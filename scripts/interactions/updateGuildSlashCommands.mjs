@@ -14,7 +14,7 @@ config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 
 const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
 const ApplicationId = process.env.DISCORD_APPLICATION_ID;
-const SapphireModeratorSnowflake = '868612689977569341';
+const SapphireModeratorSnowflake = process.env.MODERATOR_ID;
 
 if (!ApplicationId || !ApplicationSecret) {
 	throw new Error('Please fill in all env variables in your ".env.local" file');

@@ -53,3 +53,4 @@ jobs:
         env:
           DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
           DISCORD_APPLICATION_SECRET: ${{ secrets.DISCORD_APPLICATION_SECRET }}
+          MODERATOR_ID: ${{ secrets.SAPPHIRE_SERVER_MODERATOR_ID }}

@@ -1,4 +1,4 @@
-import { SapphireModeratorSnowflake } from '#constants/constants';
+import { envParseString } from '#env/utils';
 import type { FastifyResponse } from '#types/Api';
 import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { loadTags, tagCache } from '#utils/tags';
@@ -15,11 +15,11 @@ export async function reloadTags({ response, member }: ReloadTagsParameters): Pr
 		);
 	}
 
-	if (!member.roles.includes(SapphireModeratorSnowflake)) {
+	if (!member.roles.includes(envParseString('MODERATOR_ID'))) {
 		return sendJson(
 			response,
 			errorResponse({
-				content: `You need to have the Sapphire ${roleMention(SapphireModeratorSnowflake)} role to use this command`
+				content: `You need to have the Sapphire ${roleMention(envParseString('MODERATOR_ID'))} role to use this command`
 			})
 		);
 	}

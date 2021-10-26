@@ -7,6 +7,7 @@ import { invite } from '#commands/invite';
 import { mdnSearch } from '#commands/mdnDocs';
 import { nodeSearch } from '#commands/nodeDocs';
 import { ping } from '#commands/ping';
+import { reloadTags } from '#commands/reloadTags';
 import { searchTag } from '#commands/searchTag';
 import { slashiesEta } from '#commands/slashiesEta';
 import { showTag } from '#commands/tags';
@@ -43,6 +44,7 @@ fastify.post('/', async (req, res) => {
 		if (json.type === InteractionType.ApplicationCommand) {
 			const {
 				id,
+				member,
 				data: { options, name }
 			} = cast<APIChatInputApplicationCommandInteraction>(json);
 
@@ -124,6 +126,11 @@ fastify.post('/', async (req, res) => {
 					return slashiesEta({
 						response: res
 					});
+				case 'reload-tags': 
+					return reloadTags({
+						response: res,
+						member
+					})
 			}
 		}
 
@@ -165,5 +172,5 @@ export async function start() {
 }
 
 type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'tag' | 'tagsearch' | 'ddocs';
-type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta';
+type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta' | 'reload-tags';
 type SelectMenuOpCodes = 'tag' | 'docsearch';

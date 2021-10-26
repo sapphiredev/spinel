@@ -8,6 +8,8 @@ import { fileURLToPath } from 'node:url';
 import { inspect } from 'node:util';
 import commands from './commands.mjs';
 
+const parsedCommands = commands.filter(command => command.name !== 'reloadtags');
+
 config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 
 const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
@@ -63,7 +65,7 @@ async function batchUpdateCommands(token) {
 						'Content-Type': 'application/json'
 					},
 					method: FetchMethods.Put,
-					body: JSON.stringify(commands)
+					body: JSON.stringify(parsedCommands)
 				},
 				FetchResultTypes.JSON
 			);

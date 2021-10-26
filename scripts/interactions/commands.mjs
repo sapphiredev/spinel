@@ -1,3 +1,4 @@
+// @ts-check
 import { ApplicationCommandOptionType } from 'discord-api-types/v9';
 
 /** @type {import('discord-api-types/v9').RESTPostAPIApplicationCommandsJSONBody[]} */
@@ -218,6 +219,11 @@ export default [
 				type: ApplicationCommandOptionType.User
 			}
 		]
+	},
+	{
+		name: 'reloadtags',
+		description: 'Reloads the tags cache in memory. This can only be used by Sapphire Staff',
+		default_permission: false
 	},
 	{
 		name: 'ddocs',

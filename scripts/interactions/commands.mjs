@@ -221,7 +221,7 @@ export default [
 		]
 	},
 	{
-		name: 'reloadtags',
+		name: 'reload-tags',
 		description: 'Reloads the tags cache in memory. This can only be used by Sapphire Staff',
 		default_permission: false
 	},

@@ -49,7 +49,7 @@ async function getBearerToken() {
 /**
  * Updates permissions for the reload tags chat input command
  * @param {string} token The authentication token from Discord
- * @param {import('discord-api-types/v9').RESTPostAPIChatInputApplicationCommandsJSONBody} reloadTagsData The data from Discord for the reloadtags command
+ * @param {import('discord-api-types/v9').APIApplicationCommand} reloadTagsData The data from Discord for the reloadtags command
  */
 async function allowSapphireStaffToUseReloadTags(token, reloadTagsData) {
 	try {
@@ -86,7 +86,7 @@ async function allowSapphireStaffToUseReloadTags(token, reloadTagsData) {
  */
 async function batchUpdateCommands(token) {
 	try {
-		/** @type {Array<import('discord-api-types/v9').RESTPostAPIChatInputApplicationCommandsJSONBody>} */
+		/** @type {Array<import('discord-api-types/v9').APIApplicationCommand>} */
 		const res = await fetch(
 			`${RouteBases.api}${Routes.applicationCommands(ApplicationId)}`,
 			{
@@ -102,8 +102,11 @@ async function batchUpdateCommands(token) {
 
 		console.log(`${inspect(res, false, 6, true)}\nBulk updated slash commands successfully\n==============\n`);
 
-		const reloadTagsData = res.find((command) => command.name === 'reloadtags');
-		return await allowSapphireStaffToUseReloadTags(token, reloadTagsData);
+		const reloadTagsData = res.find((command) => command.name === 'reload-tags');
+
+		if (reloadTagsData) {
+			return await allowSapphireStaffToUseReloadTags(token, reloadTagsData);
+		}
 	} catch (error) {
 		console.error(error);
 	}

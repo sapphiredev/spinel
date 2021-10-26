@@ -1,19 +1,20 @@
 process.env.NODE_ENV ??= 'production';
 
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v9';
+import { ApplicationCommandPermissionType, OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v9';
 import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
 import { inspect } from 'node:util';
 import commands from './commands.mjs';
 
-const parsedCommands = commands.filter(command => command.name !== 'reloadtags');
+const parsedCommands = commands.filter((command) => command.name !== 'reload-tags');
 
 config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 
 const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
 const ApplicationId = process.env.DISCORD_APPLICATION_ID;
+const SapphireModeratorSnowflake = '868612689977569341';
 
 if (!ApplicationId || !ApplicationSecret) {
 	throw new Error('Please fill in all env variables in your ".env.local" file');
@@ -54,9 +55,49 @@ async function getBearerToken() {
 	return body.access_token;
 }
 
+/**
+ * Updates permissions for the reload tags chat input command
+ * @param {string} token The authentication token from Discord
+ * @param {string} guildId The Guild that we're processing right now
+ * @param {import('discord-api-types/v9').APIApplicationCommand} reloadTagsData The data from Discord for the reloadtags command
+ */
+async function allowAccessToReloadTags(token, guildId, reloadTagsData) {
+	try {
+		const res = await fetch(
+			`${RouteBases.api}${Routes.applicationCommandPermissions(ApplicationId, guildId, reloadTagsData.id)}`,
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+					'Content-Type': 'application/json'
+				},
+				method: FetchMethods.Put,
+				body: JSON.stringify({
+					permissions: [
+						{
+							id: SapphireModeratorSnowflake,
+							type: ApplicationCommandPermissionType.Role,
+							permission: true
+						}
+					]
+				})
+			},
+			FetchResultTypes.JSON
+		);
+
+		console.log(`${inspect(res, false, 6, true)}\nSet permissions successfully\n==============\n`);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+/**
+ * Updates global chat input commands
+ * @param {string} token The authentication token from Discord
+ */
 async function batchUpdateCommands(token) {
 	for (const guild of guilds) {
 		try {
+			/** @type {Array<import('discord-api-types/v9').APIApplicationCommand>} */
 			const res = await fetch(
 				`${RouteBases.api}${Routes.applicationGuildCommands(ApplicationId, guild)}`,
 				{
@@ -70,7 +111,12 @@ async function batchUpdateCommands(token) {
 				FetchResultTypes.JSON
 			);
 
-			console.log(`Processed successfully:\n${inspect(res, false, 6, true)}`);
+			console.log(`${inspect(res, false, 6, true)}\nBulk updated slash commands successfully\n==============\n`);
+
+			const reloadTagsData = res.find((command) => command.name === 'reload-tags');
+			if (reloadTagsData) {
+				return await allowAccessToReloadTags(token, reloadTagsData);
+			}
 		} catch (error) {
 			console.error(error);
 		}

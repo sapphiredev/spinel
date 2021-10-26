@@ -15,8 +15,6 @@ export async function reloadTags({ response, member }: ReloadTagsParameters): Pr
 		);
 	}
 
-	console.log(member);
-
 	if (!member.roles.includes(SapphireModeratorSnowflake)) {
 		return sendJson(
 			response,

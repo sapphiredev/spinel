@@ -1,12 +1,12 @@
+import { NodeUrl } from '#constants/constants';
+import { NodeIcon } from '#constants/emotes';
+import type { FastifyResponse } from '#types/Api';
+import type { NodeDocs } from '#types/NodeDocs';
+import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { Snowflake } from 'discord-api-types/v9';
 import TurndownService from 'turndown';
-import { NodeUrl } from '../lib/constants/constants';
-import { NodeIcon } from '../lib/constants/emotes';
-import type { FastifyResponse } from '../lib/types/Api';
-import type { NodeDocs } from '../lib/types/NodeDocs';
-import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
 const td = new TurndownService({ codeBlockStyle: 'fenced' });
 

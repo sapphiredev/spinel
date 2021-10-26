@@ -1,14 +1,14 @@
+import { DjsGuideIcon } from '#constants/emotes';
+import { DjsGuideAlgoliaUrl } from '#constants/envConstants';
+import type { AlgoliaSearchResult } from '#types/Algolia';
+import type { FastifyResponse } from '#types/Api';
+import { DjsGuideAlgoliaApplicationId, DjsGuideAlgoliaApplicationKey } from '#utils/env';
+import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import type { Snowflake } from 'discord-api-types/v9';
-import { decode } from 'he';
-import { stringify } from 'querystring';
-import { DjsGuideAlgoliaUrl } from '../lib/constants/constants';
-import { DjsGuideIcon } from '../lib/constants/emotes';
-import type { AlgoliaSearchResult } from '../lib/types/Algolia';
-import type { FastifyResponse } from '../lib/types/Api';
-import { DjsGuideAlgoliaApplicationId, DjsGuideAlgoliaApplicationKey } from '../lib/util/env';
-import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
+import he from 'he';
+import { stringify } from 'node:querystring';
 
 export async function djsGuide({ response, query, amountOfResults, target }: DjsGuideParameters): Promise<FastifyResponse> {
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
@@ -43,7 +43,7 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 	const slicedHits = algoliaResponse.hits.slice(0, amountOfResults);
 
 	const result = slicedHits.map(({ hierarchy, url }) =>
-		decode(
+		he.decode(
 			`• ${hierarchy.lvl0 ?? hierarchy.lvl1 ?? ''}: ${hyperlink(`${hierarchy.lvl2 ?? hierarchy.lvl1 ?? 'click here'}`, hideLinkEmbed(url))}${
 				hierarchy.lvl3 ? ` - ${hierarchy.lvl3}` : ''
 			}`

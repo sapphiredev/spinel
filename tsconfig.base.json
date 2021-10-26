@@ -1,10 +1,8 @@
 {
 	"extends": "@sapphire/ts-config",
 	"compilerOptions": {
-		"target": "ES2020",
 		"lib": ["ESNext", "DOM"],
-		"declaration": true,
-		"declarationMap": true,
-		"sourceMap": true
+		"target": "ESNext",
+		"module": "ESNext"
 	}
 }

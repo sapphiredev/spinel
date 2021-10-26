@@ -1,8 +1,8 @@
+import type { FastifyResponse } from '#types/Api';
+import { fetchIssuesAndPrs } from '#utils/github-fetch';
+import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { hideLinkEmbed, hyperlink, italic } from '@discordjs/builders';
 import type { Snowflake } from 'discord-api-types/v9';
-import type { FastifyResponse } from '../lib/types/Api';
-import { fetchIssuesAndPrs } from '../lib/util/github-fetch';
-import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
 export async function githubSearch({ repository, owner, number, response, target }: GitHubSearchParameters): Promise<FastifyResponse> {
 	try {

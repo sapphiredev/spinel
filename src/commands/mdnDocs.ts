@@ -1,11 +1,11 @@
+import { MdnUrl } from '#constants/constants';
+import { MdnIcon } from '#constants/emotes';
+import type { FastifyResponse } from '#types/Api';
+import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import type { Snowflake } from 'discord-api-types/v9';
-import { encode } from 'querystring';
-import { MdnUrl } from '../lib/constants/constants';
-import { MdnIcon } from '../lib/constants/emotes';
-import type { FastifyResponse } from '../lib/types/Api';
-import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
+import { encode } from 'node:querystring';
 
 const cache = new Map<string, Document>();
 

@@ -1,5 +1,4 @@
 export const DiscordApplicationId = process.env.DISCORD_APPLICATION_ID;
-export const DiscordPublicKeyBuffer = Buffer.from(process.env.DISCORD_PUBLIC_KEY, 'hex');
 export const DjsGuideAlgoliaApplicationId = process.env.DJS_GUIDE_ALGOLIA_APPLICATION_ID;
 export const DjsGuideAlgoliaApplicationKey = process.env.DJS_GUIDE_ALGOLIA_APPLICATION_KEY;
 export const DiscordDeveloperDocsAlgoliaApplicationId = process.env.DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID;

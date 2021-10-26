@@ -1,4 +1,4 @@
-import { rm } from 'fs/promises';
+import { rm } from 'node:fs/promises';
 
 const apiDir = new URL('../api/', import.meta.url);
 const distDir = new URL('../dist/', import.meta.url);

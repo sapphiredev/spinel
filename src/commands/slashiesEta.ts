@@ -1,11 +1,11 @@
+import { FetchUserAgent } from '#constants/constants';
+import type { FastifyResponse } from '#types/Api';
+import { DiscordWebhookDbMessage } from '#utils/env';
+import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { time, TimestampStyles } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { Time } from '@sapphire/time-utilities';
 import type { RESTGetAPIChannelMessageResult } from 'discord-api-types/v9';
-import { FetchUserAgent } from '../lib/constants/constants';
-import type { FastifyResponse } from '../lib/types/Api';
-import { DiscordWebhookDbMessage } from '../lib/util/env';
-import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
 
 export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<FastifyResponse> {
 	try {

@@ -1,9 +1,9 @@
+import { DjsDocsDevIcon, DjsDocsStableIcon } from '#constants/emotes';
+import type { FastifyResponse } from '#types/Api';
+import { buildSelectOption, fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
+import { errorResponse, interactionResponse, selectMenuResponse, sendJson } from '#utils/responseHelpers';
 import { inlineCode } from '@discordjs/builders';
 import type { Snowflake } from 'discord-api-types/v9';
-import { DjsDocsDevIcon, DjsDocsStableIcon } from '../lib/constants/emotes';
-import type { FastifyResponse } from '../lib/types/Api';
-import { buildSelectOption, fetchDocResult, fetchDocs } from '../lib/util/discordjs-docs';
-import { errorResponse, interactionResponse, selectMenuResponse, sendJson } from '../lib/util/responseHelpers';
 
 export async function djsDocs({ query, response, source, target }: DjsDocsParameters): Promise<FastifyResponse> {
 	const doc = await fetchDocs(source);

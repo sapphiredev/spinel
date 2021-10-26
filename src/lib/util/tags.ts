@@ -1,12 +1,12 @@
-import Collection from '@discordjs/collection';
+import { FetchUserAgent } from '#constants/constants';
+import { ExtractEmojiIdRegex, SapphireGemId } from '#constants/emotes';
+import type { Tag, TagSimilarityEntry } from '#types/Tags';
+import { suggestionString } from '#utils/utils';
+import { Collection } from '@discordjs/collection';
 import { parse as parseToml } from '@ltd/j-toml';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APISelectMenuOption } from 'discord-api-types/v9';
-import { FetchUserAgent } from '../constants/constants';
-import { ExtractEmojiIdRegex, SapphireGemId } from '../constants/emotes';
-import type { Tag, TagSimilarityEntry } from '../types/Tags';
-import { suggestionString } from './utils';
 
 const TagUrl = 'https://raw.githubusercontent.com/sapphiredev/sapphire-slashies/main/src/tags/tags.toml';
 export const tagCache = new Collection<string, Tag>();

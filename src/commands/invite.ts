@@ -1,7 +1,7 @@
+import { DiscordApplicationId } from '#utils/env';
+import { interactionResponse } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink } from '@discordjs/builders';
 import type { APIInteractionResponse } from 'discord-api-types/v9';
-import { DiscordApplicationId } from '../lib/util/env';
-import { interactionResponse } from '../lib/util/responseHelpers';
 
 export function invite(): APIInteractionResponse {
 	return interactionResponse({

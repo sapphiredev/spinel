@@ -1,10 +1,10 @@
+import { FetchUserAgent } from '#constants/constants';
+import type { FastifyResponse } from '#types/Api';
+import { fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
+import { DiscordApplicationId } from '#utils/env';
+import { interactionResponse, sendJson } from '#utils/responseHelpers';
 import { fetch, FetchMethods } from '@sapphire/fetch';
-import { InteractionResponseType, RouteBases, Routes, Snowflake } from 'discord-api-types/v9';
-import { FetchUserAgent } from '../lib/constants/constants';
-import type { FastifyResponse } from '../lib/types/Api';
-import { fetchDocResult, fetchDocs } from '../lib/util/discordjs-docs';
-import { DiscordApplicationId } from '../lib/util/env';
-import { interactionResponse, sendJson } from '../lib/util/responseHelpers';
+import { InteractionResponseType, RouteBases, Routes, type Snowflake } from 'discord-api-types/v9';
 
 export async function handleDjsDocsSelectMenu({
 	response,

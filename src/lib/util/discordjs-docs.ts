@@ -1,8 +1,3 @@
-import { hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
-import { cutText } from '@sapphire/utilities';
-import { bold } from 'colorette';
-import type { APISelectMenuOption } from 'discord-api-types/v9';
-import Doc from 'discord.js-docs';
 import {
 	DiscordJsDocsClass,
 	DiscordJsDocsClassDev,
@@ -17,8 +12,13 @@ import {
 	DjsDocsDevIcon,
 	DjsDocsStableIcon,
 	ExtractEmojiIdRegex
-} from '../constants/emotes';
-import { suggestionString } from './utils';
+} from '#constants/emotes';
+import { suggestionString } from '#utils/utils';
+import { hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
+import { cutText } from '@sapphire/utilities';
+import { bold } from 'colorette';
+import type { APISelectMenuOption } from 'discord-api-types/v9';
+import Doc from 'discord.js-docs';
 
 function docTypeEmojiId(docType: string, dev = false): string {
 	switch (docType) {

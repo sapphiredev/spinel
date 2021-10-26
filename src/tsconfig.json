@@ -1,8 +1,20 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
+		"outDir": "../dist",
 		"rootDir": ".",
-		"outDir": "../dist"
+		"baseUrl": ".",
+		"noEmit": true,
+		"paths": {
+			"#utils/*": ["lib/util/*"],
+			"#types/*": ["lib/types/*"],
+			"#constants/*": ["lib/constants/*"],
+			"#api/*": ["lib/api/*"],
+			"#select-menus/*": ["select-menus/*"],
+			"#commands/*": ["commands/*"],
+			"#lib/*": ["lib/*"],
+			"#root/*": ["*"]
+		}
 	},
 	"include": ["."]
 }

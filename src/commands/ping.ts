@@ -1,5 +1,5 @@
+import { interactionResponse } from '#utils/responseHelpers';
 import type { APIInteractionResponse } from 'discord-api-types/v9';
-import { interactionResponse } from '../lib/util/responseHelpers';
 
 export function ping(id: string): APIInteractionResponse {
 	const now = BigInt(Date.now());

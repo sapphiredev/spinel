@@ -1,17 +1,15 @@
+import { HttpCodes } from '#api/HttpCodes';
+import { FailPrefix } from '#constants/constants';
 import {
-	APIInteractionResponse,
-	APIInteractionResponseChannelMessageWithSource,
-	APISelectMenuOption,
 	ComponentType,
 	InteractionResponseType,
-	MessageFlags,
-	Snowflake
+	MessageFlags, type APIInteractionResponse,
+	type APIInteractionResponseChannelMessageWithSource,
+	type APISelectMenuOption, type Snowflake
 } from 'discord-api-types/v9';
 import type { FastifyReply } from 'fastify';
 import type { RouteGenericInterface } from 'fastify/types/route';
-import type { IncomingMessage, Server, ServerResponse } from 'http';
-import { HttpCodes } from '../api/HttpCodes';
-import { FailPrefix } from '../constants/constants';
+import type { IncomingMessage, Server, ServerResponse } from 'node:http';
 
 export function interactionResponse({
 	content,

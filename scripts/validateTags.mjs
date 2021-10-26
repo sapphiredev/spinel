@@ -1,5 +1,5 @@
 import { parse as parseToml } from '@ltd/j-toml';
-import { red, green } from 'colorette';
+import { green, red } from 'colorette';
 import { readFile } from 'node:fs/promises';
 
 const tagsDir = new URL('../src/tags/', import.meta.url);

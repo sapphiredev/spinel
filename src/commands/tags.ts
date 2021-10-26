@@ -1,9 +1,9 @@
+import { SapphireGemId } from '#constants/emotes';
+import type { FastifyResponse } from '#types/Api';
+import { errorResponse, interactionResponse, selectMenuResponse, sendJson } from '#utils/responseHelpers';
+import { findSimilar, findTag, mapTagSimilarityEntry } from '#utils/tags';
 import { inlineCode } from '@discordjs/builders';
 import type { Snowflake } from 'discord-api-types/v9';
-import { SapphireGemId } from '../lib/constants/emotes';
-import type { FastifyResponse } from '../lib/types/Api';
-import { errorResponse, interactionResponse, selectMenuResponse, sendJson } from '../lib/util/responseHelpers';
-import { findSimilar, findTag, mapTagSimilarityEntry } from '../lib/util/tags';
 
 export function showTag({ response, query, target }: ShowTagParameters): FastifyResponse {
 	const content = findTag(query, target);

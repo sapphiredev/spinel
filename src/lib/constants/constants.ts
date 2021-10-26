@@ -1,9 +1,6 @@
-import { DiscordDeveloperDocsAlgoliaApplicationId, DjsGuideAlgoliaApplicationId } from '../util/env';
-import { RedCross } from './emotes';
+import { RedCross } from '#constants/emotes';
 
 export const FailPrefix = `${RedCross} I am sorry, but` as const;
-export const DjsGuideAlgoliaUrl = `https://${DjsGuideAlgoliaApplicationId}.algolia.net/1/indexes/discordjs/query` as const;
-export const DiscordDeveloperDocsAlgoliaUrl = `https://${DiscordDeveloperDocsAlgoliaApplicationId}.algolia.net/1/indexes/discord/query` as const;
 export const MdnUrl = `https://developer.mozilla.org` as const;
 export const NodeUrl = 'https://nodejs.org' as const;
 export const MaxMessageLength = 4096;

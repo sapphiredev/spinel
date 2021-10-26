@@ -1,32 +1,29 @@
+import { verifyDiscordInteraction } from '#api/verifyDiscordInteraction';
+import { discordDeveloperDocs } from '#commands/discordDeveloperDocs';
+import { djsDocs } from '#commands/djsDocs';
+import { djsGuide } from '#commands/djsGuide';
+import { githubSearch } from '#commands/githubApi';
+import { invite } from '#commands/invite';
+import { mdnSearch } from '#commands/mdnDocs';
+import { nodeSearch } from '#commands/nodeDocs';
+import { ping } from '#commands/ping';
+import { searchTag } from '#commands/searchTag';
+import { slashiesEta } from '#commands/slashiesEta';
+import { showTag } from '#commands/tags';
+import { cast, FailPrefix } from '#constants/constants';
+import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
+import { handleTagSelectMenu } from '#select-menus/tag-menu';
+import { errorResponse, sendJson } from '#utils/responseHelpers';
 import {
-	APIChatInputApplicationCommandInteraction,
-	APIInteraction,
-	APIMessageSelectMenuInteractionData,
-	ApplicationCommandInteractionDataOptionInteger,
-	ApplicationCommandInteractionDataOptionString,
-	ApplicationCommandInteractionDataOptionUser,
 	InteractionResponseType,
-	InteractionType,
-	Snowflake
+	InteractionType, type APIChatInputApplicationCommandInteraction,
+	type APIInteraction,
+	type APIMessageSelectMenuInteractionData,
+	type ApplicationCommandInteractionDataOptionInteger,
+	type ApplicationCommandInteractionDataOptionString,
+	type ApplicationCommandInteractionDataOptionUser, type Snowflake
 } from 'discord-api-types/v9';
-
 import Fastify from 'fastify';
-import { discordDeveloperDocs } from './commands/discordDeveloperDocs';
-import { djsDocs } from './commands/djsDocs';
-import { djsGuide } from './commands/djsGuide';
-import { githubSearch } from './commands/githubApi';
-import { invite } from './commands/invite';
-import { mdnSearch } from './commands/mdnDocs';
-import { nodeSearch } from './commands/nodeDocs';
-import { ping } from './commands/ping';
-import { searchTag } from './commands/searchTag';
-import { slashiesEta } from './commands/slashiesEta';
-import { showTag } from './commands/tags';
-import { verifyDiscordInteraction } from './lib/api/verifyDiscordInteraction';
-import { cast, FailPrefix } from './lib/constants/constants';
-import { errorResponse, sendJson } from './lib/util/responseHelpers';
-import { handleDjsDocsSelectMenu } from './select-menus/djs-docs-menu';
-import { handleTagSelectMenu } from './select-menus/tag-menu';
 
 const fastify = Fastify({ logger: true });
 

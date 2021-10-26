@@ -1,10 +1,10 @@
+import { MaxMessageLength } from '#constants/constants';
+import { SapphireGemId } from '#constants/emotes';
+import type { FastifyResponse } from '#types/Api';
+import { errorResponse, selectMenuResponse, sendJson } from '#utils/responseHelpers';
+import { tagCache } from '#utils/tags';
 import { inlineCode } from '@discordjs/builders';
 import type { APISelectMenuOption, Snowflake } from 'discord-api-types/v9';
-import { MaxMessageLength } from '../lib/constants/constants';
-import { SapphireGemId } from '../lib/constants/emotes';
-import type { FastifyResponse } from '../lib/types/Api';
-import { errorResponse, selectMenuResponse, sendJson } from '../lib/util/responseHelpers';
-import { tagCache } from '../lib/util/tags';
 
 export function searchTag({ response, query, target }: SearchTagParameters): FastifyResponse {
 	const results: APISelectMenuOption[] = [];

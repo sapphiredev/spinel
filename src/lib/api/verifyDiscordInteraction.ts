@@ -1,9 +1,8 @@
+import { HttpCodes } from '#api/HttpCodes';
 import type { FastifyRequest } from 'fastify';
 import type { RouteGenericInterface } from 'fastify/types/route';
-import type { IncomingMessage, Server } from 'http';
-import { sign } from 'tweetnacl';
-import { DiscordPublicKeyBuffer } from '../util/env';
-import { HttpCodes } from './HttpCodes';
+import type { IncomingMessage, Server } from 'node:http';
+import tweetnacl from 'tweetnacl';
 
 export function verifyDiscordInteraction(
 	req: FastifyRequest<RouteGenericInterface, Server, IncomingMessage>
@@ -21,10 +20,10 @@ export function verifyDiscordInteraction(
 
 	const body = timestampHeader + JSON.stringify(req.body);
 
-	const isVerified = sign.detached.verify(
+	const isVerified = tweetnacl.sign.detached.verify(
 		Buffer.from(body), //
 		Buffer.from(signatureHeader, 'hex'),
-		DiscordPublicKeyBuffer
+		Buffer.from(process.env.DISCORD_PUBLIC_KEY, 'hex')
 	);
 
 	if (!isVerified) {

@@ -1,14 +1,14 @@
+import { DiscordDevelopersIcon } from '#constants/emotes';
+import { DiscordDeveloperDocsAlgoliaUrl } from '#constants/envConstants';
+import type { AlgoliaSearchResult } from '#types/Algolia';
+import type { FastifyResponse } from '#types/Api';
+import { DiscordDeveloperDocsAlgoliaApplicationId, DiscordDeveloperDocsAlgoliaApplicationKey } from '#utils/env';
+import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import type { Snowflake } from 'discord-api-types/v9';
-import { decode } from 'he';
-import { stringify } from 'querystring';
-import { DiscordDeveloperDocsAlgoliaUrl } from '../lib/constants/constants';
-import { DiscordDevelopersIcon } from '../lib/constants/emotes';
-import type { AlgoliaSearchResult } from '../lib/types/Algolia';
-import type { FastifyResponse } from '../lib/types/Api';
-import { DiscordDeveloperDocsAlgoliaApplicationId, DiscordDeveloperDocsAlgoliaApplicationKey } from '../lib/util/env';
-import { errorResponse, interactionResponse, sendJson } from '../lib/util/responseHelpers';
+import he from 'he';
+import { stringify } from 'node:querystring';
 
 export async function discordDeveloperDocs({ response, query, target, amountOfResults }: DiscordDeveloperDocsParameters): Promise<FastifyResponse> {
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
@@ -42,7 +42,7 @@ export async function discordDeveloperDocs({ response, query, target, amountOfRe
 	const slicedHits = algoliaResponse.hits.slice(0, amountOfResults);
 
 	const result = slicedHits.map(({ hierarchy, url }) =>
-		decode(
+		he.decode(
 			`• ${hierarchy.lvl0 ?? hierarchy.lvl1 ?? ''}: ${hyperlink(`${hierarchy.lvl2 ?? hierarchy.lvl1 ?? 'click here'}`, hideLinkEmbed(url))}${
 				hierarchy.lvl3 ? ` - ${hierarchy.lvl3}` : ''
 			}`

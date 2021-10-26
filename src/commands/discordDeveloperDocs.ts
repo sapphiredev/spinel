@@ -1,8 +1,7 @@
 import { DiscordDevelopersIcon } from '#constants/emotes';
-import { DiscordDeveloperDocsAlgoliaUrl } from '#constants/envConstants';
+import { envParseString } from '#env/utils';
 import type { AlgoliaSearchResult } from '#types/Algolia';
 import type { FastifyResponse } from '#types/Api';
-import { DiscordDeveloperDocsAlgoliaApplicationId, DiscordDeveloperDocsAlgoliaApplicationKey } from '#utils/env';
 import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
@@ -11,8 +10,10 @@ import he from 'he';
 import { stringify } from 'node:querystring';
 
 export async function discordDeveloperDocs({ response, query, target, amountOfResults }: DiscordDeveloperDocsParameters): Promise<FastifyResponse> {
+	const algoliaUrl = new URL(`https://${envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID')}.algolia.net/1/indexes/discord/query`);
+
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
-		DiscordDeveloperDocsAlgoliaUrl,
+		algoliaUrl,
 		{
 			method: FetchMethods.Post,
 			body: JSON.stringify({
@@ -23,8 +24,8 @@ export async function discordDeveloperDocs({ response, query, target, amountOfRe
 			}),
 			headers: {
 				'Content-Type': 'application/json',
-				'X-Algolia-API-Key': DiscordDeveloperDocsAlgoliaApplicationKey,
-				'X-Algolia-Application-Id': DiscordDeveloperDocsAlgoliaApplicationId
+				'X-Algolia-API-Key': envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_KEY'),
+				'X-Algolia-Application-Id': envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID')
 			}
 		},
 		FetchResultTypes.JSON

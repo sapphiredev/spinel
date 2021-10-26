@@ -1,7 +1,7 @@
 import { FetchUserAgent } from '#constants/constants';
+import { envParseString } from '#env/utils';
 import type { FastifyResponse } from '#types/Api';
 import { fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
-import { DiscordApplicationId } from '#utils/env';
 import { interactionResponse, sendJson } from '#utils/responseHelpers';
 import { fetch, FetchMethods } from '@sapphire/fetch';
 import { InteractionResponseType, RouteBases, Routes, type Snowflake } from 'discord-api-types/v9';
@@ -26,7 +26,7 @@ export async function handleDjsDocsSelectMenu({
 				}
 			})
 		),
-		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
+		fetch(`${RouteBases.api}${Routes.webhook(envParseString('DISCORD_APPLICATION_ID'), token)}`, {
 			method: FetchMethods.Post,
 			headers: {
 				'Content-Type': 'application/json',

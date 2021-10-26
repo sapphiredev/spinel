@@ -1,5 +1,5 @@
 import { MaxMessageLength } from '#constants/constants';
-import { SapphireGemId } from '#constants/emotes';
+import { ExtractEmojiIdRegex, SapphireGemId } from '#constants/emotes';
 import type { FastifyResponse } from '#types/Api';
 import { errorResponse, selectMenuResponse, sendJson } from '#utils/responseHelpers';
 import { tagCache } from '#utils/tags';
@@ -18,7 +18,7 @@ export function searchTag({ response, query, target }: SearchTagParameters): Fas
 					label: key,
 					value: key,
 					emoji: {
-						id: SapphireGemId
+						id: ExtractEmojiIdRegex.exec(SapphireGemId)?.groups?.id
 					}
 				});
 			}

@@ -1,6 +1,6 @@
 import { FetchUserAgent } from '#constants/constants';
+import { envParseString } from '#env/utils';
 import type { FastifyResponse } from '#types/Api';
-import { DiscordWebhookDbMessage } from '#utils/env';
 import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { time, TimestampStyles } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
@@ -9,7 +9,9 @@ import type { RESTGetAPIChannelMessageResult } from 'discord-api-types/v9';
 
 export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<FastifyResponse> {
 	try {
-		const webhookDbMessage = await fetch<RESTGetAPIChannelMessageResult>(DiscordWebhookDbMessage, FetchResultTypes.JSON);
+		const dbMessageUrl = new URL(`${envParseString('DISCORD_WEBHOOK_DB_URL')}/messages/${envParseString('DISCORD_WEBHOOK_DB_MESSAGE_ID')}`);
+
+		const webhookDbMessage = await fetch<RESTGetAPIChannelMessageResult>(dbMessageUrl, FetchResultTypes.JSON);
 		const webhookDbMessageParsed = JSON.parse(webhookDbMessage.content) as WebhookDbStructure;
 		let { lastEta } = webhookDbMessageParsed;
 
@@ -17,7 +19,7 @@ export async function slashiesEta({ response }: SlashiesEtaParameters): Promise<
 
 		lastEta += Time.Day * 7;
 
-		await fetch(DiscordWebhookDbMessage, {
+		await fetch(dbMessageUrl, {
 			method: FetchMethods.Patch,
 			headers: {
 				'content-type': 'application/json',

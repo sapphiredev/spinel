@@ -1,6 +1,6 @@
 import { FetchUserAgent } from '#constants/constants';
+import { envParseString } from '#env/utils';
 import type { FastifyResponse } from '#types/Api';
-import { DiscordApplicationId } from '#utils/env';
 import { interactionResponse, sendJson } from '#utils/responseHelpers';
 import { findTag } from '#utils/tags';
 import { fetch, FetchMethods } from '@sapphire/fetch';
@@ -23,7 +23,7 @@ export async function handleTagSelectMenu({
 				}
 			})
 		),
-		fetch(`${RouteBases.api}${Routes.webhook(DiscordApplicationId, token)}`, {
+		fetch(`${RouteBases.api}${Routes.webhook(envParseString('DISCORD_APPLICATION_ID'), token)}`, {
 			method: FetchMethods.Post,
 			headers: {
 				'Content-Type': 'application/json',

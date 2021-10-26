@@ -10,6 +10,7 @@
 			"#types/*": ["lib/types/*"],
 			"#constants/*": ["lib/constants/*"],
 			"#api/*": ["lib/api/*"],
+			"#env/*": ["lib/env/*"],
 			"#select-menus/*": ["select-menus/*"],
 			"#commands/*": ["commands/*"],
 			"#lib/*": ["lib/*"],

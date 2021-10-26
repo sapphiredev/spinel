@@ -1,4 +1,4 @@
-import { DiscordApplicationId } from '#utils/env';
+import { envParseString } from '#env/utils';
 import { interactionResponse } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink } from '@discordjs/builders';
 import type { APIInteractionResponse } from 'discord-api-types/v9';
@@ -8,7 +8,9 @@ export function invite(): APIInteractionResponse {
 		content: `Add the Sapphire interaction to your server: ${bold(
 			hyperlink(
 				'click here',
-				hideLinkEmbed(`https://discord.com/api/oauth2/authorize?client_id=${DiscordApplicationId}&scope=applications.commands`)
+				hideLinkEmbed(
+					`https://discord.com/api/oauth2/authorize?client_id=${envParseString('DISCORD_APPLICATION_ID')}&scope=applications.commands`
+				)
 			)
 		)}`,
 		ephemeral: true

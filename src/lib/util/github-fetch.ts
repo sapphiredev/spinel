@@ -1,7 +1,7 @@
 import { gql } from '#constants/constants';
 import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrMerged, GhPrOpen } from '#constants/emotes';
+import { envParseString } from '#env/utils';
 import type { IssueState, PullRequestState, Query, Repository } from '#types/octokit';
-import { GitHubBearerToken } from '#utils/env';
 import { time, TimestampStyles } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 
@@ -49,7 +49,7 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 			headers: {
 				'User-Agent': 'Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)',
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${GitHubBearerToken}`
+				Authorization: `Bearer ${envParseString('GH_API_KEY')}`
 			},
 			body: JSON.stringify({
 				query: issuesAndPrQuery,

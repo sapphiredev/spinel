@@ -9,5 +9,5 @@ config({
 	path: fileURLToPath(new URL('../.env', import.meta.url))
 });
 
-void loadTags();
-void start();
+await loadTags();
+await start();

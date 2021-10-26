@@ -1,8 +1,7 @@
 import { DjsGuideIcon } from '#constants/emotes';
-import { DjsGuideAlgoliaUrl } from '#constants/envConstants';
+import { envParseString } from '#env/utils';
 import type { AlgoliaSearchResult } from '#types/Algolia';
 import type { FastifyResponse } from '#types/Api';
-import { DjsGuideAlgoliaApplicationId, DjsGuideAlgoliaApplicationKey } from '#utils/env';
 import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
@@ -11,8 +10,10 @@ import he from 'he';
 import { stringify } from 'node:querystring';
 
 export async function djsGuide({ response, query, amountOfResults, target }: DjsGuideParameters): Promise<FastifyResponse> {
+	const algoliaUrl = new URL(`https://${envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_ID')}.algolia.net/1/indexes/discordjs/query`);
+
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
-		DjsGuideAlgoliaUrl,
+		algoliaUrl,
 		{
 			method: FetchMethods.Post,
 			body: JSON.stringify({
@@ -24,8 +25,8 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 			}),
 			headers: {
 				'Content-Type': 'application/json',
-				'X-Algolia-API-Key': DjsGuideAlgoliaApplicationKey,
-				'X-Algolia-Application-Id': DjsGuideAlgoliaApplicationId
+				'X-Algolia-API-Key': envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_KEY'),
+				'X-Algolia-Application-Id': envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_ID')
 			}
 		},
 		FetchResultTypes.JSON

@@ -1,4 +1,22 @@
 {
 	"extends": "../tsconfig.base.json",
-	"include": ["./", "../src"],
+	"compilerOptions": {
+		"noEmit": true,
+		"incremental": false,
+		"baseUrl": ".",
+		"paths": {
+			"#utils/*": ["../src/lib/util/*"],
+			"#types/*": ["../src/lib/types/*"],
+			"#constants/*": ["../src/lib/constants/*"],
+			"#api/*": ["../src/lib/api/*"],
+			"#env/*": ["../src/lib/env/*"],
+			"#select-menus/*": ["../src/select-menus/*"],
+			"#commands/*": ["../src/commands/*"],
+			"#lib/*": ["../src/lib/*"],
+			"#root/*": ["../src/*"]
+		}
+	},
+	"include": [".", "../src/**/*"],
+	"exclude": ["../dist/**/*"],
+	"references": [{ "path": "../src" }]
 }

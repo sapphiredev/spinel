@@ -669,10 +669,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/collection@npm:^0.2.4":
-  version: 0.2.4
-  resolution: "@discordjs/collection@npm:0.2.4"
-  checksum: 3333b65b742a876e0fe09faaff1aa5052873a68f15d47baaee39b59364d888e01f12fd04296ab1badb41af87f624bc75eaafa2d6753fdc9c5bf280667f4cb3c2
+"@discordjs/collection@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "@discordjs/collection@npm:0.3.2"
+  checksum: 77def13598fce0f33cdd1e45e0e57b4452a1fa348e30d7d3a3b5a56409def4c4785462828b163aea83d659b93412d5dc18c22c85eff499dfc11c24011e8b18e6
   languageName: node
   linkType: hard
 
@@ -1092,7 +1092,7 @@ __metadata:
     "@commitlint/cli": ^13.2.1
     "@commitlint/config-conventional": ^13.2.0
     "@discordjs/builders": ^0.7.0
-    "@discordjs/collection": ^0.2.4
+    "@discordjs/collection": ^0.3.2
     "@ltd/j-toml": ^1.23.0
     "@sapphire/eslint-config": ^4.0.2
     "@sapphire/fetch": ^2.0.2

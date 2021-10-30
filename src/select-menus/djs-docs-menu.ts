@@ -4,7 +4,8 @@ import type { FastifyResponse } from '#types/Api';
 import { fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
 import { interactionResponse, sendJson } from '#utils/responseHelpers';
 import { fetch, FetchMethods } from '@sapphire/fetch';
-import { InteractionResponseType, RouteBases, Routes, type Snowflake } from 'discord-api-types/v9';
+import type { Snowflake } from 'discord-api-types/v9';
+import { InteractionResponseType, RouteBases, Routes } from 'discord-api-types/v9';
 
 export async function handleDjsDocsSelectMenu({
 	response,

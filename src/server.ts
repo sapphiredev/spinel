@@ -15,15 +15,16 @@ import { cast, FailPrefix } from '#constants/constants';
 import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from '#select-menus/tag-menu';
 import { errorResponse, sendJson } from '#utils/responseHelpers';
-import {
-	InteractionResponseType,
-	InteractionType, type APIChatInputApplicationCommandInteraction,
-	type APIInteraction,
-	type APIMessageSelectMenuInteractionData,
-	type ApplicationCommandInteractionDataOptionInteger,
-	type ApplicationCommandInteractionDataOptionString,
-	type ApplicationCommandInteractionDataOptionUser, type Snowflake
+import type {
+	APIChatInputApplicationCommandInteraction,
+	APIInteraction,
+	APIMessageSelectMenuInteractionData,
+	ApplicationCommandInteractionDataOptionInteger,
+	ApplicationCommandInteractionDataOptionString,
+	ApplicationCommandInteractionDataOptionUser,
+	Snowflake
 } from 'discord-api-types/v9';
+import { InteractionResponseType, InteractionType } from 'discord-api-types/v9';
 import Fastify from 'fastify';
 
 const fastify = Fastify({ logger: true });
@@ -126,11 +127,11 @@ fastify.post('/', async (req, res) => {
 					return slashiesEta({
 						response: res
 					});
-				case 'reload-tags': 
+				case 'reload-tags':
 					return reloadTags({
 						response: res,
 						member
-					})
+					});
 			}
 		}
 

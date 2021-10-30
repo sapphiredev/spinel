@@ -1,0 +1,6 @@
+{
+	"extends": "@sapphire",
+	"rules": {
+		"no-duplicate-imports": "off"
+	}
+}

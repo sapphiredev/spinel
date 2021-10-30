@@ -4,7 +4,8 @@ import type { FastifyResponse } from '#types/Api';
 import { interactionResponse, sendJson } from '#utils/responseHelpers';
 import { findTag } from '#utils/tags';
 import { fetch, FetchMethods } from '@sapphire/fetch';
-import { InteractionResponseType, RouteBases, Routes, type Snowflake } from 'discord-api-types/v9';
+import type { Snowflake } from 'discord-api-types/v9';
+import { InteractionResponseType, RouteBases, Routes } from 'discord-api-types/v9';
 
 export async function handleTagSelectMenu({
 	response,

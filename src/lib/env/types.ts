@@ -2,9 +2,15 @@ export type BooleanString = 'true' | 'false';
 export type IntegerString = `${bigint}`;
 
 export type SapphireSlashiesEnvAny = keyof SapphireSlashiesEnv;
-export type SapphireSlashiesEnvString = { [K in SapphireSlashiesEnvAny]: SapphireSlashiesEnv[K] extends BooleanString | IntegerString ? never : K }[SapphireSlashiesEnvAny];
-export type SapphireSlashiesEnvBoolean = { [K in SapphireSlashiesEnvAny]: SapphireSlashiesEnv[K] extends BooleanString ? K : never }[SapphireSlashiesEnvAny];
-export type SapphireSlashiesEnvInteger = { [K in SapphireSlashiesEnvAny]: SapphireSlashiesEnv[K] extends IntegerString ? K : never }[SapphireSlashiesEnvAny];
+export type SapphireSlashiesEnvString = {
+	[K in SapphireSlashiesEnvAny]: SapphireSlashiesEnv[K] extends BooleanString | IntegerString ? never : K;
+}[SapphireSlashiesEnvAny];
+export type SapphireSlashiesEnvBoolean = {
+	[K in SapphireSlashiesEnvAny]: SapphireSlashiesEnv[K] extends BooleanString ? K : never;
+}[SapphireSlashiesEnvAny];
+export type SapphireSlashiesEnvInteger = {
+	[K in SapphireSlashiesEnvAny]: SapphireSlashiesEnv[K] extends IntegerString ? K : never;
+}[SapphireSlashiesEnvAny];
 
 export interface SapphireSlashiesEnv {
 	DISCORD_APPLICATION_ID: string;

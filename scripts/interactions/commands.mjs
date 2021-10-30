@@ -1,4 +1,3 @@
-// @ts-check
 import { ApplicationCommandOptionType } from 'discord-api-types/v9';
 
 /** @type {import('discord-api-types/v9').RESTPostAPIApplicationCommandsJSONBody[]} */

@@ -1,25 +1,7 @@
 [apidocs]
 keywords = ["apidocs", "docs", "api"]
 content = """
-***__Links to all TSDoc pages:__***
-
-**[@sapphire/async-queue](<https://sapphiredev.github.io/utilities/modules/_sapphire_async_queue.html>)**
-**[@sapphire/decorators](<https://sapphiredev.github.io/utilities/modules/_sapphire_decorators.html>)**
-**[@sapphire/discord-utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_discord_utilities.html>)**
-**[@sapphire/discord.js-utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_discord_js_utilities.html>)**
-**[@sapphire/event-iterator](<https://sapphiredev.github.io/utilities/modules/_sapphire_event_iterator.html>)**
-**[@sapphire/framework](<https://sapphiredev.github.io/framework/>)**
-**[@sapphire/pieces](<https://sapphiredev.github.io/pieces/>)**
-**[@sapphire/plugin-api](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_api.html>)**
-**[@sapphire/plugin-i18next](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_i18next.html>)**
-**[@sapphire/plugin-logger](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_logger.html>)**
-**[@sapphire/plugin-subcommands](<https://sapphiredev.github.io/plugins/modules/_sapphire_plugin_subcommands.html>)**
-**[@sapphire/ratelimits](<https://sapphiredev.github.io/utilities/modules/_sapphire_ratelimits.html>)**
-**[@sapphire/snowflake](<https://sapphiredev.github.io/utilities/modules/_sapphire_snowflake.html>>)**
-**[@sapphire/stopwatch](<https://sapphiredev.github.io/utilities/modules/_sapphire_stopwatch.html>)**
-**[@sapphire/time-utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_time_utilities.html>)**
-**[@sapphire/type](<https://sapphiredev.github.io/utilities/modules/_sapphire_type.html>)**
-**[@sapphire/utilities](<https://sapphiredev.github.io/utilities/modules/_sapphire_utilities.html>)**
+***__Documenation can be found on [our website](<https://www.sapphirejs.dev/docs/General/Welcome>)__***
 """
 
 [djsquestions]
@@ -91,7 +73,7 @@ The best coding font is <https://github.com/tonsky/FiraCode>
 [guide]
 keywords = ["guide", "how to"]
 content = """
-The guide for Sapphire is currently being worked on and the latest version is available as [a Preview Deploy on Netlify here](<https://deploy-preview-711--discordjs-guide.netlify.app/sapphire/>)
+The guide for Sapphire and its many utilities, plugins and related libraries can be found on [our website](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started>)
 """
 
 [jsfirstbotlater]

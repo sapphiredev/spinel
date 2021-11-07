@@ -48,7 +48,7 @@
 		"discord-api-types": "^0.24.0",
 		"discord.js-docs": "teeseal/discord.js-docs",
 		"dotenv-cra": "^3.0.2",
-		"fastify": "^3.22.1",
+		"fastify": "^3.23.0",
 		"he": "^1.2.0",
 		"tslib": "^2.3.1",
 		"turndown": "^7.1.1",
@@ -64,12 +64,12 @@
 		"@types/jest": "^27.0.2",
 		"@types/node": "^16.11.6",
 		"@types/turndown": "^5.0.1",
-		"@typescript-eslint/eslint-plugin": "^5.2.0",
-		"@typescript-eslint/parser": "^5.2.0",
+		"@typescript-eslint/eslint-plugin": "^5.3.0",
+		"@typescript-eslint/parser": "^5.3.0",
 		"cz-conventional-changelog": "^3.3.0",
 		"esbuild": "^0.13.12",
 		"esbuild-jest": "^0.5.0",
-		"eslint": "^8.1.0",
+		"eslint": "^8.2.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"husky": "^7.0.4",
@@ -108,5 +108,5 @@
 	"eslintConfig": {
 		"extends": "@sapphire"
 	},
-	"packageManager": "yarn@3.0.2"
+	"packageManager": "yarn@3.1.0"
 }

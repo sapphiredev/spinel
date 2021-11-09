@@ -1,88 +1,70 @@
 {
-  "projectName": "sapphire-slashies",
-  "projectOwner": "sapphiredev",
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 100,
-  "commit": true,
-  "commitConvention": "angular",
-  "contributors": [
-    {
-      "login": "favna",
-      "name": "Jeroen Claassens",
-      "avatar_url": "https://avatars.githubusercontent.com/u/4019718?v=4",
-      "profile": "https://favware.tech/",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "vladfrangu",
-      "name": "Vlad Frangu",
-      "avatar_url": "https://avatars.githubusercontent.com/u/17960496?v=4",
-      "profile": "https://github.com/vladfrangu",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "Lioness100",
-      "name": "Lioness100",
-      "avatar_url": "https://avatars.githubusercontent.com/u/65814829?v=4",
-      "profile": "https://github.com/Lioness100",
-      "contributions": [
-        "content"
-      ]
-    },
-    {
-      "login": "Tylertron1998",
-      "name": "Tyler Davis",
-      "avatar_url": "https://avatars.githubusercontent.com/u/34944514?v=4",
-      "profile": "https://github.com/Tylertron1998",
-      "contributions": [
-        "content"
-      ]
-    },
-    {
-      "login": "devramsean0",
-      "name": "devramsean0",
-      "avatar_url": "https://avatars.githubusercontent.com/u/81807361?v=4",
-      "profile": "https://github.com/devramsean0",
-      "contributions": [
-        "content"
-      ]
-    },
-    {
-      "login": "renovate[bot]",
-      "name": "renovate[bot]",
-      "avatar_url": "https://avatars.githubusercontent.com/in/2740?v=4",
-      "profile": "https://github.com/apps/renovate",
-      "contributions": [
-        "maintenance"
-      ]
-    },
-    {
-      "login": "dependabot[bot]",
-      "name": "dependabot[bot]",
-      "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4",
-      "profile": "https://github.com/apps/dependabot",
-      "contributions": [
-        "maintenance"
-      ]
-    },
-    {
-      "login": "depfu[bot]",
-      "name": "depfu[bot]",
-      "avatar_url": "https://avatars.githubusercontent.com/in/715?v=4",
-      "profile": "https://github.com/apps/depfu",
-      "contributions": [
-        "maintenance"
-      ]
-    }
-  ],
-  "contributorsPerLine": 7,
-  "skipCi": true
+	"projectName": "sapphire-slashies",
+	"projectOwner": "sapphiredev",
+	"repoType": "github",
+	"repoHost": "https://github.com",
+	"files": ["README.md"],
+	"imageSize": 100,
+	"commit": true,
+	"commitConvention": "angular",
+	"contributors": [
+		{
+			"login": "favna",
+			"name": "Jeroen Claassens",
+			"avatar_url": "https://avatars.githubusercontent.com/u/4019718?v=4",
+			"profile": "https://favware.tech/",
+			"contributions": ["code"]
+		},
+		{
+			"login": "vladfrangu",
+			"name": "Vlad Frangu",
+			"avatar_url": "https://avatars.githubusercontent.com/u/17960496?v=4",
+			"profile": "https://github.com/vladfrangu",
+			"contributions": ["code"]
+		},
+		{
+			"login": "Lioness100",
+			"name": "Lioness100",
+			"avatar_url": "https://avatars.githubusercontent.com/u/65814829?v=4",
+			"profile": "https://github.com/Lioness100",
+			"contributions": ["content"]
+		},
+		{
+			"login": "Tylertron1998",
+			"name": "Tyler Davis",
+			"avatar_url": "https://avatars.githubusercontent.com/u/34944514?v=4",
+			"profile": "https://github.com/Tylertron1998",
+			"contributions": ["content"]
+		},
+		{
+			"login": "devramsean0",
+			"name": "devramsean0",
+			"avatar_url": "https://avatars.githubusercontent.com/u/81807361?v=4",
+			"profile": "https://github.com/devramsean0",
+			"contributions": ["content"]
+		},
+		{
+			"login": "renovate[bot]",
+			"name": "renovate[bot]",
+			"avatar_url": "https://avatars.githubusercontent.com/in/2740?v=4",
+			"profile": "https://github.com/apps/renovate",
+			"contributions": ["maintenance"]
+		},
+		{
+			"login": "dependabot[bot]",
+			"name": "dependabot[bot]",
+			"avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4",
+			"profile": "https://github.com/apps/dependabot",
+			"contributions": ["maintenance"]
+		},
+		{
+			"login": "depfu[bot]",
+			"name": "depfu[bot]",
+			"avatar_url": "https://avatars.githubusercontent.com/in/715?v=4",
+			"profile": "https://github.com/apps/depfu",
+			"contributions": ["maintenance"]
+		}
+	],
+	"contributorsPerLine": 7,
+	"skipCi": true
 }

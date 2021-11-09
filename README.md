@@ -66,6 +66,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Lioness100"><img src="https://avatars.githubusercontent.com/u/65814829?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lioness100</b></sub></a><br /><a href="#content-Lioness100" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/Tylertron1998"><img src="https://avatars.githubusercontent.com/u/34944514?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tyler Davis</b></sub></a><br /><a href="#content-Tylertron1998" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/devramsean0"><img src="https://avatars.githubusercontent.com/u/81807361?v=4?s=100" width="100px;" alt=""/><br /><sub><b>devramsean0</b></sub></a><br /><a href="#content-devramsean0" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/apps/renovate"><img src="https://avatars.githubusercontent.com/in/2740?v=4?s=100" width="100px;" alt=""/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href="#maintenance-renovate[bot]" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 

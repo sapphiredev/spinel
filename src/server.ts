@@ -8,6 +8,7 @@ import { mdnSearch } from '#commands/mdnDocs';
 import { nodeSearch } from '#commands/nodeDocs';
 import { ping } from '#commands/ping';
 import { reloadTags } from '#commands/reloadTags';
+import { sapphireDocs } from '#commands/sapphireDocs';
 import { searchTag } from '#commands/searchTag';
 import { slashiesEta } from '#commands/slashiesEta';
 import { showTag } from '#commands/tags';
@@ -61,6 +62,14 @@ fastify.post('/', async (req, res) => {
 				);
 
 				switch (name as RegisteredSlashiesWithOptions) {
+					case 'sapphire':
+						return sapphireDocs({
+							response: res,
+							query: cast<string>(args.query).trim(),
+							amountOfResults: cast<number>(args.results ?? 2),
+							target: cast<Snowflake>(args.target),
+							shouldIncludeDocs: cast<boolean>(args['include-docs'] ?? true)
+						});
 					case 'ddocs':
 						return discordDeveloperDocs({
 							response: res,
@@ -172,6 +181,6 @@ export async function start() {
 	}
 }
 
-type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'tag' | 'tagsearch' | 'ddocs';
+type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'sapphire' | 'tag' | 'tagsearch' | 'ddocs';
 type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta' | 'reload-tags';
 type SelectMenuOpCodes = 'tag' | 'docsearch';

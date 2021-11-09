@@ -26,4 +26,6 @@ export interface SapphireSlashiesEnv {
 	GH_API_KEY: string;
 	MODERATOR_ID: string;
 	NODE_ENV: 'test' | 'development' | 'production';
+	SAPPHIRE_DOCS_ALOGLIA_APPLICATION_ID: string;
+	SAPPHIRE_DOCS_ALOGLIA_APPLICATION_KEY: string;
 }

@@ -656,16 +656,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/builders@npm:^0.8.2":
-  version: 0.8.2
-  resolution: "@discordjs/builders@npm:0.8.2"
+"@discordjs/builders@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@discordjs/builders@npm:0.7.0"
   dependencies:
     "@sindresorhus/is": ^4.2.0
     discord-api-types: ^0.24.0
     ow: ^0.27.0
     ts-mixer: ^6.0.0
     tslib: ^2.3.1
-  checksum: 6c2f6ee427b0f577ad8b7dd4e4bbaf15c4083385bef983243b9223f68dd7c02715a8fc40aac1b943e667bbba4e262f0c776ae5bc3b0c24bd2faf3eac9c89a58c
+  checksum: d2c090412d25042952e241e88197b77fe8d204b724bf0d5044e2b99a0548517e9d087c688b8342029e8d05bf32b63ff2b656a1e0e70c36eba10674845d9305e4
   languageName: node
   linkType: hard
 
@@ -1091,7 +1091,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^13.2.1
     "@commitlint/config-conventional": ^13.2.0
-    "@discordjs/builders": ^0.8.2
+    "@discordjs/builders": ^0.7.0
     "@discordjs/collection": ^0.3.2
     "@ltd/j-toml": ^1.23.0
     "@sapphire/eslint-config": ^4.0.3
@@ -3008,7 +3008,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-android-arm64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-android-arm64@npm:0.13.12"
-  checksum: 9541f2639cd3cf21497fffd1116e77733c65d21659d16652379817e9fab62837bb5ca93ddeb39ac0c2e59f5607919aa6a34bb429e509220cb2cedadcfadb8f80
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
@@ -3016,7 +3015,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-darwin-64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-darwin-64@npm:0.13.12"
-  checksum: 024870e13c35a553fc867763c1efcb04e70cb837881776d6980f938e16ad40a980a30ab3536d3762a00776f44b4478d55950a2f45f96409987647c7a9c4abdb0
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -3024,7 +3022,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-darwin-arm64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-darwin-arm64@npm:0.13.12"
-  checksum: f7a8997726cb3acd4862274040aa2d6c357580f2248080970f178bdb0851af1a6c91efc816c6d9c33f13c5627dd2e857c031acd68be97bf88558c858a61e041d
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
@@ -3032,7 +3029,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-freebsd-64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-freebsd-64@npm:0.13.12"
-  checksum: 617fa4c2004fdf47d9f3818e5984f00afe46eb48e1bd490d4ce0dfd8d6f961974f42d3853701e39655ba0bf1b57a3e99146778b9f50f1bc632eb84132672b5f2
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
@@ -3040,7 +3036,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-freebsd-arm64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-freebsd-arm64@npm:0.13.12"
-  checksum: dc2b8195c1591c8e8fe3bee91acb6cb1049ed5279e24f10259e324ac6db7a76f11408fb150f25de34d512a998e23b6d14a894ee0b8a1072a6b3921de4e995463
   conditions: os=freebsd & cpu=arm64
   languageName: node
   linkType: hard
@@ -3061,7 +3056,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-linux-32@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-linux-32@npm:0.13.12"
-  checksum: 351c01cf941c230734f89edd2808f2cef3c70422a6a376657ba0699f9c7357f07c1f405fac85f482cee344534beda2bf8ec7ddb500d65477a6540c10e111b1fa
   conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
@@ -3069,7 +3063,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-linux-64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-linux-64@npm:0.13.12"
-  checksum: 61a27043db2abd8034c8d90e05ff6c8bc9b4c48c419e35f0353231407af834ce97fe2644f6d5ff397f29eda51129984c53e16ac43ce3847329f65da1fc0d6dcc
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -3077,7 +3070,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-linux-arm64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-linux-arm64@npm:0.13.12"
-  checksum: 4ed6e101dca9c6a4fbf4d2de4dd571e6d321364b8d780383c2fed5607c9c915198fe702ffebde3a22832975c879d31c31e4f7cc06c78b602808d53a86675f869
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
@@ -3085,7 +3077,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-linux-arm@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-linux-arm@npm:0.13.12"
-  checksum: bf06e75b42a67c06e01e7306de3115d59a0767279ab62459cdc0f71de30e9b93d1dccfb60cf9fd65af7d55cd11ff013a2b50f35fb54570b23519fbff4f3c2139
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
@@ -3093,7 +3084,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-linux-mips64le@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-linux-mips64le@npm:0.13.12"
-  checksum: a0d6a2bae1d9c2054cd8d2addaff0586ad259f5a031dc4518730ddadf8fe0b40bf2a569698d114d8c4ec487417d5c5560b055ffe0f1b715b7d99ee2484397862
   conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
@@ -3101,7 +3091,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-linux-ppc64le@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-linux-ppc64le@npm:0.13.12"
-  checksum: a94841b84100a13ad6e8f673b04a58253dd99cd0454ae42de30223c7eb9be528b85e4f7f797cef074539a102e2c342461d80b0d1d5f639e1bb520b83ae760437
   conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
@@ -3109,7 +3098,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-netbsd-64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-netbsd-64@npm:0.13.12"
-  checksum: 56f37d0b640b57541dec4c1e7d44e2ba58945bb2e4272d33b9f9c0b7282095b3661f65745cbc405b4869a76b5a5355c8db9e621b9a50ab63afd9b17a3a0d52f5
   conditions: os=netbsd & cpu=x64
   languageName: node
   linkType: hard
@@ -3117,7 +3105,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-openbsd-64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-openbsd-64@npm:0.13.12"
-  checksum: 850e4ade4bd0758170085995fdad72e21d67bd6e1d5272d9bdc74d8ed767640e2a906811adbb54390c2a20b5791526f21ff654834021cd35fad2c32cbff8e558
   conditions: os=openbsd & cpu=x64
   languageName: node
   linkType: hard
@@ -3125,7 +3112,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-sunos-64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-sunos-64@npm:0.13.12"
-  checksum: ffdcfaa595e638c21f7b63524167c288133df89872fc12a899110b0bdf05051c4b6d36b21e03dee57494fd8128a995dcb02f48047c6c612bd06e8fb411843773
   conditions: os=sunos & cpu=x64
   languageName: node
   linkType: hard
@@ -3133,7 +3119,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-windows-32@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-windows-32@npm:0.13.12"
-  checksum: f25e49401b81651f05f7a8ad2689b1fd929c9d0b9011b95a561d4503f6cbbf0fc3435443f97d7233c892d258a9edcc88d280b8b4c4a657c2db583a309b5479d0
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
@@ -3141,7 +3126,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-windows-64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-windows-64@npm:0.13.12"
-  checksum: 88b2a80d323e2d1b48c0be3dd5326bacc8e764b5602d2ab51ec8c02382d9c5df33347ff4d1a5db22157177d57a35a9bb584b47c7ae2c4c39b1c6441a19d7584e
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -3149,7 +3133,6 @@ discord.js-docs@teeseal/discord.js-docs:
 "esbuild-windows-arm64@npm:0.13.12":
   version: 0.13.12
   resolution: "esbuild-windows-arm64@npm:0.13.12"
-  checksum: 91671aaed906b045fc021c9847790083589b2d7926d3fd0f1145e9c5966822156ecbb9f093fb1ba24945842bffff1638901d5b119aa5051e312dc84f19068eaa
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard

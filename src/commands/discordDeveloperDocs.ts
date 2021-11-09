@@ -2,7 +2,7 @@ import { DiscordDevelopersIcon } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import type { AlgoliaSearchResult } from '#types/Algolia';
 import type { FastifyResponse } from '#types/Api';
-import { errorResponse, interactionResponse, sendJson } from '#utils/responseHelpers';
+import { interactionResponse, noResultsErrorResponse, sendJson } from '#utils/responseHelpers';
 import { bold, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import type { Snowflake } from 'discord-api-types/v9';
@@ -32,12 +32,7 @@ export async function discordDeveloperDocs({ response, query, target, amountOfRe
 	);
 
 	if (!algoliaResponse.hits.length) {
-		return sendJson(
-			response,
-			errorResponse({
-				content: 'I was not able to find anything with provided parameters.'
-			})
-		);
+		return noResultsErrorResponse(response);
 	}
 
 	const slicedHits = algoliaResponse.hits.slice(0, amountOfResults);

@@ -15,6 +15,58 @@ export default [
 		description: 'Lets you know when Slash Command Support is landing in @sapphire/framework'
 	},
 	{
+		name: 'sapphire',
+		description: 'Search Sapphire Guides and Documentation',
+		options: [
+			{
+				name: 'query',
+				description: 'Phrase to search for',
+				required: true,
+				type: ApplicationCommandOptionType.String
+			},
+			{
+				name: 'include-docs',
+				description: 'Should I include docs in the result? When set to false, only guides results are returned.',
+				required: false,
+				type: ApplicationCommandOptionType.Boolean
+			},
+			{
+				name: 'results',
+				description: 'How many search results to display at most',
+				required: false,
+				type: 4,
+				choices: [
+					{
+						name: '1 result',
+						value: 1
+					},
+					{
+						name: '2 results (default)',
+						value: 2
+					},
+					{
+						name: '3 results',
+						value: 3
+					},
+					{
+						name: '4 results',
+						value: 4
+					},
+					{
+						name: '5 results',
+						value: 5
+					}
+				]
+			},
+			{
+				name: 'target',
+				description: 'User to mention',
+				required: false,
+				type: ApplicationCommandOptionType.User
+			}
+		]
+	},
+	{
 		name: 'djs',
 		description: 'Search discord.js documentation',
 		options: [

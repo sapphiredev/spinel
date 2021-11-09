@@ -1,5 +1,6 @@
 import { HttpCodes } from '#api/HttpCodes';
 import { FailPrefix } from '#constants/constants';
+import type { FastifyResponse } from '#types/Api';
 import type { APIInteractionResponse, APIInteractionResponseChannelMessageWithSource, APISelectMenuOption, Snowflake } from 'discord-api-types/v9';
 import { ComponentType, InteractionResponseType, MessageFlags } from 'discord-api-types/v9';
 import type { FastifyReply } from 'fastify';
@@ -55,6 +56,15 @@ export function sendJson<T>(
 	statusCode: HttpCodes = HttpCodes.OK
 ) {
 	return response.status(statusCode).send(body);
+}
+
+export function noResultsErrorResponse(response: FastifyResponse) {
+	return sendJson(
+		response,
+		errorResponse({
+			content: 'I was not able to find anything with provided parameters.'
+		})
+	);
 }
 
 interface ResponseParameters {

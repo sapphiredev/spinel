@@ -1,4 +1,4 @@
-import { DjsGuideIcon } from '#constants/emotes';
+import { SapphireGemId } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import type { AlgoliaSearchResult } from '#types/Algolia';
 import type { FastifyResponse } from '#types/Api';
@@ -9,8 +9,14 @@ import type { Snowflake } from 'discord-api-types/v9';
 import he from 'he';
 import { stringify } from 'node:querystring';
 
-export async function djsGuide({ response, query, amountOfResults, target }: DjsGuideParameters): Promise<FastifyResponse> {
-	const algoliaUrl = new URL(`https://${envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_ID')}.algolia.net/1/indexes/discordjs/query`);
+export async function sapphireDocs({
+	response,
+	query,
+	amountOfResults,
+	shouldIncludeDocs,
+	target
+}: SapphireDocsParameters): Promise<FastifyResponse> {
+	const algoliaUrl = new URL(`https://${envParseString('SAPPHIRE_DOCS_ALOGLIA_APPLICATION_ID')}-dsn.algolia.net/1/indexes/sapphirejs/query`);
 
 	const algoliaResponse = await fetch<AlgoliaSearchResult>(
 		algoliaUrl,
@@ -19,14 +25,22 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 			body: JSON.stringify({
 				params: stringify({
 					query,
-					facetFilters: ['lang:en-US'],
-					hitsPerPage: 5
+					hitsPerPage: 5,
+					attributesToSnippet: [
+						'hierarchy.lvl1:10',
+						'hierarchy.lvl2:10',
+						'hierarchy.lvl3:10',
+						'hierarchy.lvl4:10',
+						'hierarchy.lvl5:10',
+						'hierarchy.lvl6:10',
+						'content:10'
+					]
 				})
 			}),
 			headers: {
 				'Content-Type': 'application/json',
-				'X-Algolia-API-Key': envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_KEY'),
-				'X-Algolia-Application-Id': envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_ID')
+				'X-Algolia-API-Key': envParseString('SAPPHIRE_DOCS_ALOGLIA_APPLICATION_KEY'),
+				'X-Algolia-Application-Id': envParseString('SAPPHIRE_DOCS_ALOGLIA_APPLICATION_ID')
 			}
 		},
 		FetchResultTypes.JSON
@@ -36,7 +50,15 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 		return noResultsErrorResponse(response);
 	}
 
-	const slicedHits = algoliaResponse.hits.slice(0, amountOfResults);
+	let slicedHits = algoliaResponse.hits.slice(0, amountOfResults);
+
+	if (!shouldIncludeDocs) {
+		slicedHits = slicedHits.filter(({ url }) => url.includes('/Guide/'));
+	}
+
+	if (!slicedHits.length) {
+		return noResultsErrorResponse(response);
+	}
 
 	const result = slicedHits.map(({ hierarchy, url }) =>
 		he.decode(
@@ -47,10 +69,10 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 	);
 
 	const content = [
-		target ? `${italic(`Guide suggestion for ${userMention(target)}:`)}\n` : undefined, //
-		DjsGuideIcon,
+		target ? `${italic(`Sapphire Documenation suggestion for ${userMention(target)}:`)}\n` : undefined, //
+		SapphireGemId,
 		' ',
-		bold('discordjs.guide results:'),
+		bold(`${hyperlink('sapphirejs.dev', hideLinkEmbed('https://www.sapphirejs.dev'))} results:`),
 		'\n',
 		result.join('\n')
 	]
@@ -66,8 +88,9 @@ export async function djsGuide({ response, query, amountOfResults, target }: Djs
 	);
 }
 
-interface DjsGuideParameters {
+interface SapphireDocsParameters {
 	response: FastifyResponse;
+	shouldIncludeDocs: boolean;
 	query: string;
 	amountOfResults: number;
 	target: Snowflake;

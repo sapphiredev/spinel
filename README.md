@@ -14,12 +14,15 @@
 
 This gets deployed to a Docker image in this GH organization and provides Discord Slash Commands for the Sapphire Discord server to get access to:
 
--   Sapphire Docs
+-   Sapphire Documentation
 -   Sapphire Guide
--   Discord.JS Docs
+-   Discord Developer Documentation
+-   Discord.JS Documentation
 -   Discord.JS Guide
--   MDN Docs
--   NodeJS Docs
+-   MDN Documentation
+-   NodeJS Documentation
+-   GitHub Issue & PullRequest information
+-   Tags
 -   More
 
 ## Usage
@@ -34,18 +37,7 @@ yarn install
 yarn build
 ```
 
-Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.local). Fill in at least these required environment variables:
-
--   `DISCORD_APPLICATION_ID`
--   `DISCORD_APPLICATION_SECRET`
--   `DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID`
--   `DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_KEY`
--   `DISCORD_PUBLIC_KEY`
--   `DISCORD_WEBHOOK_DB_MESSAGE_ID`
--   `DISCORD_WEBHOOK_DB_URL`
--   `DJS_GUIDE_ALGOLIA_APPLICATION_ID`
--   `DJS_GUIDE_ALGOLIA_APPLICATION_KEY`
--   `GH_API_KEY`
+Next duplicate the [`.env`](.env) file and rename it to [`.env.local`](.env.local), then fill in all values.
 
 ## Buy us some doughnuts
 

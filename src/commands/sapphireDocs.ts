@@ -69,7 +69,7 @@ export async function sapphireDocs({
 	);
 
 	const content = [
-		target ? `${italic(`Sapphire Documenation suggestion for ${userMention(target)}:`)}\n` : undefined, //
+		target ? `${italic(`Sapphire Documentation suggestion for ${userMention(target)}:`)}\n` : undefined, //
 		SapphireGemId,
 		' ',
 		bold(`${hyperlink('sapphirejs.dev', hideLinkEmbed('https://www.sapphirejs.dev'))} results:`),

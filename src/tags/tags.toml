@@ -1,7 +1,7 @@
 [apidocs]
 keywords = ["apidocs", "docs", "api"]
 content = """
-***__Documenation can be found on [our website](<https://www.sapphirejs.dev/docs/General/Welcome>)__***
+***__Documentation can be found on [our website](<https://www.sapphirejs.dev/docs/General/Welcome>)__***
 """
 
 [djsquestions]

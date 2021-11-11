@@ -1,4 +1,4 @@
-process.env.NODE_ENV ??= 'production';
+process.env.NODE_ENV ??= 'development';
 
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { ApplicationCommandPermissionType, OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v9';

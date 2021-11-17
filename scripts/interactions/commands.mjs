@@ -174,7 +174,7 @@ const tagCommand = new SlashCommandBuilder() //
 	.setDescription('Send a tag by name or by alias')
 	.addStringOption((builder) =>
 		builder //
-			.setName('tag')
+			.setName('query')
 			.setDescription('The name or alias of the tag to send')
 			.setRequired(true)
 	)

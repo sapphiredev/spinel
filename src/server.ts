@@ -101,7 +101,7 @@ fastify.post('/', async (req, res) => {
 						return nodeSearch({
 							response: res,
 							query: cast<string>(args.query).trim(),
-							version: cast<'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x'>(args.version),
+							version: cast<'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x' | 'latest-v17.x'>(args.version),
 							target: cast<Snowflake>(args.target)
 						});
 					case 'github':
@@ -118,7 +118,7 @@ fastify.post('/', async (req, res) => {
 							query: cast<string>(args.query).trim().toLowerCase(),
 							target: cast<Snowflake>(args.target)
 						});
-					case 'tagsearch':
+					case 'tag-search':
 						return searchTag({
 							response: res,
 							query: cast<string>(args.query).trim().toLowerCase(),
@@ -181,6 +181,6 @@ export async function start() {
 	}
 }
 
-type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'sapphire' | 'tag' | 'tagsearch' | 'ddocs';
+type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'sapphire' | 'tag' | 'tag-search' | 'ddocs';
 type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta' | 'reload-tags';
 type SelectMenuOpCodes = 'tag' | 'docsearch';

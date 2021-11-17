@@ -129,6 +129,6 @@ export async function nodeSearch({ response, query, version = 'latest-v16.x', ta
 interface NodeSearchParameters {
 	response: FastifyResponse;
 	query: string;
-	version: 'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x';
+	version: 'latest-v12.x' | 'latest-v14.x' | 'latest-v16.x' | 'latest-v17.x';
 	target: Snowflake;
 }

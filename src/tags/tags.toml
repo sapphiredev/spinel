@@ -185,7 +185,7 @@ content = """
 """
 
 [help]
-keywords = ["built in help"]
+keywords = ["help", "built in help"]
 content = """
 Our experience in Klasa, and according to many Akairo users is that built-in help commands suck, and everyone customises them.
 

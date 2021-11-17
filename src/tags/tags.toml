@@ -183,3 +183,25 @@ content = """
 • [Google Cloud](<https://cloud.google.com/free>) free tier
 • [Wither Hosting](<https://client.witherhosting.com/cart/budget-vps/>) Starting at $4 a month for 1 core, 2GB ram, 25GB NVME storage.
 """
+
+[help]
+keywords = ["built in help"]
+content = """
+Our experience in Klasa, and according to many Akairo users is that built-in help commands suck, and everyone customises them.
+
+Furthermore, having built-in commands force you to add extra logic in your code (specifically everywhere that reads custom properties from commands), so if you rely on a property to exist, because it does in your commands, it'll break easily with built-in ones unless you overwrite them.
+
+A help command is even worse, they give special constraints that shouldn't exist and can be implemented as you desire.
+
+There's also the people who want to only show specific commands, a list of all commands in one embed, paginated commands, paginated lists of commands (based on categories), and all of that can be in either plain text, inside codeblocks (and from there, many syntaxes and formats), or embeds.
+
+And to take things further, there are people who simply want to show all commands, and people who show only the commands they can use.
+
+And so far we have only covered message based commands. Chat input commands are a whole different beast, because they have native descriptions and if you do have a /help for more details that could use autocomplete to fill out the command name.
+
+If you take all the different ways to format commands, you end up with hundreds or thousands of different possibilities.
+
+It is not possible for us to deliver a help command that complies to all those possibilities.
+
+Therefore, everyone will eventually replace the built-in one with their own, so why take the effort?
+"""

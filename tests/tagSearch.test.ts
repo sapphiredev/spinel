@@ -61,6 +61,7 @@ describe('findSimilar', () => {
 		const foundTags = findSimilar('this➖is➖going➖to➖return➖0➖results➖because➖it➖is➖way➖too➖different➖from➖a➖real➖tag');
 
 		expect(foundTags).toEqual([
+			{ word: 'help', distance: 0.595679012345679, name: 'help' },
 			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' },
 			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' },
 			{ word: 'asking', distance: 0.5650205761316872, name: 'asking' },
@@ -68,11 +69,6 @@ describe('findSimilar', () => {
 				word: 'hosting',
 				distance: 0.5526161081716637,
 				name: 'hostingproviders'
-			},
-			{
-				word: 'jsfirstbotlater',
-				distance: 0.5475150364039253,
-				name: 'jsfirstbotlater'
 			}
 		]);
 	});

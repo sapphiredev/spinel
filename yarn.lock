@@ -611,16 +611,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/builders@npm:^0.8.2":
-  version: 0.8.2
-  resolution: "@discordjs/builders@npm:0.8.2"
+"@discordjs/builders@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@discordjs/builders@npm:0.7.0"
   dependencies:
     "@sindresorhus/is": ^4.2.0
     discord-api-types: ^0.24.0
     ow: ^0.27.0
     ts-mixer: ^6.0.0
     tslib: ^2.3.1
-  checksum: 6c2f6ee427b0f577ad8b7dd4e4bbaf15c4083385bef983243b9223f68dd7c02715a8fc40aac1b943e667bbba4e262f0c776ae5bc3b0c24bd2faf3eac9c89a58c
+  checksum: d2c090412d25042952e241e88197b77fe8d204b724bf0d5044e2b99a0548517e9d087c688b8342029e8d05bf32b63ff2b656a1e0e70c36eba10674845d9305e4
   languageName: node
   linkType: hard
 
@@ -1046,7 +1046,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^15.0.0
     "@commitlint/config-conventional": ^15.0.0
-    "@discordjs/builders": ^0.8.2
+    "@discordjs/builders": ^0.7.0
     "@discordjs/collection": ^0.3.2
     "@ltd/j-toml": ^1.24.0
     "@sapphire/eslint-config": ^4.0.5

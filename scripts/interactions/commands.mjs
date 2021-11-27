@@ -55,18 +55,16 @@ const djsDocsCommand = new SlashCommandBuilder() //
 			.setDescription('The phrase to search for')
 			.setRequired(true)
 	)
-	.addStringOption(
-		(builder) =>
-			builder //
-				.setName('source')
-				.setDescription('Source repository to use')
-				.addChoice('Main library - stable branch (default)', 'stable')
-				.addChoice('Main library - main branch', 'main')
-		// TODO: Re-enable the following when we replace / have updated the https://github.com/TeeSeal/discord.js-docs dependency for both us and DiscordJS utils bot
-		// .addChoice('Collection', 'collection')
-		// .addChoice('Builders', 'builders')
-		// .addChoice('Voice', 'voice')
-		// .addChoice('RPC', 'rpc')
+	.addStringOption((builder) =>
+		builder //
+			.setName('source')
+			.setDescription('Source repository to use')
+			.addChoice('Main library - stable branch (default)', 'stable')
+			.addChoice('Main library - main branch', 'main')
+			.addChoice('Collection', 'collection')
+			.addChoice('Builders', 'builders')
+			.addChoice('Voice', 'voice')
+			.addChoice('RPC', 'rpc')
 	)
 	.addUserOption((builder) =>
 		builder //

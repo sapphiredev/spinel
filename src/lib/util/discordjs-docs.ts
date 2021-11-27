@@ -14,53 +14,62 @@ import {
 	ExtractEmojiIdRegex
 } from '#constants/emotes';
 import { suggestionString } from '#utils/utils';
-import { hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
-import { cutText } from '@sapphire/utilities';
-import { bold } from 'colorette';
+import { bold, hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
+import { cutText, filterNullishOrEmpty, isNullishOrEmpty } from '@sapphire/utilities';
 import type { APISelectMenuOption } from 'discord-api-types/v9';
-import Doc from 'discord.js-docs';
+import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
+import { Doc, DocTypes } from 'discordjs-docs-parser';
 
-function docTypeEmojiId(docType: string, dev = false): string {
+function docTypeEmojiId(docType: DocTypes | null, dev = false): string {
 	switch (docType) {
-		case 'typedef':
+		case DocTypes.Typedef:
 			return dev ? DiscordJsDocsInterfaceDev : DiscordJsDocsEnumOrInterface;
-		case 'prop':
+		case DocTypes.Prop:
 			return dev ? DiscordJsDocsFieldDev : DiscordJsDocsField;
-		case 'class':
+		case DocTypes.Class:
 			return dev ? DiscordJsDocsClassDev : DiscordJsDocsClass;
-		case 'method':
+		case DocTypes.Method:
 			return dev ? DiscordJsDocsMethodDev : DiscordJsDocsMethod;
-		case 'event':
+		case DocTypes.Event:
 			return dev ? DiscordJsDocsEventDev : DiscordJsDocsEvent;
 		default:
 			return dev ? DjsDocsDevIcon : DjsDocsStableIcon;
 	}
 }
 
-function escapeMDLinks(s = ''): string {
-	return s.replace(/\[(.+?)\]\((.+?)\)/g, '[$1](<$2>)');
-}
-
 function stripMd(s = ''): string {
 	return s.replace(/[`\*_]/gi, '');
 }
 
-function formatInheritance(prefix: string, inherits: DocElement[], doc: Doc): string {
-	const res = inherits.map((element: any) => element.flat(5));
-	return ` (${prefix} ${res.map((element) => escapeMDLinks(doc.formatType(element))).join(' and ')})`;
+function extractGenericTypeInfill(type: string): string {
+	const match = type.match(/<(?<type>[A-Za-z]+)>/);
+	return match?.groups?.type ? match.groups.type : type;
+}
+
+function formatInheritance(prefix: string, inherits: string[][], doc: Doc): string {
+	const res = inherits.flatMap((element) => {
+		if (Array.isArray(element)) return element.flat(5);
+		return [element];
+	});
+
+	const inheritedLinks = res.map((element) => doc.get(extractGenericTypeInfill(element))?.link).filter(filterNullishOrEmpty);
+
+	if (isNullishOrEmpty(inheritedLinks)) return '';
+
+	return ` (${prefix} ${inheritedLinks.join(' and ')})`;
 }
 
 function resolveElementString(element: DocElement, doc: Doc): string {
 	const parts = [];
 	if (element.docType === 'event') parts.push(`${bold('(event)')} `);
 	if (element.static) parts.push(`${bold('(static)')} `);
-	parts.push(underscore(bold(escapeMDLinks(element.link ?? ''))));
+	parts.push(underscore(bold(element.link)));
 	if (element.extends) parts.push(formatInheritance('extends', element.extends, doc));
 	if (element.implements) parts.push(formatInheritance('implements', element.implements, doc));
 	if (element.access === 'private') parts.push(` ${bold('PRIVATE')}`);
 	if (element.deprecated) parts.push(` ${bold('DEPRECATED')}`);
 
-	const s = escapeMDLinks(element.formattedDescription ?? element.description ?? '').split('\n');
+	const s = ((element.formattedDescription || element.description) ?? '').split('\n');
 	const description = s.length > 1 ? `${s[0]} ${hyperlink('(more...)', hideLinkEmbed(element.url ?? ''))}` : s[0];
 
 	return `${parts.join('')}\n${description}`;
@@ -77,7 +86,7 @@ export function buildSelectOption(result: DocElement, dev = false): APISelectMen
 	};
 }
 
-export async function fetchDocs(source: string) {
+export async function fetchDocs(source: SourcesStringUnion) {
 	return Doc.fetch(source, { force: true });
 }
 
@@ -89,7 +98,7 @@ export function fetchDocResult({ source, doc, query, target }: FetchDocResultPar
 }
 
 interface FetchDocResultParameters {
-	source: string;
+	source: SourcesStringUnion;
 	doc: Doc;
 	query: string;
 	target?: string;

@@ -4,6 +4,7 @@ import { buildSelectOption, fetchDocResult, fetchDocs } from '#utils/discordjs-d
 import { errorResponse, interactionResponse, selectMenuResponse, sendJson } from '#utils/responseHelpers';
 import { inlineCode } from '@discordjs/builders';
 import type { Snowflake } from 'discord-api-types/v9';
+import type { SourcesStringUnion } from 'discordjs-docs-parser';
 
 export async function djsDocs({ query, response, source, target }: DjsDocsParameters): Promise<FastifyResponse> {
 	const doc = await fetchDocs(source);
@@ -44,7 +45,7 @@ export async function djsDocs({ query, response, source, target }: DjsDocsParame
 
 interface DjsDocsParameters {
 	response: FastifyResponse;
-	source: string;
+	source: SourcesStringUnion;
 	query: string;
 	target: Snowflake;
 }

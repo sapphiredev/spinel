@@ -6,6 +6,7 @@ import { interactionResponse, sendJson } from '#utils/responseHelpers';
 import { fetch, FetchMethods } from '@sapphire/fetch';
 import type { Snowflake } from 'discord-api-types/v9';
 import { InteractionResponseType, RouteBases, Routes } from 'discord-api-types/v9';
+import type { SourcesStringUnion } from 'discordjs-docs-parser';
 
 export async function handleDjsDocsSelectMenu({
 	response,
@@ -43,7 +44,7 @@ export async function handleDjsDocsSelectMenu({
 
 interface HandleDjsDocsSelectMenuParameters {
 	response: FastifyResponse;
-	source: string;
+	source: SourcesStringUnion;
 	token: string;
 	selectedValue: string;
 	target?: Snowflake;

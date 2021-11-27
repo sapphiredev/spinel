@@ -46,7 +46,7 @@
 		"@skyra/jaro-winkler": "^1.0.0",
 		"colorette": "^2.0.16",
 		"discord-api-types": "^0.24.0",
-		"discord.js-docs": "teeseal/discord.js-docs",
+		"discordjs-docs-parser": "^1.0.0",
 		"dotenv-cra": "^3.0.2",
 		"fastify": "^3.24.0",
 		"he": "^1.2.0",
@@ -102,7 +102,8 @@
 		}
 	},
 	"resolutions": {
-		"ansi-regex": "^5.0.1"
+		"ansi-regex": "^5.0.1",
+		"discordjs-docs-parser": "portal:/F:/dev/favna/discordjs-docs-parser"
 	},
 	"prettier": "@sapphire/prettier-config",
 	"eslintConfig": {

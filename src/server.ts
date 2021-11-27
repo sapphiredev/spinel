@@ -26,6 +26,7 @@ import type {
 	Snowflake
 } from 'discord-api-types/v9';
 import { InteractionResponseType, InteractionType } from 'discord-api-types/v9';
+import type { SourcesStringUnion } from 'discordjs-docs-parser';
 import Fastify from 'fastify';
 
 const fastify = Fastify({ logger: true });
@@ -80,7 +81,7 @@ fastify.post('/', async (req, res) => {
 					case 'djs':
 						return djsDocs({
 							response: res,
-							source: cast<string>(args.source ?? 'stable'),
+							source: cast<SourcesStringUnion>(args.source ?? 'stable'),
 							query: cast<string>(args.query).trim(),
 							target: cast<Snowflake>(args.target)
 						});
@@ -151,7 +152,13 @@ fastify.post('/', async (req, res) => {
 
 			switch (op as SelectMenuOpCodes) {
 				case 'docsearch': {
-					await handleDjsDocsSelectMenu({ response: res, selectedValue: selected[0], token, target, source });
+					await handleDjsDocsSelectMenu({
+						response: res,
+						selectedValue: selected[0],
+						token,
+						target,
+						source: cast<SourcesStringUnion>(source)
+					});
 					return res.status(200);
 				}
 				case 'tag': {

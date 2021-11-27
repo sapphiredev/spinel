@@ -102,8 +102,7 @@
 		}
 	},
 	"resolutions": {
-		"ansi-regex": "^5.0.1",
-		"discordjs-docs-parser": "portal:/F:/dev/favna/discordjs-docs-parser"
+		"ansi-regex": "^5.0.1"
 	},
 	"prettier": "@sapphire/prettier-config",
 	"eslintConfig": {

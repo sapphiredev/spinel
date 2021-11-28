@@ -1021,7 +1021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/eslint-config@npm:^4.0.5":
+"@sapphire/eslint-config@npm:^4.0.7":
   version: 4.0.7
   resolution: "@sapphire/eslint-config@npm:4.0.7"
   dependencies:
@@ -1045,7 +1045,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/prettier-config@npm:^1.2.4":
+"@sapphire/prettier-config@npm:^1.2.4, @sapphire/prettier-config@npm:^1.2.6":
   version: 1.2.6
   resolution: "@sapphire/prettier-config@npm:1.2.6"
   dependencies:
@@ -1063,11 +1063,11 @@ __metadata:
     "@discordjs/builders": ^0.7.0
     "@discordjs/collection": ^0.3.2
     "@ltd/j-toml": ^1.24.0
-    "@sapphire/eslint-config": ^4.0.5
+    "@sapphire/eslint-config": ^4.0.7
     "@sapphire/fetch": ^2.0.3
-    "@sapphire/prettier-config": ^1.2.4
+    "@sapphire/prettier-config": ^1.2.6
     "@sapphire/time-utilities": ^1.4.9
-    "@sapphire/ts-config": ^3.1.4
+    "@sapphire/ts-config": ^3.1.6
     "@sapphire/utilities": ^3.1.0
     "@skyra/jaro-winkler": ^1.0.0
     "@types/he": ^1.1.2
@@ -1110,7 +1110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/ts-config@npm:^3.1.4":
+"@sapphire/ts-config@npm:^3.1.6":
   version: 3.1.6
   resolution: "@sapphire/ts-config@npm:3.1.6"
   dependencies:

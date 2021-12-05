@@ -41,7 +41,7 @@
 		"@discordjs/collection": "^0.3.2",
 		"@ltd/j-toml": "^1.24.0",
 		"@sapphire/fetch": "^2.0.3",
-		"@sapphire/time-utilities": "^1.4.9",
+		"@sapphire/time-utilities": "^1.5.0",
 		"@sapphire/utilities": "^3.1.0",
 		"@skyra/jaro-winkler": "^1.0.0",
 		"colorette": "^2.0.16",

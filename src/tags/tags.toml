@@ -71,7 +71,7 @@ The best coding font is <https://github.com/tonsky/FiraCode>
 [guide]
 keywords = ["guide", "how to"]
 content = """
-The guide for Sapphire and its many utilities, plugins and related libraries can be found on [our website](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started>)
+The guide for Sapphire and its many utilities, plugins and related libraries can be found on [our website](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>)
 """
 
 [jsfirstbotlater]

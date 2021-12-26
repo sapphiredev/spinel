@@ -1,4 +1,6 @@
 import { verifyDiscordInteraction } from '#api/verifyDiscordInteraction';
+import { djsDocsAutocomplete } from '#autocomplete/djs-docs-autocomplete';
+import { tagsAutocomplete } from '#autocomplete/tags-autocomplete';
 import { discordDeveloperDocs } from '#commands/discordDeveloperDocs';
 import { djsDocs } from '#commands/djsDocs';
 import { djsGuide } from '#commands/djsGuide';
@@ -16,16 +18,16 @@ import { cast, FailPrefix } from '#constants/constants';
 import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from '#select-menus/tag-menu';
 import { errorResponse, sendJson } from '#utils/responseHelpers';
-import type {
-	APIChatInputApplicationCommandInteraction,
-	APIInteraction,
-	APIMessageSelectMenuInteractionData,
-	ApplicationCommandInteractionDataOptionInteger,
-	ApplicationCommandInteractionDataOptionString,
-	ApplicationCommandInteractionDataOptionUser,
-	Snowflake
+import {
+	InteractionResponseType,
+	InteractionType,
+	type APIApplicationCommandOptionChoice,
+	type APIChatInputApplicationCommandInteraction,
+	type APIInteraction,
+	type APIMessageSelectMenuInteractionData,
+	type APIUser,
+	type Snowflake
 } from 'discord-api-types/v9';
-import { InteractionResponseType, InteractionType } from 'discord-api-types/v9';
 import type { SourcesStringUnion } from 'discordjs-docs-parser';
 import Fastify from 'fastify';
 
@@ -55,9 +57,9 @@ fastify.post('/', async (req, res) => {
 				const args = Object.fromEntries(
 					cast<
 						Array<
-							| ApplicationCommandInteractionDataOptionString
-							| ApplicationCommandInteractionDataOptionUser
-							| ApplicationCommandInteractionDataOptionInteger
+							| APIApplicationCommandOptionChoice<string>
+							| APIApplicationCommandOptionChoice<number>
+							| APIApplicationCommandOptionChoice<APIUser>
 						>
 					>(options).map(({ name, value }) => [name, value])
 				);
@@ -168,6 +170,30 @@ fastify.post('/', async (req, res) => {
 			}
 		}
 
+		if (json.type === InteractionType.ApplicationCommandAutocomplete) {
+			let {
+				data: { options, name }
+			} = cast<APIChatInputApplicationCommandInteraction>(json);
+
+			options ??= [];
+
+			const args = Object.fromEntries(cast<Array<APIApplicationCommandOptionChoice<string>>>(options).map(({ name, value }) => [name, value]));
+
+			switch (name as RegisteredSlashiesWithAutocomplete) {
+				case 'djs':
+					return djsDocsAutocomplete({
+						response: res,
+						source: cast<SourcesStringUnion>(args.source ?? 'stable'),
+						query: cast<string>(args.query).trim()
+					});
+				case 'tag':
+					return tagsAutocomplete({
+						response: res,
+						query: cast<string>(args.query).trim()
+					});
+			}
+		}
+
 		return sendJson(
 			res,
 			errorResponse({
@@ -189,5 +215,6 @@ export async function start() {
 }
 
 type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'sapphire' | 'tag' | 'tag-search' | 'ddocs';
+type RegisteredSlashiesWithAutocomplete = 'djs' | 'tag';
 type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta' | 'reload-tags';
 type SelectMenuOpCodes = 'tag' | 'docsearch';

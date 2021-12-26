@@ -9,6 +9,7 @@ const data = parseToml(file, 1.0, '\n');
 
 /** @type {import('../src/lib/types/Tags').Conflict[]} */
 const conflicts = [];
+let hoisted = 0;
 
 for (const [key, value] of Object.entries(data)) {
 	/** @type {import('../src/lib/types/Tags').Tag} */
@@ -32,6 +33,10 @@ for (const [key, value] of Object.entries(data)) {
 			conflictKeyWords: conflictLinks,
 			type: 'unescapedLink'
 		});
+	}
+
+	if (v.hoisted) {
+		hoisted++;
 	}
 
 	for (const [otherKey, otherValue] of Object.entries(data)) {
@@ -74,7 +79,7 @@ for (const [key, value] of Object.entries(data)) {
 	}
 }
 
-if (conflicts.length) {
+if (conflicts.length || hoisted > 20) {
 	const parts = [];
 	const { uniqueConflicts, headerConflicts, emptyConflicts, linkConflicts } = conflicts.reduce(
 		(a, c) => {
@@ -131,6 +136,10 @@ if (conflicts.length) {
 				.map((c, i) => red(`${i}. tag: ${c.firstName}: ${c.conflictKeyWords.join(', ')}`))
 				.join('\n')}`
 		);
+	}
+
+	if (hoisted > 20) {
+		parts.push(`Amount of hoisted tags exceeds 20 (is ${hoisted})`);
 	}
 
 	console.error(parts.join('\n\n'));

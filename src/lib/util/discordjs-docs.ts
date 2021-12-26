@@ -17,8 +17,7 @@ import { suggestionString } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
 import { cutText, filterNullishOrEmpty, isNullishOrEmpty } from '@sapphire/utilities';
 import type { APISelectMenuOption } from 'discord-api-types/v9';
-import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
-import { Doc, DocTypes } from 'discordjs-docs-parser';
+import { Doc, DocTypes, type DocElement, type SourcesStringUnion } from 'discordjs-docs-parser';
 
 function docTypeEmojiId(docType: DocTypes | null, dev = false): string {
 	switch (docType) {

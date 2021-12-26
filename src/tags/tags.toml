@@ -3,6 +3,7 @@ keywords = ["apidocs", "docs", "api"]
 content = """
 ***__Documentation can be found on [our website](<https://www.sapphirejs.dev/docs/General/Welcome>)__***
 """
+hoisted = true
 
 [djsquestions]
 keywords = ["djsquestions", "djs", "discordjs"]
@@ -17,6 +18,7 @@ When asking for help, make sure to provide as much detail as possible. What have
 > ❯ For a good guide on how to ask questions, see [the instructions that StackOverflow gives](<https://stackoverflow.com/help/how-to-ask>). You should try to always follow these guidelines.
 > ❯ For an excellent video that shows how **not** to ask technical questions is this, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>). 
 """
+hoisted = true
 
 [bots]
 keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples"]
@@ -47,6 +49,7 @@ content = """
 **ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
 **ⱽ²** Bot has been updated for Sapphire Framework V2
 """
+hoisted = true
 
 [dotnetfirstjslater]
 keywords = ["dotnetfirstjslater"]
@@ -72,6 +75,7 @@ keywords = ["guide", "how to"]
 content = """
 The guide for Sapphire and its many utilities, plugins and related libraries can be found on [our website](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>)
 """
+hoisted = true
 
 [jsfirstbotlater]
 keywords = ["jsfirstbotlater", "must know js"]
@@ -116,6 +120,7 @@ keywords = ["showcode", "talk is cheap, show me the code", "show the code"]
 content = """
 https://cdn.favware.tech/img/talkischeap.png
 """
+hoisted = true
 
 [moduleaug]
 keywords = ["moduleaug", "module augmentation", "typescript declare module", "declare module"]
@@ -126,6 +131,7 @@ If you're adding custom properties to your Client class and you want them to be 
 
 For more information on module augmentation see: <https://www.typescriptlang.org/docs/handbook/declaration-merging.html>
 """
+hoisted = true
 
 [slashies]
 keywords = ["slashies"]

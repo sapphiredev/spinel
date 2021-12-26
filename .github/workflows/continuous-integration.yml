@@ -26,8 +26,8 @@ jobs:
       - name: Run ESLint
         run: yarn lint --fix=false
 
-  Building:
-    name: Compile source code
+  TypeChecking:
+    name: Typecheck source code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
@@ -42,7 +42,24 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install Dependencies
         run: yarn --immutable
-      - name: Build Code (tsc)
+      - name: Typecheck Code
+        run: yarn typecheck
+
+  Building:
+    name: Build source code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2
+      - name: Use Node.js v16
+        uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2
+        with:
+          node-version: 16
+          cache: yarn
+          registry-url: https://registry.npmjs.org/
+      - name: Install Dependencies
+        run: yarn --immutable
+      - name: Build Code
         run: yarn build
 
   ValidateTags:

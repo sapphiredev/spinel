@@ -2,10 +2,9 @@ import { FetchUserAgent } from '#constants/constants';
 import { envParseString } from '#env/utils';
 import type { FastifyResponse } from '#types/Api';
 import { fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
-import { interactionResponse, sendJson } from '#utils/responseHelpers';
+import { sendJson, updateResponse } from '#utils/responseHelpers';
 import { fetch, FetchMethods } from '@sapphire/fetch';
-import type { Snowflake } from 'discord-api-types/v9';
-import { InteractionResponseType, RouteBases, Routes } from 'discord-api-types/v9';
+import { RouteBases, Routes, type Snowflake } from 'discord-api-types/v9';
 import type { SourcesStringUnion } from 'discordjs-docs-parser';
 
 export async function handleDjsDocsSelectMenu({
@@ -20,9 +19,8 @@ export async function handleDjsDocsSelectMenu({
 	return Promise.allSettled([
 		sendJson(
 			response,
-			interactionResponse({
+			updateResponse({
 				content: 'Documentation entry sent',
-				type: InteractionResponseType.UpdateMessage,
 				extraData: {
 					components: []
 				}

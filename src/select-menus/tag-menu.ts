@@ -1,11 +1,10 @@
 import { FetchUserAgent } from '#constants/constants';
 import { envParseString } from '#env/utils';
 import type { FastifyResponse } from '#types/Api';
-import { interactionResponse, sendJson } from '#utils/responseHelpers';
+import { sendJson, updateResponse } from '#utils/responseHelpers';
 import { findTag } from '#utils/tags';
 import { fetch, FetchMethods } from '@sapphire/fetch';
-import type { Snowflake } from 'discord-api-types/v9';
-import { InteractionResponseType, RouteBases, Routes } from 'discord-api-types/v9';
+import { RouteBases, Routes, type Snowflake } from 'discord-api-types/v9';
 
 export async function handleTagSelectMenu({
 	response,
@@ -16,9 +15,8 @@ export async function handleTagSelectMenu({
 	return Promise.allSettled([
 		sendJson(
 			response,
-			interactionResponse({
+			updateResponse({
 				content: 'Tag sent',
-				type: InteractionResponseType.UpdateMessage,
 				extraData: {
 					components: []
 				}

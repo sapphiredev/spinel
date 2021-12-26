@@ -54,6 +54,7 @@ const djsDocsCommand = new SlashCommandBuilder() //
 			.setName('query')
 			.setDescription('The phrase to search for')
 			.setRequired(true)
+			.setAutocomplete(true)
 	)
 	.addStringOption((builder) =>
 		builder //
@@ -175,6 +176,7 @@ const tagCommand = new SlashCommandBuilder() //
 			.setName('query')
 			.setDescription('The name or alias of the tag to send')
 			.setRequired(true)
+			.setAutocomplete(true)
 	)
 	.addUserOption((builder) =>
 		builder //

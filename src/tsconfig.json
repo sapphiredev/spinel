@@ -1,10 +1,10 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
-		"outDir": "../dist",
+		"outDir": "../dist-tsc",
 		"rootDir": ".",
 		"baseUrl": ".",
-		"noEmit": true,
+		"composite": true,
 		"paths": {
 			"#utils/*": ["lib/util/*"],
 			"#types/*": ["lib/types/*"],
@@ -12,6 +12,7 @@
 			"#api/*": ["lib/api/*"],
 			"#env/*": ["lib/env/*"],
 			"#select-menus/*": ["select-menus/*"],
+			"#autocomplete/*": ["autocomplete/*"],
 			"#commands/*": ["commands/*"],
 			"#lib/*": ["lib/*"],
 			"#root/*": ["*"]

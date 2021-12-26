@@ -1,7 +1,5 @@
-import type { Config } from '@jest/types';
-
-// eslint-disable-next-line @typescript-eslint/require-await
-export default async (): Promise<Config.InitialOptions> => ({
+/** @type {import('@jest/types').Config.InitialOptions} */
+const config = {
 	displayName: 'unit test',
 	testEnvironment: 'node',
 	testRunner: 'jest-circus/runner',
@@ -21,4 +19,6 @@ export default async (): Promise<Config.InitialOptions> => ({
 		'^#select-menus/(.*)$': '<rootDir>/src/select-menus/$1',
 		'^#root/(.*)$': '<rootDir>/src/$1'
 	}
-});
+};
+
+export default config;

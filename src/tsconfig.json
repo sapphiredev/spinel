@@ -1,10 +1,10 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
-		"outDir": "../dist",
+		"outDir": "../dist-tsc",
 		"rootDir": ".",
 		"baseUrl": ".",
-		"noEmit": true,
+		"composite": true,
 		"paths": {
 			"#utils/*": ["lib/util/*"],
 			"#types/*": ["lib/types/*"],

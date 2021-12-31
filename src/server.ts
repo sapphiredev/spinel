@@ -15,6 +15,7 @@ import { searchTag } from '#commands/searchTag';
 import { slashiesEta } from '#commands/slashiesEta';
 import { showTag } from '#commands/tags';
 import { cast, FailPrefix } from '#constants/constants';
+import { envParseString } from '#env/utils';
 import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from '#select-menus/tag-menu';
 import { errorResponse, sendJson } from '#utils/responseHelpers';
@@ -31,7 +32,7 @@ import {
 import type { SourcesStringUnion } from 'discordjs-docs-parser';
 import Fastify from 'fastify';
 
-const fastify = Fastify({ logger: true });
+const fastify = Fastify({ logger: { level: envParseString('NODE_ENV') === 'production' ? 'info' : 'debug' } });
 
 fastify.post('/', async (req, res) => {
 	const interactionInvalid = verifyDiscordInteraction(req);

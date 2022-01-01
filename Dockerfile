@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 
 ENV HUSKY=0
 ENV CI=true
+ENV LOG_LEVEL=info
 
 RUN apk add --no-cache dumb-init
 

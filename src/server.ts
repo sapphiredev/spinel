@@ -32,7 +32,7 @@ import {
 import type { SourcesStringUnion } from 'discordjs-docs-parser';
 import Fastify from 'fastify';
 
-const fastify = Fastify({ logger: { level: envParseString('NODE_ENV') === 'production' ? 'info' : 'debug' } });
+const fastify = Fastify({ logger: { level: process.env.LOG_LEVEL ?? 'debug' } });
 
 fastify.post('/', async (req, res) => {
 	const interactionInvalid = verifyDiscordInteraction(req);

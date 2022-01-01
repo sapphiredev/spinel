@@ -15,7 +15,6 @@ import { searchTag } from '#commands/searchTag';
 import { slashiesEta } from '#commands/slashiesEta';
 import { showTag } from '#commands/tags';
 import { cast, FailPrefix } from '#constants/constants';
-import { envParseString } from '#env/utils';
 import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from '#select-menus/tag-menu';
 import { errorResponse, sendJson } from '#utils/responseHelpers';

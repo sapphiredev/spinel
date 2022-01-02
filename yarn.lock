@@ -1059,7 +1059,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.8.1
     colorette: ^2.0.16
     cz-conventional-changelog: ^3.3.0
-    discord-api-types: ^0.26.0
+    discord-api-types: ^0.26.1
     discordjs-docs-parser: ^1.1.0
     dotenv-cra: ^3.0.2
     esbuild-jest: ^0.5.0
@@ -2802,6 +2802,13 @@ __metadata:
   version: 0.26.0
   resolution: "discord-api-types@npm:0.26.0"
   checksum: 5c2a3f7309fec3830a8da5e98e5260b25304512ae856c770d783492aa4a8c514a64025bb30ceda0c4381bc749db9545c0d7d5573fa0d60bb1718add27c8b4d7d
+  languageName: node
+  linkType: hard
+
+"discord-api-types@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "discord-api-types@npm:0.26.1"
+  checksum: e53bfa7589b24108e6b403dbe213da34c4592f72e2b8fde6800dcb6c703065887ecbd644e1cdf694e4c7796954bc51462ced868f26ec45dc1e0dc4fa8d3c723c
   languageName: node
   linkType: hard
 

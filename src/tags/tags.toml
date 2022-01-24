@@ -28,9 +28,7 @@ content = """
 - [**Official Bot Examples** **¹** **²** **⁴** **⁵** **ᴶˢ** **ⱽ²**](<https://github.com/sapphiredev/examples>)
 
 - [**Alestra** **⁵**](<https://github.com/skyra-project/alestra>)
-- [**Archangel** **¹** **²** **⁴** **⁵** **ⱽ²**](<https://github.com/favware/archangel>)
 - [**Evlyn** **⁵**](<https://github.com/skyra-project/evlyn>)
-- [**Godfather** **¹** **³** **⁵**](<https://github.com/Stitch07/godfather>)
 - [**Materia** **²** **⁴** **ⱽ²**](<https://github.com/RealShadowNova/materia>)
 - [**Pengu**](<https://github.com/PenguBot/bot-sapphire>)
 - [**RTByte** **²** **³** **⁴** **ⱽ²**](<https://github.com/RTByte/rtbyte>)
@@ -41,13 +39,30 @@ content = """
 - [**Varrock-Stray-Dog** **⁵**](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)
 - [**YliasDiscordBot** **³** **⁴** **ⱽ²**](<https://github.com/FrenchDiscord/YliasDiscordBot>)
 
-**¹**: Uses [ESBuild](<https://esbuild.github.io>) to compile
+**¹**: Uses [TSup](<https://github.com/egoist/tsup>) to compile
 **²**: Uses ESM (if not specified then uses CJS)
 **³**: Advanced bot (if not specified it is a simple bot, or not graded)
 **⁴**: Actively developed / maintained with latest Sapphire changes
 **⁵**: Uses Docker in production
 **ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
 **ⱽ²** Bot has been updated for Sapphire Framework V2
+"""
+hoisted = true
+
+[slashbots]
+keywords = ["slashbots", "chat input bots", "slash commands", "application commands"]
+content = """
+***__Discord bots that use @sapphire/framework@next and leverage Application Commands and Interaction Handlers__***
+
+- [**Archangel** **¹** **²** **⁴** **⁵**](<https://github.com/favware/archangel>)
+- [**Dragonite** **¹** **²** **⁴** **⁵**](<https://github.com/favware/dragonite>)
+- [**Sapphire Application Commands Examples** **²**](<https://github.com/vladfrangu/sapphire-application-commands-examples>)
+
+**¹**: Uses [TSup](<https://github.com/egoist/tsup>) to compile
+**²**: Uses ESM (if not specified then uses CJS)
+**³**: Advanced bot (if not specified it is a simple bot, or not graded)
+**⁴**: Actively developed / maintained with latest Sapphire changes
+**⁵**: Uses Docker in production
 """
 hoisted = true
 

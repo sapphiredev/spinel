@@ -22,6 +22,7 @@ describe('findSimilar', () => {
 
 		expect(foundTags).toEqual([
 			{ word: 'npm v7', distance: 0.8833333333333334, name: 'legacy-deps' },
+			{ word: 'chat input bots', distance: 0.6, name: 'slashbots' },
 			{
 				word: 'hostingproviders',
 				distance: 0.5972222222222222,
@@ -32,8 +33,7 @@ describe('findSimilar', () => {
 				word: 'moduleaug',
 				distance: 0.48148148148148145,
 				name: 'moduleaug'
-			},
-			{ word: 'examples', distance: 0.47222222222222215, name: 'bots' }
+			}
 		]);
 	});
 
@@ -66,9 +66,9 @@ describe('findSimilar', () => {
 			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' },
 			{ word: 'asking', distance: 0.5650205761316872, name: 'asking' },
 			{
-				word: 'hosting',
-				distance: 0.5526161081716637,
-				name: 'hostingproviders'
+				word: 'slashbots',
+				distance: 0.5555555555555556,
+				name: 'slashbots'
 			}
 		]);
 	});

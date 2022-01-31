@@ -6,7 +6,7 @@
 
 **Slash Commands handler Sapphire Discord server.**
 
-[![GitHub](https://img.shields.io/github/license/sapphiredev/sapphire-slashies)](https://github.com/sapphiredev/sapphire-slashies/blob/main/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/sapphiredev/sapphire-application-commands)](https://github.com/sapphiredev/sapphire-application-commands/blob/main/LICENSE.md)
 
 </div>
 

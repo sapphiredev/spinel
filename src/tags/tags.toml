@@ -33,7 +33,7 @@ content = """
 - [**Pengu**](<https://github.com/PenguBot/bot-sapphire>)
 - [**RTByte** **²** **³** **⁴** **ⱽ²**](<https://github.com/RTByte/rtbyte>)
 - [**Sapphire**](<https://github.com/KunoichiZ/Sapphire>)
-- [**Spectera** **¹** **²** **³** **⁴** **ⱽ²**](<https://github.com/SpecteraLabs/Spectera>)
+- [**Spectera** **¹** **³** **⁴** **ⱽ²**](<https://github.com/SpecteraLabs/Spectera>)
 - [**Skyra** **³** **⁴** **⁵** **ⱽ²**](<https://github.com/skyra-project/skyra>)
 - [**Syrus** **ᴶˢ**](<https://github.com/syrus-bot/syrus-bot>)
 - [**Varrock-Stray-Dog** **⁵**](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)
@@ -58,6 +58,7 @@ content = """
 - [**Arima** **¹** **²** **⁴**](<https://github.com/arimajs/Arima>)
 - [**Dragonite** **¹** **²** **⁴** **⁵**](<https://github.com/favware/dragonite>)
 - [**Sapphire Application Commands Examples** **²**](<https://github.com/vladfrangu/sapphire-application-commands-examples>)
+- [**Spectera** **¹** **³** **⁴**](<https://github.com/SpecteraLabs/Spectera>)
 
 **¹**: Uses [TSup](<https://github.com/egoist/tsup>) to compile
 **²**: Uses ESM (if not specified then uses CJS)

@@ -152,12 +152,7 @@ hoisted = true
 [slashies]
 keywords = ["slashies"]
 content = """
-Sapphire Framework currently does not have Slash Command support. That said however, no one is stopping you from just using what is built into DiscordJS. You can view the following examples on how to do so:
-- [**Sapphire-slashies-example**](<https://github.com/YorkAARGH/Sapphire-slashies-example>) from <@!146048938242211840>
-- [**Sapphire-SlashCommands**](<https://github.com/UndiedGamer/Sapphire-SlashCommands>) from <@!564468550727761920>
-- [**Ylias**](<https://github.com/StariusTechnologies/Ylias>) from <@!141288766760288256>
-
-There is currently no ETA as to when Sapphire _will_ have native Slash Command support, but we can guarantee you that it will be _before_ Message Intent will be enforced for **verified** bots **that have not applied for / have not (yet) received Message Intent**
+Slash Commands are here! To get them up and running, just install `@sapphire/framework@next` with your preferred package manager, and check out the current [documentation](<https://vladfrangu.notion.site/Application-Commands-3d1683f23f0a4fa6b3e682bc8c1cc1b9>) for more info on how to use them.
 """
 
 [i18n]

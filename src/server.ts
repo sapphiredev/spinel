@@ -12,7 +12,6 @@ import { ping } from '#commands/ping';
 import { reloadTags } from '#commands/reloadTags';
 import { sapphireDocs } from '#commands/sapphireDocs';
 import { searchTag } from '#commands/searchTag';
-import { slashiesEta } from '#commands/slashiesEta';
 import { showTag } from '#commands/tags';
 import { cast, FailPrefix } from '#constants/constants';
 import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
@@ -135,10 +134,6 @@ fastify.post('/', async (req, res) => {
 					return res.send(ping(id));
 				case 'invite':
 					return res.send(invite());
-				case 'slashies-eta':
-					return slashiesEta({
-						response: res
-					});
 				case 'reload-tags':
 					return reloadTags({
 						response: res,
@@ -216,5 +211,5 @@ export async function start() {
 
 type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'sapphire' | 'tag' | 'tag-search' | 'ddocs';
 type RegisteredSlashiesWithAutocomplete = 'djs' | 'tag';
-type RegisteredSlashies = 'ping' | 'invite' | 'slashies-eta' | 'reload-tags';
+type RegisteredSlashies = 'ping' | 'invite' | 'reload-tags';
 type SelectMenuOpCodes = 'tag' | 'docsearch';

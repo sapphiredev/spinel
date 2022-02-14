@@ -10,11 +10,6 @@ const pingCommand = new SlashCommandBuilder() //
 	.setDescription('Sends a ping and gets a pong back!')
 	.toJSON();
 
-const slashiesEtaCommand = new SlashCommandBuilder() //
-	.setName('slashies-eta')
-	.setDescription('Lets you know when Slash Command Support is landing in @sapphire/framework')
-	.toJSON();
-
 const sapphireDocsCommand = new SlashCommandBuilder() //
 	.setName('sapphire')
 	.setDescription('Search Sapphire guides and documentation')
@@ -236,7 +231,6 @@ const reloadTagsCommand = new SlashCommandBuilder() //
 const commands = [
 	inviteCommand,
 	pingCommand,
-	slashiesEtaCommand,
 	sapphireDocsCommand,
 	djsDocsCommand,
 	djsGuideCommand,

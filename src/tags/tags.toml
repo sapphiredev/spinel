@@ -224,3 +224,18 @@ It is not possible for us to deliver a help command that complies to all those p
 
 Therefore, everyone will eventually replace the built-in one with their own, so why take the effort?
 """
+
+[regular-problems]
+keywords = ["regular-problems", "commands no working", "pieces no working", "listeners no working"]
+content = """
+Often users have the problem that the commands, listeners, and other pieces do not work. This is often due to common causes related to the core setup of a Sapphire Framework bot. For the person having the issues, it is important for us helping you that you mention the following information so we can provide better support for your issue.
+
+- Did you use a folder of the [examples](<https://github.com/sapphiredev/examples>) repository or did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
+- What's your file/folder structure?
+- What's your "main" property in `package.json`
+- Are you using TypeScript? And if so, how are you compiling and running your code?
+- Are you using the `@latest` or `@next` version of `@sapphire/framework`?
+
+Remember that if you are new to `@sapphire/framework` it is important that you read the [user guide](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>).
+
+"""

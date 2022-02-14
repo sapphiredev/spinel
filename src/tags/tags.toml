@@ -226,7 +226,7 @@ Therefore, everyone will eventually replace the built-in one with their own, so 
 """
 
 [regular-problems]
-keywords = ["commands no working", "pieces no working", "listeners no working"]
+keywords = ["regular-problems", "commands no working", "pieces no working", "listeners no working"]
 content = """
 Regularly some users have the problem that the commands, listeners or some piece does not work, this can be due to some causes, it is important that you mention the following information to have a better feedback of the problem.
 

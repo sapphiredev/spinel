@@ -152,7 +152,7 @@ hoisted = true
 [slashies]
 keywords = ["slashies"]
 content = """
-Slash Commands are here! To get them up and running, just install `@sapphire/framework@next` with your preferred package manager, and check out the current [documentation](<https://vladfrangu.notion.site/Application-Commands-3d1683f23f0a4fa6b3e682bc8c1cc1b9>) for more info on how to use them.
+Slash Commands are here! To get them up and running, just install `@sapphire/framework@next` with your preferred package manager, and check out the current [documentation](<https://vladfrangu.notion.site/Application-Commands-3d1683f23f0a4fa6b3e682bc8c1cc1b9>) for more information on how to use them.
 """
 
 [i18n]

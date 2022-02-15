@@ -1,8 +1,8 @@
-import { gql } from '#constants/constants';
+import { FetchUserAgent, preferredRepositories } from '#constants/constants';
 import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrMerged, GhPrOpen } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit';
-import { FetchUserAgent, preferredRepositories } from '#utils/utils';
+import { gql } from '#utils/utils';
 import { time, TimestampStyles } from '@discordjs/builders';
 import { AutoCompleteLimits } from '@sapphire/discord-utilities';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';

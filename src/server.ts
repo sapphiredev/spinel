@@ -15,10 +15,11 @@ import { reloadTags } from '#commands/reloadTags';
 import { sapphireDocs } from '#commands/sapphireDocs';
 import { searchTag } from '#commands/searchTag';
 import { showTag } from '#commands/tags';
-import { cast, FailPrefix } from '#constants/constants';
+import { FailPrefix } from '#constants/constants';
 import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from '#select-menus/tag-menu';
 import { errorResponse, sendJson } from '#utils/responseHelpers';
+import { cast } from '#utils/utils';
 import {
 	InteractionResponseType,
 	InteractionType,

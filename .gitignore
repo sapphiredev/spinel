@@ -8,9 +8,9 @@ node_modules/
 .yarn/install-state.gz
 .yarn/build-state.yml
 
-# Output directory
-api/
+# Output directories
 dist/
+dist-tsc/
 
 # Ignore heapsnapshot and log files
 *.heapsnapshot

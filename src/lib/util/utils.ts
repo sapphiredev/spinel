@@ -1,6 +1,4 @@
 import { userMention } from '@discordjs/builders';
-import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v9';
-import os from 'node:os';
 
 export function suggestionString(suggestionType: string, guaranteed?: string, target?: string): string {
 	const messageParts = [];
@@ -23,15 +21,19 @@ export function suggestionString(suggestionType: string, guaranteed?: string, ta
 	return messageParts.join('');
 }
 
-export const FetchUserAgent = `Sapphire Application Commands/1.0.0 (node-fetch) ${os.platform()}/${os.release()} (https://github.com/sapphiredev/sapphire-application-commands/tree/main)`;
+export function cast<T>(value: unknown): T {
+	return value as T;
+}
 
-export const preferredRepositories: APIApplicationCommandOptionChoice[] = [
-	/* 01 */ { name: '📌 Sapphire Framework', value: 'framework' },
-	/* 02 */ { name: '📌 Sapphire Utilities', value: 'utilities' },
-	/* 03 */ { name: '📌 Sapphire Plugins', value: 'plugins' },
-	/* 04 */ // { name: '📌 Awesome Sapphire', value: 'awesome-sapphire' }, // TODO: Enable when the repository has been created
-	/* 05 */ { name: '📌 Sapphire Pieces', value: 'pieces' },
-	/* 07 */ { name: '📌 Sapphire Website', value: 'website' },
-	/* 08 */ { name: '📌 Sapphire CLI', value: 'cli' },
-	/* 06 */ { name: '📌 Shapeshift', value: 'shapeshift' }
-];
+/**
+ * Fake GraphQL tag that just returns everything passed in as a single combined string
+ * @remark used to trick the GraphQL parser into treating some code as GraphQL parseable data for syntax checking
+ * @param gqlData data to pass off as GraphQL code
+ */
+export function gql(...args: any[]): string {
+	return args[0].reduce((acc: string, str: string, idx: number) => {
+		acc += str;
+		if (Reflect.has(args, idx + 1)) acc += args[idx + 1];
+		return acc;
+	}, '');
+}

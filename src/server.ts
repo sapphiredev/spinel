@@ -198,14 +198,16 @@ fastify.post('/', async (req, res) => {
 						case 'repository':
 							return ghRepoAutocomplete({
 								response: res,
-								repository: cast<string>(args.repository).trim()
+								repository: cast<string>(args.repository).trim(),
+								guildId: guild_id
 							});
 						case 'number':
 							return ghIssuePrAutocomplete({
 								response: res,
 								repository: cast<string>(args.repository).trim(),
 								owner: cast<string>(args.owner ?? getKnownGitHubOrganizationsForServerId(guild_id)).trim(),
-								number: cast<string>(args.number)
+								number: cast<string>(args.number),
+								guildId: guild_id
 							});
 					}
 				}

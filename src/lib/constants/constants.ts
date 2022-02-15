@@ -18,3 +18,9 @@ export const preferredRepositories: APIApplicationCommandOptionChoice[] = [
 	/* 08 */ { name: '📌 Sapphire CLI', value: 'cli' },
 	/* 06 */ { name: '📌 Shapeshift', value: 'shapeshift' }
 ];
+
+export const KnownServerIdsToGitHubOrganizations = new Map<string, string>([
+	['838895946397646850', 'sapphiredev'],
+	['737141877803057244', 'sapphiredev'],
+	['541738403230777351', 'skyra-project']
+]);

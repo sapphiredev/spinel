@@ -19,7 +19,7 @@ import { FailPrefix } from '#constants/constants';
 import { handleDjsDocsSelectMenu } from '#select-menus/djs-docs-menu';
 import { handleTagSelectMenu } from '#select-menus/tag-menu';
 import { errorResponse, sendJson } from '#utils/responseHelpers';
-import { cast } from '#utils/utils';
+import { cast, getKnownGitHubOrganizationsForServerId } from '#utils/utils';
 import {
 	InteractionResponseType,
 	InteractionType,
@@ -52,6 +52,7 @@ fastify.post('/', async (req, res) => {
 			const {
 				id,
 				member,
+				guild_id,
 				data: { options, name }
 			} = cast<APIChatInputApplicationCommandInteraction>(json);
 
@@ -113,7 +114,7 @@ fastify.post('/', async (req, res) => {
 						return githubSearch({
 							response: res,
 							number: cast<number>(args.number),
-							owner: cast<string>(args.owner ?? 'sapphiredev').trim(),
+							owner: cast<string>(args.owner ?? getKnownGitHubOrganizationsForServerId(guild_id)).trim(),
 							repository: cast<string>(args.repository).trim(),
 							target: cast<Snowflake>(args.target)
 						});
@@ -170,7 +171,8 @@ fastify.post('/', async (req, res) => {
 
 		if (json.type === InteractionType.ApplicationCommandAutocomplete) {
 			let {
-				data: { options, name }
+				data: { options, name },
+				guild_id
 			} = cast<APIChatInputApplicationCommandInteraction>(json);
 
 			options ??= [];
@@ -202,7 +204,7 @@ fastify.post('/', async (req, res) => {
 							return ghIssuePrAutocomplete({
 								response: res,
 								repository: cast<string>(args.repository).trim(),
-								owner: cast<string>(args.owner ?? 'sapphiredev').trim(),
+								owner: cast<string>(args.owner ?? getKnownGitHubOrganizationsForServerId(guild_id)).trim(),
 								number: cast<string>(args.number)
 							});
 					}

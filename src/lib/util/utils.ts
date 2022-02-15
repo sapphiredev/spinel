@@ -1,4 +1,6 @@
+import { KnownServerIdsToGitHubOrganizations } from '#constants/constants';
 import { userMention } from '@discordjs/builders';
+import { isNullishOrEmpty } from '@sapphire/utilities';
 
 export function suggestionString(suggestionType: string, guaranteed?: string, target?: string): string {
 	const messageParts = [];
@@ -36,4 +38,14 @@ export function gql(...args: any[]): string {
 		if (Reflect.has(args, idx + 1)) acc += args[idx + 1];
 		return acc;
 	}, '');
+}
+
+export function getKnownGitHubOrganizationsForServerId(serverId?: string) {
+	if (isNullishOrEmpty(serverId)) {
+		return 'sapphiredev';
+	}
+
+	const knownServerId = KnownServerIdsToGitHubOrganizations.get(serverId);
+
+	return knownServerId ?? 'sapphiredev';
 }

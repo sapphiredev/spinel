@@ -1,5 +1,7 @@
 import { verifyDiscordInteraction } from '#api/verifyDiscordInteraction';
 import { djsDocsAutocomplete } from '#autocomplete/djs-docs-autocomplete';
+import { ghIssuePrAutocomplete } from '#autocomplete/gh-issue-pr-autocomplete';
+import { ghRepoAutocomplete } from '#autocomplete/gh-repo-autocomplete';
 import { tagsAutocomplete } from '#autocomplete/tags-autocomplete';
 import { discordDeveloperDocs } from '#commands/discordDeveloperDocs';
 import { djsDocs } from '#commands/djsDocs';
@@ -186,6 +188,24 @@ fastify.post('/', async (req, res) => {
 						response: res,
 						query: cast<string>(args.query).trim()
 					});
+				case 'github': {
+					const focusedArgument = options.find((option) => Reflect.get(option, 'focused'))!;
+
+					switch (focusedArgument.name as GitHubAutoCompleteOptions) {
+						case 'repository':
+							return ghRepoAutocomplete({
+								response: res,
+								repository: cast<string>(args.repository).trim()
+							});
+						case 'number':
+							return ghIssuePrAutocomplete({
+								response: res,
+								repository: cast<string>(args.repository).trim(),
+								owner: cast<string>(args.owner ?? 'sapphiredev').trim(),
+								number: cast<string>(args.number)
+							});
+					}
+				}
 			}
 		}
 
@@ -210,6 +230,7 @@ export async function start() {
 }
 
 type RegisteredSlashiesWithOptions = 'djs-guide' | 'djs' | 'mdn' | 'node' | 'github' | 'sapphire' | 'tag' | 'tag-search' | 'ddocs';
-type RegisteredSlashiesWithAutocomplete = 'djs' | 'tag';
+type RegisteredSlashiesWithAutocomplete = 'djs' | 'tag' | 'github';
 type RegisteredSlashies = 'ping' | 'invite' | 'reload-tags';
 type SelectMenuOpCodes = 'tag' | 'docsearch';
+type GitHubAutoCompleteOptions = 'number' | 'repository';

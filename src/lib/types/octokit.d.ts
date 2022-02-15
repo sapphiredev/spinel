@@ -17,6 +17,10 @@ export interface Query {
 	__typename?: 'Query';
 	/** Lookup a given repository by the owner and repository name. */
 	repository?: Maybe<Repository>;
+	/** Lookup a given repository by the owner and repository name. */
+	repositoryIssuesAndPrs?: Maybe<Repository>;
+	/** Lookup a given repository by the owner and repository name. */
+	search?: Maybe<GraphQLConnection<SearchResultItem>>;
 }
 
 /** A repository contains the content for a project. */
@@ -26,12 +30,18 @@ interface Repository {
 	issue?: Maybe<Issue>;
 	/** The name of the repository. */
 	name: Scalars['String'];
+	/** The repository's name with owner. */
+	nameWithOwner: Scalars['String'];
 	/** The User owner of the repository. */
-	owner: RepositoryOwner; // FIXME: KEEP
+	owner: RepositoryOwner;
 	/** Returns a single pull request from the current repository by number. */
 	pullRequest?: Maybe<PullRequest>;
 	/** The HTTP URL for this repository */
 	url: Scalars['URI'];
+	/** A list of issues that have been opened in the repository. */
+	issues?: Maybe<GraphQLConnection<Issue>>;
+	/** A list of pull requests that have been opened in the repository. */
+	pullRequests?: Maybe<GraphQLConnection<PullRequest>>;
 }
 
 /** Represents an owner of a Repository. */
@@ -89,6 +99,17 @@ interface Actor {
 	/** The HTTP URL for this actor. */
 	url: Scalars['URI'];
 }
+
+/** A list of results that matched against a search query. */
+interface GraphQLConnection<T> {
+	/** The number of repositories that matched the search query. */
+	repositoryCount: number;
+	/** A list of nodes. */
+	nodes: T[];
+}
+
+/** The results of a search. */
+type SearchResultItem = Repository;
 
 interface Scalars {
 	ID: string;

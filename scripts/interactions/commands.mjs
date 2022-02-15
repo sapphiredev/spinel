@@ -139,17 +139,19 @@ const nodeCommand = new SlashCommandBuilder() //
 const githubCommand = new SlashCommandBuilder() //
 	.setName('github')
 	.setDescription('Get information on an issue or pull request from the provided repository')
-	.addIntegerOption((builder) =>
-		builder //
-			.setName('number')
-			.setDescription('The number of the issue or pull request')
-			.setRequired(true)
-	)
 	.addStringOption((builder) =>
 		builder //
 			.setName('repository')
 			.setDescription('The repository where I can find this issue or pull request number')
 			.setRequired(true)
+			.setAutocomplete(true)
+	)
+	.addIntegerOption((builder) =>
+		builder //
+			.setName('number')
+			.setDescription('The number of the issue or pull request')
+			.setRequired(true)
+			.setAutocomplete(true)
 	)
 	.addStringOption((builder) =>
 		builder //

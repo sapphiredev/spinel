@@ -1078,6 +1078,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/discord-utilities@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "@sapphire/discord-utilities@npm:2.8.0"
+  dependencies:
+    twemoji-parser: ^13.1.0
+  checksum: fc537a40599f41425971b326e2d73abe2b821c3bd268b8c0953b6d1e5cc4884557bf723b85fde134c7000735cc0ae0a1fe15bf65f4b8f1f7bfd2fde5955ca3e0
+  languageName: node
+  linkType: hard
+
 "@sapphire/eslint-config@npm:^4.2.0":
   version: 4.2.0
   resolution: "@sapphire/eslint-config@npm:4.2.0"
@@ -1120,6 +1129,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/result@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@sapphire/result@npm:1.0.0"
+  checksum: d72296438975620309da4248ac67a1e863c706bb1e05755709ba02b4c37ec19c968bdb2ab40ed9c15baeb7a082d1b72936a0d736fe1e18bdc7fce9302bb06207
+  languageName: node
+  linkType: hard
+
 "@sapphire/slashies-handler@workspace:.":
   version: 0.0.0-use.local
   resolution: "@sapphire/slashies-handler@workspace:."
@@ -1129,9 +1145,11 @@ __metadata:
     "@discordjs/builders": ^0.12.0
     "@discordjs/collection": ^0.5.0
     "@ltd/j-toml": ^1.29.0
+    "@sapphire/discord-utilities": ^2.8.0
     "@sapphire/eslint-config": ^4.2.0
     "@sapphire/fetch": ^2.1.0
     "@sapphire/prettier-config": ^1.3.0
+    "@sapphire/result": ^1.0.0
     "@sapphire/ts-config": ^3.3.1
     "@sapphire/utilities": ^3.3.0
     "@skyra/jaro-winkler": ^1.0.0
@@ -8167,6 +8185,13 @@ __metadata:
   version: 1.0.3
   resolution: "tweetnacl@npm:1.0.3"
   checksum: e4a57cac188f0c53f24c7a33279e223618a2bfb5fea426231991652a13247bea06b081fd745d71291fcae0f4428d29beba1b984b1f1ce6f66b06a6d1ab90645c
+  languageName: node
+  linkType: hard
+
+"twemoji-parser@npm:^13.1.0":
+  version: 13.1.0
+  resolution: "twemoji-parser@npm:13.1.0"
+  checksum: 8046ce003c03dd92d68c2648cfbfa39c659fca4f05c10da8d14957985dc3c0c680f3ecf2de8245dc1ddffedc5b2a675f2032053e1e77cc7474301a88fe192ad3
   languageName: node
   linkType: hard
 

@@ -10,7 +10,7 @@ ENV HUSKY=0
 ENV CI=true
 ENV LOG_LEVEL=info
 
-RUN apk add --no-cache dumb-init
+# RUN apk add --no-cache dumb-init
 
 COPY --chown=node:node yarn.lock .
 COPY --chown=node:node package.json .
@@ -20,7 +20,7 @@ COPY --chown=node:node .env .env
 
 RUN sed -i 's/"prepare": "husky install .github\/husky"/"prepare": ""/' ./package.json
 
-ENTRYPOINT ["dumb-init", "--"]
+# ENTRYPOINT ["dumb-init", "--"]
 
 # ================ #
 #   Builder Stage  #

@@ -1144,14 +1144,14 @@ __metadata:
     "@typescript-eslint/parser": ^5.12.0
     colorette: ^2.0.16
     cz-conventional-changelog: ^3.3.0
-    discord-api-types: ^0.27.1
+    discord-api-types: ^0.27.2
     discordjs-docs-parser: ^1.1.1
     dotenv-cra: ^3.0.2
     esbuild-jest: ^0.5.0
     eslint: ~8.9.0
-    eslint-config-prettier: ^8.3.0
+    eslint-config-prettier: ^8.4.0
     eslint-plugin-prettier: ^4.0.0
-    fastify: ^3.27.1
+    fastify: ^3.27.2
     he: ^1.2.0
     husky: ^7.0.4
     jest: ^27.5.1
@@ -2923,10 +2923,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discord-api-types@npm:^0.27.1":
-  version: 0.27.1
-  resolution: "discord-api-types@npm:0.27.1"
-  checksum: 5e3473eb01eb3e7ed2b1313513f165644dc70f1f64fb130a50b40394b41c97b1202f4de00b17df34a9f0916269595a091421955bb1e8dbd8e0475637512f2057
+"discord-api-types@npm:^0.27.2":
+  version: 0.27.2
+  resolution: "discord-api-types@npm:0.27.2"
+  checksum: 3849f7975d4d654481609535b6d778856f4af770f4ab8b9b216ee610ffd31b8a0deb2e0b0a7b881490632597a0d2412e84d06bfd268bceb24d01bd1b000bb50a
   languageName: node
   linkType: hard
 
@@ -3306,6 +3306,17 @@ __metadata:
   bin:
     eslint-config-prettier: bin/cli.js
   checksum: df4cea3032671995bb5ab07e016169072f7fa59f44a53251664d9ca60951b66cdc872683b5c6a3729c91497c11490ca44a79654b395dd6756beb0c3903a37196
+  languageName: node
+  linkType: hard
+
+"eslint-config-prettier@npm:^8.4.0":
+  version: 8.4.0
+  resolution: "eslint-config-prettier@npm:8.4.0"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: ee8dc343f1fed15dc0658e190a966cc23644477f2331a7f56ae2bb79dd74892e3cde8ea5c142e7a3329a8291a1de041e13ca96e54d0c85ff4a2aba13390c5f10
   languageName: node
   linkType: hard
 
@@ -3714,9 +3725,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify@npm:^3.27.1":
-  version: 3.27.1
-  resolution: "fastify@npm:3.27.1"
+"fastify@npm:^3.27.2":
+  version: 3.27.2
+  resolution: "fastify@npm:3.27.2"
   dependencies:
     "@fastify/ajv-compiler": ^1.0.0
     abstract-logging: ^2.0.0
@@ -3732,8 +3743,8 @@ __metadata:
     rfdc: ^1.1.4
     secure-json-parse: ^2.0.0
     semver: ^7.3.2
-    tiny-lru: ^7.0.0
-  checksum: a5ff30eac0ab882afe9cea9956b9b93d74c5e345eb6f6218a51d34df3b18dedc17551586aecb16524676d68238110dec7f14005a5c70b9f185a09a1a3ad34837
+    tiny-lru: ^8.0.1
+  checksum: cf52f1f0d9fd94ffc09c1cc0787df5454d806da1affc40f4823d6f252bc9ef79e7ed32cb84e6224bac7be05e51fee1d550695b6329d80e8afd454f25c88bb454
   languageName: node
   linkType: hard
 
@@ -7774,10 +7785,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tiny-lru@npm:^7.0.0":
-  version: 7.0.6
-  resolution: "tiny-lru@npm:7.0.6"
-  checksum: 36a786a9111a3a358a698c9404783ad3f5396f6ed891672ffa4cd7dec4617abb8dfed6af7611bbaf8a3942a9475534c8b80f9bd58d7efa9aa594f395c9805f09
+"tiny-lru@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "tiny-lru@npm:8.0.1"
+  checksum: 189181b35992ff131f2947515bc53782aab1e39d50c6a8f102dc4c63a755609d39bf341c498a0cd6e4a1a6b24fbbee778e0de1ff5ded0ef8e243d66a38ee7f41
   languageName: node
   linkType: hard
 

@@ -1,5 +1,5 @@
 import { FetchUserAgent, preferredRepositories } from '#constants/constants';
-import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrMerged, GhPrOpen } from '#constants/emotes';
+import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrDraft, GhPrMerged, GhPrOpen } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit';
 import { gql } from '#utils/utils';
@@ -143,13 +143,27 @@ function getDataForPullRequest({ pullRequest, ...repository }: Repository): Issu
 	const dateStringPrefix = pullRequest?.state === 'CLOSED' ? 'closed' : pullRequest?.state === 'OPEN' ? 'opened' : 'merged';
 	const dateString = `${dateStringPrefix} ${dateOffset}`;
 
+	const getEmoji = () => {
+		if (pullRequest?.state === 'CLOSED') return GhPrClosed;
+
+		if (pullRequest?.state === 'OPEN') {
+			if (pullRequest?.isDraft) {
+				return GhPrDraft;
+			}
+
+			return GhPrOpen;
+		}
+
+		return GhPrMerged;
+	};
+
 	return {
 		author: {
 			login: pullRequest?.author?.login,
 			url: pullRequest?.author?.url
 		},
 		dateString,
-		emoji: pullRequest?.state === 'CLOSED' ? GhPrClosed : pullRequest?.state === 'OPEN' ? GhPrOpen : GhPrMerged,
+		emoji: getEmoji(),
 		issueOrPr: 'PR',
 		number: pullRequest?.number,
 		owner: repository.owner.login,
@@ -324,6 +338,7 @@ const issuesAndPrQuery = gql`
 					login
 					url
 				}
+				isDraft
 				state
 				url
 				createdAt

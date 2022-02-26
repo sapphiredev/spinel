@@ -84,6 +84,8 @@ export interface PullRequest {
 	mergedAt?: Maybe<Scalars['DateTime']>;
 	/** Identifies the pull request number. */
 	number: Scalars['Int'];
+	/** Identifies if the pull request is a draft. */
+	isDraft: Scalars['Boolean'];
 	/** Identifies the state of the pull request. */
 	state: PullRequestState;
 	/** Identifies the pull request title. */
@@ -121,6 +123,8 @@ interface Scalars {
 	DateTime: any;
 	/** A Git object ID. */
 	URI: any;
+	/** The `Boolean` scalar type represents `true` or `false`. */
+	Boolean: boolean;
 }
 
 type Maybe<T> = T | null;

@@ -46,21 +46,22 @@ const djsDocsCommand = new SlashCommandBuilder() //
 	.setDescription('Search discord.js documentation')
 	.addStringOption((builder) =>
 		builder //
-			.setName('query')
-			.setDescription('The phrase to search for')
-			.setRequired(true)
-			.setAutocomplete(true)
-	)
-	.addStringOption((builder) =>
-		builder //
 			.setName('source')
 			.setDescription('Source repository to use')
+			.setRequired(true)
 			.addChoice('Main library - stable branch (default)', 'stable')
 			.addChoice('Main library - main branch', 'main')
 			.addChoice('Collection', 'collection')
 			.addChoice('Builders', 'builders')
 			.addChoice('Voice', 'voice')
 			.addChoice('RPC', 'rpc')
+	)
+	.addStringOption((builder) =>
+		builder //
+			.setName('query')
+			.setDescription('The phrase to search for')
+			.setRequired(true)
+			.setAutocomplete(true)
 	)
 	.addUserOption((builder) =>
 		builder //

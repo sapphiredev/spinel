@@ -237,3 +237,15 @@ Often users have the problem that the commands, listeners, and other pieces do n
 Remember that if you are new to `@sapphire/framework` it is important that you read the [user guide](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>).
 
 """
+
+[matching-parameters]
+keywords = ["matching-parameters", "params", "matching parameters", "matching params", "parameters"]
+content = """
+The order of function parameters must match between definition and function call.
+```js
+function execute(client, message, args) { ... };
+execute(message, client, args);
+```
+• mismatch! you pass a Message where the client is expected
+• mismatch! you pass the Client where a Message is expected
+"""

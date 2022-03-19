@@ -6,14 +6,14 @@ import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
 import { inspect } from 'node:util';
-import commands from './commands.mjs';
+// import commands from './commands.mjs';
 
-const parsedCommands = commands.filter((command) => command.name !== 'reload-tags');
+// const parsedCommands = commands.filter((command) => command.name !== 'reload-tags');
 
 config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 
 const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
-const ApplicationId = process.env.DISCORD_APPLICATION_ID;
+const ApplicationId = process.env.DISCORD_CLIENT_ID;
 const SapphireModeratorSnowflake = process.env.MODERATOR_ID;
 
 if (!ApplicationId || !ApplicationSecret) {
@@ -106,7 +106,7 @@ async function batchUpdateCommands(token) {
 						'Content-Type': 'application/json'
 					},
 					method: FetchMethods.Put,
-					body: JSON.stringify(parsedCommands)
+					body: JSON.stringify([])
 				},
 				FetchResultTypes.JSON
 			);

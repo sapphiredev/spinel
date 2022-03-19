@@ -1,18 +1,17 @@
-import { start } from '#root/server';
-import { loadTags } from '#utils/tags';
-import { config } from 'dotenv-cra';
-import { fileURLToPath, URL } from 'node:url';
-import { Doc } from 'discordjs-docs-parser';
+import { envParseString } from '#env/utils';
+import { registerCommands } from '#utils/register-commands';
+import '#utils/setup';
+import { Client } from '@skyra/http-framework';
 
-process.env.NODE_ENV ??= 'development';
+const client = new Client({ discordPublicKey: envParseString('DISCORD_PUBLIC_KEY') });
 
-Doc.setGlobalOptions({
-	escapeMarkdownLinks: true
+await client.load();
+
+await registerCommands();
+
+await client.listen({
+	port: process.env.PORT || 3000,
+	address: '0.0.0.0'
 });
 
-config({
-	path: fileURLToPath(new URL('../.env', import.meta.url))
-});
-
-await loadTags();
-await start();
+console.log(`client listening on 0.0.0.0:${process.env.PORT || 3000}`);

@@ -1,11 +1,6 @@
 import { KnownServerIdsToGitHubOrganizations } from '#constants/constants';
-import { envParseArray } from '#env/utils';
 import { userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
-
-export function getGuildIds(): readonly string[] {
-	return envParseArray('COMMAND_GUILD_IDS', []);
-}
 
 export function suggestionString(suggestionType: string, guaranteed?: string, target?: string): string {
 	const messageParts = [];
@@ -28,10 +23,14 @@ export function suggestionString(suggestionType: string, guaranteed?: string, ta
 	return messageParts.join('');
 }
 
+export function cast<T>(value: unknown): T {
+	return value as T;
+}
+
 /**
  * Fake GraphQL tag that just returns everything passed in as a single combined string
- * @remark used to trick the GraphQL parser into treating some code as GraphQL data for syntax checking
- * @param args data to pass off as GraphQL code
+ * @remark used to trick the GraphQL parser into treating some code as GraphQL parseable data for syntax checking
+ * @param gqlData data to pass off as GraphQL code
  */
 export function gql(...args: any[]): string {
 	return args[0].reduce((acc: string, str: string, idx: number) => {

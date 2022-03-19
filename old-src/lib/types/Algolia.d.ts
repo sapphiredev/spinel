@@ -10,7 +10,7 @@ interface AlgoliaHit {
 	url: string;
 }
 
-export interface AlgoliaHitHierarchy {
+interface AlgoliaHitHierarchy {
 	lvl0: string | null;
 	lvl1: string | null;
 	lvl2: string | null;

@@ -1,14 +1,35 @@
 version: '2.4'
 
 services:
+  redis:
+    command: 'redis-server --requirepass redis'
+    container_name: redis
+    image: 'redis:alpine'
+    ports:
+      - '1424:6379'
+    restart: always
+    logging:
+      options:
+        max-size: '20m'
+        max-file: '3'
+
   slashies:
     image: ghcr.io/sapphiredev/sapphire-application-commands:latest
     container_name: slashies
+    depends_on:
+      - redis
     restart: unless-stopped
     build: ./
     environment:
       PORT: 8000
+      REDIS_PORT: 6379
+      REDIS_HOST: redis
     env_file:
       - '.env.local'
     ports:
       - '8000:8000'
+    logging:
+      options:
+        max-size: '1g'
+        max-file: '3'
+    tty: true

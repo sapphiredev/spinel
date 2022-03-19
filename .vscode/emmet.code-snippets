@@ -1,0 +1,36 @@
+{
+	"Command": {
+		"scope": "typescript",
+		"prefix": "command",
+		"body": [
+			"import { FailPrefix } from '#constants/constants';",
+			"import { SapphireGemId } from '#constants/emotes';",
+			"import { getGuildIds } from '#utils/utils';",
+			"import { inlineCode, SlashCommandBuilder } from '@discordjs/builders';",
+			"import { Command, RegisterCommand, RestrictGuildIds, TransformedArguments } from '@skyra/http-framework';",
+			"import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteractionResponse } from 'discord-api-types/v9';",
+			"",
+			"@RegisterCommand()",
+			"@RestrictGuildIds(getGuildIds())",
+			"export class UserCommand extends Command {",
+			"\tpublic override autocompleteRun(_: never, _2: never, args: Args) {",
+			"\t\treturn this.autocomplete({",
+			"\t\t\tchoices: []",
+			"\t\t});",
+			"\t}",
+			"",
+			"\tpublic override chatInputRun(_: never, args: Args): APIInteractionResponse {",
+			"\t\treturn this.message({",
+			"\t\t\tcontent: ''",
+			"\t\t});",
+			"\t}",
+			"}",
+			"",
+			"interface Args {",
+			"\ttarget?: TransformedArguments.User;",
+			"}",
+			""
+		],
+		"description": "Creates a Command"
+	}
+}

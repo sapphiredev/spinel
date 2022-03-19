@@ -1,12 +1,10 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
+		"outDir": "../dist-tsc-old",
 		"rootDir": ".",
 		"baseUrl": ".",
-		"outDir": "../dist",
 		"composite": true,
-		"tsBuildInfoFile": "../dist/tsconfig.tsbuildinfo",
-		"emitDeclarationOnly": true,
 		"paths": {
 			"#utils/*": ["lib/util/*"],
 			"#types/*": ["lib/types/*"],

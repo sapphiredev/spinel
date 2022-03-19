@@ -11,7 +11,7 @@ import commands from './commands.mjs';
 config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
 
 const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
-const ApplicationId = process.env.DISCORD_APPLICATION_ID;
+const ApplicationId = process.env.DISCORD_CLIENT_ID;
 const SapphireModeratorSnowflake = process.env.MODERATOR_ID;
 const SapphireServerId = '737141877803057244';
 

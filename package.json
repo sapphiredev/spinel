@@ -20,8 +20,8 @@
 		"#root/*": "./dist/*.js"
 	},
 	"scripts": {
-		"lint": "eslint src --ext ts --fix",
-		"format": "prettier --write src",
+		"lint": "eslint src tests --ext ts --fix",
+		"format": "prettier --write src tests",
 		"test": "jest",
 		"typecheck": "tsc -b src",
 		"start": "node dist/main.js",

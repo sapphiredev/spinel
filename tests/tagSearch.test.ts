@@ -20,20 +20,22 @@ describe('findSimilar', () => {
 	test('GIVEN existing tag alias THEN returns tag', () => {
 		const foundTags = findSimilar('npm');
 
+		console.log(foundTags);
+
 		expect(foundTags).toEqual([
 			{ word: 'npm v7', distance: 0.8833333333333334, name: 'legacy-deps' },
+			{
+				word: 'params',
+				distance: 0.6666666666666666,
+				name: 'matching-parameters'
+			},
 			{ word: 'chat input bots', distance: 0.6, name: 'slashbots' },
 			{
 				word: 'hostingproviders',
 				distance: 0.5972222222222222,
 				name: 'hostingproviders'
 			},
-			{ word: 'api', distance: 0.5555555555555555, name: 'apidocs' },
-			{
-				word: 'moduleaug',
-				distance: 0.48148148148148145,
-				name: 'moduleaug'
-			}
+			{ word: 'api', distance: 0.5555555555555555, name: 'apidocs' }
 		]);
 	});
 

@@ -4,7 +4,7 @@ import { getGuildIds } from '#utils/utils';
 import { Embed, hideLinkEmbed, hyperlink, time, TimestampStyles } from '@discordjs/builders';
 import { roundNumber } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds } from '@skyra/http-framework';
-import { APIActionRowComponent, APIInteractionResponse, ButtonStyle, ComponentType, MessageFlags } from 'discord-api-types/v9';
+import { APIActionRowComponent, APIInteractionResponse, ButtonStyle, ComponentType, MessageFlags } from 'discord-api-types/v10';
 import { cpus, uptime, type CpuInfo } from 'node:os';
 
 @RegisterCommand((builder) =>

@@ -4,7 +4,7 @@ import { findSimilar, findTag, mapTagSimilarityEntry, tagCache } from '#utils/ta
 import { getGuildIds } from '#utils/utils';
 import { inlineCode } from '@discordjs/builders';
 import { Command, RegisterCommand, RestrictGuildIds, TransformedArguments } from '@skyra/http-framework';
-import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteractionResponse } from 'discord-api-types/v9';
+import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteractionResponse } from 'discord-api-types/v10';
 
 @RegisterCommand((builder) =>
 	builder //

@@ -8,7 +8,7 @@ import { AutoCompleteLimits } from '@sapphire/discord-utilities';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { fromAsync, isErr } from '@sapphire/result';
 import { cutText, isNullish, isNullishOrEmpty } from '@sapphire/utilities';
-import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v9';
+import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 
 export async function fuzzilySearchForRepository({ repository }: GhSearchRepositoriesParameters): Promise<APIApplicationCommandOptionChoice[]> {
 	const result = await fromAsync(async () => {

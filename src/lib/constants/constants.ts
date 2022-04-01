@@ -1,5 +1,5 @@
 import { RedCross } from '#constants/emotes';
-import { ButtonStyle, ComponentType, type APIApplicationCommandOptionChoice, type APIButtonComponent } from 'discord-api-types/v9';
+import { ButtonStyle, ComponentType, type APIApplicationCommandOptionChoice, type APIButtonComponent } from 'discord-api-types/v10';
 import os from 'node:os';
 
 export const FailPrefix = `${RedCross} I am sorry, but` as const;

@@ -9,7 +9,7 @@ import {
 	type APIMessageComponentInteraction,
 	type APIMessageSelectMenuInteractionData,
 	type Snowflake
-} from 'discord-api-types/v9';
+} from 'discord-api-types/v10';
 
 export class UserMessageComponentHandler extends MessageComponentHandler {
 	public run(interaction: APIMessageComponentInteraction, [customIdValue]: [Snowflake | null]) {

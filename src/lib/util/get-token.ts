@@ -1,6 +1,6 @@
 import { envParseString } from '#env/utils';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { OAuth2Routes, RESTPostOAuth2ClientCredentialsResult } from 'discord-api-types/v9';
+import { OAuth2Routes, RESTPostOAuth2ClientCredentialsResult } from 'discord-api-types/v10';
 import { stringify } from 'node:querystring';
 
 /**

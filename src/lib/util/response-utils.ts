@@ -1,5 +1,5 @@
 import { FailPrefix } from '#constants/constants';
-import { MessageFlags, type APIInteractionResponseCallbackData } from 'discord-api-types/v9';
+import { MessageFlags, type APIInteractionResponseCallbackData } from 'discord-api-types/v10';
 
 export function errorResponse(data: APIInteractionResponseCallbackData): APIInteractionResponseCallbackData {
 	return {

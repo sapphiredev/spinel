@@ -10,7 +10,7 @@ import { hideLinkEmbed, hyperlink, inlineCode } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { cutText } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, TransformedArguments } from '@skyra/http-framework';
-import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v9';
+import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import he from 'he';
 import { stringify } from 'node:querystring';
 

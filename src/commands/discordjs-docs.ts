@@ -10,7 +10,7 @@ import {
 	type APIInteractionResponse,
 	type APIInteractionResponseCallbackData,
 	type APISelectMenuOption
-} from 'discord-api-types/v9';
+} from 'discord-api-types/v10';
 import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
 
 @RegisterCommand(new SlashCommandBuilder().setName('discordjs-docs').setDescription('Search discord.js documentation'))

@@ -1,0 +1,251 @@
+[apidocs]
+keywords = ["apidocs", "docs", "api"]
+content = """
+***__Documentation can be found on [our website](<https://www.sapphirejs.dev/docs/General/Welcome>)__***
+"""
+hoisted = true
+
+[djsquestions]
+keywords = ["djsquestions", "djs", "discordjs"]
+content = """
+For as far as Discord bot development is concerned, this server is primarily for Sapphire. While we can help you with Discord.js related problems, it is often advisable to join [the official Discord.js server](<https://discord.gg/djs>).
+"""
+
+[asking]
+keywords = ["asking", "asking questions", "questions", "how to ask questions"]
+content = """
+When asking for help, make sure to provide as much detail as possible. What have you tried so far? Do you have stacktraces that you can show us? What are you trying to achieve? Try to answer these questions and others, so we do not have to ask for them afterwards.
+> ❯ For a good guide on how to ask questions, see [the instructions that StackOverflow gives](<https://stackoverflow.com/help/how-to-ask>). You should try to always follow these guidelines.
+> ❯ For an excellent video that shows how **not** to ask technical questions is this, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>). 
+> ❯ [Asking technical questions (Clarkson)](<https://www.cs.cornell.edu/courses/cs3110/2017fa/thoughtful.html>)
+> ❯ [How to ask questions the smart way (Raymond)](<http://www.catb.org/~esr/faqs/smart-questions.html>)
+"""
+hoisted = true
+
+[bots]
+keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples"]
+content = """
+***__Discord bots that use @sapphire/framework__***
+
+- [**Official Bot Examples** **¹** **²** **⁴** **⁵** **ᴶˢ** **ⱽ²**](<https://github.com/sapphiredev/examples>)
+
+- [**Alestra** **⁵**](<https://github.com/skyra-project/alestra>)
+- [**Evlyn** **⁵**](<https://github.com/skyra-project/evlyn>)
+- [**Materia** **²** **⁴** **ⱽ²**](<https://github.com/RealShadowNova/materia>)
+- [**Pengu**](<https://github.com/PenguBot/bot-sapphire>)
+- [**RTByte** **²** **³** **⁴** **ⱽ²**](<https://github.com/RTByte/rtbyte>)
+- [**Sapphire**](<https://github.com/KunoichiZ/Sapphire>)
+- [**Spectera** **¹** **³** **⁴** **ⱽ²**](<https://github.com/SpecteraLabs/Spectera>)
+- [**Skyra** **³** **⁴** **⁵** **ⱽ²**](<https://github.com/skyra-project/skyra>)
+- [**Syrus** **ᴶˢ**](<https://github.com/syrus-bot/syrus-bot>)
+- [**Varrock-Stray-Dog** **⁵**](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)
+- [**YliasDiscordBot** **³** **⁴** **ⱽ²**](<https://github.com/FrenchDiscord/YliasDiscordBot>)
+
+**¹**: Uses [TSup](<https://github.com/egoist/tsup>) to compile
+**²**: Uses ESM (if not specified then uses CJS)
+**³**: Advanced bot (if not specified it is a simple bot, or not graded)
+**⁴**: Actively developed / maintained with latest Sapphire changes
+**⁵**: Uses Docker in production
+**ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
+**ⱽ²** Bot has been updated for Sapphire Framework V2
+"""
+hoisted = true
+
+[slashbots]
+keywords = ["slashbots", "chat input bots", "slash commands", "application commands"]
+content = """
+***__Discord bots that use @sapphire/framework@next and leverage Application Commands and Interaction Handlers__***
+
+- [**Archangel** **¹** **²** **⁴** **⁵**](<https://github.com/favware/archangel>)
+- [**Arima** **¹** **²** **⁴**](<https://github.com/arimajs/Arima>)
+- [**Dragonite** **¹** **²** **⁴** **⁵**](<https://github.com/favware/dragonite>)
+- [**Sapphire Application Commands Examples** **²**](<https://github.com/vladfrangu/sapphire-application-commands-examples>)
+- [**Spectera** **¹** **³** **⁴**](<https://github.com/SpecteraLabs/Spectera>)
+
+**¹**: Uses [TSup](<https://github.com/egoist/tsup>) to compile
+**²**: Uses ESM (if not specified then uses CJS)
+**³**: Advanced bot (if not specified it is a simple bot, or not graded)
+**⁴**: Actively developed / maintained with latest Sapphire changes
+**⁵**: Uses Docker in production
+"""
+hoisted = true
+
+[dotnetfirstjslater]
+keywords = ["dotnetfirstjslater"]
+content = """
+<@203709726322720768> says that JS and TS suck and you should write C# with .NET instead
+"""
+
+[eta]
+keywords = ["eta"]
+content = """
+Estimated time of arrival for <query>:
+When it's ready™️ *(+1 day whenever someone asks for an eta)* <a:_:735070572416991235>
+"""
+
+[good-font]
+keywords = ["good-font", "best-font", "firacode"]
+content = """
+The best coding font is <https://github.com/tonsky/FiraCode>
+"""
+
+[guide]
+keywords = ["guide", "how to"]
+content = """
+The guide for Sapphire and its many utilities, plugins and related libraries can be found on [our website](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>)
+"""
+hoisted = true
+
+[jsfirstbotlater]
+keywords = ["jsfirstbotlater", "must know js"]
+content = """
+Before you make a Discord Bot, you should have a good understanding of JavaScript. This means you should have a basic understanding of the following topics:
+
+- Read and understand docs
+- Debug code
+- Syntax
+- NodeJS module system
+
+If you aren't sure that your understanding of JavaScript is truly good enough to make a bot, you should really try to continue learning first. Here are good resources to learn both Javascript and NodeJS:
+
+_Codecademy_: <https://www.codecademy.com/learn/javascript>
+_Udemy_: <https://www.udemy.com/javascript-essentials/>
+_Eloquent JavaScript, free book_: http://eloquentjavascript.net/
+_You-Dont-Know-JS_: <https://github.com/getify/You-Dont-Know-JS>
+_JavaScript Garden_: <https://bonsaiden.github.io/JavaScript-Garden/>
+_JavaScript reference/docs_: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>
+_Nodeschool_: <https://nodeschool.io/>
+_Pluralsight_: <https://www.codeschool.com/courses/real-time-web-with-node-js>
+
+Before you ask a question, you should ask these yourself:
+**1)** Is this question related to JavaScript, or the library I am using? - If it is the library you are using, go to the proper server. You would get better answers there.
+**2)** Have I tried to google and / or check StackOverflow? - Double check that you can't find anywhere that can lead you to a solution online.
+**3)** Have I tried to look on MDN or the library documentation? - You should always check documentations to make sure you aren't missing how any details.
+**4)** Does my question make enough sense so that people can understand it, and do they understand what I am trying to accomplish? - If no, revise your question. Give as much detail as possible. Include any error or code output that can help us help you.
+**5)** Am I aware of what I am doing, and not just mindlessly copy and pasting? - If you are just copy and pasting code from a guide, you are not going to be able to solve anything. Make sure you understand the code you are writing.
+"""
+
+[legacy-deps]
+keywords = ["legacy-deps", "legacy dependencies", "npm v7", "npm v8"]
+content = """
+**Having issues installing packages when using NPM v7 / v8?**
+Add `--legacy-peer-deps` to your npm install command (every time) or run `npm config --global set legacy-peer-deps=true` just once to globally configure this same option.
+
+~~or use Yarn which also deduplicates your dependencies automatically and especially Yarn V3 is waaaay faster than npm~~
+"""
+
+[showcode]
+keywords = ["showcode", "talk is cheap, show me the code", "show the code"]
+content = """
+https://cdn.favware.tech/img/talkischeap.png
+"""
+hoisted = true
+
+[moduleaug]
+keywords = ["moduleaug", "module augmentation", "typescript declare module", "declare module"]
+content = """
+If you're adding custom properties to your Client class and you want them to be accessible when accessing the client through something like `this.container.client` you'll have to add module augmentation:
+
+<https://gist.github.com/Favna/26ed5b2df82d424203b71b9ffbce85c4>
+
+For more information on module augmentation see: <https://www.typescriptlang.org/docs/handbook/declaration-merging.html>
+"""
+hoisted = true
+
+[slashies]
+keywords = ["slashies"]
+content = """
+Slash Commands are here! To get them up and running, just install `@sapphire/framework@next` with your preferred package manager, and check out the current [documentation](<https://vladfrangu.notion.site/Application-Commands-3d1683f23f0a4fa6b3e682bc8c1cc1b9>) for more information on how to use them.
+"""
+
+[i18n]
+keywords = ["i18n", "internationalization", "i18next", "language codes"]
+content = """
+For [`@sapphire/plugin-i18next`](<https://www.npmjs.com/package/@sapphire/plugin-i18next>) we follow the standardized format of [`<ISO-639-1 language code>`](<https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>)`-`[`<ISO3166-1 Country Code>`](<https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes>) for the language directories.
+
+__Examples of valid languages codes are:__
+
+**-** `de-DE` for German as spoken in Germany
+**-** `en-GB` for English as spoken in Great Britain
+**-** `en-US` for English as spoken in The United States
+**-** `es-ES` for Spanish as spoken in Spain
+**-** `fa-IR` for Persian as spoken in Iran
+**-** `pt-BR` for Portuguese as spoken in Brazil
+**-** `es-MX` for Spanish as spoken in Mexico
+**-** `hi-IN` for Hindi as spoken in India
+**-** `hi-Latn-IN` for Hindi, but using Latin characters, as spoken in India (also known as `Hinglish`)
+**-** `ja-JP` for Japanese as spoken in Japan
+**-** `nb-NO` for Norwegian Bokmal as spoken in Norway
+**-** `nl-NL` for Dutch as spoken in The Netherlands
+**-** `ro-RO` for Romanian as spoken in Romania
+**-** `ru-RU` for Russian as spoken in Russia
+**-** `sl-SI` for Slovenian as spoken in Slovenia
+**-** `tr-TR` for Turkish as spoken in Turkey
+"""
+
+[hostingproviders]
+keywords = ["hostingproviders", "hosting", "vps"]
+content = """
+**Affordable hosting providers:**
+• [Netcup](<https://www.netcup.eu>) Starting at €2.62/mo for 1 core, 2GB RAM, 20GB SSD (You can get a totally free 10% discount code from <@242043489611808769> or <@268792781713965056>!)
+• [OVH](<https://www.ovh.com/us/vps>) Starting at $3.35/mo for 1 core, 2GB RAM, 20GB SSD
+• [DigitalOcean](<https://www.digitalocean.com>) Starting at $5/mo for 1 core, 1GB RAM, 25GB SSD
+• [Linode](<https://www.linode.com>) Starting at $5/mo for 1 core, 1GB RAM, 25GB SSD
+• [Vultr](<https://www.vultr.com>) Starting at $2.50/mo for 1 core, 512MB RAM, 10GB SSD
+• [AWS Lightsail](<https://amazonlightsail.com>) Starting at $3.50/mo (first month free) for 1 core, 512MB RAM, 20GB SSD
+• [Time4VPS](<https://www.time4vps.eu>) Starting at €3.99/month for 1 core, 2GB RAM, 20GB SSD
+• [VIRMACH](<https://virmach.com>) Full Windows and Linux Desktop VPS starting at $7/mo and $1/mo respectively
+• [GitHub education](<https://education.github.com/pack>) Free credit and other offers for students
+• [Microsoft students](<https://azure.microsoft.com/en-us/free/students>) Free credit for students
+• [Google Cloud](<https://cloud.google.com/free>) free tier
+• [Wither Hosting](<https://client.witherhosting.com/cart/budget-vps/>) Starting at $4 a month for 1 core, 2GB ram, 25GB NVME storage.
+"""
+
+[help]
+keywords = ["help", "built in help"]
+content = """
+Our experience in Klasa, and according to many Akairo users is that built-in help commands suck, and everyone customises them.
+
+Furthermore, having built-in commands force you to add extra logic in your code (specifically everywhere that reads custom properties from commands), so if you rely on a property to exist, because it does in your commands, it'll break easily with built-in ones unless you overwrite them.
+
+A help command is even worse, they give special constraints that shouldn't exist and can be implemented as you desire.
+
+There's also the people who want to only show specific commands, a list of all commands in one embed, paginated commands, paginated lists of commands (based on categories), and all of that can be in either plain text, inside codeblocks (and from there, many syntaxes and formats), or embeds.
+
+And to take things further, there are people who simply want to show all commands, and people who show only the commands they can use.
+
+And so far we have only covered message based commands. Chat input commands are a whole different beast, because they have native descriptions and if you do have a /help for more details that could use autocomplete to fill out the command name.
+
+If you take all the different ways to format commands, you end up with hundreds or thousands of different possibilities.
+
+It is not possible for us to deliver a help command that complies to all those possibilities.
+
+Therefore, everyone will eventually replace the built-in one with their own, so why take the effort?
+"""
+
+[regular-problems]
+keywords = ["regular-problems", "commands no working", "pieces no working", "listeners no working"]
+content = """
+Often users have the problem that the commands, listeners, and other pieces do not work. This is often due to common causes related to the core setup of a Sapphire Framework bot. For the person having the issues, it is important for us helping you that you mention the following information so we can provide better support for your issue.
+
+- Did you use a folder of the [examples](<https://github.com/sapphiredev/examples>) repository or did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
+- What's your file/folder structure?
+- What's your "main" property in `package.json`
+- Are you using TypeScript? And if so, how are you compiling and running your code?
+- Are you using the `@latest` or `@next` version of `@sapphire/framework`?
+
+Remember that if you are new to `@sapphire/framework` it is important that you read the [user guide](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>).
+
+"""
+
+[matching-parameters]
+keywords = ["matching-parameters", "params", "matching parameters", "matching params", "parameters"]
+content = """
+The order of function parameters must match between definition and function call.
+```js
+function execute(client, message, args) { ... };
+execute(message, client, args);
+```
+• mismatch! you pass a Message where the client is expected
+• mismatch! you pass the Client where a Message is expected
+"""

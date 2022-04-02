@@ -1,10 +1,10 @@
-import { FailPrefix, FetchUserAgent, SupportServerButton } from '#constants/constants';
-import { ActionRowBuilder, type MessageActionRowComponentBuilder } from '@discordjs/builders';
+import { FetchUserAgent, SupportServerButton } from '#constants/constants';
+import { errorResponse } from '#utils/response-utils';
 import { findTag } from '#utils/tags';
+import { ActionRowBuilder, type MessageActionRowComponentBuilder } from '@discordjs/builders';
 import { fetch, FetchMethods } from '@sapphire/fetch';
 import { MessageComponentHandler } from '@skyra/http-framework';
 import {
-	ComponentType,
 	RouteBases,
 	Routes,
 	type APIMessageComponentInteraction,
@@ -17,10 +17,12 @@ export class UserMessageComponentHandler extends MessageComponentHandler {
 		const content = findTag((interaction.data as APIMessageSelectMenuInteractionData).values[0], customIdValue ?? undefined);
 
 		if (!content) {
-			return this.updateMessage({
-				content: `${FailPrefix} Failed to send tag. Try again or contact the developer.`,
-				components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(SupportServerButton).toJSON()]
-			});
+			return this.updateMessage(
+				errorResponse({
+					content: 'I failed to find the selected tag. Try again or contact the developer.',
+					components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(SupportServerButton).toJSON()]
+				})
+			);
 		}
 
 		return {

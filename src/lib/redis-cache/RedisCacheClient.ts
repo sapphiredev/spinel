@@ -1,13 +1,12 @@
 import { envParseInteger, envParseString } from '#env/utils';
-import type { AlgoliaHit } from '#types/Algolia';
 import { fromAsync, isErr } from '@sapphire/result';
 import { isNullish } from '@sapphire/utilities';
-import type { TransformedArguments } from '@skyra/http-framework';
 import Redis from 'ioredis';
 
 export const enum RedisKeys {
 	DiscordDocs = 'discord-docs',
-	DiscordJsGuide = 'discordjs-guide'
+	DiscordJsGuide = 'discordjs-guide',
+	Mdn = 'mdn'
 }
 
 export class RedisCacheClient extends Redis {
@@ -20,8 +19,8 @@ export class RedisCacheClient extends Redis {
 		});
 	}
 
-	public async fetch<K extends RedisKeys>(key: K, query: string, nthResult: string): Promise<AlgoliaHit | null> {
-		const result = await fromAsync<AlgoliaHit>(async () => {
+	public async fetch<T>(key: RedisKeys, query: string, nthResult: string): Promise<T | null> {
+		const result = await fromAsync<T>(async () => {
 			const raw = await this.get(`${key}:${query}:${nthResult}`);
 
 			if (isNullish(raw)) return raw;
@@ -36,7 +35,7 @@ export class RedisCacheClient extends Redis {
 		return result.value;
 	}
 
-	public insertFor60Seconds(key: RedisKeys, query: TransformedArguments.AutocompleteFocused, nthResult: string, data: AlgoliaHit) {
+	public insertFor60Seconds<T>(key: RedisKeys, query: string, nthResult: string, data: T) {
 		return this.setex(`${key}:${query}:${nthResult}`, 60, JSON.stringify(data));
 	}
 }

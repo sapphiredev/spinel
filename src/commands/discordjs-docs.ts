@@ -114,7 +114,7 @@ export class UserCommand extends Command {
 
 		return this.message(
 			errorResponse({
-				content: `I was unable to find anything for ${inlineCode(query)}`
+				content: `no results were found for ${inlineCode(query)}`
 			})
 		);
 	}

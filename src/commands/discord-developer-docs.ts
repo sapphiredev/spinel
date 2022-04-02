@@ -1,9 +1,10 @@
-import { FailPrefix } from '#constants/constants';
+import { FetchUserAgent } from '#constants/constants';
 import { DiscordDevelopersIcon } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { AlgoliaSearchResult } from '#types/Algolia';
+import type { AlgoliaHit, AlgoliaSearchResult } from '#types/Algolia';
 import { buildHierarchicalName, buildResponseContent } from '#utils/algolia-utils';
+import { errorResponse } from '#utils/response-utils';
 import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { hideLinkEmbed, hyperlink, inlineCode } from '@discordjs/builders';
@@ -50,7 +51,7 @@ export class UserCommand extends Command {
 			const hierarchicalName = buildHierarchicalName(hit.hierarchy);
 
 			if (hierarchicalName) {
-				redisInsertPromises.push(redisCache.insertFor60Seconds(RedisKeys.DiscordDocs, args.query, index.toString(), hit));
+				redisInsertPromises.push(redisCache.insertFor60Seconds<AlgoliaHit>(RedisKeys.DiscordDocs, args.query, index.toString(), hit));
 
 				results.push({
 					name: cutText(hierarchicalName, 100),
@@ -70,7 +71,7 @@ export class UserCommand extends Command {
 
 	public override async chatInputRun(_: never, { query, target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
-		const hitFromRedisCache = await redisCache.fetch(RedisKeys.DiscordDocs, queryFromAutocomplete, nthResult);
+		const hitFromRedisCache = await redisCache.fetch<AlgoliaHit>(RedisKeys.DiscordDocs, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			const hierarchicalName = buildHierarchicalName(hitFromRedisCache.hierarchy, true);
@@ -87,15 +88,17 @@ export class UserCommand extends Command {
 			}
 		}
 
-		const algoliaResponse = await this.fetchApi(query, 5);
+		const algoliaResponse = await this.fetchApi(queryFromAutocomplete ?? query, 5);
 
 		if (!algoliaResponse.hits.length) {
-			return this.message({
-				content: `${FailPrefix} No results found for ${inlineCode(query)}`,
-				allowed_mentions: {
-					users: target?.user.id ? [target?.user.id] : []
-				}
-			});
+			return this.message(
+				errorResponse({
+					content: `no results were found for ${inlineCode(queryFromAutocomplete ?? query)}`,
+					allowed_mentions: {
+						users: target?.user.id ? [target?.user.id] : []
+					}
+				})
+			);
 		}
 
 		const results = algoliaResponse.hits.map(({ hierarchy, url }) =>
@@ -133,6 +136,7 @@ export class UserCommand extends Command {
 				}),
 				headers: {
 					'Content-Type': 'application/json',
+					'User-Agent': FetchUserAgent,
 					'X-Algolia-API-Key': envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_KEY'),
 					'X-Algolia-Application-Id': envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID')
 				}

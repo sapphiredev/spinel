@@ -6,7 +6,8 @@ import Redis from 'ioredis';
 export const enum RedisKeys {
 	DiscordDocs = 'discord-docs',
 	DiscordJsGuide = 'discordjs-guide',
-	Mdn = 'mdn'
+	Mdn = 'mdn',
+	Node = 'node'
 }
 
 export class RedisCacheClient extends Redis {

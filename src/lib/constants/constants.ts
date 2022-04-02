@@ -4,8 +4,6 @@ import { ButtonStyle, type APIApplicationCommandOptionChoice } from 'discord-api
 import os from 'node:os';
 
 export const FailPrefix = `${RedCross} I am sorry, but` as const;
-export const MdnUrl = `https://developer.mozilla.org` as const;
-export const NodeUrl = 'https://nodejs.org' as const;
 export const MaxMessageLength = 4096;
 export const FetchUserAgent = `Sapphire Application Commands/2.0.0 (node-fetch) ${os.platform()}/${os.release()} (https://github.com/sapphiredev/sapphire-application-commands/tree/main)`;
 

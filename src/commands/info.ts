@@ -1,10 +1,27 @@
 import { BrandingColors, SupportServerButton } from '#constants/constants';
 import { envParseString } from '#env/utils';
 import { getGuildIds } from '#utils/utils';
-import { Embed, hideLinkEmbed, hyperlink, time, TimestampStyles } from '@discordjs/builders';
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	EmbedBuilder,
+	hideLinkEmbed,
+	hyperlink,
+	time,
+	TimestampStyles,
+	type MessageActionRowComponentBuilder
+} from '@discordjs/builders';
 import { roundNumber } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds } from '@skyra/http-framework';
-import { APIActionRowComponent, APIInteractionResponse, ButtonStyle, ComponentType, MessageFlags } from 'discord-api-types/v10';
+import {
+	ButtonStyle,
+	MessageFlags,
+	type APIActionRowComponent,
+	type APIButtonComponent,
+	type APIEmbed,
+	type APIInteractionResponse,
+	type APISelectMenuComponent
+} from 'discord-api-types/v10';
 import { cpus, uptime, type CpuInfo } from 'node:os';
 
 @RegisterCommand((builder) =>
@@ -32,48 +49,41 @@ export class UserCommand extends Command {
 		});
 	}
 
-	private get components(): APIActionRowComponent[] {
-		return [
-			{
-				type: ComponentType.ActionRow,
-				components: [
-					{
-						type: ComponentType.Button,
-						style: ButtonStyle.Link,
-						url: this.inviteLink,
-						label: 'Add me to your server!',
-						emoji: { name: '🎉' }
-					},
-					SupportServerButton
-				]
-			},
-			{
-				type: ComponentType.ActionRow,
-				components: [
-					{
-						type: ComponentType.Button,
-						style: ButtonStyle.Link,
-						url: 'https://github.com/sapphiredev/sapphire-application-commands',
-						label: 'GitHub Repository',
-						emoji: { id: '950888087188283422', name: 'github2' }
-					},
-					{
-						type: ComponentType.Button,
-						style: ButtonStyle.Link,
-						url: 'https://github.com/sponsors/sapphiredev',
-						label: 'Donate',
-						emoji: { name: '🧡' }
-					}
-				]
-			}
-		];
+	private get components(): APIActionRowComponent<APIButtonComponent | APISelectMenuComponent>[] {
+		const inviteButton = new ButtonBuilder()
+			.setStyle(ButtonStyle.Link)
+			.setURL(this.inviteLink)
+			.setLabel('Add me to your server!')
+			.setEmoji({ name: '🎉' });
+
+		const repositoryButton = new ButtonBuilder()
+			.setStyle(ButtonStyle.Link)
+			.setURL('https://github.com/sapphiredev/sapphire-application-commands')
+			.setLabel('GitHub Repository')
+			.setEmoji({ id: '950888087188283422', name: 'github2' });
+
+		const sponsorButton = new ButtonBuilder()
+			.setStyle(ButtonStyle.Link)
+			.setURL('https://github.com/sponsors/sapphiredev')
+			.setLabel('Donate')
+			.setEmoji({ name: '🧡' });
+
+		const firstActionRow = new ActionRowBuilder<MessageActionRowComponentBuilder>() //
+			.addComponents(inviteButton, SupportServerButton)
+			.toJSON();
+
+		const secondActionRow = new ActionRowBuilder<MessageActionRowComponentBuilder>() //
+			.addComponents(repositoryButton, sponsorButton)
+			.toJSON();
+
+		return [firstActionRow, secondActionRow];
 	}
 
 	private get inviteLink() {
 		return `https://discord.com/api/oauth2/authorize?client_id=${envParseString('DISCORD_CLIENT_ID')}&scope=applications.commands`;
 	}
 
-	private get embed(): Embed {
+	private get embed(): APIEmbed {
 		const titles = {
 			uptime: 'Uptime',
 			serverUsage: 'Server Usage'
@@ -94,7 +104,7 @@ export class UserCommand extends Command {
 			].join('\n')
 		};
 
-		return new Embed() //
+		return new EmbedBuilder() //
 			.setColor(BrandingColors.Primary)
 			.setDescription(this.#descriptionContent)
 			.addFields(
@@ -106,7 +116,8 @@ export class UserCommand extends Command {
 					name: titles.serverUsage,
 					value: fields.serverUsage
 				}
-			);
+			)
+			.toJSON();
 	}
 
 	private get uptimeStatistics(): StatsUptime {

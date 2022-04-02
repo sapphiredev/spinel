@@ -9,7 +9,7 @@ import { getGuildIds } from '#utils/utils';
 import { hideLinkEmbed, hyperlink, inlineCode } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { cutText } from '@sapphire/utilities';
-import { Command, RegisterCommand, RestrictGuildIds, TransformedArguments } from '@skyra/http-framework';
+import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import he from 'he';
 import { stringify } from 'node:querystring';
@@ -35,21 +35,25 @@ import { stringify } from 'node:querystring';
 export class UserCommand extends Command {
 	#algoliaUrl = new URL(`https://${envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID')}.algolia.net/1/indexes/discord/query`);
 
-	public override async autocompleteRun(_: never, _2: never, { query }: Args) {
-		const algoliaResponse = await this.fetchApi(query);
+	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+		if (!args.focused) {
+			return this.autocompleteNoResults();
+		}
 
-		const results: APIApplicationCommandOptionChoice[] = [];
+		const algoliaResponse = await this.fetchApi(args.focused);
+
 		const redisInsertPromises: Promise<'OK'>[] = [];
+		const results: APIApplicationCommandOptionChoice[] = [];
 
 		for (const [index, hit] of algoliaResponse.hits.entries()) {
 			const hierarchicalName = buildHierarchicalName(hit.hierarchy);
 
 			if (hierarchicalName) {
-				redisInsertPromises.push(redisCache.insertFor60Seconds(RedisKeys.DiscordDocs, query, index.toString(), hit));
+				redisInsertPromises.push(redisCache.insertFor60Seconds(RedisKeys.DiscordDocs, args.focused, index.toString(), hit));
 
 				results.push({
 					name: cutText(hierarchicalName, 100),
-					value: `${RedisKeys.DiscordDocs}:${query}:${index}`
+					value: `${RedisKeys.DiscordDocs}:${args.focused}:${index}`
 				});
 			}
 		}
@@ -115,7 +119,7 @@ export class UserCommand extends Command {
 		});
 	}
 
-	private async fetchApi(query: string, hitsPerPage = 20) {
+	private async fetchApi(query: TransformedArguments.AutocompleteFocused, hitsPerPage = 20) {
 		return fetch<AlgoliaSearchResult>(
 			this.#algoliaUrl,
 			{

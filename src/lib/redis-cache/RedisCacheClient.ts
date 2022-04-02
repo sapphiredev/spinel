@@ -2,6 +2,7 @@ import { envParseInteger, envParseString } from '#env/utils';
 import type { AlgoliaHit } from '#types/Algolia';
 import { fromAsync, isErr } from '@sapphire/result';
 import { isNullish } from '@sapphire/utilities';
+import type { TransformedArguments } from '@skyra/http-framework';
 import Redis from 'ioredis';
 
 export const enum RedisKeys {
@@ -34,7 +35,7 @@ export class RedisCacheClient extends Redis {
 		return result.value;
 	}
 
-	public insertFor60Seconds(key: RedisKeys, query: string, nthResult: string, data: AlgoliaHit) {
+	public insertFor60Seconds(key: RedisKeys, query: TransformedArguments.AutocompleteFocused, nthResult: string, data: AlgoliaHit) {
 		return this.setex(`${key}:${query}:${nthResult}`, 60, JSON.stringify(data));
 	}
 }

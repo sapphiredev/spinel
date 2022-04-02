@@ -31,7 +31,9 @@ export async function loadTags() {
 		},
 		FetchResultTypes.Text
 	);
+
 	const data = parseToml(file, 1.0, '\n');
+
 	for (const [key, value] of Object.entries(data)) {
 		tagCache.set(key, value as unknown as Tag);
 	}

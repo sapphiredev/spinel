@@ -26,11 +26,11 @@ import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteracti
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
 	public override autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
-		if (!args.focused || typeof args.focused !== 'string') {
+		if (args.focused !== 'query') {
 			return this.autocompleteNoResults();
 		}
 
-		const query = args.focused.trim().toLowerCase();
+		const query = args.query.trim().toLowerCase();
 
 		const results: APIApplicationCommandOptionChoice[] = [];
 

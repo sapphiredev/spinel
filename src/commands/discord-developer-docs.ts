@@ -37,6 +37,10 @@ export class UserCommand extends Command {
 	#responseHeaderText = 'Discord Developer docs results:';
 
 	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+		if (args.focused !== 'query') {
+			return this.autocompleteNoResults();
+		}
+
 		const algoliaResponse = await this.fetchApi(args.query);
 
 		const redisInsertPromises: Promise<'OK'>[] = [];
@@ -116,7 +120,7 @@ export class UserCommand extends Command {
 		});
 	}
 
-	private async fetchApi(query: TransformedArguments.AutocompleteFocused, hitsPerPage = 20) {
+	private async fetchApi(query: string, hitsPerPage = 20) {
 		return fetch<AlgoliaSearchResult>(
 			this.#algoliaUrl,
 			{

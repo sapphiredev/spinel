@@ -24,7 +24,7 @@ import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
 	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
-		if (!args.subCommand) {
+		if (!args.subCommand || args.focused !== 'query') {
 			return this.autocompleteNoResults();
 		}
 

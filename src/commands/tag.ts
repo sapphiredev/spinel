@@ -1,6 +1,6 @@
 import { SapphireGemId } from '#constants/emotes';
 import { errorResponse } from '#utils/response-utils';
-import { findSimilar, findTag, mapTagSimilarityEntry, tagCache } from '#utils/tags';
+import { findSimilarTag, findTag, mapTagSimilarityEntry, tagCache } from '#utils/tags';
 import { getGuildIds } from '#utils/utils';
 import { inlineCode } from '@discordjs/builders';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
@@ -95,7 +95,7 @@ export class UserCommand extends Command {
 			});
 		}
 
-		const similar = findSimilar(query);
+		const similar = findSimilarTag(query);
 
 		if (similar.length) {
 			return this.selectMenuMessage(`tag.${target?.user.id ?? ''}`, similar.map(mapTagSimilarityEntry), {
@@ -106,7 +106,7 @@ export class UserCommand extends Command {
 
 		return this.message(
 			errorResponse({
-				content: `Could not find a tag with name or alias similar to ${inlineCode(query)}`
+				content: `no tags were found with a name or alias similar to ${inlineCode(query)}`
 			})
 		);
 	}

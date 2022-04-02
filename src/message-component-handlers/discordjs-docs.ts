@@ -1,5 +1,6 @@
-import { FailPrefix, FetchUserAgent, SupportServerButton } from '#constants/constants';
+import { FetchUserAgent, SupportServerButton } from '#constants/constants';
 import { fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
+import { errorResponse } from '#utils/response-utils';
 import { ActionRowBuilder, type MessageActionRowComponentBuilder } from '@discordjs/builders';
 import { fetch, FetchMethods } from '@sapphire/fetch';
 import { MessageComponentHandler } from '@skyra/http-framework';
@@ -20,10 +21,12 @@ export class UserMessageComponentHandler extends MessageComponentHandler {
 		const content = fetchDocResult({ source, doc, query: selectedValue, target: customIdValue ?? undefined });
 
 		if (!content) {
-			return this.updateMessage({
-				content: `${FailPrefix} Failed to retrieve the selected docs query. Try again or contact the developer.`,
-				components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(SupportServerButton).toJSON()]
-			});
+			return this.updateMessage(
+				errorResponse({
+					content: 'I failed to find the selected discord.js documentation entry. Try again or contact the developer.',
+					components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(SupportServerButton).toJSON()]
+				})
+			);
 		}
 
 		return {

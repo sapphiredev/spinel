@@ -1,43 +1,84 @@
-export interface NodeDocs {
-	miscs: NodeDocsMisc[];
-	modules: NodeDocsModule[];
-	classes: PurpleClass[];
-	globals: NodeDocsGlobal[];
-	methods: NodeDocsMethod[];
+export type NodeQueryType = 'class' | 'classMethod' | 'method' | 'event' | 'module' | 'global' | 'misc';
+
+export type NodeDocTypes = PurpleClass | NodeDocsGlobal | NodeDocsMethod | NodeDocsMisc | NodeDocsModule | UnknownModule;
+
+export interface NodeDocSimilarityEntry {
+	name: string;
+	distance: number;
+	entry: NodeDocTypes;
 }
 
-export interface PurpleClass {
-	textRaw: string;
-	type: TypeEnum;
+export interface NodeDocs {
+	classes: PurpleClass[];
+
+	globals: NodeDocsGlobal[];
+
+	methods: NodeDocsMethod[];
+
+	miscs: NodeDocsMisc[];
+
+	modules: NodeDocsModule[];
+}
+
+export interface NodeDocsCommonProperties {
 	name: string;
 	desc?: string;
-	methods?: PurpleMethod[];
-	properties?: ModuleElement[];
-	signatures?: StickySignature[];
-	source?: string;
-	modules?: PurpleModule[];
-	displayName?: string;
-	meta?: PurpleMeta;
+	module?: any;
+}
+
+export interface UnknownModule extends NodeDocsCommonProperties {
+	source: Source | string;
+	_source: Source | string;
+	type: any;
+	textRaw: string;
+}
+
+export interface PurpleClass extends NodeDocsCommonProperties {
 	[key: string]: any;
+
+	displayName?: string;
+
+	meta?: PurpleMeta;
+
+	methods?: PurpleMethod[];
+
+	modules?: PurpleModule[];
+
+	properties?: ModuleElement[];
+
+	signatures?: StickySignature[];
+
+	source?: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface PurpleMeta {
 	added?: string[];
+
 	changes: PurpleChange[];
 }
 
 export interface PurpleChange {
-	version: string[] | string;
-	'pr-url': string;
 	description: string;
+
+	'pr-url': string;
+
+	version: string[] | string;
 }
 
 export interface PurpleMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
-	signatures: PurpleSignature[];
 	desc: string;
+
+	name: string;
+
+	signatures: PurpleSignature[];
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
 export interface PurpleSignature {
@@ -45,8 +86,10 @@ export interface PurpleSignature {
 }
 
 export interface PurpleParam {
-	textRaw: string;
 	name: string;
+
+	textRaw: string;
+
 	type: ParamType;
 }
 
@@ -64,11 +107,15 @@ export enum MethodType {
 }
 
 export interface PurpleModule {
-	textRaw: string;
-	name: string;
 	desc: string;
-	type: TypeEnum;
+
 	displayName: string;
+
+	name: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export enum TypeEnum {
@@ -78,92 +125,129 @@ export enum TypeEnum {
 }
 
 export interface FluffyReturn {
-	textRaw: string;
-	name: Name;
-	type: string;
 	desc?: string;
+
+	name: Name;
+
 	options?: EventElement[];
+
+	textRaw: string;
+
+	type: string;
 }
 
-export interface IndigoParam {
-	textRaw: string;
-	name: string;
-	type: string;
-	desc?: string;
-	options?: EventElement[];
+export interface IndigoParam extends NodeDocsCommonProperties {
 	default?: string;
+
+	options?: EventElement[];
+
+	textRaw: string;
+
+	type: string;
 }
 
 export interface EventSignature {
 	params: IndigoParam[];
+
 	return?: EventElement;
 }
 
 export interface MethodElement {
-	textRaw: string;
-	name?: string;
-	type?: string;
-	desc?: string;
 	default?: string;
-	options?: MethodElement[];
-	signatures?: EventSignature[];
+
+	desc?: string;
+
 	meta?: PurpleMeta;
+
+	name?: string;
+
+	options?: MethodElement[];
+
 	params?: ModuleElement[];
+
 	properties?: ModuleElement[];
+
+	signatures?: EventSignature[];
+
+	textRaw: string;
+
+	type?: string;
 }
 
-export interface StickyParam {
-	textRaw: string;
-	name: string;
-	type: string;
-	desc?: string;
+export interface StickyParam extends NodeDocsCommonProperties {
 	options?: MethodElement[];
+
+	textRaw: string;
+
+	type: string;
 }
 
 export interface FluffySignature {
-	return?: FluffyReturn;
 	params: StickyParam[];
+
+	return?: FluffyReturn;
 }
 
-export interface TentacledParam {
-	textRaw: string;
-	name: string;
-	type: string;
-	desc?: string;
+export interface TentacledParam extends NodeDocsCommonProperties {
 	options?: ModuleElement[];
+
+	textRaw: string;
+
+	type: string;
 }
 
-export interface EventElement {
-	textRaw: string;
-	type?: string;
-	name: string;
-	meta?: PurpleMeta;
-	signatures?: FluffySignature[];
-	desc?: string;
-	params?: TentacledParam[];
-	modules?: PurpleModule[];
-	stability?: number;
-	stabilityText?: string;
-	shortDesc?: string;
-	options?: EventElement[];
+export interface EventElement extends NodeDocsCommonProperties {
 	default?: string;
+
 	displayName?: string;
+
+	meta?: PurpleMeta;
+
 	methods?: PropertyElement[];
+
+	modules?: PurpleModule[];
+
+	options?: EventElement[];
+
+	params?: TentacledParam[];
+
+	shortDesc?: string;
+
+	signatures?: FluffySignature[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type?: string;
 }
 
 export interface ModuleElement {
-	textRaw: string;
-	type?: string;
-	name?: string;
-	signatures?: TentacledSignature[];
-	desc?: string;
-	displayName?: string;
-	meta?: FluffyMeta;
-	events?: EventElement[];
-	options?: ModuleElement[];
 	default?: string;
-	params?: ModuleElement[];
+
+	desc?: string;
+
+	displayName?: string;
+
+	events?: EventElement[];
+
+	meta?: FluffyMeta;
+
 	miscs?: ModuleElement[];
+
+	name?: string;
+
+	options?: ModuleElement[];
+
+	params?: ModuleElement[];
+
+	signatures?: TentacledSignature[];
+
+	textRaw: string;
+
+	type?: string;
 }
 
 export enum Name {
@@ -171,104 +255,137 @@ export enum Name {
 }
 
 export interface PropertyElement {
-	textRaw: string;
-	name?: string;
-	type?: string;
-	desc?: string;
-	displayName?: string;
-	meta?: PurpleMeta;
-	params?: any[];
-	signatures?: CtorSignature[];
-	options?: PropertyElement[];
 	default?: string;
+
+	desc?: string;
+
+	displayName?: string;
+
+	meta?: PurpleMeta;
+
 	miscs?: PropertyElement[];
-	shortDesc?: string;
+
 	modules?: PropertyElement[];
+
+	name?: string;
+
+	options?: PropertyElement[];
+
+	params?: any[];
+
+	shortDesc?: string;
+
+	signatures?: CtorSignature[];
+
+	textRaw: string;
+
+	type?: string;
 }
 
 export interface CtorSignature {
 	params: FluffyParam[];
+
 	return?: PurpleReturn;
 }
 
-export interface FluffyParam {
-	textRaw: string;
-	name: string;
-	type: ParamType;
-	desc?: string;
+export interface FluffyParam extends NodeDocsCommonProperties {
+	default?: string;
+
 	options?: OptionElement[];
-	default?: string;
+
+	textRaw: string;
+
+	type: ParamType;
 }
 
-export interface OptionElement {
-	textRaw: string;
-	name: string;
-	type: string;
-	desc?: string;
+export interface OptionElement extends NodeDocsCommonProperties {
 	default?: string;
+
+	textRaw: string;
+
+	type: string;
 }
 
-export interface PurpleReturn {
+export interface PurpleReturn extends NodeDocsCommonProperties {
 	textRaw: string;
-	name: Name;
+
 	type: string;
-	desc?: string;
 }
 
 export interface FluffyMeta {
 	added?: string[];
+
 	changes: FluffyChange[];
 }
 
 export interface FluffyChange {
-	version: string;
-	'pr-url': string;
 	description: string;
+
+	'pr-url': string;
+
+	version: string;
 }
 
 export interface TentacledSignature {
 	params: OptionElement[];
+
 	return?: PurpleReturn;
 }
 
 export interface StickySignature {
+	desc: string;
+
 	params: PurpleParam[];
-	desc: string;
 }
 
-export interface NodeDocsGlobal {
-	textRaw: string;
-	type: GlobalType;
-	name: string;
-	meta?: PurpleMeta;
-	desc: string;
-	methods?: GlobalMethod[];
-	properties?: GlobalProperty[];
+export interface NodeDocsGlobal extends NodeDocsCommonProperties {
 	classes?: GlobalClass[];
-	source: Source;
+
 	introduced_in?: string;
+
+	meta?: PurpleMeta;
+
+	methods?: GlobalMethod[];
+
 	modules?: ModuleElement[];
+
+	properties?: GlobalProperty[];
+
+	source: Source;
+
+	textRaw: string;
+
+	type: GlobalType;
 }
 
-export interface GlobalClass {
-	textRaw: string;
-	type: TypeEnum;
-	name: string;
-	meta?: PurpleMeta;
-	desc?: string;
+export interface GlobalClass extends NodeDocsCommonProperties {
 	classMethods?: EventElement[];
+
 	events?: PurpleEvent[];
-	properties?: PurpleProperty[];
+
+	meta?: PurpleMeta;
+
 	methods?: FluffyMethod[];
+
+	properties?: PurpleProperty[];
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface PurpleEvent {
-	textRaw: string;
-	type: EventType;
-	name: string;
-	meta: PurpleMeta;
-	params: ModuleElement[];
 	desc: string;
+
+	meta: PurpleMeta;
+
+	name: string;
+
+	params: ModuleElement[];
+
+	textRaw: string;
+
+	type: EventType;
 }
 
 export enum EventType {
@@ -276,18 +393,26 @@ export enum EventType {
 }
 
 export interface FluffyMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
-	meta: PurpleMeta;
-	signatures: IndigoSignature[];
 	desc: string;
+
+	meta: PurpleMeta;
+
+	name: string;
+
+	signatures: IndigoSignature[];
+
 	stability?: number;
+
 	stabilityText?: MethodStabilityText;
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
 export interface IndigoSignature {
 	params: MethodElement[];
+
 	return?: MethodElement;
 }
 
@@ -297,49 +422,71 @@ export enum MethodStabilityText {
 }
 
 export interface PurpleProperty {
-	textRaw: string;
-	type: string;
-	name: string;
-	meta: PurpleMeta;
 	desc: string;
+
+	meta: PurpleMeta;
+
+	name: string;
+
+	textRaw: string;
+
+	type: string;
 }
 
 export interface GlobalMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
-	meta: PurpleMeta;
-	signatures: IndigoSignature[];
 	desc: string;
+
+	meta: PurpleMeta;
+
 	modules?: ModuleElement[];
+
+	name: string;
+
+	signatures: IndigoSignature[];
+
 	stability?: number;
+
 	stabilityText?: string;
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
-export interface GlobalProperty {
-	textRaw: string;
-	type: string;
-	name: string;
+export interface GlobalProperty extends NodeDocsCommonProperties {
 	meta?: EventMeta;
-	desc?: string;
+
 	methods?: EventElement[];
-	stability?: number;
-	stabilityText?: string;
-	properties?: PropertyElement[];
+
 	modules?: PropertyElement[];
+
+	properties?: PropertyElement[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: string;
 }
 
 export interface EventMeta {
 	added?: string[];
+
 	changes: TentacledChange[];
+
 	deprecated?: string[];
 }
 
 export interface TentacledChange {
-	version: string[] | string;
-	'pr-url'?: string;
-	description: string;
 	commit?: string;
+
+	description: string;
+
+	'pr-url'?: string;
+
+	version: string[] | string;
 }
 
 export enum Source {
@@ -351,111 +498,162 @@ export enum GlobalType {
 	Global = 'global'
 }
 
-export interface NodeDocsMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
+export interface NodeDocsMethod extends NodeDocsCommonProperties {
 	meta?: PurpleMeta;
-	stability?: number;
-	stabilityText?: string;
+
 	signatures: PurpleSignature[];
-	desc: string;
+
 	source: Source;
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
-export interface NodeDocsMisc {
-	textRaw: string;
-	name: string;
-	introduced_in: string;
-	type: TypeEnum;
-	desc?: string;
-	miscs: PurpleMisc[];
-	source: string;
-	stability?: number;
-	stabilityText?: MiscStabilityText;
+export interface NodeDocsMisc extends NodeDocsCommonProperties {
 	classes?: PurpleClass[];
+
 	globals?: MiscGlobal[];
-	methods?: EventElement[];
+
+	introduced_in: string;
+
 	meta?: PurpleMeta;
+
+	methods?: EventElement[];
+
+	miscs: PurpleMisc[];
+
 	properties?: MiscProperty[];
+
+	source: string;
+
+	stability?: number;
+
+	stabilityText?: MiscStabilityText;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface MiscGlobal {
-	textRaw: string;
-	type: GlobalType;
-	name: string;
-	meta: PurpleMeta;
-	desc: string;
-	methods?: EventElement[];
-	properties?: PropertyElement[];
 	classes?: GlobalClass[];
+
+	desc: string;
+
+	meta: PurpleMeta;
+
+	methods?: EventElement[];
+
+	name: string;
+
+	properties?: PropertyElement[];
+
+	textRaw: string;
+
+	type: GlobalType;
 }
 
-export interface PurpleMisc {
-	textRaw: string;
-	name: string;
-	desc?: string;
-	type: TypeEnum;
+export interface PurpleMisc extends NodeDocsCommonProperties {
 	displayName?: string;
+
 	meta?: PurpleMeta;
-	modules?: MiscModule[];
-	stability?: number;
-	stabilityText?: string;
+
 	miscs?: PurpleClass[];
+
+	modules?: MiscModule[];
+
 	properties?: MethodElement[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
-export interface MiscModule {
-	textRaw: string;
-	name: string;
-	desc?: string;
-	modules?: FluffyModule[];
-	type: TypeEnum;
+export interface MiscModule extends NodeDocsCommonProperties {
 	displayName: string;
-	properties?: MethodElement[];
+
 	meta?: TentacledMeta;
+
+	modules?: FluffyModule[];
+
+	properties?: MethodElement[];
+
 	stability?: number;
+
 	stabilityText?: MethodStabilityText;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface TentacledMeta {
 	added?: string[];
-	napiVersion?: number[];
+
 	changes: StickyChange[];
+
+	napiVersion?: number[];
+
 	removed?: string[];
 }
 
 export interface StickyChange {
-	version: string[] | string;
-	'pr-url'?: string[] | string;
-	description: string;
 	commit?: string;
+
+	description: string;
+
+	'pr-url'?: string[] | string;
+
+	version: string[] | string;
 }
 
 export interface FluffyModule {
-	textRaw: string;
-	name: string;
-	meta?: StickyMeta;
 	desc: string;
-	type: TypeEnum;
+
 	displayName: string;
+
+	meta?: StickyMeta;
+
+	name: string;
+
 	stability?: number;
+
 	stabilityText?: MethodStabilityText;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface StickyMeta {
-	changes: TentacledChange[];
 	added?: string[];
+
+	changes: TentacledChange[];
+
 	napiVersion?: number[];
 }
 
 export interface MiscProperty {
-	textRaw: string;
-	type: ParamType;
-	name: string;
 	desc: string;
-	properties: EventElement[];
+
 	methods: EventElement[];
+
+	name: string;
+
+	properties: EventElement[];
+
+	textRaw: string;
+
+	type: ParamType;
 }
 
 export enum MiscStabilityText {
@@ -465,308 +663,458 @@ export enum MiscStabilityText {
 	Stable = 'Stable'
 }
 
-export interface NodeDocsModule {
-	textRaw: string;
-	name: string;
-	introduced_in?: string;
-	miscs?: ModuleMisc[];
-	type: TypeEnum;
-	displayName?: string;
-	source: string;
-	stability?: number;
-	stabilityText?: MiscStabilityText;
-	desc?: string;
-	modules?: TentacledModule[];
+export interface NodeDocsModule extends NodeDocsCommonProperties {
 	classes?: FluffyClass[];
-	methods?: StickyMethod[];
+
+	displayName?: string;
+
 	events?: MethodElement[];
-	properties?: IndigoProperty[];
+
+	introduced_in?: string;
+
 	meta?: IndigoMeta;
+
+	methods?: StickyMethod[];
+
+	miscs?: ModuleMisc[];
+
+	modules?: TentacledModule[];
+
+	properties?: IndigoProperty[];
+
+	source: string;
+
+	stability?: number;
+
+	stabilityText?: MiscStabilityText;
+
+	textRaw: string;
+
+	type: TypeEnum;
+
 	vars?: FluffyVar[];
 }
 
-export interface FluffyClass {
-	textRaw: string;
-	type: TypeEnum;
-	name: string;
-	desc?: string;
-	signatures?: IndecentSignature[];
-	meta?: EventMeta;
-	stability?: number;
-	stabilityText?: string;
-	methods?: TentacledMethod[];
-	modules?: ClassModule[];
+export interface FluffyClass extends NodeDocsCommonProperties {
 	classMethods?: ModuleElement[];
-	properties?: FluffyProperty[];
+
 	events?: FluffyEvent[];
+
+	meta?: EventMeta;
+
+	methods?: TentacledMethod[];
+
+	modules?: ClassModule[];
+
+	properties?: FluffyProperty[];
+
+	signatures?: IndecentSignature[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface FluffyEvent {
-	textRaw: string;
-	type: EventType;
-	name: string;
-	meta?: EventMeta;
-	params: PropertyElement[];
 	desc: string;
+
+	meta?: EventMeta;
+
+	name: string;
+
+	params: PropertyElement[];
+
+	textRaw: string;
+
+	type: EventType;
 }
 
-export interface TentacledMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
+export interface TentacledMethod extends NodeDocsCommonProperties {
 	meta?: EventMeta;
-	signatures: IndigoSignature[];
-	desc?: string;
-	stability?: number;
-	stabilityText?: string;
-	properties?: MethodElement[];
+
 	methods?: PropertyElement[];
+
 	modules?: PropertyElement[];
+
+	properties?: MethodElement[];
+
+	signatures: IndigoSignature[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
 export interface ClassModule {
-	textRaw: string;
-	name: string;
-	desc: string;
-	type: TypeEnum;
-	displayName: string;
-	methods?: EventElement[];
-	stability?: number;
-	stabilityText?: string;
 	ctors?: EventElement[];
+
+	desc: string;
+
+	displayName: string;
+
 	meta?: PurpleMeta;
+
+	methods?: EventElement[];
+
 	modules?: PropertyElement[];
+
+	name: string;
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
-export interface FluffyProperty {
-	textRaw: string;
-	name: string;
-	meta?: EventMeta;
-	desc?: string;
-	type?: string;
+export interface FluffyProperty extends NodeDocsCommonProperties {
 	default?: string;
-	shortDesc?: string;
-	stability?: number;
-	stabilityText?: string;
+
+	meta?: EventMeta;
+
 	methods?: EventElement[];
+
 	options?: EventElement[];
+
+	shortDesc?: string;
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type?: string;
 }
 
 export interface IndecentSignature {
-	params: MethodElement[];
 	desc?: string;
+
+	params: MethodElement[];
+
 	return?: MethodElement;
 }
 
 export interface IndigoMeta {
-	deprecated?: string[];
-	changes: FluffyChange[];
 	added?: string[];
+
+	changes: FluffyChange[];
+
+	deprecated?: string[];
 }
 
-export interface StickyMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
+export interface StickyMethod extends NodeDocsCommonProperties {
 	meta?: EventMeta;
-	signatures: HilariousSignature[];
-	desc?: string;
-	modules?: PropertyElement[];
-	stability?: number;
-	stabilityText?: string;
+
 	methods?: PropertyElement[];
+
 	miscs?: PropertyElement[];
+
+	modules?: PropertyElement[];
+
 	properties?: PropertyElement[];
+
+	signatures: HilariousSignature[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
 export interface HilariousSignature {
 	params: PropertyElement[];
+
 	return?: PropertyElement;
 }
 
-export interface ModuleMisc {
-	textRaw: string;
-	name: string;
+export interface ModuleMisc extends NodeDocsCommonProperties {
 	introduced_in?: string;
-	type: TypeEnum;
-	desc?: string;
-	miscs?: FluffyMisc[];
+
 	meta?: PurpleMeta;
+
 	methods?: MethodElement[];
+
+	miscs?: FluffyMisc[];
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
-export interface FluffyMisc {
-	textRaw: string;
-	name: string;
-	type: TypeEnum;
-	desc?: string;
+export interface FluffyMisc extends NodeDocsCommonProperties {
 	classes?: GlobalClass[];
-	displayName?: string;
-	modules?: ModuleElement[];
-	meta?: PurpleMeta;
+
 	ctors?: PropertyElement[];
-	methods?: IndigoMethod[];
-	examples?: ModuleElement[];
+
+	displayName?: string;
+
 	events?: ModuleElement[];
+
+	examples?: ModuleElement[];
+
+	meta?: PurpleMeta;
+
+	methods?: IndigoMethod[];
+
 	miscs?: ModuleElement[];
+
+	modules?: ModuleElement[];
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface IndigoMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
-	meta?: PurpleMeta;
-	signatures: AmbitiousSignature[];
 	desc: string;
+
+	meta?: PurpleMeta;
+
+	name: string;
+
+	signatures: AmbitiousSignature[];
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
 export interface AmbitiousSignature {
 	params: ModuleElement[];
+
 	return?: ModuleElement;
 }
 
-export interface TentacledModule {
-	textRaw: string;
-	name: string;
-	meta?: PurpleMeta;
-	desc?: string;
-	type: TypeEnum;
-	displayName: string;
+export interface TentacledModule extends NodeDocsCommonProperties {
 	classes?: TentacledClass[];
+
+	displayName: string;
+
+	meta?: PurpleMeta;
+
 	methods?: IndecentMethod[];
-	properties?: StickyProperty[];
-	modules?: StickyModule[];
-	stability?: number;
-	stabilityText?: string;
-	vars?: PurpleVar[];
+
 	miscs?: EventElement[];
+
+	modules?: StickyModule[];
+
+	properties?: StickyProperty[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
+
+	vars?: PurpleVar[];
 }
 
-export interface TentacledClass {
-	textRaw: string;
-	type: TypeEnum;
-	name: string;
-	desc?: string;
-	meta?: IndigoMeta;
-	stability?: number;
-	stabilityText?: string;
-	signatures?: CunningSignature[];
-	properties?: TentacledProperty[];
-	methods?: MethodElement[];
+export interface TentacledClass extends NodeDocsCommonProperties {
 	events?: EventElement[];
+
+	meta?: IndigoMeta;
+
+	methods?: MethodElement[];
+
 	modules?: EventElement[];
+
+	properties?: TentacledProperty[];
+
+	signatures?: CunningSignature[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
 export interface TentacledProperty {
-	textRaw: string;
-	type?: string;
-	name: string;
-	desc: string;
-	shortDesc?: string;
-	meta?: IndigoMeta;
 	default?: string;
-	stability?: number;
-	stabilityText?: string;
+
+	desc: string;
+
+	meta?: IndigoMeta;
+
 	modules?: ModuleElement[];
+
+	name: string;
+
+	shortDesc?: string;
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type?: string;
 }
 
 export interface CunningSignature {
-	params: ModuleElement[];
 	desc: string;
+
+	params: ModuleElement[];
 }
 
-export interface IndecentMethod {
-	textRaw: string;
-	type: MethodType;
-	name: string;
+export interface IndecentMethod extends NodeDocsCommonProperties {
 	meta?: EventMeta;
-	stability?: number;
-	stabilityText?: string;
-	signatures: MagentaSignature[];
-	desc?: string;
-	properties?: ModuleElement[];
-	modules?: ModuleElement[];
+
 	miscs?: ModuleElement[];
+
+	modules?: ModuleElement[];
+
+	properties?: ModuleElement[];
+
+	signatures: MagentaSignature[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: MethodType;
 }
 
 export interface MagentaSignature {
 	params: EventElement[];
+
 	return?: EventElement;
 }
 
-export interface StickyModule {
-	textRaw: string;
-	name: string;
-	meta?: PurpleMeta;
-	properties?: PropertyElement[];
-	type: TypeEnum;
-	displayName: string;
-	desc?: string;
-	methods?: ModuleElement[];
-	modules?: PurpleClass[];
-	stability?: number;
-	stabilityText?: string;
+export interface StickyModule extends NodeDocsCommonProperties {
 	classes?: MethodElement[];
+
+	displayName: string;
+
+	meta?: PurpleMeta;
+
+	methods?: ModuleElement[];
+
+	modules?: PurpleClass[];
+
+	properties?: PropertyElement[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: TypeEnum;
 }
 
-export interface StickyProperty {
-	textRaw: string;
-	type?: string;
-	name: string;
-	meta?: EventMeta;
+export interface StickyProperty extends NodeDocsCommonProperties {
 	default?: string;
-	desc?: string;
-	shortDesc?: string;
-	stability?: number;
-	stabilityText?: MiscStabilityText;
-	modules?: PropertyElement[];
-	properties?: PropertyElement[];
+
+	meta?: EventMeta;
+
 	methods?: PropertyElement[];
+
+	modules?: PropertyElement[];
+
+	properties?: PropertyElement[];
+
+	shortDesc?: string;
+
+	stability?: number;
+
+	stabilityText?: MiscStabilityText;
+
+	textRaw: string;
+
+	type?: string;
 }
 
 export interface PurpleVar {
-	textRaw: string;
-	name: string;
-	meta: PurpleMeta;
-	type: string;
 	desc: string;
-	properties?: VarMethod[];
+
+	meta: PurpleMeta;
+
 	methods?: EventElement[];
+
+	name: string;
+
+	properties?: VarMethod[];
+
+	textRaw: string;
+
+	type: string;
 }
 
 export interface VarMethod {
-	textRaw: string;
-	type: string;
-	name: string;
-	meta: EventMeta;
 	desc: string;
-	stability?: number;
-	stabilityText?: string;
-	signatures?: AmbitiousSignature[];
+
+	meta: EventMeta;
+
 	modules?: ModuleElement[];
+
+	name: string;
+
+	signatures?: AmbitiousSignature[];
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type: string;
 }
 
-export interface IndigoProperty {
-	textRaw: string;
-	name: string;
-	meta?: EventMeta;
-	desc?: string;
-	type?: string;
-	options?: ModuleElement[];
-	stability?: number;
-	stabilityText?: string;
-	shortDesc?: string;
-	methods?: VarMethod[];
-	properties?: ModuleElement[];
+export interface IndigoProperty extends NodeDocsCommonProperties {
 	default?: string;
+
+	meta?: EventMeta;
+
+	methods?: VarMethod[];
+
+	options?: ModuleElement[];
+
+	properties?: ModuleElement[];
+
+	shortDesc?: string;
+
+	stability?: number;
+
+	stabilityText?: string;
+
+	textRaw: string;
+
+	type?: string;
 }
 
 export interface FluffyVar {
-	textRaw: string;
-	name: TypeEnum;
-	meta: PurpleMeta;
-	type: string;
 	desc: string;
-	properties: VarMethod[];
+
+	meta: PurpleMeta;
+
 	methods: ModuleElement[];
+
+	name: TypeEnum;
+
+	properties: VarMethod[];
+
+	textRaw: string;
+
+	type: string;
 }

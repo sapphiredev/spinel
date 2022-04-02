@@ -6,7 +6,8 @@ import type { TransformedArguments } from '@skyra/http-framework';
 import Redis from 'ioredis';
 
 export const enum RedisKeys {
-	DiscordDocs = 'discord-docs'
+	DiscordDocs = 'discord-docs',
+	DiscordJsGuide = 'discordjs-guide'
 }
 
 export class RedisCacheClient extends Redis {

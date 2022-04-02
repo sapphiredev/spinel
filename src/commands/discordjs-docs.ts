@@ -24,11 +24,11 @@ import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
 	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
-		if (!args.subCommand || !args.focused || typeof args.focused !== 'string') {
+		if (!args.subCommand) {
 			return this.autocompleteNoResults();
 		}
 
-		const query = args.focused.trim().toLowerCase();
+		const query = args.query.trim().toLowerCase();
 		const doc = await fetchDocs(args.subCommand as SourcesStringUnion);
 
 		const results: APIApplicationCommandOptionChoice[] = [];

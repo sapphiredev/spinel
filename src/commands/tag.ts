@@ -3,7 +3,7 @@ import { errorResponse } from '#utils/response-utils';
 import { findSimilar, findTag, mapTagSimilarityEntry, tagCache } from '#utils/tags';
 import { getGuildIds } from '#utils/utils';
 import { inlineCode } from '@discordjs/builders';
-import { Command, RegisterCommand, RestrictGuildIds, TransformedArguments } from '@skyra/http-framework';
+import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteractionResponse } from 'discord-api-types/v10';
 
 @RegisterCommand((builder) =>
@@ -25,8 +25,12 @@ import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteracti
 )
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
-	public override autocompleteRun(_: never, _2: never, { query }: Args) {
-		query = query.trim().toLowerCase();
+	public override autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+		if (!args.focused || typeof args.focused !== 'string') {
+			return this.autocompleteNoResults();
+		}
+
+		const query = args.focused.trim().toLowerCase();
 
 		const results: APIApplicationCommandOptionChoice[] = [];
 

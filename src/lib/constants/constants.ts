@@ -1,5 +1,6 @@
 import { RedCross } from '#constants/emotes';
-import { ButtonStyle, ComponentType, type APIApplicationCommandOptionChoice, type APIButtonComponent } from 'discord-api-types/v10';
+import { ButtonBuilder } from '@discordjs/builders';
+import { ButtonStyle, type APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import os from 'node:os';
 
 export const FailPrefix = `${RedCross} I am sorry, but` as const;
@@ -27,13 +28,13 @@ export const preferredRepositories: APIApplicationCommandOptionChoice[] = [
 export const KnownServerIdsToGitHubOrganizations = new Map<string, string>([
 	['838895946397646850', 'sapphiredev'],
 	['737141877803057244', 'sapphiredev'],
-	['541738403230777351', 'skyra-project']
+	['541738403230777351', 'skyra-project'],
+	['254360814063058944', 'skyra-project'],
+	['222078108977594368', 'discordjs']
 ]);
 
-export const SupportServerButton: APIButtonComponent = {
-	type: ComponentType.Button,
-	style: ButtonStyle.Link,
-	url: 'https://discord.gg/sapphiredev',
-	label: 'Support server',
-	emoji: { name: '🆘' }
-};
+export const SupportServerButton = new ButtonBuilder()
+	.setStyle(ButtonStyle.Link)
+	.setURL('https://discord.gg/sapphiredev')
+	.setLabel('Support Server')
+	.setEmoji({ name: '🆘' });

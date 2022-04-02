@@ -3,7 +3,14 @@ import { buildSelectOption, fetchDocResult, fetchDocs } from '#utils/discordjs-d
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
 import { inlineCode, SlashCommandBuilder, SlashCommandSubcommandBuilder } from '@discordjs/builders';
-import { Command, RegisterCommand, RegisterSubCommand, RestrictGuildIds, TransformedArguments } from '@skyra/http-framework';
+import {
+	Command,
+	RegisterCommand,
+	RegisterSubCommand,
+	RestrictGuildIds,
+	type AutocompleteInteractionArguments,
+	type TransformedArguments
+} from '@skyra/http-framework';
 import {
 	MessageFlags,
 	type APIApplicationCommandOptionChoice,
@@ -16,12 +23,15 @@ import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
 @RegisterCommand(new SlashCommandBuilder().setName('discordjs-docs').setDescription('Search discord.js documentation'))
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
-	public override async autocompleteRun(_: never, _2: never, { query }: Args) {
-		query = query.trim().toLowerCase();
+	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+		if (!args.subCommand || !args.focused || typeof args.focused !== 'string') {
+			return this.autocompleteNoResults();
+		}
+
+		const query = args.focused.trim().toLowerCase();
+		const doc = await fetchDocs(args.subCommand as SourcesStringUnion);
 
 		const results: APIApplicationCommandOptionChoice[] = [];
-
-		const doc = await fetchDocs('stable');
 
 		if (query.length) {
 			const element = doc.get(...query.split(/\.|#/));

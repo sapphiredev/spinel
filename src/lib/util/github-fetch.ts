@@ -1,4 +1,4 @@
-import { FetchUserAgent, preferredRepositories } from '#constants/constants';
+import { FetchUserAgent, preferredRepositories, sapphirePreferredRepositories } from '#constants/constants';
 import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrDraft, GhPrMerged, GhPrOpen } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit';
@@ -10,7 +10,10 @@ import { fromAsync, isErr } from '@sapphire/result';
 import { cutText, isNullish, isNullishOrEmpty } from '@sapphire/utilities';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 
-export async function fuzzilySearchForRepository({ repository }: GhSearchRepositoriesParameters): Promise<APIApplicationCommandOptionChoice[]> {
+export async function fuzzilySearchForRepository({
+	repository,
+	guildId
+}: GhSearchRepositoriesParameters): Promise<APIApplicationCommandOptionChoice[]> {
 	const result = await fromAsync(async () => {
 		const response = await fetch<GraphQLResponse<'searchRepositories'>>(
 			'https://api.github.com/graphql',
@@ -33,10 +36,10 @@ export async function fuzzilySearchForRepository({ repository }: GhSearchReposit
 	});
 
 	if (isErr(result) || !result.value.search) {
-		return preferredRepositories;
+		return preferredRepositories.get(guildId ?? '') ?? sapphirePreferredRepositories;
 	}
 
-	return getDataForRepositorySearch(result.value.search.nodes);
+	return getDataForRepositorySearch(result.value.search.nodes, guildId);
 }
 
 export async function fuzzilySearchForIssuesAndPullRequests({
@@ -174,9 +177,9 @@ function getDataForPullRequest({ pullRequest, ...repository }: Repository): Issu
 	};
 }
 
-function getDataForRepositorySearch(repositories: Repository[]): APIApplicationCommandOptionChoice[] {
+function getDataForRepositorySearch(repositories: Repository[], guildId: string | undefined): APIApplicationCommandOptionChoice[] {
 	if (isNullishOrEmpty(repositories)) {
-		return preferredRepositories;
+		return preferredRepositories.get(guildId ?? '') ?? sapphirePreferredRepositories;
 	}
 
 	const results: APIApplicationCommandOptionChoice[] = [];
@@ -367,14 +370,17 @@ interface IssueOrPrDetails {
 
 interface GhSearchRepositoriesParameters {
 	repository: string;
+	guildId: string | undefined;
 }
 
-interface GhSearchIssuesAndPullRequestsParameters extends GhSearchRepositoriesParameters {
+interface GhSearchIssuesAndPullRequestsParameters {
+	repository: string;
 	owner: string;
 	number: string;
 }
 
-interface FetchIssuesAndPrsParameters extends GhSearchRepositoriesParameters {
+interface FetchIssuesAndPrsParameters {
+	repository: string;
 	owner: string;
 	number: number;
 }

@@ -6,14 +6,11 @@ import { config } from 'dotenv-cra';
 import { stringify } from 'node:querystring';
 import { fileURLToPath } from 'node:url';
 import { inspect } from 'node:util';
-import commands from './commands.mjs';
 
-config({ path: fileURLToPath(new URL('../../.env', import.meta.url)) });
+config({ path: fileURLToPath(new URL('../.env', import.meta.url)) });
 
 const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
 const ApplicationId = process.env.DISCORD_CLIENT_ID;
-const SapphireModeratorSnowflake = process.env.MODERATOR_ID;
-const SapphireServerId = '737141877803057244';
 
 if (!ApplicationId || !ApplicationSecret) {
 	throw new Error('Please fill in all env variables in your ".env.local" file');
@@ -54,7 +51,7 @@ async function getBearerToken() {
 async function allowSapphireStaffToUseReloadTags(token, reloadTagsData) {
 	try {
 		const res = await fetch(
-			`${RouteBases.api}${Routes.applicationCommandPermissions(ApplicationId, SapphireServerId, reloadTagsData.id)}`,
+			`${RouteBases.api}${Routes.applicationCommandPermissions(ApplicationId, '737141877803057244', reloadTagsData.id)}`,
 			{
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -64,7 +61,7 @@ async function allowSapphireStaffToUseReloadTags(token, reloadTagsData) {
 				body: JSON.stringify({
 					permissions: [
 						{
-							id: SapphireModeratorSnowflake,
+							id: '868612689977569341',
 							type: ApplicationCommandPermissionType.Role,
 							permission: true
 						}
@@ -84,7 +81,7 @@ async function allowSapphireStaffToUseReloadTags(token, reloadTagsData) {
  * Updates global chat input commands
  * @param {string} token The authentication token from Discord
  */
-async function batchUpdateCommands(token) {
+async function getReloadTagsCommand(token) {
 	try {
 		/** @type {Array<import('discord-api-types/v10').APIApplicationCommand>} */
 		const res = await fetch(
@@ -94,19 +91,12 @@ async function batchUpdateCommands(token) {
 					Authorization: `Bearer ${token}`,
 					'Content-Type': 'application/json'
 				},
-				method: FetchMethods.Put,
-				body: JSON.stringify(commands)
+				method: FetchMethods.Get
 			},
 			FetchResultTypes.JSON
 		);
 
-		console.log(`${inspect(res, false, 6, true)}\nBulk updated slash commands successfully\n==============\n`);
-
-		const reloadTagsData = res.find((command) => command.name === 'reload-tags');
-
-		if (reloadTagsData) {
-			return await allowSapphireStaffToUseReloadTags(token, reloadTagsData);
-		}
+		return res.find((command) => command.name === 'reload-tags');
 	} catch (error) {
 		console.error(error);
 	}
@@ -114,4 +104,8 @@ async function batchUpdateCommands(token) {
 
 const token = await getBearerToken();
 
-await batchUpdateCommands(token);
+const reloadTagCommand = await getReloadTagsCommand(token);
+
+if (reloadTagCommand) {
+	await allowSapphireStaffToUseReloadTags(token, reloadTagCommand);
+}

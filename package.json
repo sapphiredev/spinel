@@ -27,7 +27,6 @@
 		"start": "node --preserve-symlinks --enable-source-maps dist/main.js",
 		"build": "tsup",
 		"watch": "tsup --watch",
-		"watch:debug": "tsup --watch --onSuccess \"tsc -b src\"",
 		"dev": "tsup --watch --onSuccess \"yarn start\"",
 		"clean": "node scripts/clean.mjs",
 		"validate-tags": "node scripts/validateTags.mjs",
@@ -42,7 +41,7 @@
 		"@sapphire/result": "^1.1.1",
 		"@sapphire/time-utilities": "^1.7.4",
 		"@sapphire/utilities": "^3.6.2",
-		"@skyra/http-framework": "^0.0.9",
+		"@skyra/http-framework": "^0.0.10",
 		"@skyra/jaro-winkler": "^1.1.0",
 		"discordjs-docs-parser": "^1.1.1",
 		"dotenv-cra": "^3.0.2",
@@ -65,7 +64,7 @@
 		"@typescript-eslint/parser": "^5.17.0",
 		"colorette": "^2.0.16",
 		"cz-conventional-changelog": "^3.3.0",
-		"esbuild": "^0.14.29",
+		"esbuild": "^0.14.30",
 		"esbuild-jest": "^0.5.0",
 		"eslint": "^8.12.0",
 		"eslint-config-prettier": "^8.5.0",
@@ -76,7 +75,7 @@
 		"lint-staged": "^12.3.7",
 		"prettier": "^2.6.2",
 		"pretty-quick": "^3.1.3",
-		"tsup": "^5.12.3",
+		"tsup": "^5.12.4",
 		"typescript": "^4.6.3"
 	},
 	"repository": {
@@ -104,8 +103,5 @@
 	"eslintConfig": {
 		"extends": "@sapphire"
 	},
-	"packageManager": "yarn@3.2.0",
-	"resolutions": {
-		"@skyra/http-framework": "portal:/F:/dev/skyraproject/archid-components/packages/http-framework"
-	}
+	"packageManager": "yarn@3.2.0"
 }

@@ -61,36 +61,36 @@ export class UserCommand extends Command {
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('stable', 'Search the discord.js documentation (stable version)'))
-	public async stable(_: never, { query, target }: Args): Promise<APIInteractionResponse> {
+	public async stable(_: never, { query, target }: Args): Promise<Command.Response> {
 		return this.sharedRun('stable', query, target);
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('main', 'Search the discord.js documentation (main branch)'))
-	public async main(_: never, { query, target }: Args): Promise<APIInteractionResponse> {
+	public async main(_: never, { query, target }: Args): Promise<Command.Response> {
 		return this.sharedRun('main', query, target);
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('collection', 'Search the @discordjs/collection documentation'))
-	public async collection(_: never, { query, target }: Args): Promise<APIInteractionResponse> {
+	public async collection(_: never, { query, target }: Args): Promise<Command.Response> {
 		return this.sharedRun('collection', query, target);
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('builders', 'Search the @discordjs/builders documentation'))
-	public async builders(_: never, { query, target }: Args): Promise<APIInteractionResponse> {
+	public async builders(_: never, { query, target }: Args): Promise<Command.Response> {
 		return this.sharedRun('builders', query, target);
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('voice', 'Search the @discordjs/voice documentation'))
-	public async voice(_: never, { query, target }: Args): Promise<APIInteractionResponse> {
+	public async voice(_: never, { query, target }: Args): Promise<Command.Response> {
 		return this.sharedRun('voice', query, target);
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('rpc', 'Search the discord-rpc documentation'))
-	public async rpc(_: never, { query, target }: Args): Promise<APIInteractionResponse> {
+	public async rpc(_: never, { query, target }: Args): Promise<Command.Response> {
 		return this.sharedRun('rpc', query, target);
 	}
 
-	private async sharedRun(source: SourcesStringUnion, query: string, target?: TransformedArguments.User): Promise<APIInteractionResponse> {
+	private async sharedRun(source: SourcesStringUnion, query: string, target?: TransformedArguments.User): Promise<Command.Response> {
 		const doc = await fetchDocs(source);
 
 		const singleResult = fetchDocResult({ source, doc, query, target: target?.user.id });

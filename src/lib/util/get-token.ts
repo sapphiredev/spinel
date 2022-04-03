@@ -1,7 +1,7 @@
 import { envParseString } from '#env/utils';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { OAuth2Routes, type RESTPostOAuth2ClientCredentialsResult } from 'discord-api-types/v10';
-import { stringify } from 'node:querystring';
+import { URLSearchParams } from 'node:url';
 
 /**
  * Retrieves a client_credentials access token from the Discord OAUTH API
@@ -17,10 +17,10 @@ export async function getBearerToken() {
 				).toString('base64')}`,
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			body: stringify({
+			body: new URLSearchParams({
 				grant_type: 'client_credentials',
 				scope: 'applications.commands.update'
-			}),
+			}).toString(),
 			method: FetchMethods.Post
 		},
 		FetchResultTypes.JSON

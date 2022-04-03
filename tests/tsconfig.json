@@ -3,6 +3,7 @@
 	"compilerOptions": {
 		"noEmit": true,
 		"incremental": false,
+		"rootDir": ".",
 		"baseUrl": ".",
 		"paths": {
 			"#utils/*": ["../src/lib/util/*"],
@@ -16,7 +17,6 @@
 			"#root/*": ["../src/*"]
 		}
 	},
-	"include": [".", "../src/**/*"],
-	"exclude": ["../dist/**/*"],
+	"include": ["."],
 	"references": [{ "path": "../src" }]
 }

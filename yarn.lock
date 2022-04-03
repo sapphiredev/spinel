@@ -1151,7 +1151,7 @@ __metadata:
     "@sapphire/time-utilities": ^1.7.4
     "@sapphire/ts-config": ^3.3.4
     "@sapphire/utilities": ^3.6.2
-    "@skyra/http-framework": ^0.0.10
+    "@skyra/http-framework": ^0.1.0
     "@skyra/jaro-winkler": ^1.1.0
     "@types/he": ^1.1.2
     "@types/jest": ^27.4.1
@@ -1241,9 +1241,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skyra/http-framework@npm:^0.0.10":
-  version: 0.0.10
-  resolution: "@skyra/http-framework@npm:0.0.10"
+"@skyra/http-framework@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@skyra/http-framework@npm:0.1.0"
   dependencies:
     "@discordjs/builders": 0.13.0-dev.1648515278-ac4bc3a
     "@discordjs/collection": ^0.5.0
@@ -1253,7 +1253,7 @@ __metadata:
     discord-api-types: ^0.29.0
     fastify: ^3.27.4
     tweetnacl: ^1.0.3
-  checksum: 6a2b0d424c5b20240e7a480517544c5e9eab1a4af1fb05c2894cf1be77df1a124ad1c92588b0b7f53f360771e808ab5383864731089bb882d6971a66762dd928
+  checksum: 1624a17c37359937c87aa32be5f9cc4efdb6f2864ca9a27c3a81d9e604d6ccfaad8b2e8c83df5cc3aaa826f6c44e8434a1ee4c07d267a1f792f5d82da03b9b02
   languageName: node
   linkType: hard
 

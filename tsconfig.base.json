@@ -2,6 +2,7 @@
 	"extends": "@sapphire/ts-config/extra-strict",
 	"compilerOptions": {
 		"lib": ["ESNext", "DOM"],
+		"emitDecoratorMetadata": false,
 		"target": "ESNext",
 		"module": "ESNext"
 	}

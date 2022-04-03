@@ -41,7 +41,7 @@
 		"@sapphire/result": "^1.1.1",
 		"@sapphire/time-utilities": "^1.7.4",
 		"@sapphire/utilities": "^3.6.2",
-		"@skyra/http-framework": "^0.0.10",
+		"@skyra/http-framework": "^0.1.0",
 		"@skyra/jaro-winkler": "^1.1.0",
 		"discordjs-docs-parser": "^1.1.1",
 		"dotenv-cra": "^3.0.2",

@@ -4,7 +4,7 @@ import { getGuildIds, getKnownGitHubOrganizationsForServerId } from '#utils/util
 import { hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
-import type { APIApplicationCommandAutocompleteInteraction, APIApplicationCommandInteraction } from 'discord-api-types/v10';
+import type { APIApplicationCommandAutocompleteInteraction } from 'discord-api-types/v10';
 
 @RegisterCommand((builder) =>
 	builder //
@@ -50,7 +50,7 @@ export class UserCommand extends Command {
 					args.repository = `@${knownOrganizationForGuild}`;
 				}
 
-				const results = await fuzzilySearchForRepository({ repository: args.repository });
+				const results = await fuzzilySearchForRepository({ repository: args.repository, guildId: interaction.guild_id });
 
 				return this.autocomplete({ choices: results.slice(0, 19) });
 			}
@@ -78,7 +78,7 @@ export class UserCommand extends Command {
 		}
 	}
 
-	public override async chatInputRun(interaction: APIApplicationCommandInteraction, { repository, number, owner, target }: Args) {
+	public override async chatInputRun(interaction: Command.Interaction, { repository, number, owner, target }: Args) {
 		try {
 			owner ??= getKnownGitHubOrganizationsForServerId(interaction.guild_id).trim();
 

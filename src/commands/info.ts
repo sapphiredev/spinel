@@ -1,4 +1,4 @@
-import { BrandingColors, SupportServerButton } from '#constants/constants';
+import { SupportServerButton } from '#constants/constants';
 import { envParseString } from '#env/utils';
 import { getGuildIds } from '#utils/utils';
 import {
@@ -105,7 +105,7 @@ export class UserCommand extends Command {
 		};
 
 		return new EmbedBuilder() //
-			.setColor(BrandingColors.Primary)
+			.setColor(0x254fb9)
 			.setDescription(this.#descriptionContent)
 			.addFields(
 				{

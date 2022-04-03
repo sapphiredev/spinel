@@ -2,7 +2,7 @@ import { DjsDocsDevIcon, DjsDocsStableIcon } from '#constants/emotes';
 import { buildSelectOption, fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
-import { inlineCode, SlashCommandBuilder, SlashCommandSubcommandBuilder } from '@discordjs/builders';
+import { inlineCode, SlashCommandSubcommandBuilder } from '@discordjs/builders';
 import {
 	Command,
 	RegisterCommand,
@@ -14,13 +14,12 @@ import {
 import {
 	MessageFlags,
 	type APIApplicationCommandOptionChoice,
-	type APIInteractionResponse,
 	type APIInteractionResponseCallbackData,
 	type APISelectMenuOption
 } from 'discord-api-types/v10';
 import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
 
-@RegisterCommand(new SlashCommandBuilder().setName('discordjs-docs').setDescription('Search discord.js documentation'))
+@RegisterCommand((builder) => builder.setName('discordjs-docs').setDescription('Search discord.js documentation'))
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
 	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {

@@ -5,7 +5,7 @@ import { getGuildIds } from '#utils/utils';
 import { inlineCode } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
-import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteractionResponse } from 'discord-api-types/v10';
+import { MessageFlags, type APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 
 @RegisterCommand((builder) =>
 	builder //
@@ -82,7 +82,7 @@ export class UserCommand extends Command {
 		});
 	}
 
-	public override chatInputRun(_: never, { query, target }: Args): APIInteractionResponse {
+	public override chatInputRun(_: never, { query, target }: Args) {
 		query = query.trim().toLowerCase();
 
 		const content = findTag(query, target?.user.id);

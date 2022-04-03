@@ -13,7 +13,7 @@ import { cutText } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import he from 'he';
-import { stringify } from 'node:querystring';
+import { URLSearchParams } from 'node:url';
 
 @RegisterCommand((builder) =>
 	builder //
@@ -129,10 +129,10 @@ export class UserCommand extends Command {
 			{
 				method: FetchMethods.Post,
 				body: JSON.stringify({
-					params: stringify({
+					params: new URLSearchParams({
 						query,
-						hitsPerPage
-					})
+						hitsPerPage: hitsPerPage.toString()
+					}).toString()
 				}),
 				headers: {
 					'Content-Type': 'application/json',

@@ -23,7 +23,6 @@ export interface SapphireSlashiesEnv {
 	DJS_GUIDE_ALGOLIA_APPLICATION_KEY: string;
 	DOTENV_DEBUG_ENABLED: BooleanString;
 	GH_API_KEY: string;
-	MODERATOR_ID: string;
 	NODE_ENV: 'test' | 'development' | 'production';
 	SAPPHIRE_DOCS_ALOGLIA_APPLICATION_ID: string;
 	SAPPHIRE_DOCS_ALOGLIA_APPLICATION_KEY: string;

@@ -1,4 +1,4 @@
-import { KnownServerIdsToGitHubOrganizations } from '#constants/constants';
+import { KnownServerIdsToGitHubOrganizations, preferredRepositories, sapphirePreferredRepositories } from '#constants/constants';
 import { envParseArray } from '#env/utils';
 import { userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
@@ -49,4 +49,14 @@ export function getKnownGitHubOrganizationsForServerId(serverId?: string) {
 	const knownServerId = KnownServerIdsToGitHubOrganizations.get(serverId);
 
 	return knownServerId ?? 'sapphiredev';
+}
+
+export function getPreferredRepositoriesForServerId(serverId?: string) {
+	if (isNullishOrEmpty(serverId)) {
+		return sapphirePreferredRepositories;
+	}
+
+	const preferred = preferredRepositories.get(serverId);
+
+	return preferred ?? sapphirePreferredRepositories;
 }

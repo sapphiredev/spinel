@@ -1,6 +1,6 @@
 {
 	"name": "@sapphire/slashies-handler",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Slash Commands handler Sapphire Discord server",
 	"author": "@sapphire <contact@sapphirejs.dev>",
 	"license": "MIT",

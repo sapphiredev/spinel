@@ -7,7 +7,7 @@ import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
-import { cutText } from '@sapphire/utilities';
+import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice, APIInteractionResponseChannelMessageWithSource } from 'discord-api-types/v10';
 import { URL } from 'node:url';
@@ -34,7 +34,7 @@ export class UserCommand extends Command {
 	#mdnUrl = `https://developer.mozilla.org` as const;
 
 	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
-		if (args.focused !== 'query') {
+		if (args.focused !== 'query' || isNullishOrEmpty(args.query)) {
 			return this.autocompleteNoResults();
 		}
 

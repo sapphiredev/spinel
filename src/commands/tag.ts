@@ -3,6 +3,7 @@ import { errorResponse } from '#utils/response-utils';
 import { findSimilarTag, findTag, mapTagSimilarityEntry, tagCache } from '#utils/tags';
 import { getGuildIds } from '#utils/utils';
 import { inlineCode } from '@discordjs/builders';
+import { isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteractionResponse } from 'discord-api-types/v10';
 
@@ -26,7 +27,7 @@ import { MessageFlags, type APIApplicationCommandOptionChoice, type APIInteracti
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
 	public override autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
-		if (args.focused !== 'query') {
+		if (args.focused !== 'query' || isNullishOrEmpty(args.query)) {
 			return this.autocompleteNoResults();
 		}
 

@@ -3,9 +3,9 @@
 	"compilerOptions": {
 		"rootDir": ".",
 		"baseUrl": ".",
-		"outDir": "../dist-tsc",
+		"outDir": "../dist",
 		"composite": true,
-		"tsBuildInfoFile": "../dist-tsc/tsconfig.tsbuildinfo",
+		"tsBuildInfoFile": "../dist/tsconfig.tsbuildinfo",
 		"emitDeclarationOnly": true,
 		"paths": {
 			"#utils/*": ["lib/util/*"],

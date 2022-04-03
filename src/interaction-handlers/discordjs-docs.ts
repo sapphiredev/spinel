@@ -3,11 +3,11 @@ import { fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
 import { errorResponse } from '#utils/response-utils';
 import { ActionRowBuilder, type MessageActionRowComponentBuilder } from '@discordjs/builders';
 import { InteractionHandler, postMessage } from '@skyra/http-framework';
-import type { APIMessageComponentInteraction, APIMessageSelectMenuInteractionData, Snowflake } from 'discord-api-types/v10';
+import type { APIMessageSelectMenuInteractionData, Snowflake } from 'discord-api-types/v10';
 import type { SourcesStringUnion } from 'discordjs-docs-parser';
 
 export class UserInteractionHandler extends InteractionHandler {
-	public async *run(interaction: APIMessageComponentInteraction, [customIdValue, source]: [Snowflake | null, SourcesStringUnion]) {
+	public async *run(interaction: InteractionHandler.MessageComponentInteraction, [customIdValue, source]: [Snowflake | null, SourcesStringUnion]) {
 		const doc = await fetchDocs(source);
 
 		const selectedValue = (interaction.data as APIMessageSelectMenuInteractionData).values[0];

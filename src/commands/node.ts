@@ -9,7 +9,7 @@ import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { AutocompleteInteractionArguments, Command, RegisterCommand, RestrictGuildIds, type TransformedArguments } from '@skyra/http-framework';
 import { jaroWinkler } from '@skyra/jaro-winkler';
-import type { APIApplicationCommandOptionChoice, APIInteractionResponseChannelMessageWithSource } from 'discord-api-types/v10';
+import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import TurndownService from 'turndown';
 
 @RegisterCommand((builder) =>
@@ -209,11 +209,7 @@ export class UserCommand extends Command {
 		}
 	}
 
-	private buildResponse(
-		result: NodeDocTypes,
-		version: Args['version'],
-		target?: TransformedArguments.User
-	): APIInteractionResponseChannelMessageWithSource {
+	private buildResponse(result: NodeDocTypes, version: Args['version'], target?: TransformedArguments.User): Command.Response {
 		const moduleName = result.module ?? result.name.toLowerCase();
 
 		const moduleUrl = `${this.#nodeUrl}/docs/${version}/api/${

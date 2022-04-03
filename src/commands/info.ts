@@ -19,7 +19,6 @@ import {
 	type APIActionRowComponent,
 	type APIButtonComponent,
 	type APIEmbed,
-	type APIInteractionResponse,
 	type APISelectMenuComponent
 } from 'discord-api-types/v10';
 import { cpus, uptime, type CpuInfo } from 'node:os';
@@ -41,7 +40,7 @@ export class UserCommand extends Command {
 
 	readonly #intlNumberFormatter = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 });
 
-	public override chatInputRun(): APIInteractionResponse {
+	public override chatInputRun() {
 		return this.message({
 			flags: MessageFlags.Ephemeral,
 			embeds: [this.embed],

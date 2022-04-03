@@ -1,8 +1,8 @@
-import { FetchUserAgent, preferredRepositories, sapphirePreferredRepositories } from '#constants/constants';
+import { FetchUserAgent } from '#constants/constants';
 import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrDraft, GhPrMerged, GhPrOpen } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit';
-import { gql } from '#utils/utils';
+import { getPreferredRepositoriesForServerId, gql } from '#utils/utils';
 import { time, TimestampStyles } from '@discordjs/builders';
 import { AutoCompleteLimits } from '@sapphire/discord-utilities';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
@@ -36,7 +36,7 @@ export async function fuzzilySearchForRepository({
 	});
 
 	if (isErr(result) || !result.value.search) {
-		return preferredRepositories.get(guildId ?? '') ?? sapphirePreferredRepositories;
+		return getPreferredRepositoriesForServerId(guildId);
 	}
 
 	return getDataForRepositorySearch(result.value.search.nodes, guildId);
@@ -179,7 +179,7 @@ function getDataForPullRequest({ pullRequest, ...repository }: Repository): Issu
 
 function getDataForRepositorySearch(repositories: Repository[], guildId: string | undefined): APIApplicationCommandOptionChoice[] {
 	if (isNullishOrEmpty(repositories)) {
-		return preferredRepositories.get(guildId ?? '') ?? sapphirePreferredRepositories;
+		return getPreferredRepositoriesForServerId(guildId);
 	}
 
 	const results: APIApplicationCommandOptionChoice[] = [];

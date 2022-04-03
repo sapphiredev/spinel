@@ -27,19 +27,19 @@ keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "exa
 content = """
 ***__Discord bots that use @sapphire/framework__***
 
-- [**Official Bot Examples** **¹** **³** **⁴** **ᴶˢ** **ⱽ²**](<https://github.com/sapphiredev/examples>)
+- **[Official Bot Examples ¹ ³ ⁴ ᴶˢ ⱽ²](<https://github.com/sapphiredev/examples>)**
 
-- [**Alestra** **⁴**](<https://github.com/skyra-project/alestra>)
-- [**Evlyn** **⁴**](<https://github.com/skyra-project/evlyn>)
-- [**Materia** **¹** **³** **ⱽ²**](<https://github.com/RealShadowNova/materia>)
-- [**Pengu**](<https://github.com/PenguBot/bot-sapphire>)
-- [**RTByte** **¹** **²** **³** **ⱽ²**](<https://github.com/RTByte/rtbyte>)
-- [**Sapphire**](<https://github.com/KunoichiZ/Sapphire>)
-- [**Spectera** **²** **³** **ⱽ²**](<https://github.com/SpecteraLabs/Spectera>)
-- [**Skyra** **²** **³** **⁴** **ⱽ²**](<https://github.com/skyra-project/skyra>)
-- [**Syrus** **ᴶˢ**](<https://github.com/syrus-bot/syrus-bot>)
-- [**Varrock-Stray-Dog** **⁴**](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)
-- [**YliasDiscordBot** **²** **³** **ⱽ²**](<https://github.com/FrenchDiscord/YliasDiscordBot>)
+- **[Alestra ⁴](<https://github.com/skyra-project/alestra>)**
+- **[Evlyn ⁴](<https://github.com/skyra-project/evlyn>)**
+- **[Materia ¹ ³ ⱽ²](<https://github.com/RealShadowNova/materia>)**
+- **[Pengu](<https://github.com/PenguBot/bot-sapphire>)**
+- **[RTByte ¹ ² ³ ⱽ²](<https://github.com/RTByte/rtbyte>)**
+- **[Sapphire](<https://github.com/KunoichiZ/Sapphire>)**
+- **[Spectera ² ³ ⱽ²](<https://github.com/SpecteraLabs/Spectera>)**
+- **[Skyra ² ³ ⁴ ⱽ²](<https://github.com/skyra-project/skyra>)**
+- **[Syrus ᴶˢ](<https://github.com/syrus-bot/syrus-bot>)**
+- **[Varrock-Stray-Dog ⁴](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)**
+- **[YliasDiscordBot ² ³ ⱽ²](<https://github.com/FrenchDiscord/YliasDiscordBot>)**
 
 **¹**: Uses ESM (if not specified then uses CJS)
 **²**: Advanced bot (if not specified it is a simple bot, or not graded)
@@ -55,11 +55,11 @@ keywords = ["slashbots", "chat input bots", "slash commands", "application comma
 content = """
 ***__Discord bots that use @sapphire/framework@next and leverage Application Commands and Interaction Handlers__***
 
-- [**Archangel** **¹** **³** **⁴**](<https://github.com/favware/archangel>)
-- [**Arima** **¹** **³**](<https://github.com/arimajs/Arima>)
-- [**Dragonite** **¹** **³** **⁴**](<https://github.com/favware/dragonite>)
-- [**Spectera** **²** **³**](<https://github.com/SpecteraLabs/Spectera>)
-- [**Sapphire Application Commands Examples (note: does not use @sapphire/framework)** **¹**](<https://github.com/vladfrangu/sapphire-application-commands-examples>)
+- **[Archangel ¹ ³ ⁴](<https://github.com/favware/archangel>)**
+- **[Arima ¹ ³](<https://github.com/arimajs/Arima>)**
+- **[Dragonite ¹ ³ ⁴](<https://github.com/favware/dragonite>)**
+- **[Spectera ² ³](<https://github.com/SpecteraLabs/Spectera>)**
+- **[Sapphire Application Commands Examples (note: does not use @sapphire/framework) ¹](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
 
 **¹**: Uses ESM (if not specified then uses CJS)
 **²**: Advanced bot (if not specified it is a simple bot, or not graded)

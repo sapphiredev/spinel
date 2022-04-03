@@ -35,7 +35,7 @@ import { URLSearchParams } from 'node:url';
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
 	#algoliaUrl = new URL(`https://${envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID')}.algolia.net/1/indexes/discord/query`);
-	#responseHeaderText = 'Discord Developer docs results:';
+	#responseHeaderText = `${hyperlink('Discord Developer docs', hideLinkEmbed('https://discord.com/developers/docs'))} results:`;
 
 	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'query') {

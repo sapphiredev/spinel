@@ -23,7 +23,9 @@ export class UserMessageComponentHandler extends MessageComponentHandler {
 			callback: () => {
 				void postMessage(interaction, {
 					content,
-					allowed_mentions: { users: customIdValue ? [customIdValue] : [] }
+					allowed_mentions: {
+						users: customIdValue ? [customIdValue] : []
+					}
 				});
 			}
 		};

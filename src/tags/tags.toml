@@ -27,25 +27,24 @@ keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "exa
 content = """
 ***__Discord bots that use @sapphire/framework__***
 
-- [**Official Bot Examples** **¹** **²** **⁴** **⁵** **ᴶˢ** **ⱽ²**](<https://github.com/sapphiredev/examples>)
+- [**Official Bot Examples** **¹** **³** **⁴** **ᴶˢ** **ⱽ²**](<https://github.com/sapphiredev/examples>)
 
-- [**Alestra** **⁵**](<https://github.com/skyra-project/alestra>)
-- [**Evlyn** **⁵**](<https://github.com/skyra-project/evlyn>)
-- [**Materia** **²** **⁴** **ⱽ²**](<https://github.com/RealShadowNova/materia>)
+- [**Alestra** **⁴**](<https://github.com/skyra-project/alestra>)
+- [**Evlyn** **⁴**](<https://github.com/skyra-project/evlyn>)
+- [**Materia** **¹** **³** **ⱽ²**](<https://github.com/RealShadowNova/materia>)
 - [**Pengu**](<https://github.com/PenguBot/bot-sapphire>)
-- [**RTByte** **²** **³** **⁴** **ⱽ²**](<https://github.com/RTByte/rtbyte>)
+- [**RTByte** **¹** **²** **³** **ⱽ²**](<https://github.com/RTByte/rtbyte>)
 - [**Sapphire**](<https://github.com/KunoichiZ/Sapphire>)
-- [**Spectera** **¹** **³** **⁴** **ⱽ²**](<https://github.com/SpecteraLabs/Spectera>)
-- [**Skyra** **³** **⁴** **⁵** **ⱽ²**](<https://github.com/skyra-project/skyra>)
+- [**Spectera** **²** **³** **ⱽ²**](<https://github.com/SpecteraLabs/Spectera>)
+- [**Skyra** **²** **³** **⁴** **ⱽ²**](<https://github.com/skyra-project/skyra>)
 - [**Syrus** **ᴶˢ**](<https://github.com/syrus-bot/syrus-bot>)
-- [**Varrock-Stray-Dog** **⁵**](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)
-- [**YliasDiscordBot** **³** **⁴** **ⱽ²**](<https://github.com/FrenchDiscord/YliasDiscordBot>)
+- [**Varrock-Stray-Dog** **⁴**](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)
+- [**YliasDiscordBot** **²** **³** **ⱽ²**](<https://github.com/FrenchDiscord/YliasDiscordBot>)
 
-**¹**: Uses [TSup](<https://github.com/egoist/tsup>) to compile
-**²**: Uses ESM (if not specified then uses CJS)
-**³**: Advanced bot (if not specified it is a simple bot, or not graded)
-**⁴**: Actively developed / maintained with latest Sapphire changes
-**⁵**: Uses Docker in production
+**¹**: Uses ESM (if not specified then uses CJS)
+**²**: Advanced bot (if not specified it is a simple bot, or not graded)
+**³**: Actively developed / maintained with latest Sapphire changes
+**⁴**: Uses Docker in production
 **ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
 **ⱽ²** Bot has been updated for Sapphire Framework V2
 """
@@ -56,17 +55,16 @@ keywords = ["slashbots", "chat input bots", "slash commands", "application comma
 content = """
 ***__Discord bots that use @sapphire/framework@next and leverage Application Commands and Interaction Handlers__***
 
-- [**Archangel** **¹** **²** **⁴** **⁵**](<https://github.com/favware/archangel>)
-- [**Arima** **¹** **²** **⁴**](<https://github.com/arimajs/Arima>)
-- [**Dragonite** **¹** **²** **⁴** **⁵**](<https://github.com/favware/dragonite>)
-- [**Sapphire Application Commands Examples** **²**](<https://github.com/vladfrangu/sapphire-application-commands-examples>)
-- [**Spectera** **¹** **³** **⁴**](<https://github.com/SpecteraLabs/Spectera>)
+- [**Archangel** **¹** **³** **⁴**](<https://github.com/favware/archangel>)
+- [**Arima** **¹** **³**](<https://github.com/arimajs/Arima>)
+- [**Dragonite** **¹** **³** **⁴**](<https://github.com/favware/dragonite>)
+- [**Spectera** **²** **³**](<https://github.com/SpecteraLabs/Spectera>)
+- [**Sapphire Application Commands Examples (note: does not use @sapphire/framework)** **¹**](<https://github.com/vladfrangu/sapphire-application-commands-examples>)
 
-**¹**: Uses [TSup](<https://github.com/egoist/tsup>) to compile
-**²**: Uses ESM (if not specified then uses CJS)
-**³**: Advanced bot (if not specified it is a simple bot, or not graded)
-**⁴**: Actively developed / maintained with latest Sapphire changes
-**⁵**: Uses Docker in production
+**¹**: Uses ESM (if not specified then uses CJS)
+**²**: Advanced bot (if not specified it is a simple bot, or not graded)
+**³**: Actively developed / maintained with latest Sapphire changes
+**⁴**: Uses Docker in production
 """
 hoisted = true
 

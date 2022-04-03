@@ -1,8 +1,8 @@
-import { findSimilar } from '../src/lib/util/tags';
+import { findSimilarTag } from '../src/lib/util/tags';
 
-describe('findSimilar', () => {
+describe('findSimilarTag', () => {
 	test('GIVEN existing tag name THEN returns tag', () => {
-		const foundTags = findSimilar('guide');
+		const foundTags = findSimilarTag('guide');
 
 		expect(foundTags).toEqual([
 			{ word: 'guide', distance: 1, name: 'guide' },
@@ -18,7 +18,7 @@ describe('findSimilar', () => {
 	});
 
 	test('GIVEN existing tag alias THEN returns tag', () => {
-		const foundTags = findSimilar('npm');
+		const foundTags = findSimilarTag('npm');
 
 		console.log(foundTags);
 
@@ -40,7 +40,7 @@ describe('findSimilar', () => {
 	});
 
 	test('GIVEN partial tag name THEN returns tag', () => {
-		const foundTags = findSimilar('dotnet');
+		const foundTags = findSimilarTag('dotnet');
 
 		expect(foundTags).toEqual([
 			{
@@ -60,7 +60,7 @@ describe('findSimilar', () => {
 	});
 
 	test('GIVEN an extremely bizarre query THEN still returns results', () => {
-		const foundTags = findSimilar('this➖is➖going➖to➖return➖0➖results➖because➖it➖is➖way➖too➖different➖from➖a➖real➖tag');
+		const foundTags = findSimilarTag('this➖is➖going➖to➖return➖0➖results➖because➖it➖is➖way➖too➖different➖from➖a➖real➖tag');
 
 		expect(foundTags).toEqual([
 			{ word: 'help', distance: 0.595679012345679, name: 'help' },

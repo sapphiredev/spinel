@@ -24,7 +24,7 @@
 		"format": "prettier --write src tests",
 		"test": "jest",
 		"typecheck": "tsc -b src",
-		"start": "node --enable-source-maps dist/main.js",
+		"start": "node --preserve-symlinks --enable-source-maps dist/main.js",
 		"build": "tsup",
 		"watch": "tsup --watch",
 		"watch:debug": "tsup --watch --onSuccess \"tsc -b src\"",

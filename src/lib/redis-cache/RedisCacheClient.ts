@@ -7,7 +7,8 @@ export const enum RedisKeys {
 	DiscordDocs = 'discord-docs',
 	DiscordJsGuide = 'discordjs-guide',
 	Mdn = 'mdn',
-	Node = 'node'
+	Node = 'node',
+	Sapphire = 'sapphire'
 }
 
 export class RedisCacheClient extends Redis {

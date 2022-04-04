@@ -15,11 +15,11 @@ export const sapphirePreferredRepositories = [
 	/* 06 */ { name: '📌 Sapphire Website', value: 'website' },
 	/* 07 */ { name: '📌 Sapphire CLI', value: 'cli' },
 	/* 08 */ { name: '📌 Shapeshift', value: 'shapeshift' },
-	/* 08 */ { name: '📌 Sapphire Application Commands', value: 'sapphire-application-commands' },
-	/* 08 */ { name: '📌 Sapphire Template', value: 'sapphire-template' },
-	/* 08 */ { name: '📌 Type', value: 'type' },
-	/* 08 */ { name: '📌 Examples', value: 'examples' },
-	/* 08 */ { name: '📌 Resource Webhooks', value: 'resource-webhooks' }
+	/* 09 */ { name: '📌 Sapphire Application Commands', value: 'sapphire-application-commands' },
+	/* 10 */ { name: '📌 Sapphire Template', value: 'sapphire-template' },
+	/* 11 */ { name: '📌 Type', value: 'type' },
+	/* 12 */ { name: '📌 Examples', value: 'examples' },
+	/* 13 */ { name: '📌 Resource Webhooks', value: 'resource-webhooks' }
 ];
 
 const skyraProjectPreferredRepositories = [

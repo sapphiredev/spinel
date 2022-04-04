@@ -9,7 +9,7 @@ import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { hideLinkEmbed, hyperlink, inlineCode, SlashCommandSubcommandBuilder } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
+import { cast, cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import {
 	Command,
 	InteractionArguments,
@@ -35,7 +35,7 @@ export class UserCommand extends Command {
 			return this.autocompleteNoResults();
 		}
 
-		const algoliaResponse = await this.fetchApi(args.subCommand as 'docs' | 'guide', args.query);
+		const algoliaResponse = await this.fetchApi(cast<'docs' | 'guide'>(args.subCommand), args.query);
 
 		const redisInsertPromises: Promise<'OK'>[] = [];
 		const results: APIApplicationCommandOptionChoice[] = [];
@@ -63,20 +63,14 @@ export class UserCommand extends Command {
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('docs', 'Search the sapphire documentation'))
-	public async docs(_: never, args: InteractionArguments<Args>): Promise<Command.Response> {
-		return this.sharedRun(args);
-	}
-
 	@RegisterSubCommand(buildSubcommandBuilders('guide', 'Search the sapphire guide'))
-	public async guide(_: never, args: InteractionArguments<Args>): Promise<Command.Response> {
-		return this.sharedRun(args);
-	}
+	protected async sharedRun({ subCommand, query, target }: InteractionArguments<Args>): Promise<Command.Response> {
+		const docsOrGuide = cast<'docs' | 'guide'>(subCommand);
 
-	private async sharedRun({ subCommand, query, target }: InteractionArguments<Args>): Promise<Command.Response> {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
 		const hitFromRedisCache = await redisCache.fetch<AlgoliaHit>(RedisKeys.Sapphire, queryFromAutocomplete, nthResult);
 
-		const headerText = subCommand === 'docs' ? this.#docsResponseHeaderText : this.#guideResponseHeaderText;
+		const headerText = docsOrGuide === 'docs' ? this.#docsResponseHeaderText : this.#guideResponseHeaderText;
 
 		if (hitFromRedisCache) {
 			const hierarchicalName = buildHierarchicalName(hitFromRedisCache.hierarchy, true);
@@ -93,7 +87,7 @@ export class UserCommand extends Command {
 			}
 		}
 
-		const algoliaResponse = await this.fetchApi(subCommand as 'docs' | 'guide', queryFromAutocomplete ?? query, 5);
+		const algoliaResponse = await this.fetchApi(docsOrGuide, queryFromAutocomplete ?? query, 5);
 
 		if (!algoliaResponse.hits.length) {
 			return this.message(

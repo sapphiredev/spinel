@@ -9,15 +9,10 @@
 	"type": "module",
 	"imports": {
 		"#lib/*": "./dist/lib/*.js",
-		"#select-menus/*": "./dist/select-menus/*.js",
-		"#autocomplete/*": "./dist/autocomplete/*.js",
-		"#commands/*": "./dist/commands/*.js",
 		"#utils/*": "./dist/lib/util/*.js",
 		"#env/*": "./dist/lib/env/*.js",
 		"#types/*": "./dist/lib/types/*.js",
-		"#constants/*": "./dist/lib/constants/*.js",
-		"#api/*": "./dist/lib/api/*.js",
-		"#root/*": "./dist/*.js"
+		"#constants/*": "./dist/lib/constants/*.js"
 	},
 	"scripts": {
 		"lint": "eslint src tests --ext ts --fix",

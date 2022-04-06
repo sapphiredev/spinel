@@ -11,10 +11,7 @@
 			"#constants/*": ["../src/lib/constants/*"],
 			"#api/*": ["../src/lib/api/*"],
 			"#env/*": ["../src/lib/env/*"],
-			"#select-menus/*": ["../src/select-menus/*"],
-			"#commands/*": ["../src/commands/*"],
-			"#lib/*": ["../src/lib/*"],
-			"#root/*": ["../src/*"]
+			"#lib/*": ["../src/lib/*"]
 		}
 	},
 	"include": ["."],

@@ -24,6 +24,8 @@ export interface SapphireSlashiesEnv {
 	DOTENV_DEBUG_ENABLED: BooleanString;
 	GH_API_KEY: string;
 	NODE_ENV: 'test' | 'development' | 'production';
+	NPM_ALGOLIA_APPLICATION_ID: string;
+	NPM_ALOGLIA_APPLICATION_KEY: string;
 	SAPPHIRE_DOCS_ALOGLIA_APPLICATION_ID: string;
 	SAPPHIRE_DOCS_ALOGLIA_APPLICATION_KEY: string;
 	REDIS_PORT: IntegerString;

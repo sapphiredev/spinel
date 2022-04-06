@@ -3,6 +3,7 @@ export const ExtractEmojiIdRegex = /<a?:_:(?<id>\d{17,18})>/;
 export const DjsGuideIcon = `<:_:814216203466965052>` as const;
 export const DjsDocsStableIcon = '<:_:851461487498493952>' as const;
 export const DjsDocsDevIcon = '<:_:851461195554619442>' as const;
+export const GreenTick = '<:_:637706251253317669>' as const;
 export const RedCross = '<:_:637706251257511973>' as const;
 export const MdnIcon = '<:_:861671077365284884>' as const;
 export const NodeIcon = '<:_:765265751703289927>' as const;

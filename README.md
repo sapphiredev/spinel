@@ -81,6 +81,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Rexogamer"><img src="https://avatars.githubusercontent.com/u/42586271?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ed L</b></sub></a><br /><a href="#content-Rexogamer" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/UndiedGamer"><img src="https://avatars.githubusercontent.com/u/84702365?v=4?s=100" width="100px;" alt=""/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href="#content-UndiedGamer" title="Content">🖋</a></td>
     <td align="center"><a href="https://c43721.github.io/"><img src="https://avatars.githubusercontent.com/u/55610086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>c43721</b></sub></a><br /><a href="#content-c43721" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/EvolutionX-10"><img src="https://avatars.githubusercontent.com/u/85353424?v=4?s=100" width="100px;" alt=""/><br /><sub><b>EvolutionX</b></sub></a><br /><a href="#content-EvolutionX-10" title="Content">🖋</a></td>
   </tr>
 </table>
 

@@ -1,3 +1,4 @@
+import { FetchUserAgent } from '#constants/constants';
 import { envParseString } from '#env/utils';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { OAuth2Routes, type RESTPostOAuth2ClientCredentialsResult } from 'discord-api-types/v10';
@@ -15,7 +16,8 @@ export async function getBearerToken() {
 				Authorization: `Basic ${Buffer.from(
 					`${envParseString('DISCORD_CLIENT_ID')}:${envParseString('DISCORD_APPLICATION_SECRET')}`
 				).toString('base64')}`,
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'User-Agent': FetchUserAgent
 			},
 			body: new URLSearchParams({
 				grant_type: 'client_credentials',

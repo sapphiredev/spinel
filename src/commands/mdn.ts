@@ -91,8 +91,8 @@ export class UserCommand extends Command {
 			fullUrl,
 			{
 				headers: {
-					'User-Agent': FetchUserAgent,
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'User-Agent': FetchUserAgent
 				}
 			},
 			FetchResultTypes.JSON

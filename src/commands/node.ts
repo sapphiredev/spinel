@@ -1,3 +1,4 @@
+import { FetchUserAgent } from '#constants/constants';
 import { NodeIcon } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { NodeDocs, NodeDocSimilarityEntry, NodeDocTypes, NodeQueryType } from '#types/NodeDocs';
@@ -142,7 +143,15 @@ export class UserCommand extends Command {
 
 		if (!allNodeData) {
 			// Get the data for this version
-			const data = await fetch<NodeDocs>(url, FetchResultTypes.JSON);
+			const data = await fetch<NodeDocs>(
+				url,
+				{
+					headers: {
+						'User-Agent': FetchUserAgent
+					}
+				},
+				FetchResultTypes.JSON
+			);
 
 			// Set it to the map for caching
 			this.#cache.set(url, data);

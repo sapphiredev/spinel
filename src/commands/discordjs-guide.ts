@@ -1,14 +1,15 @@
+import { FetchUserAgent } from '#constants/constants';
 import { DjsGuideIcon } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { AlgoliaHit, AlgoliaSearchResult } from '#types/Algolia';
+import type { AlgoliaSearchResult, DocsearchHit } from '#types/Algolia';
 import { buildHierarchicalName, buildResponseContent } from '#utils/algolia-utils';
 import { errorResponse } from '#utils/response-utils';
 import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { hideLinkEmbed, hyperlink, inlineCode } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { cutText } from '@sapphire/utilities';
+import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import he from 'he';
@@ -37,7 +38,7 @@ export class UserCommand extends Command {
 	#responseHeaderText = `${hyperlink('Discord.js Guide', hideLinkEmbed('https://discordjs.guide'))} results:`;
 
 	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
-		if (args.focused !== 'query') {
+		if (args.focused !== 'query' || isNullishOrEmpty(args.query)) {
 			return this.autocompleteNoResults();
 		}
 
@@ -50,7 +51,7 @@ export class UserCommand extends Command {
 			const hierarchicalName = buildHierarchicalName(hit.hierarchy);
 
 			if (hierarchicalName) {
-				redisInsertPromises.push(redisCache.insertFor60Seconds<AlgoliaHit>(RedisKeys.DiscordJsGuide, args.query, index.toString(), hit));
+				redisInsertPromises.push(redisCache.insertFor60Seconds<DocsearchHit>(RedisKeys.DiscordJsGuide, args.query, index.toString(), hit));
 
 				results.push({
 					name: cutText(hierarchicalName, 100),
@@ -70,7 +71,7 @@ export class UserCommand extends Command {
 
 	public override async chatInputRun(_: never, { query, target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
-		const hitFromRedisCache = await redisCache.fetch<AlgoliaHit>(RedisKeys.DiscordJsGuide, queryFromAutocomplete, nthResult);
+		const hitFromRedisCache = await redisCache.fetch<DocsearchHit>(RedisKeys.DiscordJsGuide, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			const hierarchicalName = buildHierarchicalName(hitFromRedisCache.hierarchy, true);
@@ -123,7 +124,7 @@ export class UserCommand extends Command {
 	}
 
 	private async fetchApi(query: string, hitsPerPage = 20) {
-		return fetch<AlgoliaSearchResult>(
+		return fetch<AlgoliaSearchResult<'docsearch'>>(
 			this.#algoliaUrl,
 			{
 				method: FetchMethods.Post,
@@ -136,7 +137,8 @@ export class UserCommand extends Command {
 				headers: {
 					'Content-Type': 'application/json',
 					'X-Algolia-API-Key': envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_KEY'),
-					'X-Algolia-Application-Id': envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_ID')
+					'X-Algolia-Application-Id': envParseString('DJS_GUIDE_ALGOLIA_APPLICATION_ID'),
+					'User-Agent': FetchUserAgent
 				}
 			},
 			FetchResultTypes.JSON

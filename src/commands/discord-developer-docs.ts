@@ -2,7 +2,7 @@ import { FetchUserAgent } from '#constants/constants';
 import { DiscordDevelopersIcon } from '#constants/emotes';
 import { envParseString } from '#env/utils';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { AlgoliaHit, AlgoliaSearchResult } from '#types/Algolia';
+import type { AlgoliaSearchResult, DocsearchHit } from '#types/Algolia';
 import { buildHierarchicalName, buildResponseContent } from '#utils/algolia-utils';
 import { errorResponse } from '#utils/response-utils';
 import { redisCache } from '#utils/setup';
@@ -51,7 +51,7 @@ export class UserCommand extends Command {
 			const hierarchicalName = buildHierarchicalName(hit.hierarchy);
 
 			if (hierarchicalName) {
-				redisInsertPromises.push(redisCache.insertFor60Seconds<AlgoliaHit>(RedisKeys.DiscordDocs, args.query, index.toString(), hit));
+				redisInsertPromises.push(redisCache.insertFor60Seconds<DocsearchHit>(RedisKeys.DiscordDocs, args.query, index.toString(), hit));
 
 				results.push({
 					name: cutText(hierarchicalName, 100),
@@ -71,7 +71,7 @@ export class UserCommand extends Command {
 
 	public override async chatInputRun(_: never, { query, target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
-		const hitFromRedisCache = await redisCache.fetch<AlgoliaHit>(RedisKeys.DiscordDocs, queryFromAutocomplete, nthResult);
+		const hitFromRedisCache = await redisCache.fetch<DocsearchHit>(RedisKeys.DiscordDocs, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			const hierarchicalName = buildHierarchicalName(hitFromRedisCache.hierarchy, true);
@@ -124,7 +124,7 @@ export class UserCommand extends Command {
 	}
 
 	private async fetchApi(query: string, hitsPerPage = 20) {
-		return fetch<AlgoliaSearchResult>(
+		return fetch<AlgoliaSearchResult<'docsearch'>>(
 			this.#algoliaUrl,
 			{
 				method: FetchMethods.Post,
@@ -136,9 +136,9 @@ export class UserCommand extends Command {
 				}),
 				headers: {
 					'Content-Type': 'application/json',
-					'User-Agent': FetchUserAgent,
 					'X-Algolia-API-Key': envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_KEY'),
-					'X-Algolia-Application-Id': envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID')
+					'X-Algolia-Application-Id': envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID'),
+					'User-Agent': FetchUserAgent
 				}
 			},
 			FetchResultTypes.JSON

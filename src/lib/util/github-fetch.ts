@@ -20,9 +20,9 @@ export async function fuzzilySearchForRepository({
 			{
 				method: FetchMethods.Post,
 				headers: {
-					'User-Agent': FetchUserAgent,
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${envParseString('GH_API_KEY')}`
+					Authorization: `Bearer ${envParseString('GH_API_KEY')}`,
+					'User-Agent': FetchUserAgent
 				},
 				body: JSON.stringify({
 					query: repositorySearch,
@@ -53,9 +53,9 @@ export async function fuzzilySearchForIssuesAndPullRequests({
 			{
 				method: FetchMethods.Post,
 				headers: {
-					'User-Agent': FetchUserAgent,
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${envParseString('GH_API_KEY')}`
+					Authorization: `Bearer ${envParseString('GH_API_KEY')}`,
+					'User-Agent': FetchUserAgent
 				},
 				body: JSON.stringify({
 					query: issuesAndPrSearch,
@@ -83,9 +83,9 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 			{
 				method: FetchMethods.Post,
 				headers: {
-					'User-Agent': FetchUserAgent,
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${envParseString('GH_API_KEY')}`
+					Authorization: `Bearer ${envParseString('GH_API_KEY')}`,
+					'User-Agent': FetchUserAgent
 				},
 				body: JSON.stringify({
 					query: issuesAndPrQuery,

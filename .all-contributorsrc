@@ -117,6 +117,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "kaname-png",
+      "name": "Kaname",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56084970?v=4",
+      "profile": "https://kaname.netlify.app/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,

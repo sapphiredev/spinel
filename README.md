@@ -14,14 +14,21 @@
 
 This gets deployed to a Docker image in this GH organization and provides Discord Slash Commands for the Sapphire Discord server to get access to:
 
--   Sapphire Documentation
--   Sapphire Guide
+-   Sapphire
+    -   Documentation
+    -   Guide
 -   Discord Developer Documentation
 -   Discord.JS Documentation
+    -   Stable branch
+    -   Main branch
+    -   Collections package
+    -   Builders package
+    -   Voice package
+    -   RPC package
 -   Discord.JS Guide
 -   MDN Documentation
 -   NodeJS Documentation
--   GitHub Issue & PullRequest information
+-   GitHub Issue & Pull Request information
 -   Tags
 -   More
 

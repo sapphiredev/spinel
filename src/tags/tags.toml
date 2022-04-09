@@ -59,7 +59,7 @@ content = """
 - **[Arima ¹ ³](<https://github.com/arimajs/Arima>)**
 - **[Dragonite ¹ ³ ⁴](<https://github.com/favware/dragonite>)**
 - **[Spectera ² ³](<https://github.com/SpecteraLabs/Spectera>)**
-- **[Sapphire Application Commands Examples (note: does not use @sapphire/framework) ¹](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
+- **[Sapphire Application Commands Examples ¹](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
 
 **¹**: Uses ESM (if not specified then uses CJS)
 **²**: Advanced bot (if not specified it is a simple bot, or not graded)

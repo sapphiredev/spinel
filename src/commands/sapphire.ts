@@ -64,7 +64,7 @@ export class UserCommand extends Command {
 
 	@RegisterSubCommand(buildSubcommandBuilders('docs', 'Search the sapphire documentation'))
 	@RegisterSubCommand(buildSubcommandBuilders('guide', 'Search the sapphire guide'))
-	protected async sharedRun({ subCommand, query, target }: InteractionArguments<Args>): Promise<Command.Response> {
+	protected async sharedRun(_: never, { subCommand, query, target }: InteractionArguments<Args>): Promise<Command.Response> {
 		const docsOrGuide = cast<'docs' | 'guide'>(subCommand);
 
 		const [, queryFromAutocomplete, nthResult] = query.split(':');

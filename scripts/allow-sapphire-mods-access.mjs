@@ -48,7 +48,7 @@ async function getBearerToken() {
  * @param {string} token The authentication token from Discord
  * @param {import('discord-api-types/v10').APIApplicationCommand} reloadTagsData The data from Discord for the reloadtags command
  */
-async function allowSapphireStaffToUseReloadTags(token, reloadTagsData) {
+async function allowSapphireStaffToUseCommand(token, reloadTagsData) {
 	try {
 		const res = await fetch(
 			`${RouteBases.api}${Routes.applicationCommandPermissions(ApplicationId, '737141877803057244', reloadTagsData.id)}`,
@@ -96,7 +96,7 @@ async function getReloadTagsCommand(token) {
 			FetchResultTypes.JSON
 		);
 
-		return res.find((command) => command.name === 'reload-tags');
+		return res;
 	} catch (error) {
 		console.error(error);
 	}
@@ -104,8 +104,15 @@ async function getReloadTagsCommand(token) {
 
 const token = await getBearerToken();
 
-const reloadTagCommand = await getReloadTagsCommand(token);
+const allCommandsData = await getReloadTagsCommand(token);
+
+const reloadTagCommand = allCommandsData.find((command) => command.name === 'reload-tags');
+const heapsnapshotCommand = allCommandsData.find((command) => command.name === 'heapsnapshot');
 
 if (reloadTagCommand) {
-	await allowSapphireStaffToUseReloadTags(token, reloadTagCommand);
+	await allowSapphireStaffToUseCommand(token, reloadTagCommand);
+}
+
+if (heapsnapshotCommand) {
+	await allowSapphireStaffToUseCommand(token, heapsnapshotCommand);
 }

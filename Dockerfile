@@ -52,6 +52,7 @@ WORKDIR /usr/src/app
 COPY --chown=node:node --from=builder /usr/src/app/dist dist
 
 RUN yarn workspaces focus --all --production
+RUN chown node:node /usr/src/app/
 
 USER node
 

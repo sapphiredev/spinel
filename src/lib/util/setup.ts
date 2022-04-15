@@ -10,10 +10,7 @@ Doc.setGlobalOptions({
 	escapeMarkdownLinks: true
 });
 
-setup({
-	debug: true,
-	path: new URL('../../../.env', import.meta.url)
-});
+setup(new URL('../../../.env', import.meta.url));
 
 await loadTags();
 

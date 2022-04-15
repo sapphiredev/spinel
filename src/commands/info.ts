@@ -1,5 +1,4 @@
 import { SupportServerButton } from '#constants/constants';
-import { envParseString } from '#env/utils';
 import { getGuildIds } from '#utils/utils';
 import {
 	ActionRowBuilder,
@@ -12,6 +11,7 @@ import {
 	type MessageActionRowComponentBuilder
 } from '@discordjs/builders';
 import { roundNumber } from '@sapphire/utilities';
+import { envParseString } from '@skyra/env-utilities';
 import { Command, RegisterCommand, RestrictGuildIds } from '@skyra/http-framework';
 import {
 	ButtonStyle,

@@ -1,6 +1,6 @@
-import '#utils/setup';
-import { envParseString } from '#env/utils';
 import { registerCommands } from '#utils/register-commands';
+import '#utils/setup';
+import { envParseString } from '@skyra/env-utilities';
 import { Client } from '@skyra/http-framework';
 
 const client = new Client({ discordPublicKey: envParseString('DISCORD_PUBLIC_KEY') });

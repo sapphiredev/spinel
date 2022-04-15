@@ -1,8 +1,8 @@
 import { RedisCacheClient } from '#lib/redis-cache/RedisCacheClient';
 import { loadTags } from '#utils/tags';
+import { setup } from '@skyra/env-utilities';
 import { Doc } from 'discordjs-docs-parser';
-import { config } from 'dotenv-cra';
-import { fileURLToPath, URL } from 'node:url';
+import { URL } from 'node:url';
 
 process.env.NODE_ENV ??= 'development';
 
@@ -10,8 +10,9 @@ Doc.setGlobalOptions({
 	escapeMarkdownLinks: true
 });
 
-config({
-	path: fileURLToPath(new URL('../../../.env', import.meta.url))
+setup({
+	debug: true,
+	path: new URL('../../../.env', import.meta.url)
 });
 
 await loadTags();

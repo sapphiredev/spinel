@@ -1,6 +1,5 @@
 import { FetchUserAgent } from '#constants/constants';
 import { GreenTick } from '#constants/emotes';
-import { envParseString } from '#env/utils';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { AlgoliaSearchResult, NpmPackageAuthor, NpmSearchHit } from '#types/Algolia';
 import { errorResponse } from '#utils/response-utils';
@@ -20,6 +19,7 @@ import {
 } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { cutText, filterNullish, isNullishOrEmpty } from '@sapphire/utilities';
+import { envParseString } from '@skyra/env-utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import he from 'he';

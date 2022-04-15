@@ -1,7 +1,7 @@
 import { KnownServerIdsToGitHubOrganizations, preferredRepositories, sapphirePreferredRepositories } from '#constants/constants';
-import { envParseArray } from '#env/utils';
 import { userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
+import { envParseArray } from '@skyra/env-utilities';
 
 export function getGuildIds(): readonly string[] {
 	return envParseArray('COMMAND_GUILD_IDS', []);

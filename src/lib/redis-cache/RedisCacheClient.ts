@@ -1,6 +1,6 @@
-import { envParseInteger, envParseString } from '#env/utils';
 import { fromAsync, isErr } from '@sapphire/result';
 import { isNullish } from '@sapphire/utilities';
+import { envParseInteger, envParseString } from '@skyra/env-utilities';
 import Redis from 'ioredis';
 
 export const enum RedisKeys {

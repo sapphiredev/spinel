@@ -1,6 +1,5 @@
 import { FetchUserAgent } from '#constants/constants';
 import { SapphireGemId } from '#constants/emotes';
-import { envParseString } from '#env/utils';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { AlgoliaSearchResult, DocsearchHit } from '#types/Algolia';
 import { buildHierarchicalName, buildResponseContent } from '#utils/algolia-utils';
@@ -10,6 +9,7 @@ import { getGuildIds } from '#utils/utils';
 import { hideLinkEmbed, hyperlink, inlineCode, SlashCommandSubcommandBuilder } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { cast, cutText, isNullishOrEmpty } from '@sapphire/utilities';
+import { envParseString } from '@skyra/env-utilities';
 import {
 	Command,
 	InteractionArguments,

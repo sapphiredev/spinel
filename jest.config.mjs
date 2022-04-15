@@ -12,7 +12,6 @@ const config = {
 		'^#utils/(.*)$': '<rootDir>/src/lib/util/$1',
 		'^#types/(.*)$': '<rootDir>/src/lib/types/$1',
 		'^#constants/(.*)$': '<rootDir>/src/lib/constants/$1',
-		'^#env/(.*)$': '<rootDir>/src/lib/env/$1',
 		'^#lib/(.*)$': '<rootDir>/src/lib/$1'
 	}
 };

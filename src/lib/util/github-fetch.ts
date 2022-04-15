@@ -1,6 +1,5 @@
 import { FetchUserAgent } from '#constants/constants';
 import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrDraft, GhPrMerged, GhPrOpen } from '#constants/emotes';
-import { envParseString } from '#env/utils';
 import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit';
 import { getPreferredRepositoriesForServerId, gql } from '#utils/utils';
 import { time, TimestampStyles } from '@discordjs/builders';
@@ -8,6 +7,7 @@ import { AutoCompleteLimits } from '@sapphire/discord-utilities';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { fromAsync, isErr } from '@sapphire/result';
 import { cutText, isNullish, isNullishOrEmpty } from '@sapphire/utilities';
+import { envParseString } from '@skyra/env-utilities';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 
 export async function fuzzilySearchForRepository({

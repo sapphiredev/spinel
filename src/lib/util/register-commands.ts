@@ -1,5 +1,5 @@
-import { envParseString } from '#env/utils';
 import { getBearerToken } from '#utils/get-token';
+import { envParseString } from '@skyra/env-utilities';
 import { Registry } from '@skyra/http-framework';
 
 export async function registerCommands() {

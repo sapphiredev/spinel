@@ -4,7 +4,7 @@ import { ButtonStyle, type APIApplicationCommandOptionChoice } from 'discord-api
 import os from 'node:os';
 
 export const FailPrefix = `${RedCross} I am sorry, but` as const;
-export const FetchUserAgent = `Sapphire Application Commands/2.0.0 (node-fetch) ${os.platform()}/${os.release()} (https://github.com/sapphiredev/sapphire-application-commands/tree/main)`;
+export const FetchUserAgent = `Sapphire Application Commands/2.0.0 (node-fetch) ${os.platform()}/${os.release()} (https://github.com/sapphiredev/spinel/tree/main)`;
 
 export const sapphirePreferredRepositories = [
 	/* 01 */ { name: '📌 Sapphire Framework', value: 'framework' },
@@ -15,7 +15,7 @@ export const sapphirePreferredRepositories = [
 	/* 06 */ { name: '📌 Sapphire Website', value: 'website' },
 	/* 07 */ { name: '📌 Sapphire CLI', value: 'cli' },
 	/* 08 */ { name: '📌 Shapeshift', value: 'shapeshift' },
-	/* 09 */ { name: '📌 Sapphire Application Commands', value: 'sapphire-application-commands' },
+	/* 09 */ { name: '📌 Spinel', value: 'spinel' },
 	/* 10 */ { name: '📌 Sapphire Template', value: 'sapphire-template' },
 	/* 11 */ { name: '📌 Type', value: 'type' },
 	/* 12 */ { name: '📌 Examples', value: 'examples' },

@@ -31,11 +31,12 @@ import { cpus, uptime, type CpuInfo } from 'node:os';
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
 	readonly #descriptionContent = [
-		`Sapphire Application Commands is a utility bot for the ${hyperlink('Sapphire discord server', 'discord.gg/sapphiredev')} server.`,
+		`Spinel is a utility bot for the ${hyperlink('Sapphire discord server', 'discord.gg/sapphiredev')} server.`,
 		`This is an HTTP-only bot that uses the ${hyperlink(
 			'Skyra HTTP Framework',
 			hideLinkEmbed('https://www.npmjs.com/package/@skyra/http-framework')
-		)} build on top of ${hyperlink('discord-api-types', hideLinkEmbed('https://www.npmjs.com/package/discord-api-types'))}.`
+		)} build on top of ${hyperlink('discord-api-types', hideLinkEmbed('https://www.npmjs.com/package/discord-api-types'))}.`,
+		'Spinel gives you developer-information from DiscordJS, Sapphire, MDN, or other sources.'
 	].join('\n');
 
 	readonly #intlNumberFormatter = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 });
@@ -57,7 +58,7 @@ export class UserCommand extends Command {
 
 		const repositoryButton = new ButtonBuilder()
 			.setStyle(ButtonStyle.Link)
-			.setURL('https://github.com/sapphiredev/sapphire-application-commands')
+			.setURL('https://github.com/sapphiredev/spinel')
 			.setLabel('GitHub Repository')
 			.setEmoji({ id: '950888087188283422', name: 'github2' });
 

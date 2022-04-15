@@ -2,11 +2,11 @@
 
 ![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)
 
-# Sapphire Slashies
+# Spinel
 
-**Slash Commands handler Sapphire Discord server.**
+**Spinel is your operator on the chair when developing. Need any information from DiscordJS, Sapphire, MDN, or other sources? Just request it with a slash command.**
 
-[![GitHub](https://img.shields.io/github/license/sapphiredev/sapphire-application-commands)](https://github.com/sapphiredev/sapphire-application-commands/blob/main/LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/sapphiredev/spinel)](https://github.com/sapphiredev/spinel/blob/main/LICENSE.md)
 
 </div>
 

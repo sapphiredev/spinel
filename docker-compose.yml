@@ -14,7 +14,7 @@ services:
         max-file: '3'
 
   slashies:
-    image: ghcr.io/sapphiredev/sapphire-application-commands:latest
+    image: ghcr.io/sapphiredev/spinel:latest
     container_name: slashies
     depends_on:
       - redis

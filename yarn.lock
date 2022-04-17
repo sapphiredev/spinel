@@ -620,9 +620,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/builders@npm:0.13.0-dev.1649505810-3c0bbac":
-  version: 0.13.0-dev.1649505810-3c0bbac
-  resolution: "@discordjs/builders@npm:0.13.0-dev.1649505810-3c0bbac"
+"@discordjs/builders@npm:0.13.0-dev.1649937819-b01f414":
+  version: 0.13.0-dev.1649937819-b01f414
+  resolution: "@discordjs/builders@npm:0.13.0-dev.1649937819-b01f414"
   dependencies:
     "@sapphire/shapeshift": ^2.0.0
     "@sindresorhus/is": ^4.4.0
@@ -630,7 +630,7 @@ __metadata:
     fast-deep-equal: ^3.1.3
     ts-mixer: ^6.0.0
     tslib: ^2.3.1
-  checksum: 2731afffce7605eb0944bcecec4c7076a1bc3cebc3d5ab4fea4b0136f941aedeae08834dcf687a833b97934fb4ae9779f2543ed57775bb68eadaec90a8c32049
+  checksum: f2347e5fba1aa4c61fb9785781df542378926dc00799faa9156c6471fc5d5a2771b9073109c163efa90b2f9b3b0c7c0524121054f90f8698900eb2f645e8c553
   languageName: node
   linkType: hard
 
@@ -648,9 +648,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/rest@npm:0.4.0-dev.1649505800-3c0bbac":
-  version: 0.4.0-dev.1649505800-3c0bbac
-  resolution: "@discordjs/rest@npm:0.4.0-dev.1649505800-3c0bbac"
+"@discordjs/rest@npm:0.4.0-dev.1649937819-b01f414":
+  version: 0.4.0-dev.1649937819-b01f414
+  resolution: "@discordjs/rest@npm:0.4.0-dev.1649937819-b01f414"
   dependencies:
     "@discordjs/collection": ^0.6.0-dev
     "@sapphire/async-queue": ^1.2.0
@@ -660,7 +660,7 @@ __metadata:
     form-data: ^4.0.0
     node-fetch: ^2.6.7
     tslib: ^2.3.1
-  checksum: 845aaf0fee71aecc26ae142b35e2d0eb1dfffdc43a3ec77b76c264cff35f6bd28f22fc361686b95e2c3f56033ec72075d8a7717478341b3b0b74e3cb3abbcd17
+  checksum: a7f6b7523d877797c1c67ed238d5569d0eb3a4195caf2020a97aef2931ec62ebab63ca8942b908cbb303360c19ee6ff52333f544d05c249709b2433db1c5546c
   languageName: node
   linkType: hard
 
@@ -1137,7 +1137,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
-    "@discordjs/builders": 0.13.0-dev.1649505810-3c0bbac
+    "@discordjs/builders": 0.13.0-dev.1649937819-b01f414
     "@discordjs/collection": ^0.5.0
     "@ltd/j-toml": ^1.30.0
     "@sapphire/discord-utilities": ^2.10.3
@@ -1149,7 +1149,7 @@ __metadata:
     "@sapphire/ts-config": ^3.3.4
     "@sapphire/utilities": ^3.6.2
     "@skyra/env-utilities": ^0.0.7
-    "@skyra/http-framework": ^0.3.2
+    "@skyra/http-framework": ^0.3.4
     "@skyra/jaro-winkler": ^1.1.0
     "@types/he": ^1.1.2
     "@types/jest": ^27.4.1
@@ -1247,20 +1247,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skyra/http-framework@npm:^0.3.2":
-  version: 0.3.2
-  resolution: "@skyra/http-framework@npm:0.3.2"
+"@skyra/http-framework@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "@skyra/http-framework@npm:0.3.4"
   dependencies:
-    "@discordjs/builders": 0.13.0-dev.1649505810-3c0bbac
+    "@discordjs/builders": 0.13.0-dev.1649937819-b01f414
     "@discordjs/collection": ^0.5.0
-    "@discordjs/rest": 0.4.0-dev.1649505800-3c0bbac
+    "@discordjs/rest": 0.4.0-dev.1649937819-b01f414
     "@sapphire/pieces": ^3.3.1
     "@sapphire/utilities": ^3.6.2
     discord-api-types: ^0.29.0
     fastify: ^3.28.0
     form-data: ^4.0.0
     tweetnacl: ^1.0.3
-  checksum: 6c974d37fe6f4a0d6568ce19a72257238a93c5f01c6f72dd6f5570327f413ccef7989c081e5c942495c1ffcc45e0e554827d15cc4cb8442bdbe0aa7038240299
+  checksum: ada5a758fa1a974079d9884a0b66a82a1d288ef697309e4113fe2f6cde377833e5df3a959fc78e1c15af4cdbaa22b07353d8291b416879e444f6261c0c8f55f1
   languageName: node
   linkType: hard
 

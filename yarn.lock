@@ -634,6 +634,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/builders@npm:0.13.0-dev.1649937819-b01f414":
+  version: 0.13.0-dev.1649937819-b01f414
+  resolution: "@discordjs/builders@npm:0.13.0-dev.1649937819-b01f414"
+  dependencies:
+    "@sapphire/shapeshift": ^2.0.0
+    "@sindresorhus/is": ^4.4.0
+    discord-api-types: ^0.29.0
+    fast-deep-equal: ^3.1.3
+    ts-mixer: ^6.0.0
+    tslib: ^2.3.1
+  checksum: f2347e5fba1aa4c61fb9785781df542378926dc00799faa9156c6471fc5d5a2771b9073109c163efa90b2f9b3b0c7c0524121054f90f8698900eb2f645e8c553
+  languageName: node
+  linkType: hard
+
 "@discordjs/collection@npm:^0.5.0":
   version: 0.5.0
   resolution: "@discordjs/collection@npm:0.5.0"
@@ -1137,7 +1151,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
-    "@discordjs/builders": 0.13.0-dev.1649505810-3c0bbac
+    "@discordjs/builders": 0.13.0-dev.1649937819-b01f414
     "@discordjs/collection": ^0.5.0
     "@ltd/j-toml": ^1.30.0
     "@sapphire/discord-utilities": ^2.10.3

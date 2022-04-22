@@ -107,12 +107,7 @@ const token = await getBearerToken();
 const allCommandsData = await getReloadTagsCommand(token);
 
 const reloadTagCommand = allCommandsData.find((command) => command.name === 'reload-tags');
-const heapsnapshotCommand = allCommandsData.find((command) => command.name === 'heapsnapshot');
 
 if (reloadTagCommand) {
 	await allowSapphireStaffToUseCommand(token, reloadTagCommand);
-}
-
-if (heapsnapshotCommand) {
-	await allowSapphireStaffToUseCommand(token, heapsnapshotCommand);
 }

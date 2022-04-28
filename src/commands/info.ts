@@ -80,7 +80,7 @@ export class UserCommand extends Command {
 	}
 
 	private get inviteLink() {
-		return `https://discord.com/api/oauth2/authorize?client_id=${envParseString('DISCORD_CLIENT_ID')}&scope=applications.commands`;
+		return `https://discord.com/api/oauth2/authorize?client_id=${envParseString('DISCORD_CLIENT_ID')}&scope=applications.commands+bot`;
 	}
 
 	private get embed(): APIEmbed {

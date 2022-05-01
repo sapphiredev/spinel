@@ -1,10 +1,10 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
 	displayName: 'unit test',
-	testEnvironment: 'node',
-	testRunner: 'jest-circus/runner',
 	testMatch: ['<rootDir>/tests/**/*.test.ts'],
 	setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
+	collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+	reporters: ['default', 'github-actions'],
 	transform: {
 		'^.+\\.tsx?$': 'esbuild-jest'
 	},

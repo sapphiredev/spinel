@@ -83,9 +83,14 @@ When it's ready™️ *(+1 day whenever someone asks for an eta)* <a:_:735070572
 """
 
 [good-font]
-keywords = ["good-font", "best-font", "firacode"]
+keywords = ["good-font", "best-font", "firacode", "jetbrainsmono", "jetbrains-mono", "coding-font"]
 content = """
-The best coding font is <https://github.com/tonsky/FiraCode>
+Here are some of the fonts we believe are the best when coding, in no specific order:
+
+- <https://github.com/tonsky/FiraCode>
+- <https://github.com/JetBrains/JetBrainsMono>
+
+> Have a font you think would be a good addition to this list? Submit a [Pull Request to Spinel's tags](https://github.com/sapphiredev/spinel) and we'll review it!
 """
 
 [guide]

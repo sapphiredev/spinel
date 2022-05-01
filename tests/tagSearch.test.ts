@@ -20,8 +20,6 @@ describe('findSimilarTag', () => {
 	test('GIVEN existing tag alias THEN returns tag', () => {
 		const foundTags = findSimilarTag('npm');
 
-		console.log(foundTags);
-
 		expect(foundTags).toEqual([
 			{ word: 'npm v7', distance: 0.8833333333333334, name: 'legacy-deps' },
 			{

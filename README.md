@@ -14,9 +14,6 @@
 
 This gets deployed to a Docker image in this GH organization and provides Discord Slash Commands for the Sapphire Discord server to get access to:
 
--   Sapphire
-    -   Documentation
-    -   Guide
 -   Discord Developer Documentation
 -   Discord.JS Documentation
     -   Stable branch
@@ -24,13 +21,18 @@ This gets deployed to a Docker image in this GH organization and provides Discor
     -   Collections package
     -   Builders package
     -   Voice package
+    -   Rest package
     -   RPC package
 -   Discord.JS Guide
+-   GitHub Issue & Pull Request information
+-   Bot information
 -   MDN Documentation
 -   NodeJS Documentation
--   GitHub Issue & Pull Request information
+-   Npm Registry search
+-   Sapphire
+    -   Documentation
+    -   Guide
 -   Tags
--   More
 
 ## Usage
 

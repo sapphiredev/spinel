@@ -694,10 +694,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/builders@npm:0.14.0-dev.1653091712-fdeac9d":
+  version: 0.14.0-dev.1653091712-fdeac9d
+  resolution: "@discordjs/builders@npm:0.14.0-dev.1653091712-fdeac9d"
+  dependencies:
+    "@sapphire/shapeshift": ^3.0.0
+    "@sindresorhus/is": ^4.6.0
+    discord-api-types: ^0.33.0
+    fast-deep-equal: ^3.1.3
+    ts-mixer: ^6.0.1
+    tslib: ^2.3.1
+  checksum: 645c7aa50591b68dc940608fa10e964ddb05121e2e6a3931f53c58b62501b66a2b540c01a2892675a4dc2c93cb5e0625faf5417a93051363474fe6d56fa2d1e0
+  languageName: node
+  linkType: hard
+
 "@discordjs/collection@npm:0.7.0-dev.1652702622-5e9b757":
   version: 0.7.0-dev.1652702622-5e9b757
   resolution: "@discordjs/collection@npm:0.7.0-dev.1652702622-5e9b757"
   checksum: 0e2c1decf9efc93ed97a035544b44d66322e1f1533fe4dfefcbde16a45884c0a4458835f383080fc419a06e9fec9369f83fc59cb06afd41397e440bd90af93db
+  languageName: node
+  linkType: hard
+
+"@discordjs/collection@npm:0.7.0-dev.1653091708-fdeac9d":
+  version: 0.7.0-dev.1653091708-fdeac9d
+  resolution: "@discordjs/collection@npm:0.7.0-dev.1653091708-fdeac9d"
+  checksum: cf5f99eb04eef08907664d4aa82ab2099c932f07a2ad3114d6773ffa30ae3355a14e76c929c1787f1716df87c04970d1f73e4b88d03043b73bb514ab9442c064
   languageName: node
   linkType: hard
 
@@ -1272,8 +1293,8 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.0.0
     "@commitlint/config-conventional": ^17.0.0
-    "@discordjs/builders": 0.14.0-dev.1652702621-5e9b757
-    "@discordjs/collection": 0.7.0-dev.1652702622-5e9b757
+    "@discordjs/builders": 0.14.0-dev.1653091712-fdeac9d
+    "@discordjs/collection": 0.7.0-dev.1653091708-fdeac9d
     "@ltd/j-toml": ^1.30.0
     "@sapphire/discord-utilities": ^2.11.0
     "@sapphire/eslint-config": ^4.3.5
@@ -3256,6 +3277,13 @@ __metadata:
   version: 0.32.1
   resolution: "discord-api-types@npm:0.32.1"
   checksum: cce4fa81a4c8311b72cf9f23ff9a3d16e40ba7d862a7634717d9437e0e5918209a8eeb75ea9974f24e3761b06e4599757e7544343b702a23f04b07f31884c304
+  languageName: node
+  linkType: hard
+
+"discord-api-types@npm:^0.33.0":
+  version: 0.33.0
+  resolution: "discord-api-types@npm:0.33.0"
+  checksum: 8ae2c7e36c34e1d250acab18f8d2941be6135b4e08e48f9c0f584b23a59e8b310ec33f78a46e4aa8294639ec0b5703162f1895eb0f446c70559ae4e69cd26b16
   languageName: node
   linkType: hard
 

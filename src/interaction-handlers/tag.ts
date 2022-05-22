@@ -13,7 +13,7 @@ export class UserMessageComponentHandler extends InteractionHandler {
 			return this.updateMessage(
 				errorResponse({
 					content: 'I failed to find the selected tag. Try again or contact the developer.',
-					components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(SupportServerButton).toJSON()]
+					components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents([SupportServerButton]).toJSON()]
 				})
 			);
 		}

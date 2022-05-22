@@ -1125,12 +1125,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/discord-utilities@npm:^2.10.3":
-  version: 2.10.3
-  resolution: "@sapphire/discord-utilities@npm:2.10.3"
+"@sapphire/discord-utilities@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "@sapphire/discord-utilities@npm:2.11.0"
   dependencies:
     twemoji-parser: ^14.0.0
-  checksum: b90381b94798e647488a0502fcd22a27c3de62496e55cb07d00240f95e626ae095c28a5c003681e55779ca2da928682dced145890077bf60b7a34f1c5d2a283a
+  checksum: 46eca9521ccf13a05968769840c103910941258b184c23ca603cef8c4ce45ce19ff76328e239537d0626cc661a0fcd9a21846ebe257aa9bfc6e939dbff29ccbc
   languageName: node
   linkType: hard
 
@@ -1201,7 +1201,7 @@ __metadata:
     "@discordjs/builders": 0.13.0
     "@discordjs/collection": ^0.6.0
     "@ltd/j-toml": ^1.30.0
-    "@sapphire/discord-utilities": ^2.10.3
+    "@sapphire/discord-utilities": ^2.11.0
     "@sapphire/eslint-config": ^4.3.5
     "@sapphire/fetch": ^2.3.1
     "@sapphire/prettier-config": ^1.4.3

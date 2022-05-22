@@ -17,7 +17,7 @@ export class UserInteractionHandler extends InteractionHandler {
 			return this.updateMessage(
 				errorResponse({
 					content: 'I failed to find the selected discord.js documentation entry. Try again or contact the developer.',
-					components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(SupportServerButton).toJSON()]
+					components: [new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents([SupportServerButton]).toJSON()]
 				})
 			);
 		}

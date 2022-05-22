@@ -69,11 +69,11 @@ export class UserCommand extends Command {
 			.setEmoji({ name: '🧡' });
 
 		const firstActionRow = new ActionRowBuilder<MessageActionRowComponentBuilder>() //
-			.addComponents(inviteButton, SupportServerButton)
+			.addComponents([inviteButton, SupportServerButton])
 			.toJSON();
 
 		const secondActionRow = new ActionRowBuilder<MessageActionRowComponentBuilder>() //
-			.addComponents(repositoryButton, sponsorButton)
+			.addComponents([repositoryButton, sponsorButton])
 			.toJSON();
 
 		return [firstActionRow, secondActionRow];
@@ -107,7 +107,7 @@ export class UserCommand extends Command {
 		return new EmbedBuilder() //
 			.setColor(0x254fb9)
 			.setDescription(this.#descriptionContent)
-			.addFields(
+			.addFields([
 				{
 					name: titles.uptime,
 					value: fields.uptime
@@ -116,7 +116,7 @@ export class UserCommand extends Command {
 					name: titles.serverUsage,
 					value: fields.serverUsage
 				}
-			)
+			])
 			.toJSON();
 	}
 

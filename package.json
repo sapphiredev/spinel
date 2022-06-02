@@ -24,7 +24,7 @@
 		"dev": "tsup --watch --onSuccess \"yarn start\"",
 		"clean": "node scripts/clean.mjs",
 		"validate-tags": "node scripts/validateTags.mjs",
-		"prepare": "husky install .github/husky"
+		"postinstall": "husky install .github/husky"
 	},
 	"dependencies": {
 		"@discordjs/builders": "0.14.0-dev.1652702621-5e9b757",

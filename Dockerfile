@@ -18,7 +18,7 @@ COPY --chown=node:node .yarnrc.yml .
 COPY --chown=node:node .yarn/ .yarn/
 COPY --chown=node:node .env .env
 
-RUN sed -i 's/"prepare": "husky install .github\/husky"/"prepare": ""/' ./package.json
+RUN sed -i 's/"postinstall": "husky install .github\/husky"/"postinstall": ""/' ./package.json
 
 # ENTRYPOINT ["dumb-init", "--"]
 

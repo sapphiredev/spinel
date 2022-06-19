@@ -14,7 +14,7 @@ import {
 	ExtractEmojiIdRegex
 } from '#constants/emotes';
 import { suggestionString } from '#utils/utils';
-import { bold, hideLinkEmbed, hyperlink, underscore } from '@discordjs/builders';
+import { bold, hideLinkEmbed, hyperlink, italic, underscore } from '@discordjs/builders';
 import { cutText, filterNullishOrEmpty, isNullishOrEmpty } from '@sapphire/utilities';
 import type { APISelectMenuOption } from 'discord-api-types/v10';
 import { Doc, DocTypes, type DocElement, type SourcesStringUnion } from 'discordjs-docs-parser';
@@ -28,6 +28,7 @@ function docTypeEmojiId(docType: DocTypes | null, dev = false): string {
 		case DocTypes.Class:
 			return dev ? DiscordJsDocsClassDev : DiscordJsDocsClass;
 		case DocTypes.Method:
+		case DocTypes.Function:
 			return dev ? DiscordJsDocsMethodDev : DiscordJsDocsMethod;
 		case DocTypes.Event:
 			return dev ? DiscordJsDocsEventDev : DiscordJsDocsEvent;
@@ -62,11 +63,16 @@ function resolveElementString(element: DocElement, doc: Doc): string {
 	const parts = [];
 	if (element.docType === 'event') parts.push(`${bold('(event)')} `);
 	if (element.static) parts.push(`${bold('(static)')} `);
+
 	parts.push(underscore(bold(element.link)));
+
 	if (element.extends) parts.push(formatInheritance('extends', element.extends, doc));
 	if (element.implements) parts.push(formatInheritance('implements', element.implements, doc));
-	if (element.access === 'private') parts.push(` ${bold('PRIVATE')}`);
-	if (element.deprecated) parts.push(` ${bold('DEPRECATED')}`);
+
+	if (element.access === 'private') parts.push(` ${bold('[PRIVATE]')}`);
+	if (element.scope === 'global') parts.push(` ${bold('[GLOBAL]')}`);
+
+	if (element.deprecated) parts.push(` ${bold(italic('[DEPRECATED]'))}`);
 
 	const s = ((element.formattedDescription || element.description) ?? '').split('\n');
 	const description = s.length > 1 ? `${s[0]} ${hyperlink('(more...)', hideLinkEmbed(element.url ?? ''))}` : s[0];
@@ -92,6 +98,7 @@ export async function fetchDocs(source: SourcesStringUnion) {
 export function fetchDocResult({ source, doc, query, target }: FetchDocResultParameters): string | null {
 	const element = doc.get(...query.split(/\.|#/));
 	if (!element) return null;
+
 	const icon = docTypeEmojiId(element.docType, source === 'main');
 	return suggestionString('documentation', `${icon} ${resolveElementString(element, doc)}`, target);
 }

@@ -41,7 +41,7 @@ content = """
 - **[Varrock-Stray-Dog ⁴](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)**
 - **[YliasDiscordBot ² ³ ⱽ²](<https://github.com/FrenchDiscord/YliasDiscordBot>)**
 - **[Nino ³ ⱽ²](<https://github.com/uSebazz/Nino>)**
-- **[Operator ¹ ² ³ ⁴ ⱽ²](<https://github.com/Sly-Little-Fox/operator>)
+- **[Operator ¹ ² ³ ⁴ ⱽ²](<https://github.com/Sly-Little-Fox/operator>)**
 
 **¹**: Uses ESM (if not specified then uses CJS)
 **²**: Advanced bot (if not specified it is a simple bot, or not graded)
@@ -63,7 +63,7 @@ content = """
 - **[Radon ¹ ² ³](<https://github.com/EvolutionX-10/Radon>)**
 - **[Spectera ² ³](<https://github.com/SpecteraLabs/Spectera>)**
 - **[Nino ³](<https://github.com/uSebazz/Nino>)**
-- **[Operator ¹ ² ³ ⁴](<https://github.com/Sly-Little-Fox/operator>)
+- **[Operator ¹ ² ³ ⁴](<https://github.com/Sly-Little-Fox/operator>)**
 - **[Sapphire Application Commands Examples ¹](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
 
 **¹**: Uses ESM (if not specified then uses CJS)

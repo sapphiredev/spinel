@@ -49,6 +49,7 @@ content = """
 **⁴**: Uses Docker in production
 **ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
 **ⱽ²** Bot has been updated for Sapphire Framework V2
+**ⱽ³** Bot has been updated for Sapphire Framework V3
 """
 hoisted = true
 

@@ -23,53 +23,35 @@ When asking for help, make sure to provide as much detail as possible. What have
 hoisted = true
 
 [bots]
-keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples"]
+keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples", "slashbots", "chat input bots", "slash commands", "application commands"]
 content = """
-***__Discord bots that use @sapphire/framework__***
+***__Discord bots that use @sapphire/framework@2.5.1__***
 
-- **[Official Bot Examples ¹ ³ ⁴ ᴶˢ ⱽ²](<https://github.com/sapphiredev/examples>)**
+- **[Official Bot Examples ᴱ ᴰ ᴶˢ](<https://github.com/sapphiredev/examples>)**
 
-- **[Alestra ⁴](<https://github.com/skyra-project/alestra>)**
-- **[Evlyn ⁴](<https://github.com/skyra-project/evlyn>)**
-- **[Materia ¹ ³ ⱽ²](<https://github.com/RealShadowNova/materia>)**
-- **[Pengu](<https://github.com/PenguBot/bot-sapphire>)**
-- **[RTByte ¹ ² ³ ⱽ²](<https://github.com/RTByte/rtbyte>)**
-- **[Sapphire](<https://github.com/KunoichiZ/Sapphire>)**
-- **[Spectera ² ³ ⱽ²](<https://github.com/SpecteraLabs/Spectera>)**
-- **[Skyra ² ³ ⁴ ⱽ²](<https://github.com/skyra-project/skyra>)**
-- **[Syrus ᴶˢ](<https://github.com/syrus-bot/syrus-bot>)**
-- **[Varrock-Stray-Dog ⁴](<https://github.com/Varrock-Stray-Dog/Varrock-Stray-Dog>)**
-- **[YliasDiscordBot ² ³ ⱽ²](<https://github.com/FrenchDiscord/YliasDiscordBot>)**
-- **[Nino ¹ ³ ⁴ ⱽ²](<https://github.com/uSebazz/Nino>)**
-- **[Operator ¹ ² ³ ⁴ ⱽ²](<https://github.com/Sly-Little-Fox/operator>)**
-
-**¹**: Uses ESM (if not specified then uses CJS)
-**²**: Advanced bot (if not specified it is a simple bot, or not graded)
-**³**: Actively developed / maintained with latest Sapphire changes
-**⁴**: Uses Docker in production
-**ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
-**ⱽ²** Bot has been updated for Sapphire Framework V2
-"""
-hoisted = true
-
-[slashbots]
-keywords = ["slashbots", "chat input bots", "slash commands", "application commands"]
-content = """
+- **[Materia ᴱ](<https://github.com/RealShadowNova/materia>)**
+- **[RTByte ᴱ ᴬ](<https://github.com/RTByte/rtbyte>)**
+- **[Spectera ᴬ](<https://github.com/SpecteraLabs/Spectera>)**
+- **[Skyra ᴬ ᴰ](<https://github.com/skyra-project/skyra>)**
+- **[YliasDiscordBot ᴬ](<https://github.com/FrenchDiscord/YliasDiscordBot>)**
+- **[Nino ᴱ ᴰ](<https://github.com/uSebazz/Nino>)**
+- **[Operator ᴱ ᴬ ᴰ](<https://github.com/Sly-Little-Fox/operator>)**
+_ _
 ***__Discord bots that use @sapphire/framework@next and leverage Application Commands and Interaction Handlers__***
+_ _
+- **[Archangel ᴱ ᴰ](<https://github.com/favware/archangel>)**
+- **[Arima ᴱ](<https://github.com/arimajs/Arima>)**
+- **[Dragonite ᴱ ᴰ](<https://github.com/favware/dragonite>)**
+- **[Radon ᴱ ᴬ](<https://github.com/EvolutionX-10/Radon>)**
+- **[Spectera ᴬ](<https://github.com/SpecteraLabs/Spectera>)**
+- **[Nino ᴱ ᴰ](<https://github.com/uSebazz/Nino>)**
+- **[Operator ᴱ ᴬ ᴰ](<https://github.com/Sly-Little-Fox/operator>)**
+- **[Sapphire Application Commands Examples ᴱ](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
 
-- **[Archangel ¹ ³ ⁴](<https://github.com/favware/archangel>)**
-- **[Arima ¹ ³](<https://github.com/arimajs/Arima>)**
-- **[Dragonite ¹ ³ ⁴](<https://github.com/favware/dragonite>)**
-- **[Radon ¹ ² ³](<https://github.com/EvolutionX-10/Radon>)**
-- **[Spectera ² ³](<https://github.com/SpecteraLabs/Spectera>)**
-- **[Nino ¹ ³ ⁴](<https://github.com/uSebazz/Nino>)**
-- **[Operator ¹ ² ³ ⁴](<https://github.com/Sly-Little-Fox/operator>)**
-- **[Sapphire Application Commands Examples ¹](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
-
-**¹**: Uses ESM (if not specified then uses CJS)
-**²**: Advanced bot (if not specified it is a simple bot, or not graded)
-**³**: Actively developed / maintained with latest Sapphire changes
-**⁴**: Uses Docker in production
+**ᴱ**: Uses ESM (if not specified then uses CJS)
+**ᴬ**: Advanced bot (if not specified it is a simple bot, or not graded)
+**ᴰ**: Uses Docker in production
+**ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
 """
 hoisted = true
 

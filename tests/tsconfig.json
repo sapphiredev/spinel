@@ -12,7 +12,8 @@
 			"#api/*": ["../src/lib/api/*"],
 			"#env/*": ["../src/lib/env/*"],
 			"#lib/*": ["../src/lib/*"]
-		}
+		},
+		"types": ["vitest/globals"]
 	},
 	"include": ["."],
 	"references": [{ "path": "../src" }]

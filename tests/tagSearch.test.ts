@@ -1,6 +1,10 @@
-import { findSimilarTag } from '../src/lib/util/tags';
+import { findSimilarTag, loadTags } from '../src/lib/util/tags';
 
 describe('findSimilarTag', () => {
+	beforeAll(async () => {
+		await loadTags();
+	});
+
 	test('GIVEN existing tag name THEN returns tag', () => {
 		const foundTags = findSimilarTag('guide');
 
@@ -27,7 +31,7 @@ describe('findSimilarTag', () => {
 				distance: 0.6666666666666666,
 				name: 'matching-parameters'
 			},
-			{ word: 'chat input bots', distance: 0.6, name: 'slashbots' },
+			{ word: 'chat input bots', distance: 0.6, name: 'bots' },
 			{
 				word: 'hostingproviders',
 				distance: 0.5972222222222222,
@@ -65,11 +69,7 @@ describe('findSimilarTag', () => {
 			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' },
 			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' },
 			{ word: 'asking', distance: 0.5650205761316872, name: 'asking' },
-			{
-				word: 'slashbots',
-				distance: 0.5555555555555556,
-				name: 'slashbots'
-			}
+			{ word: 'slashbots', distance: 0.5555555555555556, name: 'bots' }
 		]);
 	});
 });

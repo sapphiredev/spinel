@@ -8,8 +8,6 @@ describe('findSimilarTag', () => {
 	test('GIVEN existing tag name THEN returns tag', () => {
 		const foundTags = findSimilarTag('guide');
 
-		console.log(foundTags);
-
 		expect(foundTags).toEqual([
 			{ word: 'guide', distance: 1, name: 'guide' },
 			{ word: 'firacode', distance: 0.6583333333333333, name: 'good-font' },

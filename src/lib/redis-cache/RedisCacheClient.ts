@@ -1,4 +1,4 @@
-import { fromAsync, isErr } from '@sapphire/result';
+import { Result } from '@sapphire/result';
 import { isNullish } from '@sapphire/utilities';
 import { envParseInteger, envParseString } from '@skyra/env-utilities';
 import Redis from 'ioredis';
@@ -23,7 +23,7 @@ export class RedisCacheClient extends Redis {
 	}
 
 	public async fetch<T>(key: RedisKeys, query: string, nthResult: string): Promise<T | null> {
-		const result = await fromAsync<T>(async () => {
+		const result = await Result.fromAsync<T>(async () => {
 			const raw = await this.get(`${key}:${query}:${nthResult}`);
 
 			if (isNullish(raw)) return raw;
@@ -31,11 +31,17 @@ export class RedisCacheClient extends Redis {
 			return JSON.parse(raw);
 		});
 
-		if (isErr(result) || result.value === null) {
+		if (result.isErr()) {
 			return null;
 		}
 
-		return result.value;
+		const value = result.unwrap();
+
+		if (!value) {
+			return null;
+		}
+
+		return value;
 	}
 
 	public insertFor60Seconds<T>(key: RedisKeys, query: string, nthResult: string, data: T) {

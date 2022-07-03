@@ -97,6 +97,7 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 	);
 
 	const value = result.map((value) => value.data.repository).expect('no-data');
+
 	if (value?.pullRequest) {
 		return getDataForPullRequest(value);
 	} else if (value?.issue) {

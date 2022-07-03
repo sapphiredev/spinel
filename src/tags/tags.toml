@@ -259,5 +259,5 @@ There is read yes, but **no eval**, **no print**, and **no loop**.
 So what should you use instead?
 The most ideal way is to just use the `watch` flag of `tsc` (`tsc --watch`) and run `node dist/index.js` to run your bot, then cancel that process and restart it when you have changes that require restarting.
 You would open 2 terminal tabs, 1 in which you run `tsc --watch` and another in which you run the bot.
-However, this can be quite tedious so a great package to use instead is [tsc-watch](https://www.npmjs.com/package/tsc-watch).
+However, this can be quite tedious so a great package to use instead is [tsc-watch](<https://www.npmjs.com/package/tsc-watch>).
 """

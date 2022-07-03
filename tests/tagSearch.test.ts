@@ -17,7 +17,7 @@ describe('findSimilarTag', () => {
 				name: 'i18n'
 			},
 			{ word: 'asking questions', distance: 0.6, name: 'asking' },
-			{ word: 'apidocs', distance: 0.5619047619047619, name: 'apidocs' }
+			{ word: 'tsnode', distance: 0.5777777777777778, name: 'ts-node' }
 		]);
 	});
 
@@ -50,14 +50,14 @@ describe('findSimilarTag', () => {
 				distance: 0.8888888888888888,
 				name: 'dotnetfirstjslater'
 			},
+			{ word: 'tsnode', distance: 0.6944444444444443, name: 'ts-node' },
 			{ word: 'docs', distance: 0.6888888888888889, name: 'apidocs' },
 			{ word: 'i18next', distance: 0.6428571428571429, name: 'i18n' },
 			{
 				word: 'hosting',
 				distance: 0.6428571428571429,
 				name: 'hostingproviders'
-			},
-			{ word: 'bots', distance: 0.611111111111111, name: 'bots' }
+			}
 		]);
 	});
 
@@ -65,11 +65,11 @@ describe('findSimilarTag', () => {
 		const foundTags = findSimilarTag('this➖is➖going➖to➖return➖0➖results➖because➖it➖is➖way➖too➖different➖from➖a➖real➖tag');
 
 		expect(foundTags).toEqual([
+			{ word: 'tsnode', distance: 0.6085185185185185, name: 'ts-node' },
 			{ word: 'help', distance: 0.595679012345679, name: 'help' },
 			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' },
 			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' },
-			{ word: 'asking', distance: 0.5650205761316872, name: 'asking' },
-			{ word: 'slashbots', distance: 0.5555555555555556, name: 'bots' }
+			{ word: 'asking', distance: 0.5650205761316872, name: 'asking' }
 		]);
 	});
 });

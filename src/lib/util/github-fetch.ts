@@ -5,8 +5,8 @@ import { getPreferredRepositoriesForServerId, gql } from '#utils/utils';
 import { time, TimestampStyles } from '@discordjs/builders';
 import { AutoCompleteLimits } from '@sapphire/discord-utilities';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { fromAsync, isErr } from '@sapphire/result';
-import { cutText, isNullish, isNullishOrEmpty } from '@sapphire/utilities';
+import { Result } from '@sapphire/result';
+import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 
@@ -14,8 +14,8 @@ export async function fuzzilySearchForRepository({
 	repository,
 	guildId
 }: GhSearchRepositoriesParameters): Promise<APIApplicationCommandOptionChoice[]> {
-	const result = await fromAsync(async () => {
-		const response = await fetch<GraphQLResponse<'searchRepositories'>>(
+	const result = await Result.fromAsync(() =>
+		fetch<GraphQLResponse<'searchRepositories'>>(
 			'https://api.github.com/graphql',
 			{
 				method: FetchMethods.Post,
@@ -30,16 +30,15 @@ export async function fuzzilySearchForRepository({
 				})
 			},
 			FetchResultTypes.JSON
-		);
+		)
+	);
 
-		return response.data;
-	});
-
-	if (isErr(result) || !result.value.search) {
-		return getPreferredRepositoriesForServerId(guildId);
-	}
-
-	return getDataForRepositorySearch(result.value.search.nodes, guildId);
+	return result
+		.map((value) => value.data.search)
+		.match({
+			ok: (search) => (search ? getDataForRepositorySearch(search.nodes, guildId) : getPreferredRepositoriesForServerId(guildId)),
+			err: () => getPreferredRepositoriesForServerId(guildId)
+		});
 }
 
 export async function fuzzilySearchForIssuesAndPullRequests({
@@ -47,8 +46,8 @@ export async function fuzzilySearchForIssuesAndPullRequests({
 	owner,
 	number
 }: GhSearchIssuesAndPullRequestsParameters): Promise<APIApplicationCommandOptionChoice[]> {
-	const result = await fromAsync(async () => {
-		const response = await fetch<GraphQLResponse<'searchIssuesAndPrs'>>(
+	const result = await Result.fromAsync(() =>
+		fetch<GraphQLResponse<'searchIssuesAndPrs'>>(
 			'https://api.github.com/graphql',
 			{
 				method: FetchMethods.Post,
@@ -63,22 +62,23 @@ export async function fuzzilySearchForIssuesAndPullRequests({
 				})
 			},
 			FetchResultTypes.JSON
-		);
+		)
+	);
 
-		return response.data;
-	});
-
-	// If there are no results or there was an error then return an empty array
-	if (isErr(result) || (isNullishOrEmpty(result.value.repository?.pullRequests) && isNullishOrEmpty(result.value.repository?.issues))) {
-		return [];
-	}
-
-	return getDataForIssuesAndPrSearch(number, result.value.repository?.pullRequests?.nodes, result.value.repository?.issues?.nodes);
+	return result
+		.map((value) => value.data.repository)
+		.match({
+			ok: (value) =>
+				isNullishOrEmpty(value?.pullRequests) && isNullishOrEmpty(value?.issues)
+					? []
+					: getDataForIssuesAndPrSearch(number, value?.pullRequests?.nodes, value?.issues?.nodes),
+			err: () => []
+		});
 }
 
 export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssuesAndPrsParameters): Promise<IssueOrPrDetails> {
-	const result = await fromAsync(async () => {
-		const response = await fetch<GraphQLResponse<'data'>>(
+	const result = await Result.fromAsync(() =>
+		fetch<GraphQLResponse<'data'>>(
 			'https://api.github.com/graphql',
 			{
 				method: FetchMethods.Post,
@@ -93,19 +93,15 @@ export async function fetchIssuesAndPrs({ repository, owner, number }: FetchIssu
 				})
 			},
 			FetchResultTypes.JSON
-		);
+		)
+	);
 
-		return response.data;
-	});
+	const value = result.map((value) => value.data.repository).expect('no-data');
 
-	if (isErr(result) || (isNullish(result.value.repository?.pullRequest) && isNullish(result.value.repository?.issue))) {
-		throw new Error('no-data');
-	}
-
-	if (result.value.repository?.pullRequest) {
-		return getDataForPullRequest(result.value.repository);
-	} else if (result.value.repository?.issue) {
-		return getDataForIssue(result.value.repository);
+	if (value?.pullRequest) {
+		return getDataForPullRequest(value);
+	} else if (value?.issue) {
+		return getDataForIssue(value);
 	}
 
 	// This gets handled into a response in the githubSearch command

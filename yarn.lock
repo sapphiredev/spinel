@@ -237,30 +237,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/builders@npm:0.16.0-dev.1657757509-fe34f48":
-  version: 0.16.0-dev.1657757509-fe34f48
-  resolution: "@discordjs/builders@npm:0.16.0-dev.1657757509-fe34f48"
+"@discordjs/builders@npm:0.16.0":
+  version: 0.16.0
+  resolution: "@discordjs/builders@npm:0.16.0"
   dependencies:
-    "@sapphire/shapeshift": ^3.4.1
-    discord-api-types: ^0.36.1
+    "@sapphire/shapeshift": ^3.5.1
+    discord-api-types: ^0.36.2
     fast-deep-equal: ^3.1.3
     ts-mixer: ^6.0.1
     tslib: ^2.4.0
-  checksum: ab1674802daa59e52d2af8dcf2aac6e535d04ff40f0289a004269668cfa5dde72ba8bea8256f53707950a6777536278f3fc224551b5baac1480bbbd3f3758b59
+  checksum: bf7ab00924bf84678c139b32c3b6bda16d62f190a1674ebaa4ec8767c7105890b1375716296037306661e138fe1c09c535b3141a047b7fceafaa92937a76cb8b
   languageName: node
   linkType: hard
 
-"@discordjs/collection@npm:0.8.0-dev.1657757511-fe34f48, @discordjs/collection@npm:^0.8.0-dev":
-  version: 0.8.0-dev.1657757511-fe34f48
-  resolution: "@discordjs/collection@npm:0.8.0-dev.1657757511-fe34f48"
-  checksum: 1c91ac32b8ed37316c3a9a0210bffcf748e8619118c796350ab5163141580ce494a18cdf39a55c20119855442b5b89e8d975231aba22cc3c2d60dce377e005bb
-  languageName: node
-  linkType: hard
-
-"@discordjs/collection@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "@discordjs/collection@npm:0.7.0"
-  checksum: 141aa35a5433bacba3617b533557b4948388c7b59cdaecee51ccd721c1b9242e50d95bdef53ee2491535a017095f5072ace3c3e9e594193f67a1c5a8a4b7db93
+"@discordjs/collection@npm:0.8.0":
+  version: 0.8.0
+  resolution: "@discordjs/collection@npm:0.8.0"
+  checksum: f61f53be03b158a369579988ca6c3e2f4cce676798c5995d852d6be9d7b4a1b3ff024b6c5537b2871ef149293ec9182f88aa8a03026c004f0f330746bc18cc08
   languageName: node
   linkType: hard
 
@@ -521,62 +514,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/shapeshift@npm:^3.4.1":
-  version: 3.5.0
-  resolution: "@sapphire/shapeshift@npm:3.5.0"
+"@sapphire/shapeshift@npm:^3.5.1":
+  version: 3.5.1
+  resolution: "@sapphire/shapeshift@npm:3.5.1"
   dependencies:
     fast-deep-equal: ^3.1.3
     lodash.uniqwith: ^4.5.0
-  checksum: e5e6a84f0cfe3e2c4b1109a9a2a01dc2e79ffeab7cf3a6124c805fe3536eec38f63284ed5fe8c13e7ed21b7418407788d33bbe1e6b371abc6424d00a4684bcd5
+  checksum: caecfef844c9e43e921a5051da888fae7da8980bfd9f9bb4f7fee85931d40929ffb9b6dfae464c0dccee61e56f7698f998e4d9a54d25f35fad39a51ba1a4f391
   languageName: node
   linkType: hard
-
-"@sapphire/slashies-handler@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@sapphire/slashies-handler@workspace:."
-  dependencies:
-    "@commitlint/cli": ^17.0.3
-    "@commitlint/config-conventional": ^17.0.3
-    "@discordjs/builders": 0.16.0-dev.1657757509-fe34f48
-    "@discordjs/collection": 0.8.0-dev.1657757511-fe34f48
-    "@ltd/j-toml": ^1.30.0
-    "@sapphire/discord-utilities": ^2.11.4
-    "@sapphire/eslint-config": ^4.3.7
-    "@sapphire/fetch": ^2.4.1
-    "@sapphire/prettier-config": ^1.4.3
-    "@sapphire/result": ^2.0.1
-    "@sapphire/time-utilities": ^1.7.5
-    "@sapphire/ts-config": ^3.3.4
-    "@sapphire/utilities": ^3.7.0
-    "@skyra/env-utilities": ^1.0.2
-    "@skyra/http-framework": ^0.6.1
-    "@skyra/jaro-winkler": ^1.1.0
-    "@types/he": ^1.1.2
-    "@types/node": ^18.0.5
-    "@types/turndown": ^5.0.1
-    "@typescript-eslint/eslint-plugin": ^5.30.6
-    "@typescript-eslint/parser": ^5.30.6
-    c8: ^7.11.3
-    colorette: ^2.0.19
-    cz-conventional-changelog: ^3.3.0
-    discordjs-docs-parser: ^1.3.0
-    esbuild: ^0.14.49
-    eslint: ^8.20.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-prettier: ^4.2.1
-    he: ^1.2.0
-    husky: ^8.0.1
-    ioredis: ^5.2.1
-    lint-staged: ^13.0.3
-    prettier: ^2.7.1
-    pretty-quick: ^3.1.3
-    tslib: ^2.4.0
-    tsup: ^6.1.3
-    turndown: ^7.1.1
-    typescript: ^4.7.4
-    vitest: ^0.18.1
-  languageName: unknown
-  linkType: soft
 
 "@sapphire/snowflake@npm:^3.2.2":
   version: 3.2.2
@@ -5093,6 +5039,53 @@ __metadata:
   checksum: 1da1acb090257773e60b022094050e810ae9fec874dc1461f65dc0400cd42dd830ab2df6e64fb49c2db3dce386dd0362110780e1b154db7c0bb413488836aaeb
   languageName: node
   linkType: hard
+
+"spinel@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "spinel@workspace:."
+  dependencies:
+    "@commitlint/cli": ^17.0.3
+    "@commitlint/config-conventional": ^17.0.3
+    "@discordjs/builders": 0.16.0
+    "@discordjs/collection": 0.8.0
+    "@ltd/j-toml": ^1.30.0
+    "@sapphire/discord-utilities": ^2.11.4
+    "@sapphire/eslint-config": ^4.3.7
+    "@sapphire/fetch": ^2.4.1
+    "@sapphire/prettier-config": ^1.4.3
+    "@sapphire/result": ^2.0.1
+    "@sapphire/time-utilities": ^1.7.5
+    "@sapphire/ts-config": ^3.3.4
+    "@sapphire/utilities": ^3.7.0
+    "@skyra/env-utilities": ^1.0.2
+    "@skyra/http-framework": ^0.6.1
+    "@skyra/jaro-winkler": ^1.1.0
+    "@types/he": ^1.1.2
+    "@types/node": ^18.0.5
+    "@types/turndown": ^5.0.1
+    "@typescript-eslint/eslint-plugin": ^5.30.6
+    "@typescript-eslint/parser": ^5.30.6
+    c8: ^7.11.3
+    colorette: ^2.0.19
+    cz-conventional-changelog: ^3.3.0
+    discordjs-docs-parser: ^1.3.0
+    esbuild: ^0.14.49
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    he: ^1.2.0
+    husky: ^8.0.1
+    ioredis: ^5.2.1
+    lint-staged: ^13.0.3
+    prettier: ^2.7.1
+    pretty-quick: ^3.1.3
+    tslib: ^2.4.0
+    tsup: ^6.1.3
+    turndown: ^7.1.1
+    typescript: ^4.7.4
+    vitest: ^0.18.1
+  languageName: unknown
+  linkType: soft
 
 "split2@npm:^3.0.0":
   version: 3.2.2

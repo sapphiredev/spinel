@@ -1,5 +1,5 @@
 {
-	"name": "@sapphire/slashies-handler",
+	"name": "spinel",
 	"version": "2.0.0",
 	"description": "Slash Commands handler Sapphire Discord server",
 	"author": "@sapphire <contact@sapphirejs.dev>",
@@ -27,8 +27,8 @@
 		"postinstall": "husky install .github/husky"
 	},
 	"dependencies": {
-		"@discordjs/builders": "0.16.0-dev.1657757509-fe34f48",
-		"@discordjs/collection": "0.8.0-dev.1657757511-fe34f48",
+		"@discordjs/builders": "0.16.0",
+		"@discordjs/collection": "0.8.0",
 		"@ltd/j-toml": "^1.30.0",
 		"@sapphire/discord-utilities": "^2.11.4",
 		"@sapphire/fetch": "^2.4.1",
@@ -72,7 +72,9 @@
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
-		"minimist": "^1.2.6"
+		"minimist": "^1.2.6",
+		"@discordjs/builders": "0.16.0",
+		"@discordjs/collection": "0.8.0"
 	},
 	"commitlint": {
 		"extends": [

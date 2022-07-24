@@ -8,6 +8,7 @@ export const enum RedisKeys {
 	DiscordJsGuide = 'discordjs-guide',
 	Mdn = 'mdn',
 	Npm = 'npm',
+	Crate = 'crate',
 	Node = 'node',
 	Sapphire = 'sapphire'
 }

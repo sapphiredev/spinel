@@ -123,7 +123,7 @@ export class UserCommand extends Command {
 		});
 	}
 
-	private async fetchApi(query: string, hitsPerPage = 20) {
+	private async fetchApi(query: string, hitsPerPage = 25) {
 		return fetch<AlgoliaSearchResult<'docsearch'>>(
 			this.#algoliaUrl,
 			{

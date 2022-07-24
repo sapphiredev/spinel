@@ -98,7 +98,7 @@ export class UserCommand extends Command {
 		return this.buildResponse(npmResponse.hits[0]);
 	}
 
-	private async fetchApi(pkg: string, hitsPerPage = 20) {
+	private async fetchApi(pkg: string, hitsPerPage = 25) {
 		return fetch<AlgoliaSearchResult<'npm'>>(
 			this.#npmSearchUrl,
 			{

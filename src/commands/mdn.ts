@@ -82,7 +82,7 @@ export class UserCommand extends Command {
 		return this.buildResponse(mdnResponse.documents[0]);
 	}
 
-	private async fetchApi(query: string, hitsPerPage = 20) {
+	private async fetchApi(query: string, hitsPerPage = 25) {
 		const fullUrl = new URL(`${this.#mdnUrl}/api/v1/search`);
 		fullUrl.searchParams.append('q', query);
 		fullUrl.searchParams.append('size', hitsPerPage.toString());

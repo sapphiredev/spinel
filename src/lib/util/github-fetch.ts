@@ -275,7 +275,7 @@ function getDataForIssuesAndPrSearch(
 
 const repositorySearch = gql`
 	query ($repository: String!) {
-		search(type: REPOSITORY, query: $repository, first: 20) {
+		search(type: REPOSITORY, query: $repository, first: 25) {
 			nodes {
 				... on Repository {
 					nameWithOwner

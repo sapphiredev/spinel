@@ -192,6 +192,7 @@ content = """
 • [Microsoft students](<https://azure.microsoft.com/en-us/free/students>) Free credit for students
 • [Google Cloud](<https://cloud.google.com/free>) free tier
 • [Wither Hosting](<https://client.witherhosting.com/cart/budget-vps/>) Starting at $4 a month for 1 core, 2GB ram, 25GB NVME storage.
+• [Contabo](<https://contabo.com/en/vps/>) Starting at €4.99/mo for 4 cores, 8GB RAM, 50GB SSD (5€ setup fee)
 """
 
 [help]

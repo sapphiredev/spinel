@@ -508,10 +508,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/result@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@sapphire/result@npm:2.0.1"
-  checksum: 878790efbd4a3127513f6ddb1ffdf287503a88595915a22550ac3583e4dde229dd0d7d49612d397a49f12a0c2323afc43ab54ceb818d969f8d0571d71336287a
+"@sapphire/result@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@sapphire/result@npm:2.1.1"
+  checksum: e1c77ba6fcdb63b17152e06a1b30ca8e9a8da00c343019cf1181aeb6d14cc3d7546c2535c9f3f592252c3578889081dcdbad0649bd33d6279b93a79710a7f8e1
   languageName: node
   linkType: hard
 
@@ -5088,7 +5088,7 @@ __metadata:
     "@sapphire/eslint-config": ^4.3.7
     "@sapphire/fetch": ^2.4.1
     "@sapphire/prettier-config": ^1.4.3
-    "@sapphire/result": ^2.0.1
+    "@sapphire/result": ^2.1.1
     "@sapphire/time-utilities": ^1.7.5
     "@sapphire/ts-config": ^3.3.4
     "@sapphire/utilities": ^3.7.0

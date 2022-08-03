@@ -247,9 +247,13 @@ execute(message, client, args);
 [ts-node]
 keywords = ["ts-node", "tsnode"]
 content = """
-We very strongly discourage using it because it was never meant to be used for bots.
+TL;DR: Do not use [`ts-node`](<https://github.com/TypeStrong/ts-node>), use [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>) instead.
 
-ts-node is designed for REPL purposes. That's short for `Read Eval Print Loop`.
+_ _
+
+We very strongly discourage using [`ts-node`](<https://github.com/TypeStrong/ts-node>) because it was never meant to be used for bots.
+
+[`ts-node`](<https://github.com/TypeStrong/ts-node>) is designed for REPL purposes. That's short for `Read Eval Print Loop`.
 Which means to read some code, dump it in an `eval()` statement, print the result, and loop.
 
 **_A discord bot is not that._**
@@ -257,8 +261,12 @@ Which means to read some code, dump it in an `eval()` statement, print the resul
 A Discord bot sets up a permanent websocket connection to the discord server and connects to the rest gateway.
 There is read yes, but **no eval**, **no print**, and **no loop**.
 
-So what should you use instead?
+**So what should you use instead?**
+
 The most ideal way is to just use the `watch` flag of `tsc` (`tsc --watch`) and run `node dist/index.js` to run your bot, then cancel that process and restart it when you have changes that require restarting.
 You would open 2 terminal tabs, 1 in which you run `tsc --watch` and another in which you run the bot.
-However, this can be quite tedious so a great package to use instead is [tsc-watch](<https://www.npmjs.com/package/tsc-watch>).
+This is in particular the most ideal way, because Discord has a limit to the amount of times you can login with your bot, or register commands, per day.
+Constantly logging in over and over again due to an auto-restarting process will get you close to that limit very quickly and once you exceed it, your development will be halted entirely for the current day.
+
+However, this can be quite tedious so a great package to use instead is [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>).
 """

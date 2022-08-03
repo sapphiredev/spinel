@@ -247,9 +247,7 @@ execute(message, client, args);
 [ts-node]
 keywords = ["ts-node", "tsnode"]
 content = """
-TL;DR: Do not use [`ts-node`](<https://github.com/TypeStrong/ts-node>), use [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>) instead.
-
-_ _
+_TL;DR: Do not use [`ts-node`](<https://github.com/TypeStrong/ts-node>), use [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>) instead._
 
 We very strongly discourage using [`ts-node`](<https://github.com/TypeStrong/ts-node>) because it was never meant to be used for bots.
 

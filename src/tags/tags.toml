@@ -251,7 +251,7 @@ _TL;DR: Do not use [`ts-node`](<https://github.com/TypeStrong/ts-node>), use [`t
 
 We very strongly discourage using [`ts-node`](<https://github.com/TypeStrong/ts-node>) because it was never meant to be used for bots.
 
-[`ts-node`](<https://github.com/TypeStrong/ts-node>) is designed for REPL purposes. That's short for `Read Eval Print Loop`.
+[`ts-node`](<https://github.com/TypeStrong/ts-node>) is designed for [`REPL`](<https://en.wikipedia.org/wiki/Read-eval-print_loop>) purposes. That's short for `Read Eval Print Loop`.
 Which means to read some code, dump it in an `eval()` statement, print the result, and loop.
 
 **_A discord bot is not that._**

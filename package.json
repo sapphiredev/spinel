@@ -27,8 +27,8 @@
 		"postinstall": "husky install .github/husky"
 	},
 	"dependencies": {
-		"@discordjs/builders": "^1.0.0",
-		"@discordjs/collection": "^1.0.0",
+		"@discordjs/builders": "^1.1.0",
+		"@discordjs/collection": "^1.0.1",
 		"@ltd/j-toml": "^1.30.0",
 		"@sapphire/discord-utilities": "^2.11.5",
 		"@sapphire/fetch": "^2.4.1",
@@ -51,15 +51,14 @@
 		"@sapphire/prettier-config": "^1.4.3",
 		"@sapphire/ts-config": "^3.3.4",
 		"@types/he": "^1.1.2",
-		"@types/node": "^18.0.6",
+		"@types/node": "^18.6.3",
 		"@types/turndown": "^5.0.1",
-		"@typescript-eslint/eslint-plugin": "^5.31.0",
-		"@typescript-eslint/parser": "^5.31.0",
-		"c8": "^7.12.0",
+		"@typescript-eslint/eslint-plugin": "^5.32.0",
+		"@typescript-eslint/parser": "^5.32.0",
 		"colorette": "^2.0.19",
 		"cz-conventional-changelog": "^3.3.0",
-		"esbuild": "^0.14.51",
-		"eslint": "^8.20.0",
+		"esbuild": "^0.14.53",
+		"eslint": "^8.21.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"husky": "^8.0.1",
@@ -68,7 +67,7 @@
 		"pretty-quick": "^3.1.3",
 		"tsup": "^6.2.1",
 		"typescript": "^4.7.4",
-		"vitest": "^0.20.2"
+		"vitest": "^0.20.3"
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",

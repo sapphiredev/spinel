@@ -386,10 +386,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ltd/j-toml@npm:^1.30.0":
-  version: 1.30.0
-  resolution: "@ltd/j-toml@npm:1.30.0"
-  checksum: 2f8ba33d9f3adef9a0dac357b55a54073229fd808a3487c5941b210103b9eda06800de86ce8fb3a0246bdd38341c0f313c43bbecc3cbbb2f6738dc5b4e2d72d9
+"@ltd/j-toml@npm:^1.31.0":
+  version: 1.31.0
+  resolution: "@ltd/j-toml@npm:1.31.0"
+  checksum: a1855b03b1225e798508981222f12dd43f5c0d64feed229af6f0e76eb7afb7504bcdcb363b6df9fd22009ad6bc096bb4967b3c3b0358a94255b652254fd92128
   languageName: node
   linkType: hard
 
@@ -478,14 +478,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/pieces@npm:^3.3.5":
-  version: 3.3.5
-  resolution: "@sapphire/pieces@npm:3.3.5"
+"@sapphire/pieces@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "@sapphire/pieces@npm:3.5.0"
   dependencies:
-    "@discordjs/collection": ^1.0.0
-    "@sapphire/utilities": ^3.7.0
+    "@discordjs/collection": ^1.0.1
+    "@sapphire/utilities": ^3.9.0
     tslib: ^2.4.0
-  checksum: fb86ab91a002dc85033cf160d0f4429930e4cc580323888c2e2032aedb7ca599ec69743071fd08baef228e9497930b8afff7d9c4d43427b47da1ba3a537666ab
+  checksum: e38e8f58931f2b497e0ba5209851de0f83290512410f36f10c01f0abb1e092a7e4005965c0a1a817b1e5ce56995a901c8bfabd2bc1cddc9b5d59281358fe7eed
   languageName: node
   linkType: hard
 
@@ -564,20 +564,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skyra/http-framework@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "@skyra/http-framework@npm:0.7.0"
+"@skyra/http-framework@npm:^0.7.2":
+  version: 0.7.2
+  resolution: "@skyra/http-framework@npm:0.7.2"
   dependencies:
     "@discordjs/builders": ^1.1.0
     "@discordjs/collection": ^1.0.1
     "@discordjs/rest": ^1.0.1
-    "@sapphire/pieces": ^3.3.5
-    "@sapphire/utilities": ^3.8.0
+    "@sapphire/pieces": ^3.5.0
+    "@sapphire/utilities": ^3.9.0
     discord-api-types: ^0.36.3
     fastify: ^4.3.0
     form-data: ^4.0.0
     tweetnacl: ^1.0.3
-  checksum: f9fc7f043ada86a6d2047feee3ee0f08c04f9743ab7ccd2b7acb8ff7cbf37dd81aff03e3c98c955f88968e94f02d50836905e1d5ca5e33c50c8358a55b74b2e8
+  checksum: 0181985f0458e4c4b4df8b33e8c2a5563f2379f4ffc9cab4b2c28d1fb287129663b58c86dcd95e296cd0b248a3a318e9df1230b26e1241b037f4449affcba172
   languageName: node
   linkType: hard
 
@@ -4993,7 +4993,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.0.3
     "@discordjs/builders": ^1.1.0
     "@discordjs/collection": ^1.0.1
-    "@ltd/j-toml": ^1.30.0
+    "@ltd/j-toml": ^1.31.0
     "@sapphire/discord-utilities": ^2.11.5
     "@sapphire/eslint-config": ^4.3.7
     "@sapphire/fetch": ^2.4.1
@@ -5003,7 +5003,7 @@ __metadata:
     "@sapphire/ts-config": ^3.3.4
     "@sapphire/utilities": ^3.9.0
     "@skyra/env-utilities": ^1.0.2
-    "@skyra/http-framework": ^0.7.0
+    "@skyra/http-framework": ^0.7.2
     "@skyra/jaro-winkler": ^1.1.0
     "@types/he": ^1.1.2
     "@types/node": ^18.6.3
@@ -5027,7 +5027,7 @@ __metadata:
     tsup: ^6.2.1
     turndown: ^7.1.1
     typescript: ^4.7.4
-    vitest: ^0.20.3
+    vitest: ^0.21.0
   languageName: unknown
   linkType: soft
 
@@ -5664,9 +5664,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^0.20.3":
-  version: 0.20.3
-  resolution: "vitest@npm:0.20.3"
+"vitest@npm:^0.21.0":
+  version: 0.21.0
+  resolution: "vitest@npm:0.21.0"
   dependencies:
     "@types/chai": ^4.3.1
     "@types/chai-subset": ^1.3.3
@@ -5699,7 +5699,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: 1478030f2e34ee91274a544b7d2e2d447969ce37d6452bfbc8e21fe42ec6fb94c496a09b822d7c8d667cee243b6630c871640d4a8b4434e1a25b858dad3548ed
+  checksum: c7aed226d7e67aa9409e7177c7dc6cacebc743212f22773b79d0d4795de83aff5c1c8559999b93c405afdef4f115cd527a84ecec4e2a25620be688ed3bd64695
   languageName: node
   linkType: hard
 

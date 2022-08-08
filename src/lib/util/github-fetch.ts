@@ -3,7 +3,6 @@ import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrDraft, GhPrMerged, GhPrOpen
 import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit';
 import { getPreferredRepositoriesForServerId, gql } from '#utils/utils';
 import { time, TimestampStyles } from '@discordjs/builders';
-import { AutoCompleteLimits } from '@sapphire/discord-utilities';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { Result } from '@sapphire/result';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
@@ -199,10 +198,7 @@ function getDataForIssuesAndPrSearch(
 
 		return [
 			{
-				name: cutText(
-					`(${parsedIssueState}) - ${issuesHasExactNumber.number} - ${issuesHasExactNumber.title}`,
-					AutoCompleteLimits.MaximumLengthOfNameOfOption
-				),
+				name: cutText(`(${parsedIssueState}) - ${issuesHasExactNumber.number} - ${issuesHasExactNumber.title}`, 25),
 				value: issuesHasExactNumber.number
 			}
 		];
@@ -220,10 +216,7 @@ function getDataForIssuesAndPrSearch(
 
 		return [
 			{
-				name: cutText(
-					`(${parsedPullRequestState}) - ${pullRequestsHaveExactNumber.number} - ${pullRequestsHaveExactNumber.title}`,
-					AutoCompleteLimits.MaximumLengthOfNameOfOption
-				),
+				name: cutText(`(${parsedPullRequestState}) - ${pullRequestsHaveExactNumber.number} - ${pullRequestsHaveExactNumber.title}`, 25),
 				value: pullRequestsHaveExactNumber.number
 			}
 		];
@@ -243,7 +236,7 @@ function getDataForIssuesAndPrSearch(
 			}
 
 			issueResults.push({
-				name: cutText(`(${parsedIssueState}) - ${issue.number} - ${issue.title}`, AutoCompleteLimits.MaximumLengthOfNameOfOption),
+				name: cutText(`(${parsedIssueState}) - ${issue.number} - ${issue.title}`, 25),
 				value: issue.number
 			});
 		}
@@ -261,10 +254,7 @@ function getDataForIssuesAndPrSearch(
 			}
 
 			pullRequestResults.push({
-				name: cutText(
-					`(${parsedPullRequestState}) - ${pullRequest.number} - ${pullRequest.title}`,
-					AutoCompleteLimits.MaximumLengthOfNameOfOption
-				),
+				name: cutText(`(${parsedPullRequestState}) - ${pullRequest.number} - ${pullRequest.title}`, 25),
 				value: pullRequest.number
 			});
 		}

@@ -3,7 +3,6 @@ import { NodeIcon } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { NodeDocs, NodeDocSimilarityEntry, NodeDocTypes, NodeQueryType } from '#types/NodeDocs';
 import { errorResponse } from '#utils/response-utils';
-import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
@@ -89,7 +88,7 @@ export class UserCommand extends Command {
 
 		for (const [index, similarityEntry] of sortedFuzzyResults.entries()) {
 			redisInsertPromises.push(
-				redisCache.insertFor60Seconds<NodeDocTypes>(RedisKeys.Node, args.query, index.toString(), similarityEntry.entry)
+				this.container.redisClient.insertFor60Seconds<NodeDocTypes>(RedisKeys.Node, args.query, index.toString(), similarityEntry.entry)
 			);
 
 			results.push({
@@ -110,7 +109,7 @@ export class UserCommand extends Command {
 	public override async chatInputRun(_: never, { query, version = 'latest-v16.x', target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
 
-		const hitFromRedisCache = await redisCache.fetch<NodeDocTypes>(RedisKeys.Node, queryFromAutocomplete, nthResult);
+		const hitFromRedisCache = await this.container.redisClient.fetch<NodeDocTypes>(RedisKeys.Node, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			return this.buildResponse(hitFromRedisCache, version, target);

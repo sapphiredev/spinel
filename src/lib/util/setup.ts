@@ -14,4 +14,4 @@ setup(new URL('../../../.env', import.meta.url));
 
 await loadTags();
 
-export const redisCache = new RedisCacheClient();
+new RedisCacheClient();

@@ -3,7 +3,6 @@ import { MdnIcon } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { MdnAPI, MdnDocument } from '#types/Mdn';
 import { errorResponse } from '#utils/response-utils';
-import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
@@ -44,7 +43,7 @@ export class UserCommand extends Command {
 		const results: APIApplicationCommandOptionChoice[] = [];
 
 		for (const [index, hit] of mdnResponse.documents?.entries() ?? []) {
-			redisInsertPromises.push(redisCache.insertFor60Seconds<MdnDocument>(RedisKeys.Mdn, args.query, index.toString(), hit));
+			redisInsertPromises.push(this.container.redisClient.insertFor60Seconds<MdnDocument>(RedisKeys.Mdn, args.query, index.toString(), hit));
 
 			results.push({
 				name: cutText(hit.title, 100),
@@ -63,7 +62,7 @@ export class UserCommand extends Command {
 
 	public override async chatInputRun(_: never, { query, target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
-		const hitFromRedisCache = await redisCache.fetch<MdnDocument>(RedisKeys.Mdn, queryFromAutocomplete, nthResult);
+		const hitFromRedisCache = await this.container.redisClient.fetch<MdnDocument>(RedisKeys.Mdn, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			return this.buildResponse(hitFromRedisCache, target);

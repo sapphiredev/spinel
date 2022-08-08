@@ -2,7 +2,6 @@ import { FetchUserAgent } from '#constants/constants';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { Crate, CrateResponse } from '#types/Crates';
 import { errorResponse } from '#utils/response-utils';
-import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { bold, EmbedBuilder, hideLinkEmbed, hyperlink, inlineCode, italic, time, TimestampStyles, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
@@ -47,7 +46,7 @@ export class UserCommand extends Command {
 		const results: APIApplicationCommandOptionChoice[] = [];
 
 		for (const [index, hit] of crateResponse.crates?.entries() ?? []) {
-			redisInsertPromises.push(redisCache.insertFor60Seconds<Crate>(RedisKeys.Crate, args.crate, index.toString(), hit));
+			redisInsertPromises.push(this.container.redisClient.insertFor60Seconds<Crate>(RedisKeys.Crate, args.crate, index.toString(), hit));
 
 			results.push({
 				name: cutText(hit.name, 100),
@@ -66,7 +65,7 @@ export class UserCommand extends Command {
 
 	public override async chatInputRun(_: never, { crate: pkg, target }: Args) {
 		const [, crateFromAutocomplete, nthResult] = pkg.split(':');
-		const hitFromRedisCache = await redisCache.fetch<Crate>(RedisKeys.Crate, crateFromAutocomplete, nthResult);
+		const hitFromRedisCache = await this.container.redisClient.fetch<Crate>(RedisKeys.Crate, crateFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			return this.buildResponse(hitFromRedisCache, target);

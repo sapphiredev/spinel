@@ -3,7 +3,6 @@ import { GreenTick } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { AlgoliaSearchResult, NpmPackageAuthor, NpmSearchHit } from '#types/Algolia';
 import { errorResponse } from '#utils/response-utils';
-import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import {
 	bold,
@@ -60,7 +59,7 @@ export class UserCommand extends Command {
 		const results: APIApplicationCommandOptionChoice[] = [];
 
 		for (const [index, hit] of npmResponse.hits?.entries() ?? []) {
-			redisInsertPromises.push(redisCache.insertFor60Seconds<NpmSearchHit>(RedisKeys.Npm, args.package, index.toString(), hit));
+			redisInsertPromises.push(this.container.redisClient.insertFor60Seconds<NpmSearchHit>(RedisKeys.Npm, args.package, index.toString(), hit));
 
 			results.push({
 				name: cutText(hit.name, 100),
@@ -79,7 +78,7 @@ export class UserCommand extends Command {
 
 	public override async chatInputRun(_: never, { package: pkg, target }: Args) {
 		const [, packageFromAutocomplete, nthResult] = pkg.split(':');
-		const hitFromRedisCache = await redisCache.fetch<NpmSearchHit>(RedisKeys.Npm, packageFromAutocomplete, nthResult);
+		const hitFromRedisCache = await this.container.redisClient.fetch<NpmSearchHit>(RedisKeys.Npm, packageFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			return this.buildResponse(hitFromRedisCache, target);

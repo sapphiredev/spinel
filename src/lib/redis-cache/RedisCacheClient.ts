@@ -1,3 +1,4 @@
+import { container } from '@sapphire/pieces';
 import { Result } from '@sapphire/result';
 import { isNullish } from '@sapphire/utilities';
 import { envParseInteger, envParseString } from '@skyra/env-utilities';
@@ -21,6 +22,8 @@ export class RedisCacheClient extends Redis {
 			host: envParseString('REDIS_HOST'),
 			db: envParseInteger('REDIS_CACHE_DB')
 		});
+
+		container.redisClient = this;
 	}
 
 	public async fetch<T>(key: RedisKeys, query: string, nthResult: string): Promise<T | null> {
@@ -34,5 +37,11 @@ export class RedisCacheClient extends Redis {
 
 	public insertFor60Seconds<T>(key: RedisKeys, query: string, nthResult: string, data: T) {
 		return this.setex(`${key}:${query}:${nthResult}`, 60, JSON.stringify(data));
+	}
+}
+
+declare module '@sapphire/pieces' {
+	interface Container {
+		redisClient: RedisCacheClient;
 	}
 }

@@ -4,7 +4,6 @@ import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { AlgoliaSearchResult, DocsearchHit } from '#types/Algolia';
 import { buildHierarchicalName, buildResponseContent } from '#utils/algolia-utils';
 import { errorResponse } from '#utils/response-utils';
-import { redisCache } from '#utils/setup';
 import { getGuildIds } from '#utils/utils';
 import { hideLinkEmbed, hyperlink, inlineCode } from '@discordjs/builders';
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
@@ -51,7 +50,9 @@ export class UserCommand extends Command {
 			const hierarchicalName = buildHierarchicalName(hit.hierarchy);
 
 			if (hierarchicalName) {
-				redisInsertPromises.push(redisCache.insertFor60Seconds<DocsearchHit>(RedisKeys.DiscordJsGuide, args.query, index.toString(), hit));
+				redisInsertPromises.push(
+					this.container.redisClient.insertFor60Seconds<DocsearchHit>(RedisKeys.DiscordJsGuide, args.query, index.toString(), hit)
+				);
 
 				results.push({
 					name: cutText(hierarchicalName, 100),
@@ -71,7 +72,7 @@ export class UserCommand extends Command {
 
 	public override async chatInputRun(_: never, { query, target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
-		const hitFromRedisCache = await redisCache.fetch<DocsearchHit>(RedisKeys.DiscordJsGuide, queryFromAutocomplete, nthResult);
+		const hitFromRedisCache = await this.container.redisClient.fetch<DocsearchHit>(RedisKeys.DiscordJsGuide, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
 			const hierarchicalName = buildHierarchicalName(hitFromRedisCache.hierarchy, true);

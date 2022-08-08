@@ -30,18 +30,16 @@
 		"@discordjs/builders": "^1.1.0",
 		"@discordjs/collection": "^1.0.1",
 		"@ltd/j-toml": "^1.31.0",
-		"@sapphire/discord-utilities": "^2.11.5",
 		"@sapphire/fetch": "^2.4.1",
 		"@sapphire/result": "^2.3.3",
-		"@sapphire/time-utilities": "^1.7.5",
 		"@sapphire/utilities": "^3.9.0",
 		"@skyra/env-utilities": "^1.0.2",
-		"@skyra/http-framework": "^0.7.2",
+		"@skyra/http-framework": "^0.8.0",
 		"@skyra/jaro-winkler": "^1.1.0",
+		"date-fns": "^2.29.1",
 		"discordjs-docs-parser": "^1.3.1",
 		"he": "^1.2.0",
 		"ioredis": "^5.2.2",
-		"tslib": "^2.4.0",
 		"turndown": "^7.1.1"
 	},
 	"devDependencies": {
@@ -51,13 +49,13 @@
 		"@sapphire/prettier-config": "^1.4.3",
 		"@sapphire/ts-config": "^3.3.4",
 		"@types/he": "^1.1.2",
-		"@types/node": "^18.6.3",
+		"@types/node": "^18.6.5",
 		"@types/turndown": "^5.0.1",
-		"@typescript-eslint/eslint-plugin": "^5.32.0",
-		"@typescript-eslint/parser": "^5.32.0",
+		"@typescript-eslint/eslint-plugin": "^5.33.0",
+		"@typescript-eslint/parser": "^5.33.0",
 		"colorette": "^2.0.19",
 		"cz-conventional-changelog": "^3.3.0",
-		"esbuild": "^0.14.53",
+		"esbuild": "^0.14.54",
 		"eslint": "^8.21.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
@@ -71,9 +69,7 @@
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
-		"minimist": "^1.2.6",
-		"@discordjs/builders": "0.16.0",
-		"@discordjs/collection": "0.8.0"
+		"minimist": "^1.2.6"
 	},
 	"commitlint": {
 		"extends": [

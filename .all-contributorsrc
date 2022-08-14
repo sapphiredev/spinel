@@ -119,6 +119,13 @@
 			"avatar_url": "https://avatars.githubusercontent.com/u/70977057?v=4",
 			"profile": "https://eren.si/",
 			"contributions": ["content"]
+		},
+		{
+			"login": "Sly-Little-Fox",
+			"name": "Sly-Little-Fox",
+			"avatar_url": "https://avatars.githubusercontent.com/u/69681150?v=4",
+			"profile": "https://sly-little-fox.ru/",
+			"contributions": ["content"]
 		}
 	],
 	"contributorsPerLine": 7,

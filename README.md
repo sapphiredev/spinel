@@ -89,6 +89,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/uSebazz"><img src="https://avatars.githubusercontent.com/u/90474850?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebazz</b></sub></a><br /><a href="#content-uSebazz" title="Content">🖋</a></td>
+    <td align="center"><a href="https://eren.si/"><img src="https://avatars.githubusercontent.com/u/70977057?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Erensi</b></sub></a><br /><a href="#content-Erensi" title="Content">🖋</a></td>
   </tr>
 </table>
 

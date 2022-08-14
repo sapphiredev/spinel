@@ -112,6 +112,13 @@
 			"avatar_url": "https://avatars.githubusercontent.com/u/90474850?v=4",
 			"profile": "https://github.com/uSebazz",
 			"contributions": ["content"]
+		},
+		{
+			"login": "Erensi",
+			"name": "Erensi",
+			"avatar_url": "https://avatars.githubusercontent.com/u/70977057?v=4",
+			"profile": "https://eren.si/",
+			"contributions": ["content"]
 		}
 	],
 	"contributorsPerLine": 7,

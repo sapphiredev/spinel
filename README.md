@@ -91,6 +91,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/uSebazz"><img src="https://avatars.githubusercontent.com/u/90474850?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebazz</b></sub></a><br /><a href="#content-uSebazz" title="Content">🖋</a></td>
     <td align="center"><a href="https://eren.si/"><img src="https://avatars.githubusercontent.com/u/70977057?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Erensi</b></sub></a><br /><a href="#content-Erensi" title="Content">🖋</a></td>
     <td align="center"><a href="https://sly-little-fox.ru/"><img src="https://avatars.githubusercontent.com/u/69681150?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sly-Little-Fox</b></sub></a><br /><a href="#content-Sly-Little-Fox" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/yuansheng1549"><img src="https://avatars.githubusercontent.com/u/75909450?v=4?s=100" width="100px;" alt=""/><br /><sub><b>yuansheng1549</b></sub></a><br /><a href="#content-yuansheng1549" title="Content">🖋</a></td>
   </tr>
 </table>
 

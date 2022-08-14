@@ -105,6 +105,13 @@
 			"avatar_url": "https://avatars.githubusercontent.com/u/25180681?v=4",
 			"profile": "https://renovate.whitesourcesoftware.com/",
 			"contributions": ["maintenance"]
+		},
+		{
+			"login": "uSebazz",
+			"name": "Sebazz",
+			"avatar_url": "https://avatars.githubusercontent.com/u/90474850?v=4",
+			"profile": "https://github.com/uSebazz",
+			"contributions": ["content"]
 		}
 	],
 	"contributorsPerLine": 7,

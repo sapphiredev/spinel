@@ -37,7 +37,7 @@ content = """
 - **[Nino ᴱ ᴰ](<https://github.com/uSebazz/Nino>)**
 - **[Operator ᴱ ᴬ ᴰ](<https://github.com/Sly-Little-Fox/operator>)**
 _ _
-***__Discord bots that use @sapphire/framework@next and leverage Application Commands and Interaction Handlers__***
+***__Discord bots that use @sapphire/framework@3.0.0 and leverage Application Commands and Interaction Handlers__***
 _ _
 - **[Archangel ᴱ ᴰ](<https://github.com/favware/archangel>)**
 - **[Arima ᴱ](<https://github.com/arimajs/Arima>)**
@@ -148,7 +148,7 @@ hoisted = true
 [slashies]
 keywords = ["slashies"]
 content = """
-Slash Commands are here! To get them up and running, just install `@sapphire/framework@next` with your preferred package manager, and check out the current [documentation](<https://vladfrangu.notion.site/Application-Commands-3d1683f23f0a4fa6b3e682bc8c1cc1b9>) for more information on how to use them.
+Application Commands are here! To get them up and running, just update to `@sapphire/framework@3.x` with your preferred package manager, and check out the [documentation](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>) for more information on how to use them.
 """
 
 [i18n]

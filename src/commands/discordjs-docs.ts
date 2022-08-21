@@ -67,7 +67,8 @@ export class UserCommand extends Command {
 	@RegisterSubCommand(buildSubcommandBuilders('collection', 'Search the @discordjs/collection documentation'))
 	@RegisterSubCommand(buildSubcommandBuilders('builders', 'Search the @discordjs/builders documentation'))
 	@RegisterSubCommand(buildSubcommandBuilders('voice', 'Search the @discordjs/voice documentation'))
-	@RegisterSubCommand(buildSubcommandBuilders('rest', 'Search the @discordjs/rest documentation'))
+	// TODO: re-enable when issue with rest docs is fixed
+	// @RegisterSubCommand(buildSubcommandBuilders('rest', 'Search the @discordjs/rest documentation'))
 	@RegisterSubCommand(buildSubcommandBuilders('rpc', 'Search the discord-rpc documentation'))
 	protected async sharedRun(_: never, { subCommand, query, target }: InteractionArguments<Args>): Promise<Command.Response> {
 		const source = cast<SourcesStringUnion>(subCommand);

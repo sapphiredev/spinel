@@ -220,8 +220,6 @@ Therefore, everyone will eventually replace the built-in one with their own, so 
 [regular-problems]
 keywords = ["regular-problems", "commands no working", "pieces no working", "listeners no working"]
 content = """
-Often users have the problem that the commands, listeners, and other pieces do not work. This is often due to common causes related to the core setup of a Sapphire Framework bot. For the person having the issues, it is important for us helping you that you mention the following information so we can provide better support for your issue.
-
 - Did you use a folder of the [examples](<https://github.com/sapphiredev/examples>) repository or did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
 - What's your file/folder structure?
 - What's your "main" property in `package.json`

@@ -269,3 +269,44 @@ Constantly logging in over and over again due to an auto-restarting process will
 
 However, this can be quite tedious so a great package to use instead is [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>).
 """
+
+[yarnv3]
+keywords = ["yarn", "yarnv3"]
+content = """
+Yarn v3 is new version of Yarn that we recommend switching to as Yarn v1 has been deprecated.
+
+> "But I don't see any update on [source]?"
+
+That is correct. Yarn v3 is installed through Yarn itself. Your global toolchain is and will always remain to be Yarn v1, however, you configure Yarn v3 on a per-project basis. How? Simply write `yarn set version 3.2.2`.
+
+This will download the new Yarn v3 binary and put in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
+
+Next you probably also want to run the following 2 commands:
+```sh
+yarn config set enableGlobalCache true
+yarn config set nodeLinker node-modules
+```
+This will add to your `.yarnrc` file:
+```yaml
+enableGlobalCache: true
+nodeLinker: node-modules
+```
+Which ensures that you just have a Yarn v1-like experience with `node_modules` and a global cache.
+
+Next step is to nuke your `node_modules` and `yarn.lock` and run `yarn install`
+
+Then some final adjustments. Put this in you `.gitignore`:
+```properties
+# Yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml
+```
+And anywhere in your scripts in package.json where you use `*` you should wrap it in extra `\"`
+For example:
+```json
+{
+	"format": "prettier --write \"src/**/*.ts\""
+}
+```
+Mind you this last thing is good add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
+"""

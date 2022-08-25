@@ -285,3 +285,28 @@ Next you probably also want to run the following 2 commands:
 ```sh
 yarn config set enableGlobalCache true
 yarn config set nodeLinker node-modules
+```
+This will add to your `.yarnrc` file:
+```yaml
+enableGlobalCache: true
+nodeLinker: node-modules
+```
+Which ensures that you just have a Yarn v1-like experience with `node_modules` and a global cache.
+
+Next step is to nuke your `node_modules` and `yarn.lock` and run `yarn install`
+
+Then some final adjustments. Put this in you `.gitignore`:
+```properties
+# Yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml
+```
+And anywhere in your scripts in package.json where you use `*` you should wrap it in extra `\"`
+For example:
+```json
+{
+	"format": "prettier --write \"src/**/*.ts\""
+}
+```
+Mind you this last thing is good add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
+"""

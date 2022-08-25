@@ -269,3 +269,36 @@ Constantly logging in over and over again due to an auto-restarting process will
 
 However, this can be quite tedious so a great package to use instead is [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>).
 """
+
+[yarnv3]
+keywords = ["yarn", "yarn v3"]
+content = """
+Yarn v3 is project specific yes. You update by writing yarn set version 3.2.0 which will download the binary and setup the `.yarnrc.yml` file. 
+
+Project specific doesn't mean workspace only. You can use it just fine in a project without workspaces enabled. 
+
+After you have the yarnrc file you'll just want to add to it:
+```js
+enableGlobalCache: true
+
+nodeLinker: node-modules
+```
+
+Then nuke your `node_modules` and `yarn.lock` and run `yarn install`
+
+Then some final adjustments. This in gitignore:
+```
+# Yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml
+```
+
+And anywhere in your scripts in package.json where you use * you should wrap it in extra \"
+
+For example:
+```json
+\"format\": \"prettier --write \"src/**/*.ts\"\"
+```
+
+Mind you this last thing is good add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
+"""

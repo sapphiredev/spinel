@@ -305,7 +305,7 @@ And anywhere in your scripts in package.json where you use `*` you should wrap i
 For example:
 ```json
 {
-	"format": "prettier --write \"src/**/*.ts\""
+	"format": "prettier --write \\"src/**/*.ts\\""
 }
 ```
 Mind you this last thing is good add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.

@@ -273,32 +273,15 @@ However, this can be quite tedious so a great package to use instead is [`tsc-wa
 [yarnv3]
 keywords = ["yarn", "yarnv3"]
 content = """
-Yarn v3 is project specific yes. You update by writing yarn set version 3.2.0 which will download the binary and setup the `.yarnrc.yml` file. 
+Yarn v3 is new version of Yarn that we recommend switching to as Yarn v1 has been deprecated.
 
-Project specific doesn't mean workspace only. You can use it just fine in a project without workspaces enabled. 
+> "But I don't see any update on [source]?"
 
-After you have the yarnrc file you'll just want to add to it:
-```js
-enableGlobalCache: true
+That is correct. Yarn v3 is installed through Yarn itself. Your global toolchain is and will always remain to be Yarn v1, however, you configure Yarn v3 on a per-project basis. How? Simply write `yarn set version 3.2.2`.
 
-nodeLinker: node-modules
-```
+This will download the new Yarn v3 binary and put in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
 
-Then nuke your `node_modules` and `yarn.lock` and run `yarn install`
-
-Then some final adjustments. This in gitignore:
-```
-# Yarn files
-.yarn/install-state.gz
-.yarn/build-state.yml
-```
-
-And anywhere in your scripts in package.json where you use * you should wrap it in extra \"
-
-For example:
-```json
-\"format\": \"prettier --write \"src/**/*.ts\"\"
-```
-
-Mind you this last thing is good add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
-"""
+Next you probably also want to run the following 2 commands:
+```sh
+yarn config set enableGlobalCache true
+yarn config set nodeLinker node-modules

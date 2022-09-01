@@ -25,29 +25,26 @@ hoisted = true
 [bots]
 keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples", "slashbots", "chat input bots", "slash commands", "application commands"]
 content = """
-***__Discord bots that use @sapphire/framework@2.5.1__***
-
-- **[Official Bot Examples ᴱ ᴰ ᴶˢ](<https://github.com/sapphiredev/examples>)**
-
-- **[Materia ᴱ](<https://github.com/RealShadowNova/materia>)**
-- **[RTByte ᴱ ᴬ](<https://github.com/RTByte/rtbyte>)**
-- **[Spectera ᴬ](<https://github.com/SpecteraLabs/Spectera>)**
-- **[Skyra ᴬ ᴰ](<https://github.com/skyra-project/skyra>)**
-- **[YliasDiscordBot ᴬ](<https://github.com/FrenchDiscord/YliasDiscordBot>)**
-- **[Nino ᴱ ᴰ](<https://github.com/uSebazz/Nino>)**
-- **[Operator ᴱ ᴬ ᴰ](<https://github.com/Sly-Little-Fox/operator>)**
-_ _
 ***__Discord bots that use @sapphire/framework@3.0.0 and leverage Application Commands and Interaction Handlers__***
+_ _
+- **[Official Bot Examples ᴱ ᴰ ᴶˢ](<https://github.com/sapphiredev/examples>)**
 _ _
 - **[Archangel ᴱ ᴰ](<https://github.com/favware/archangel>)**
 - **[Arima ᴱ](<https://github.com/arimajs/Arima>)**
 - **[Dragonite ᴱ ᴰ](<https://github.com/favware/dragonite>)**
-- **[Radon ᴱ ᴬ](<https://github.com/EvolutionX-10/Radon>)**
-- **[Spectera ᴬ](<https://github.com/SpecteraLabs/Spectera>)**
 - **[Nino ᴱ ᴰ](<https://github.com/uSebazz/Nino>)**
 - **[Operator ᴱ ᴬ ᴰ](<https://github.com/Sly-Little-Fox/operator>)**
+- **[Radon ᴱ ᴬ](<https://github.com/EvolutionX-10/Radon>)**
 - **[Sapphire Application Commands Examples ᴱ](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
-
+- **[Spectera ᴬ](<https://github.com/SpecteraLabs/Spectera>)**
+_ _
+***__Discord bots that use @sapphire/framework v2***
+_ _
+- **[Materia ᴱ](<https://github.com/RealShadowNova/materia>)**
+- **[RTByte ᴱ ᴬ](<https://github.com/RTByte/rtbyte>)**
+- **[Skyra ᴬ ᴰ](<https://github.com/skyra-project/skyra>)**
+- **[YliasDiscordBot ᴬ](<https://github.com/FrenchDiscord/YliasDiscordBot>)**
+_ _
 **ᴱ**: Uses ESM (if not specified then uses CJS)
 **ᴬ**: Advanced bot (if not specified it is a simple bot, or not graded)
 **ᴰ**: Uses Docker in production

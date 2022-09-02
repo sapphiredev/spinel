@@ -1,6 +1,7 @@
 import { SupportServerButton } from '#constants/constants';
 import { errorResponse } from '#utils/response-utils';
 import { findTag } from '#utils/tags';
+import { postMessage } from '#utils/utils';
 import { ActionRowBuilder, type MessageActionRowComponentBuilder } from '@discordjs/builders';
 import { InteractionHandler } from '@skyra/http-framework';
 import type { Snowflake } from 'discord-api-types/v10';
@@ -18,9 +19,16 @@ export class UserMessageComponentHandler extends InteractionHandler {
 			);
 		}
 
-		await interaction.reply({ content: 'Tag sent', components: [] });
+		await interaction.update({ content: 'Tag sent', components: [] });
 
-		return interaction.followup({
+		// return interaction.followup({
+		// 	content,
+		// 	allowed_mentions: {
+		// 		users: customIdValue ? [customIdValue] : []
+		// 	}
+		// });
+
+		return postMessage(interaction, {
 			content,
 			allowed_mentions: {
 				users: customIdValue ? [customIdValue] : []

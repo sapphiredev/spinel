@@ -1,16 +1,9 @@
 import { KnownServerIdsToGitHubOrganizations, preferredRepositories, sapphirePreferredRepositories } from '#constants/constants';
 import { userMention } from '@discordjs/builders';
-import type { RawFile } from '@discordjs/rest';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseArray } from '@skyra/env-utilities';
-import { container, InteractionHandler, MessageResponseOptions } from '@skyra/http-framework';
-import {
-	ComponentType,
-	Routes,
-	type APISelectMenuOption,
-	type RESTPostAPIInteractionFollowupJSONBody,
-	type RESTPostAPIInteractionFollowupResult
-} from 'discord-api-types/v10';
+import type { MessageResponseOptions } from '@skyra/http-framework';
+import { ComponentType, type APISelectMenuOption } from 'discord-api-types/v10';
 
 export function getGuildIds(): readonly string[] {
 	return envParseArray('COMMAND_GUILD_IDS', []);
@@ -97,19 +90,3 @@ export function buildSelectMenuResponse(
 		...otherData
 	};
 }
-
-/**
- * Sends an original interaction message response patch HTTP request.
- * @param interaction The received interaction from Discord.
- * @param body The body to be sent in the HTTP call.
- * @returns An API message.
- */
-export function postMessage(interaction: InteractionHandler.SelectMenuInteraction, { files, ...body }: PostMessageOptions) {
-	return container.rest.post(Routes.webhook(interaction.application_id, interaction.token), {
-		body,
-		files,
-		auth: false
-	}) as Promise<RESTPostAPIInteractionFollowupResult>;
-}
-
-type PostMessageOptions = RESTPostAPIInteractionFollowupJSONBody & { files?: RawFile[] };

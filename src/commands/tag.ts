@@ -1,7 +1,7 @@
 import { SapphireGemId } from '#constants/emotes';
 import { errorResponse } from '#utils/response-utils';
 import { findSimilarTag, findTag, mapTagSimilarityEntry, tagCache } from '#utils/tags';
-import { getGuildIds } from '#utils/utils';
+import { buildSelectMenuResponse, getGuildIds } from '#utils/utils';
 import { inlineCode } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
@@ -26,9 +26,9 @@ import { MessageFlags, type APIApplicationCommandOptionChoice } from 'discord-ap
 )
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
-	public override autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'query' || isNullishOrEmpty(args.query)) {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const query = args.query.trim().toLowerCase();
@@ -77,18 +77,18 @@ export class UserCommand extends Command {
 			);
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
 
-	public override chatInputRun(_: never, { query, target }: Args) {
+	public override chatInputRun(interaction: Command.Interaction, { query, target }: Args) {
 		query = query.trim().toLowerCase();
 
 		const content = findTag(query, target?.user.id);
 
 		if (content) {
-			return this.message({
+			return interaction.reply({
 				content,
 				allowed_mentions: {
 					users: target?.user.id ? [target.user.id] : []
@@ -99,13 +99,15 @@ export class UserCommand extends Command {
 		const similar = findSimilarTag(query);
 
 		if (similar.length) {
-			return this.selectMenuMessage(`tag.${target?.user.id ?? ''}`, similar.map(mapTagSimilarityEntry), {
-				flags: MessageFlags.Ephemeral,
-				content: `${SapphireGemId} Could not find a tag with name or alias ${inlineCode(query)}. Select a similar tag to send instead:`
-			});
+			return interaction.reply(
+				buildSelectMenuResponse(`tag.${target?.user.id ?? ''}`, similar.map(mapTagSimilarityEntry), {
+					flags: MessageFlags.Ephemeral,
+					content: `${SapphireGemId} Could not find a tag with name or alias ${inlineCode(query)}. Select a similar tag to send instead:`
+				})
+			);
 		}
 
-		return this.message(
+		return interaction.reply(
 			errorResponse({
 				content: `no tags were found with a name or alias similar to ${inlineCode(query)}`
 			})

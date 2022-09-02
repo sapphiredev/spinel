@@ -11,11 +11,11 @@ import { cast, cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';
 import {
 	Command,
-	InteractionArguments,
 	RegisterCommand,
 	RegisterSubCommand,
 	RestrictGuildIds,
 	type AutocompleteInteractionArguments,
+	type InteractionArguments,
 	type TransformedArguments
 } from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
@@ -29,9 +29,9 @@ export class UserCommand extends Command {
 	#docsResponseHeaderText = `${hyperlink('Sapphire', hideLinkEmbed('https://www.sapphirejs.dev'))} docs results:`;
 	#guideResponseHeaderText = `${hyperlink('Sapphire', hideLinkEmbed('https://www.sapphirejs.dev'))} guide results:`;
 
-	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'query' || isNullishOrEmpty(args.query) || isNullishOrEmpty(args.subCommand)) {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const algoliaResponse = await this.fetchApi(cast<'docs' | 'guide'>(args.subCommand), args.query);
@@ -58,14 +58,14 @@ export class UserCommand extends Command {
 			await Promise.all(redisInsertPromises);
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
 
 	@RegisterSubCommand(buildSubcommandBuilders('docs', 'Search the sapphire documentation'))
 	@RegisterSubCommand(buildSubcommandBuilders('guide', 'Search the sapphire guide'))
-	protected async sharedRun(_: never, { subCommand, query, target }: InteractionArguments<Args>): Promise<Command.Response> {
+	protected async sharedRun(interaction: Command.Interaction, { subCommand, query, target }: InteractionArguments<Args>) {
 		const docsOrGuide = cast<'docs' | 'guide'>(subCommand);
 
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
@@ -77,7 +77,7 @@ export class UserCommand extends Command {
 			const hierarchicalName = buildHierarchicalName(hitFromRedisCache.hierarchy, true);
 
 			if (hierarchicalName) {
-				return this.message({
+				return interaction.reply({
 					content: buildResponseContent({
 						content: hyperlink(hierarchicalName, hideLinkEmbed(hitFromRedisCache.url)),
 						target: target?.user.id,
@@ -91,7 +91,7 @@ export class UserCommand extends Command {
 		const algoliaResponse = await this.fetchApi(docsOrGuide, queryFromAutocomplete ?? query, 5);
 
 		if (!algoliaResponse.hits.length) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `no results were found for ${inlineCode(queryFromAutocomplete ?? query)}`,
 					allowed_mentions: {
@@ -110,7 +110,7 @@ export class UserCommand extends Command {
 			)
 		);
 
-		return this.message({
+		return interaction.reply({
 			content: buildResponseContent({
 				content: results,
 				target: target?.user.id,

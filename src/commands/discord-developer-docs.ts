@@ -36,9 +36,9 @@ export class UserCommand extends Command {
 	#algoliaUrl = new URL(`https://${envParseString('DISCORD_DEVELOPER_DOCS_ALGOLIA_APPLICATION_ID')}.algolia.net/1/indexes/discord/query`);
 	#responseHeaderText = `${hyperlink('Discord Developer docs', hideLinkEmbed('https://discord.com/developers/docs'))} results:`;
 
-	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'query') {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const algoliaResponse = await this.fetchApi(args.query);
@@ -65,12 +65,12 @@ export class UserCommand extends Command {
 			await Promise.all(redisInsertPromises);
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
 
-	public override async chatInputRun(_: never, { query, target }: Args) {
+	public override async chatInputRun(interaction: Command.Interaction, { query, target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
 		const hitFromRedisCache = await this.container.redisClient.fetch<DocsearchHit>(RedisKeys.DiscordDocs, queryFromAutocomplete, nthResult);
 
@@ -78,7 +78,7 @@ export class UserCommand extends Command {
 			const hierarchicalName = buildHierarchicalName(hitFromRedisCache.hierarchy, true);
 
 			if (hierarchicalName) {
-				return this.message({
+				return interaction.reply({
 					content: buildResponseContent({
 						content: hyperlink(hierarchicalName, hideLinkEmbed(hitFromRedisCache.url)),
 						target: target?.user.id,
@@ -92,7 +92,7 @@ export class UserCommand extends Command {
 		const algoliaResponse = await this.fetchApi(queryFromAutocomplete ?? query, 5);
 
 		if (!algoliaResponse.hits.length) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `no results were found for ${inlineCode(queryFromAutocomplete ?? query)}`,
 					allowed_mentions: {
@@ -111,7 +111,7 @@ export class UserCommand extends Command {
 			)
 		);
 
-		return this.message({
+		return interaction.reply({
 			content: buildResponseContent({
 				content: results,
 				target: target?.user.id,

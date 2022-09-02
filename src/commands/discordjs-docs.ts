@@ -1,7 +1,7 @@
 import { DjsDocsDevIcon, DjsDocsStableIcon } from '#constants/emotes';
 import { buildSelectOption, fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
 import { errorResponse } from '#utils/response-utils';
-import { getGuildIds } from '#utils/utils';
+import { buildSelectMenuResponse, getGuildIds } from '#utils/utils';
 import { inlineCode, SlashCommandSubcommandBuilder } from '@discordjs/builders';
 import { cast } from '@sapphire/utilities';
 import {
@@ -24,9 +24,9 @@ import type { DocElement, SourcesStringUnion } from 'discordjs-docs-parser';
 @RegisterCommand((builder) => builder.setName('discordjs-docs').setDescription('Search discord.js documentation'))
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
-	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (!args.subCommand || args.focused !== 'query') {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const query = args.query.trim().toLowerCase();
@@ -57,7 +57,7 @@ export class UserCommand extends Command {
 			}
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
@@ -70,7 +70,7 @@ export class UserCommand extends Command {
 	// TODO: re-enable when issue with rest docs is fixed
 	// @RegisterSubCommand(buildSubcommandBuilders('rest', 'Search the @discordjs/rest documentation'))
 	@RegisterSubCommand(buildSubcommandBuilders('rpc', 'Search the discord-rpc documentation'))
-	protected async sharedRun(_: never, { subCommand, query, target }: InteractionArguments<Args>): Promise<Command.Response> {
+	protected async sharedRun(interaction: Command.Interaction, { subCommand, query, target }: InteractionArguments<Args>) {
 		const source = cast<SourcesStringUnion>(subCommand);
 
 		const doc = await fetchDocs(source);
@@ -78,7 +78,7 @@ export class UserCommand extends Command {
 		const singleResult = fetchDocResult({ source, doc, query, target: target?.user.id });
 
 		if (singleResult) {
-			return this.message({
+			return interaction.reply({
 				content: singleResult,
 				allowed_mentions: {
 					users: target?.user.id ? [target?.user.id] : []
@@ -90,10 +90,10 @@ export class UserCommand extends Command {
 
 		if (results?.length) {
 			const selectMenuData = this.buildSelectMenuResponse(query, source, results, target);
-			return this.selectMenuMessage(selectMenuData.customId, selectMenuData.selectMenuOptions, selectMenuData.data);
+			return interaction.reply(buildSelectMenuResponse(selectMenuData.customId, selectMenuData.selectMenuOptions, selectMenuData.data));
 		}
 
-		return this.message(
+		return interaction.reply(
 			errorResponse({
 				content: `no results were found for ${inlineCode(query)}`
 			})

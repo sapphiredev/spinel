@@ -4,7 +4,6 @@ import { getGuildIds, getKnownGitHubOrganizationsForServerId } from '#utils/util
 import { hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
-import type { APIApplicationCommandAutocompleteInteraction } from 'discord-api-types/v10';
 
 @RegisterCommand((builder) =>
 	builder //
@@ -37,10 +36,7 @@ import type { APIApplicationCommandAutocompleteInteraction } from 'discord-api-t
 )
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
-	public override async autocompleteRun(
-		interaction: APIApplicationCommandAutocompleteInteraction,
-		args: AutocompleteInteractionArguments<Args<string>>
-	) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args<string>>) {
 		const guildId = interaction.guild_id;
 
 		switch (args.focused) {
@@ -52,11 +48,11 @@ export class UserCommand extends Command {
 
 				const results = await fuzzilySearchForRepository({ repository: args.repository, guildId: interaction.guild_id });
 
-				return this.autocomplete({ choices: results.slice(0, 19) });
+				return interaction.reply({ choices: results.slice(0, 19) });
 			}
 			case 'number': {
 				if (isNullishOrEmpty(args.repository)) {
-					return this.autocompleteNoResults();
+					return interaction.replyEmpty();
 				}
 
 				if (!isNullishOrEmpty(guildId) && isNullishOrEmpty(args.owner)) {
@@ -65,15 +61,15 @@ export class UserCommand extends Command {
 				}
 
 				if (isNullishOrEmpty(args.owner)) {
-					return this.autocompleteNoResults();
+					return interaction.replyEmpty();
 				}
 
 				const results = await fuzzilySearchForIssuesAndPullRequests({ repository: args.repository, owner: args.owner, number: args.number });
 
-				return this.autocomplete({ choices: results.slice(0, 19) });
+				return interaction.reply({ choices: results.slice(0, 19) });
 			}
 			default: {
-				return this.autocompleteNoResults();
+				return interaction.replyEmpty();
 			}
 		}
 	}
@@ -85,7 +81,7 @@ export class UserCommand extends Command {
 			const data = await fetchIssuesAndPrs({ repository, owner, number });
 
 			if (!data.author.login || !data.author.url || !data.number || !data.state || !data.title) {
-				return this.failResponse(target);
+				return this.failResponse(interaction, target);
 			}
 
 			const parts = [
@@ -96,7 +92,7 @@ export class UserCommand extends Command {
 				data.title
 			];
 
-			return this.message({
+			return interaction.reply({
 				content: `${
 					target?.user.id
 						? `${italic(`GitHub ${data.issueOrPr === 'PR' ? 'Pull Request' : 'Issue'} data for ${userMention(target?.user.id)}:`)}\n`
@@ -109,7 +105,7 @@ export class UserCommand extends Command {
 		} catch (error) {
 			// First we check if we need to handle a no data error
 			if ((error as Error).message === 'no-data') {
-				return this.message(
+				return interaction.reply(
 					errorResponse({
 						content: `I was unable to find any Issue or Pull Request for http://github.com/${owner}/${repository}/issues/${number}. Be sure to check if that link is actually valid!`,
 						allowed_mentions: {
@@ -119,12 +115,12 @@ export class UserCommand extends Command {
 				);
 			}
 
-			return this.failResponse(target);
+			return this.failResponse(interaction, target);
 		}
 	}
 
-	private failResponse(target?: TransformedArguments.User): ReturnType<Command['message']> {
-		return this.message(
+	private failResponse(interaction: Command.Interaction, target?: TransformedArguments.User) {
+		return interaction.reply(
 			errorResponse({
 				content: 'Something went wrong with that query',
 				allowed_mentions: {

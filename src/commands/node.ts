@@ -7,7 +7,14 @@ import { getGuildIds } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
-import { AutocompleteInteractionArguments, Command, RegisterCommand, RestrictGuildIds, type TransformedArguments } from '@skyra/http-framework';
+import {
+	Command,
+	RegisterCommand,
+	RestrictGuildIds,
+	type AutocompleteInteractionArguments,
+	type MessageResponseOptions,
+	type TransformedArguments
+} from '@skyra/http-framework';
 import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import TurndownService from 'turndown';
@@ -46,9 +53,9 @@ export class UserCommand extends Command {
 	#td = new TurndownService({ codeBlockStyle: 'fenced' });
 	#cache = new Map<string, NodeDocs>();
 
-	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'query' || isNullishOrEmpty(args.query)) {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		args.version ??= 'latest-v16.x';
@@ -78,7 +85,7 @@ export class UserCommand extends Command {
 		}
 
 		if (!fuzzyResults.length) {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const sortedFuzzyResults = fuzzyResults.sort((a, b) => b.distance - a.distance);
@@ -101,18 +108,19 @@ export class UserCommand extends Command {
 			await Promise.all(redisInsertPromises);
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
 
-	public override async chatInputRun(_: never, { query, version = 'latest-v16.x', target }: Args) {
+	public override async chatInputRun(interaction: Command.Interaction, { query, version = 'latest-v16.x', target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
 
 		const hitFromRedisCache = await this.container.redisClient.fetch<NodeDocTypes>(RedisKeys.Node, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
-			return this.buildResponse(hitFromRedisCache, version, target);
+			const responseData = this.buildResponse(hitFromRedisCache, version, target);
+			return interaction.reply(responseData);
 		}
 
 		const nodeDocs = await this.getNodeDocsForVersion(version);
@@ -123,7 +131,7 @@ export class UserCommand extends Command {
 		const result = this.findResult(nodeDocs, queryFromAutocomplete ?? query) ?? this.findResult(nodeDocs, altQuery);
 
 		if (!result) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `no results were found for ${inlineCode(queryFromAutocomplete ?? query)}`,
 					allowed_mentions: {
@@ -133,7 +141,8 @@ export class UserCommand extends Command {
 			);
 		}
 
-		return this.buildResponse(result, version, target);
+		const responseData = this.buildResponse(result, version, target);
+		return interaction.reply(responseData);
 	}
 
 	private async getNodeDocsForVersion(version: Args['version']): Promise<NodeDocs> {
@@ -217,7 +226,7 @@ export class UserCommand extends Command {
 		}
 	}
 
-	private buildResponse(result: NodeDocTypes, version: Args['version'], target?: TransformedArguments.User): Command.Response {
+	private buildResponse(result: NodeDocTypes, version: Args['version'], target?: TransformedArguments.User): MessageResponseOptions {
 		const moduleName = result.module ?? result.name.toLowerCase();
 
 		const moduleUrl = `${this.#nodeUrl}/docs/${version}/api/${
@@ -238,12 +247,12 @@ export class UserCommand extends Command {
 				.replace(boldCodeBlockRegex, bold('`$1`')) //
 		);
 
-		return this.message({
+		return {
 			content: `${target?.user.id ? `${italic(`Documentation suggestion for ${userMention(target.user.id)}:`)}\n` : ''}${parts.join('\n')}`,
 			allowed_mentions: {
 				users: target?.user.id ? [target?.user.id] : []
 			}
-		});
+		};
 	}
 }
 

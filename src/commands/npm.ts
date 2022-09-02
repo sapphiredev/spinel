@@ -19,7 +19,14 @@ import {
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
 import { cutText, filterNullish, isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';
-import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
+import {
+	Command,
+	RegisterCommand,
+	RestrictGuildIds,
+	type AutocompleteInteractionArguments,
+	type MessageResponseOptions,
+	type TransformedArguments
+} from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import he from 'he';
 
@@ -48,9 +55,9 @@ export class UserCommand extends Command {
 	#npmSearchUrl = `https://${envParseString('NPM_ALGOLIA_APPLICATION_ID')}-dsn.algolia.net/1/indexes/npm-search/query` as const;
 	#andListFormatter = new Intl.ListFormat(this.name, { type: 'conjunction' });
 
-	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'package' || isNullishOrEmpty(args.package)) {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const npmResponse = await this.fetchApi(args.package);
@@ -71,30 +78,32 @@ export class UserCommand extends Command {
 			await Promise.all(redisInsertPromises);
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
 
-	public override async chatInputRun(_: never, { package: pkg, target }: Args) {
+	public override async chatInputRun(interaction: Command.Interaction, { package: pkg, target }: Args) {
 		const [, packageFromAutocomplete, nthResult] = pkg.split(':');
 		const hitFromRedisCache = await this.container.redisClient.fetch<NpmSearchHit>(RedisKeys.Npm, packageFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
-			return this.buildResponse(hitFromRedisCache, target);
+			const responseData = this.buildResponse(hitFromRedisCache, target);
+			return interaction.reply(responseData);
 		}
 
 		const npmResponse = await this.fetchApi(packageFromAutocomplete ?? pkg, 1);
 
 		if (!npmResponse.hits?.[0]) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `no results were found for ${inlineCode(packageFromAutocomplete ?? pkg)}`
 				})
 			);
 		}
 
-		return this.buildResponse(npmResponse.hits[0]);
+		const responseData = this.buildResponse(npmResponse.hits[0]);
+		return interaction.reply(responseData);
 	}
 
 	private async fetchApi(pkg: string, hitsPerPage = 25) {
@@ -119,7 +128,7 @@ export class UserCommand extends Command {
 		);
 	}
 
-	private buildResponse(hit: NpmSearchHit, target?: TransformedArguments.User): Command.Response {
+	private buildResponse(hit: NpmSearchHit, target?: TransformedArguments.User): MessageResponseOptions {
 		const maintainers = hit.owners.map((user) => hyperlink(user.name, hideLinkEmbed(user.link)));
 		const dependenciesKeys = Object.keys(hit.dependencies);
 		const dependencies = dependenciesKeys.length ? this.trimArray(dependenciesKeys) : null;
@@ -155,13 +164,13 @@ export class UserCommand extends Command {
 				)
 			);
 
-		return this.message({
+		return {
 			content: target?.user.id ? `${italic(`Package suggestion for ${userMention(target.user.id)}:`)}` : undefined,
 			embeds: [embed.toJSON()],
 			allowed_mentions: {
 				users: target?.user.id ? [target.user.id] : []
 			}
-		});
+		};
 	}
 
 	private formatListWithAnd(list: string[]) {

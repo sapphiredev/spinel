@@ -15,7 +15,7 @@ import { MessageFlags } from 'discord-api-types/v10';
 export class UserCommand extends Command {
 	public override async chatInputRun(interaction: Command.Interaction) {
 		if (!interaction.member) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: 'this command can only be used in the Sapphire server.'
 				})
@@ -23,7 +23,7 @@ export class UserCommand extends Command {
 		}
 
 		if (!interaction.member.roles.includes('868612689977569341')) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `You need to have the Sapphire ${roleMention('868612689977569341')} role to use this command.`
 				})
@@ -34,12 +34,12 @@ export class UserCommand extends Command {
 			tagCache.clear();
 			await loadTags();
 
-			return this.message({
+			return interaction.reply({
 				content: 'Successfully reloaded all tags',
 				flags: MessageFlags.Ephemeral
 			});
 		} catch {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `something went wrong reloading the tags. Better contact ${userMention('268792781713965056')}`
 				})

@@ -6,7 +6,14 @@ import { getGuildIds } from '#utils/utils';
 import { bold, EmbedBuilder, hideLinkEmbed, hyperlink, inlineCode, italic, time, TimestampStyles, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
-import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
+import {
+	Command,
+	RegisterCommand,
+	RestrictGuildIds,
+	type AutocompleteInteractionArguments,
+	type MessageResponseOptions,
+	type TransformedArguments
+} from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import he from 'he';
 
@@ -35,9 +42,9 @@ export class UserCommand extends Command {
 	#apiBaseUrl = 'https://crates.io/api/v1/crates' as const;
 	#andListFormatter = new Intl.ListFormat(this.name, { type: 'conjunction' });
 
-	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'crate' || isNullishOrEmpty(args.crate)) {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const crateResponse = await this.fetchApi(args.crate);
@@ -58,30 +65,32 @@ export class UserCommand extends Command {
 			await Promise.all(redisInsertPromises);
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
 
-	public override async chatInputRun(_: never, { crate: pkg, target }: Args) {
+	public override async chatInputRun(interaction: Command.Interaction, { crate: pkg, target }: Args) {
 		const [, crateFromAutocomplete, nthResult] = pkg.split(':');
 		const hitFromRedisCache = await this.container.redisClient.fetch<Crate>(RedisKeys.Crate, crateFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
-			return this.buildResponse(hitFromRedisCache, target);
+			const responseData = await this.buildResponse(hitFromRedisCache, target);
+			return interaction.reply(responseData);
 		}
 
 		const crateResponse = await this.fetchApi(crateFromAutocomplete ?? pkg, 1);
 
 		if (!crateResponse.crates?.[0]) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `no results were found for ${inlineCode(crateFromAutocomplete ?? pkg)}`
 				})
 			);
 		}
 
-		return this.buildResponse(crateResponse.crates[0]);
+		const responseData = await this.buildResponse(crateResponse.crates[0]);
+		return interaction.reply(responseData);
 	}
 
 	private async fetchApi(pkg: string, hitsPerPage = 25) {
@@ -102,7 +111,7 @@ export class UserCommand extends Command {
 		);
 	}
 
-	private async buildResponse(hit: Crate, target?: TransformedArguments.User): Promise<Command.Response> {
+	private async buildResponse(hit: Crate, target?: TransformedArguments.User): Promise<MessageResponseOptions> {
 		const owners = await this.fetchOwners(hit.id);
 		const maintainers = owners.users //
 			.filter((user) => Boolean(user.name))
@@ -129,13 +138,13 @@ export class UserCommand extends Command {
 				)
 			);
 
-		return this.message({
+		return {
 			content: target?.user.id ? `${italic(`Crate suggestion for ${userMention(target.user.id)}:`)}` : undefined,
 			embeds: [embed.toJSON()],
 			allowed_mentions: {
 				users: target?.user.id ? [target.user.id] : []
 			}
-		});
+		};
 	}
 
 	private async fetchOwners(pkg: string) {

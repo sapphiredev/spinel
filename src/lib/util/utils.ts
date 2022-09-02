@@ -2,6 +2,8 @@ import { KnownServerIdsToGitHubOrganizations, preferredRepositories, sapphirePre
 import { userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseArray } from '@skyra/env-utilities';
+import type { MessageResponseOptions } from '@skyra/http-framework';
+import { ComponentType, type APISelectMenuOption } from 'discord-api-types/v10';
 
 export function getGuildIds(): readonly string[] {
 	return envParseArray('COMMAND_GUILD_IDS', []);
@@ -59,4 +61,32 @@ export function getPreferredRepositoriesForServerId(serverId?: string) {
 	const preferred = preferredRepositories.get(serverId);
 
 	return preferred ?? sapphirePreferredRepositories;
+}
+
+/**
+ * Constructs an interaction reply payload with a select menu
+ * @param customId The Custom ID for the select menu
+ * @param selectMenuOptions The options to display in the select menu
+ * @param otherData The other data to send with the interaction reply
+ */
+export function buildSelectMenuResponse(
+	customId: string,
+	selectMenuOptions: APISelectMenuOption[],
+	otherData: MessageResponseOptions
+): MessageResponseOptions {
+	return {
+		components: [
+			{
+				type: ComponentType.ActionRow,
+				components: [
+					{
+						type: ComponentType.SelectMenu,
+						custom_id: customId,
+						options: selectMenuOptions
+					}
+				]
+			}
+		],
+		...otherData
+	};
 }

@@ -7,7 +7,14 @@ import { getGuildIds } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
-import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
+import {
+	Command,
+	RegisterCommand,
+	RestrictGuildIds,
+	type AutocompleteInteractionArguments,
+	type MessageResponseOptions,
+	type TransformedArguments
+} from '@skyra/http-framework';
 import type { APIApplicationCommandOptionChoice } from 'discord-api-types/v10';
 import { URL } from 'node:url';
 
@@ -32,9 +39,9 @@ import { URL } from 'node:url';
 export class UserCommand extends Command {
 	#mdnUrl = `https://developer.mozilla.org` as const;
 
-	public override async autocompleteRun(_: never, args: AutocompleteInteractionArguments<Args>) {
+	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'query' || isNullishOrEmpty(args.query)) {
-			return this.autocompleteNoResults();
+			return interaction.replyEmpty();
 		}
 
 		const mdnResponse = await this.fetchApi(args.query);
@@ -55,30 +62,32 @@ export class UserCommand extends Command {
 			await Promise.all(redisInsertPromises);
 		}
 
-		return this.autocomplete({
+		return interaction.reply({
 			choices: results.slice(0, 19)
 		});
 	}
 
-	public override async chatInputRun(_: never, { query, target }: Args) {
+	public override async chatInputRun(interaction: Command.Interaction, { query, target }: Args) {
 		const [, queryFromAutocomplete, nthResult] = query.split(':');
 		const hitFromRedisCache = await this.container.redisClient.fetch<MdnDocument>(RedisKeys.Mdn, queryFromAutocomplete, nthResult);
 
 		if (hitFromRedisCache) {
-			return this.buildResponse(hitFromRedisCache, target);
+			const responseData = this.buildResponse(hitFromRedisCache, target);
+			return interaction.reply(responseData);
 		}
 
 		const mdnResponse = await this.fetchApi(queryFromAutocomplete ?? query, 1);
 
 		if (!mdnResponse.documents?.[0]) {
-			return this.message(
+			return interaction.reply(
 				errorResponse({
 					content: `no results were found for ${inlineCode(queryFromAutocomplete ?? query)}`
 				})
 			);
 		}
 
-		return this.buildResponse(mdnResponse.documents[0]);
+		const responseData = this.buildResponse(mdnResponse.documents[0]);
+		return interaction.reply(responseData);
 	}
 
 	private async fetchApi(query: string, hitsPerPage = 25) {
@@ -98,7 +107,7 @@ export class UserCommand extends Command {
 		);
 	}
 
-	private buildResponse(mdnDocument: MdnDocument, target?: TransformedArguments.User): Command.Response {
+	private buildResponse(mdnDocument: MdnDocument, target?: TransformedArguments.User): MessageResponseOptions {
 		const url = this.#mdnUrl + mdnDocument.mdn_url;
 
 		const linkReplaceRegex = /\[(.+?)\]\((.+?)\)/g;
@@ -110,12 +119,12 @@ export class UserCommand extends Command {
 
 		const parts = [`${MdnIcon} \ ${underscore(bold(hyperlink(mdnDocument.title, hideLinkEmbed(url))))}`, intro];
 
-		return this.message({
+		return {
 			content: `${target?.user.id ? `${italic(`Documentation suggestion for ${userMention(target.user.id)}:`)}\n` : ''}${parts.join('\n')}`,
 			allowed_mentions: {
 				users: target?.user.id ? [target.user.id] : []
 			}
-		});
+		};
 	}
 }
 

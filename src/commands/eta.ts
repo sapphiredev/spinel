@@ -14,7 +14,7 @@ const enum Eta {
 )
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
-	public override async chatInputRun() {
+	public override async chatInputRun(interaction: Command.Interaction) {
 		const etaToV4 = await this.getEta(Eta.V4);
 
 		const timeParsedEtaV4 = time(etaToV4, TimestampStyles.RelativeTime);
@@ -24,7 +24,7 @@ export class UserCommand extends Command {
 
 		await this.setEta(newEtaV4, Eta.V4);
 
-		return this.message({
+		return interaction.reply({
 			content: `${frameworkLink} Version 4 will be releasing ${timeParsedEtaV4}`
 		});
 	}

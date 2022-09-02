@@ -41,8 +41,8 @@ export class UserCommand extends Command {
 
 	readonly #intlNumberFormatter = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 });
 
-	public override chatInputRun() {
-		return this.message({
+	public override chatInputRun(interaction: Command.Interaction) {
+		return interaction.reply({
 			flags: MessageFlags.Ephemeral,
 			embeds: [this.embed],
 			components: this.components

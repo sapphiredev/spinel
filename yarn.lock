@@ -368,10 +368,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ltd/j-toml@npm:~1.33.3":
-  version: 1.33.3
-  resolution: "@ltd/j-toml@npm:1.33.3"
-  checksum: 7b86993d64c9d4f1b777bfdde8ea4b23d764e899125569cfdbf03cc047b419bd5b6d96eba119af9acf82b3c97ca163c54b5763c6f6fb2ac8ccda97377b430c0a
+"@ltd/j-toml@npm:~1.35.2":
+  version: 1.35.2
+  resolution: "@ltd/j-toml@npm:1.35.2"
+  checksum: 631f23d63c0963288d6d28748c706f0d74ddf977f40d2b461e0cd9a3e638d723e4b3b7587adc9879657168c07fd734a08f238abe89446d4fbc3c106075c97a0a
   languageName: node
   linkType: hard
 
@@ -4850,7 +4850,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.1.0
     "@discordjs/builders": ^1.2.0
     "@discordjs/collection": ^1.1.0
-    "@ltd/j-toml": ~1.33.3
+    "@ltd/j-toml": ~1.35.2
     "@sapphire/eslint-config": ^4.3.8
     "@sapphire/fetch": ^2.4.1
     "@sapphire/prettier-config": ^1.4.4

@@ -272,7 +272,11 @@ Yarn v3 is new version of Yarn that we recommend switching to as Yarn v1 has bee
 
 > "But I don't see any update on [source]?"
 
-That is correct. Yarn v3 is installed through Yarn itself. Your global toolchain is and will always remain to be Yarn v1, however, you configure Yarn v3 on a per-project basis. How? Simply write `yarn set version 3.2.2`.
+That is correct. Yarn v3 is installed through Yarn itself. Your global toolchain is and will always remain to be Yarn v1, however, you configure Yarn v3 on a per-project basis. How? Simply write:
+
+```sh
+yarn set version 3.2.3
+```
 
 This will download the new Yarn v3 binary and put in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
 
@@ -304,4 +308,9 @@ For example:
 }
 ```
 Mind you this last thing is good add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
+
+In short the command to set everything up you can run:
+```sh
+yarn set version 3.2.3 && yarn config set enableGlobalCache true && yarn config set nodeLinker node-modules && echo "" >> .gitignore && echo "# Yarn files" >> .gitignore && echo ".yarn/install-state.gz" >> .gitignore && echo ".yarn/build-state.yml" >> .gitignore
+```
 """

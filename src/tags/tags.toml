@@ -273,11 +273,9 @@ Yarn v3 is new version of Yarn that we recommend switching to as Yarn v1 has bee
 > "But I don't see any update on [source]?"
 
 That is correct. Yarn v3 is installed through Yarn itself. Your global toolchain is and will always remain to be Yarn v1, however, you configure Yarn v3 on a per-project basis. How? Simply write:
-
 ```sh
 yarn set version 3.2.3
 ```
-
 This will download the new Yarn v3 binary and put in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
 
 Next you probably also want to run the following 2 commands:

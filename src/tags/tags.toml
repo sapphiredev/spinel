@@ -222,7 +222,7 @@ content = """
 - What's your "main" property in `package.json`
 - Are you using TypeScript? And if so, how are you compiling and running your code?
 - Are you using the version 2 or version 3 of `@sapphire/framework`?
-- In case you are using version 3 of `@sapphire/framewwork`, and your problem related to message commands, did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
+- In case you are using version 3 of `@sapphire/framework`, and your problem related to message commands, did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
 
 Remember that if you are new to `@sapphire/framework` it is important that you read the [user guide](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>).
 

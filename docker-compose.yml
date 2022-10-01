@@ -6,7 +6,7 @@ services:
     container_name: redis
     image: 'redis:alpine'
     ports:
-      - '1424:6379'
+      - '6379:6379'
     restart: always
     logging:
       options:

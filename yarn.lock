@@ -522,6 +522,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/result@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@sapphire/result@npm:2.5.0"
+  checksum: af1eeaae1c4b0acffb6e6f8ce49fa27326a002e469019f40216a574e244625fac967a9b6678124d36f9388efd74c964cdf52c90e5b75705008a48a8cd910087e
+  languageName: node
+  linkType: hard
+
 "@sapphire/shapeshift@npm:^3.5.1":
   version: 3.6.0
   resolution: "@sapphire/shapeshift@npm:3.6.0"
@@ -5286,7 +5293,7 @@ __metadata:
     "@sapphire/eslint-config": ^4.3.8
     "@sapphire/fetch": ^2.4.1
     "@sapphire/prettier-config": ^1.4.4
-    "@sapphire/result": ^2.4.1
+    "@sapphire/result": ^2.5.0
     "@sapphire/ts-config": ^3.3.4
     "@sapphire/utilities": ^3.9.3
     "@skyra/env-utilities": ^1.0.2

@@ -314,9 +314,9 @@ yarn set version berry && yarn config set enableGlobalCache true && yarn config 
 """
 
 [whysapphire]
-keywords = ["sapphire"]
+keywords = ["whysapphire", "sapphire"]
 content = """
-What is so good about Sapphire?
+**What is so good about Sapphire?**
 
 That's like asking what's so good about cornflakes. It'll get a very subjective answer. 
 

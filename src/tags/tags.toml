@@ -312,3 +312,15 @@ In short the command to set everything up you can run:
 yarn set version berry && yarn config set enableGlobalCache true && yarn config set nodeLinker node-modules && echo "" >> .gitignore && echo "# Yarn files" >> .gitignore && echo ".yarn/install-state.gz" >> .gitignore && echo ".yarn/build-state.yml" >> .gitignore
 ```
 """
+
+[whysapphire]
+keywords = ["sapphire"]
+content = """
+What is so good about Sapphire?
+
+That's like asking what's so good about cornflakes. It'll get a very subjective answer. 
+
+Sapphire is the official bot framework for discordjs for starters. Take that for what you will.
+
+Other than that the core reason to use sapphire is because sooner or later when writing any half serious bot you'll be writing your own command handler if you don't use sapphire and why would you willingly maintain your own code, likely lacking features and potentially with bugs and/or crappy performance and/or non scalability, when you can use Sapphire which has all of the same features, guarantees near to no bugs (and any bugs get patched), great performance and great scalability. Saves you work on the menial tasks, and frees that time to actually bring a bot to production which was the original end goal.
+"""

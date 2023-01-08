@@ -25,13 +25,15 @@ hoisted = true
 [bots]
 keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples", "slashbots", "chat input bots", "slash commands", "application commands"]
 content = """
-***__Discord bots that use @sapphire/framework@3.0.0 and leverage Application Commands and Interaction Handlers__***
+***__Discord bots that use @sapphire/framework v4***
 _ _
 - **[Official Bot Examples ᴱ ᴰ ᴶˢ](<https://github.com/sapphiredev/examples>)**
+- **[Dragonite ᴱ ᴰ](<https://github.com/favware/dragonite>)**
+_ _
+***__Discord bots that use @sapphire/framework v3***
 _ _
 - **[Archangel ᴱ ᴰ](<https://github.com/favware/archangel>)**
 - **[Arima ᴱ](<https://github.com/arimajs/Arima>)**
-- **[Dragonite ᴱ ᴰ](<https://github.com/favware/dragonite>)**
 - **[Nino ᴱ ᴰ](<https://github.com/uSebazz/Nino>)**
 - **[Operator ᴱ ᴬ ᴰ](<https://github.com/Sly-Little-Fox/operator>)**
 - **[Radon ᴱ ᴬ](<https://github.com/EvolutionX-10/Radon>)**

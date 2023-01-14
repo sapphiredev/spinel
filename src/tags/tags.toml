@@ -16,7 +16,7 @@ keywords = ["asking", "asking questions", "questions", "how to ask questions"]
 content = """
 When asking for help, make sure to provide as much detail as possible. What have you tried so far? Do you have stacktraces that you can show us? What are you trying to achieve? Try to answer these questions and others, so we do not have to ask for them afterwards.
 > ❯ For a good guide on how to ask questions, see [the instructions that StackOverflow gives](<https://stackoverflow.com/help/how-to-ask>). You should try to always follow these guidelines.
-> ❯ For an excellent video that shows how **not** to ask technical questions is this, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>). 
+> ❯ For an excellent video that shows how **not** to ask technical questions is this, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>).
 > ❯ [Asking technical questions (Clarkson)](<https://www.cs.cornell.edu/courses/cs3110/2017fa/thoughtful.html>)
 > ❯ [How to ask questions the smart way (Raymond)](<http://www.catb.org/~esr/faqs/smart-questions.html>)
 """
@@ -25,12 +25,12 @@ hoisted = true
 [bots]
 keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples", "slashbots", "chat input bots", "slash commands", "application commands"]
 content = """
-***__Discord bots that use @sapphire/framework v4***
+***__Discord bots that use @sapphire/framework v4__***
 _ _
 - **[Official Bot Examples ᴱ ᴰ ᴶˢ](<https://github.com/sapphiredev/examples>)**
 - **[Dragonite ᴱ ᴰ](<https://github.com/favware/dragonite>)**
 _ _
-***__Discord bots that use @sapphire/framework v3***
+***__Discord bots that use @sapphire/framework v3__***
 _ _
 - **[Archangel ᴱ ᴰ](<https://github.com/favware/archangel>)**
 - **[Arima ᴱ](<https://github.com/arimajs/Arima>)**
@@ -50,7 +50,7 @@ _ _
 **ᴱ**: Uses ESM (if not specified then uses CJS)
 **ᴬ**: Advanced bot (if not specified it is a simple bot, or not graded)
 **ᴰ**: Uses Docker in production
-**ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript. 
+**ᴶˢ**: Written in JavaScript. If not specified then the bot is written in TypeScript.
 """
 hoisted = true
 
@@ -320,7 +320,7 @@ keywords = ["whysapphire", "sapphire"]
 content = """
 **What is so good about Sapphire?**
 
-That's like asking what's so good about cornflakes. It'll get a very subjective answer. 
+That's like asking what's so good about cornflakes. It'll get a very subjective answer.
 
 Sapphire is the official bot framework for discordjs for starters. Take that for what you will.
 

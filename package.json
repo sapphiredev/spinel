@@ -39,7 +39,7 @@
 		"date-fns": "^2.29.3",
 		"discordjs-docs-parser": "^1.3.1",
 		"he": "^1.2.0",
-		"ioredis": "^5.2.5",
+		"ioredis": "^5.3.0",
 		"turndown": "^7.1.1"
 	},
 	"devDependencies": {
@@ -51,12 +51,12 @@
 		"@types/he": "^1.1.2",
 		"@types/node": "^18.11.18",
 		"@types/turndown": "^5.0.1",
-		"@typescript-eslint/eslint-plugin": "^5.48.2",
-		"@typescript-eslint/parser": "^5.48.2",
+		"@typescript-eslint/eslint-plugin": "^5.49.0",
+		"@typescript-eslint/parser": "^5.49.0",
 		"colorette": "^2.0.19",
 		"cz-conventional-changelog": "^3.3.0",
-		"esbuild": "^0.17.4",
-		"eslint": "^8.32.0",
+		"esbuild": "^0.17.5",
+		"eslint": "^8.33.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"husky": "^8.0.3",
@@ -66,7 +66,7 @@
 		"tsup": "^6.5.0",
 		"typescript": "^4.9.4",
 		"vite": "^4.0.4",
-		"vitest": "^0.28.1"
+		"vitest": "^0.28.3"
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",

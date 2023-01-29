@@ -219,12 +219,12 @@ Therefore, everyone will eventually replace the built-in one with their own, so 
 [regular-problems]
 keywords = ["regular-problems", "commands no working", "pieces no working", "listeners no working"]
 content = """
-- Did you use a folder of the [examples](<https://github.com/sapphiredev/examples>) repository or did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
+- Which version of `@sapphire/framework` are you using?
 - What's your file/folder structure?
+- Did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
 - What's your "main" property in `package.json`
-- Are you using TypeScript? And if so, how are you compiling and running your code?
-- Are you using the version 2 or version 3 of `@sapphire/framework`?
-- In case you are using version 3 of `@sapphire/framework`, and your problem related to message commands, did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
+- Are you using TypeScript? And if so, how are you compiling and running your code? That is to say, what are your build and startup scripts?
+- In case you are using version 3.0.0 or higher of `@sapphire/framework`, and your problem related to message commands, did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
 
 Remember that if you are new to `@sapphire/framework` it is important that you read the [user guide](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>).
 

@@ -9,7 +9,7 @@ import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APISelectMenuOption } from 'discord-api-types/v10';
 import { URL } from 'node:url';
 
-const TagUrl = new URL('https://raw.githubusercontent.com/sapphiredev/sapphire-slashies/main/src/tags/tags.toml');
+const TagUrl = new URL('https://raw.githubusercontent.com/sapphiredev/spinel/main/src/tags/tags.toml');
 
 export const tagCache = new Collection<string, Tag>();
 

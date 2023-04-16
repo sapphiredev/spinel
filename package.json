@@ -34,7 +34,7 @@
 		"@sapphire/result": "^2.6.1",
 		"@sapphire/utilities": "^3.11.1",
 		"@skyra/env-utilities": "^1.2.0",
-		"@skyra/http-framework": "^1.0.0",
+		"@skyra/http-framework": "^1.0.1",
 		"@skyra/jaro-winkler": "^1.1.0",
 		"date-fns": "^2.29.3",
 		"discordjs-docs-parser": "^1.3.2",
@@ -70,8 +70,7 @@
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
-		"minimist": "^1.2.8",
-		"@skyra/http-framework@^1.0.0": "patch:@skyra/http-framework@npm%3A1.0.0#./.yarn/patches/@skyra-http-framework-npm-1.0.0-f883a58f94.patch"
+		"minimist": "^1.2.8"
 	},
 	"commitlint": {
 		"extends": [

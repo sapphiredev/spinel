@@ -707,9 +707,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skyra/http-framework@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@skyra/http-framework@npm:1.0.0"
+"@skyra/http-framework@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@skyra/http-framework@npm:1.0.1"
   dependencies:
     "@discordjs/builders": ^1.6.1
     "@discordjs/collection": ^1.5.0
@@ -719,23 +719,7 @@ __metadata:
     "@sapphire/utilities": ^3.11.1
     "@vladfrangu/async_event_emitter": ^2.2.1
     discord-api-types: ^0.37.38
-  checksum: 7512ab5dfa0fc2eec15dba35a17280688973a279fdd72e27f67b81826daa0399f3635aa11f2da0f4a682e5079c12f23289a72538904b6fa0a6fc92e314881375
-  languageName: node
-  linkType: hard
-
-"@skyra/http-framework@patch:@skyra/http-framework@npm%3A1.0.0#./.yarn/patches/@skyra-http-framework-npm-1.0.0-f883a58f94.patch::locator=spinel%40workspace%3A.":
-  version: 1.0.0
-  resolution: "@skyra/http-framework@patch:@skyra/http-framework@npm%3A1.0.0#./.yarn/patches/@skyra-http-framework-npm-1.0.0-f883a58f94.patch::version=1.0.0&hash=5779ca&locator=spinel%40workspace%3A."
-  dependencies:
-    "@discordjs/builders": ^1.6.1
-    "@discordjs/collection": ^1.5.0
-    "@discordjs/rest": ^1.7.0
-    "@sapphire/pieces": ^3.6.2
-    "@sapphire/result": ^2.6.1
-    "@sapphire/utilities": ^3.11.1
-    "@vladfrangu/async_event_emitter": ^2.2.1
-    discord-api-types: ^0.37.38
-  checksum: 50cd61666a0f968a1695951303bf7ad53a6c769efd4d944d737a393135f549e64e44c620ae94803e6cfaf2e1cc3d819e4f7faaee3b2529646e372e8ef217c9a7
+  checksum: 11c34e811c0a12c93195958aa72f9d5934f346f7131a937dd215e0f822293f22c640af24ffa1b6ccdc30b93944df1aa7972e1f31a1f1210f0a08f2743c6edde0
   languageName: node
   linkType: hard
 
@@ -4957,7 +4941,7 @@ __metadata:
     "@sapphire/ts-config": ^4.0.0
     "@sapphire/utilities": ^3.11.1
     "@skyra/env-utilities": ^1.2.0
-    "@skyra/http-framework": ^1.0.0
+    "@skyra/http-framework": ^1.0.1
     "@skyra/jaro-winkler": ^1.1.0
     "@types/he": ^1.2.0
     "@types/node": ^18.15.11

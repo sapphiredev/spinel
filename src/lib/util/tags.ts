@@ -1,10 +1,10 @@
 import { FetchUserAgent } from '#constants/constants';
 import { ExtractEmojiIdRegex, SapphireGemId } from '#constants/emotes';
-import type { Tag, TagSimilarityEntry } from '#types/Tags';
+import type { Tag, TagSimilarityEntry } from '#types/Tags.js';
 import { suggestionString } from '#utils/utils';
 import { Collection } from '@discordjs/collection';
 import { parse as parseToml } from '@ltd/j-toml';
-import { fetch, FetchResultTypes } from '@sapphire/fetch';
+import { FetchResultTypes, fetch } from '@sapphire/fetch';
 import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APISelectMenuOption } from 'discord-api-types/v10';
 import { URL } from 'node:url';

@@ -4,10 +4,10 @@ import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	EmbedBuilder,
+	TimestampStyles,
 	hideLinkEmbed,
 	hyperlink,
 	time,
-	TimestampStyles,
 	type MessageActionRowComponentBuilder
 } from '@discordjs/builders';
 import { roundNumber } from '@sapphire/utilities';

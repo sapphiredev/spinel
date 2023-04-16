@@ -1,12 +1,12 @@
 import { FetchUserAgent } from '#constants/constants';
 import { DjsGuideIcon } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { AlgoliaSearchResult, DocsearchHit } from '#types/Algolia';
+import type { AlgoliaSearchResult, DocsearchHit } from '#types/Algolia.js';
 import { buildHierarchicalName, buildResponseContent } from '#utils/algolia-utils';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
 import { hideLinkEmbed, hyperlink, inlineCode } from '@discordjs/builders';
-import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
+import { FetchMethods, FetchResultTypes, fetch } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';

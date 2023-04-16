@@ -1,4 +1,4 @@
-import type { AlgoliaHitHierarchy } from '#types/Algolia';
+import type { AlgoliaHitHierarchy } from '#types/Algolia.js';
 import { bold, italic, userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import he from 'he';

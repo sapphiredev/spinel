@@ -1,22 +1,22 @@
 import { FetchUserAgent } from '#constants/constants';
 import { GreenTick } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { AlgoliaSearchResult, NpmPackageAuthor, NpmSearchHit } from '#types/Algolia';
+import type { AlgoliaSearchResult, NpmPackageAuthor, NpmSearchHit } from '#types/Algolia.js';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
 import {
-	bold,
 	EmbedBuilder,
+	TimestampStyles,
+	bold,
 	hideLinkEmbed,
 	hyperlink,
 	inlineCode,
 	italic,
 	time,
-	TimestampStyles,
 	underscore,
 	userMention
 } from '@discordjs/builders';
-import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
+import { FetchMethods, FetchResultTypes, fetch } from '@sapphire/fetch';
 import { cutText, filterNullish, isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';
 import {

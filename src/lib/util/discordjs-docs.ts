@@ -91,7 +91,7 @@ export function buildSelectOption(result: DocElement, dev = false): APISelectMen
 	};
 }
 
-export async function fetchDocs(source: SourcesStringUnion) {
+export function fetchDocs(source: SourcesStringUnion) {
 	return Doc.fetch(source, { force: true });
 }
 

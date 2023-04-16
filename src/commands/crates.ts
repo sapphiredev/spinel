@@ -1,10 +1,10 @@
 import { FetchUserAgent } from '#constants/constants';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { Crate, CrateResponse } from '#types/Crates';
+import type { Crate, CrateResponse } from '#types/Crates.js';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
-import { bold, EmbedBuilder, hideLinkEmbed, hyperlink, inlineCode, italic, time, TimestampStyles, userMention } from '@discordjs/builders';
-import { fetch, FetchResultTypes } from '@sapphire/fetch';
+import { EmbedBuilder, TimestampStyles, bold, hideLinkEmbed, hyperlink, inlineCode, italic, time, userMention } from '@discordjs/builders';
+import { FetchResultTypes, fetch } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import {
 	Command,

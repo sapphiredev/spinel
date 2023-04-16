@@ -2,7 +2,7 @@ import { container } from '@sapphire/pieces';
 import { Result } from '@sapphire/result';
 import { isNullish } from '@sapphire/utilities';
 import { envParseInteger, envParseString } from '@skyra/env-utilities';
-import Redis from 'ioredis';
+import { Redis } from 'ioredis';
 
 export const enum RedisKeys {
 	DiscordDocs = 'discord-docs',

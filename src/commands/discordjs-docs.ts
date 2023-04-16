@@ -2,15 +2,15 @@ import { DjsDocsDevIcon, DjsDocsStableIcon } from '#constants/emotes';
 import { buildSelectOption, fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
 import { errorResponse } from '#utils/response-utils';
 import { buildSelectMenuResponse, getGuildIds } from '#utils/utils';
-import { inlineCode, SlashCommandSubcommandBuilder } from '@discordjs/builders';
+import { SlashCommandSubcommandBuilder, inlineCode } from '@discordjs/builders';
 import { cast } from '@sapphire/utilities';
 import {
 	Command,
-	InteractionArguments,
 	RegisterCommand,
 	RegisterSubCommand,
 	RestrictGuildIds,
 	type AutocompleteInteractionArguments,
+	type InteractionArguments,
 	type TransformedArguments
 } from '@skyra/http-framework';
 import {

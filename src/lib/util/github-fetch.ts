@@ -1,9 +1,9 @@
 import { FetchUserAgent } from '#constants/constants';
 import { GhIssueClosed, GhIssueOpen, GhPrClosed, GhPrDraft, GhPrMerged, GhPrOpen } from '#constants/emotes';
-import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit';
+import type { Issue, IssueState, PullRequest, PullRequestState, Query, Repository } from '#types/octokit.js';
 import { getPreferredRepositoriesForServerId, gql } from '#utils/utils';
-import { time, TimestampStyles } from '@discordjs/builders';
-import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
+import { TimestampStyles, time } from '@discordjs/builders';
+import { FetchMethods, FetchResultTypes, fetch } from '@sapphire/fetch';
 import { Result } from '@sapphire/result';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';

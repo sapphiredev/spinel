@@ -1,7 +1,7 @@
 import { FetchUserAgent } from '#constants/constants';
 import { NodeIcon } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { NodeDocs, NodeDocSimilarityEntry, NodeDocTypes, NodeQueryType } from '#types/NodeDocs';
+import type { NodeDocs, NodeDocSimilarityEntry, NodeDocTypes, NodeQueryType } from '#types/NodeDocs.js';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';

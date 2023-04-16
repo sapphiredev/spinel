@@ -4,6 +4,6 @@
 		"lib": ["ESNext", "DOM"],
 		"emitDecoratorMetadata": false,
 		"target": "ESNext",
-		"module": "ESNext"
+		"moduleResolution": "node16"
 	}
 }

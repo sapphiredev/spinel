@@ -2,7 +2,7 @@ import { SupportServerButton } from '#constants/constants';
 import { errorResponse } from '#utils/response-utils';
 import { findTag } from '#utils/tags';
 import { ActionRowBuilder, type MessageActionRowComponentBuilder } from '@discordjs/builders';
-import { InteractionHandler, Interactions } from '@skyra/http-framework';
+import { InteractionHandler, type Interactions } from '@skyra/http-framework';
 import type { Snowflake } from 'discord-api-types/v10';
 
 export class UserMessageComponentHandler extends InteractionHandler {

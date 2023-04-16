@@ -2,12 +2,15 @@ import { SupportServerButton } from '#constants/constants';
 import { fetchDocResult, fetchDocs } from '#utils/discordjs-docs';
 import { errorResponse } from '#utils/response-utils';
 import { ActionRowBuilder, type MessageActionRowComponentBuilder } from '@discordjs/builders';
-import { InteractionHandler, Interactions } from '@skyra/http-framework';
+import { InteractionHandler, type Interactions } from '@skyra/http-framework';
 import type { Snowflake } from 'discord-api-types/v10';
 import type { SourcesStringUnion } from 'discordjs-docs-parser';
 
 export class UserInteractionHandler extends InteractionHandler {
-	public async run(interaction: Interactions.MessageComponentStringSelect, [customIdValue, source]: [Snowflake | null, SourcesStringUnion]) {
+	public override async run(
+		interaction: Interactions.MessageComponentStringSelect,
+		[customIdValue, source]: [Snowflake | null, SourcesStringUnion]
+	) {
 		const doc = await fetchDocs(source);
 
 		const selectedValue = interaction.values[0];

@@ -1,11 +1,11 @@
 import { FetchUserAgent } from '#constants/constants';
 import { MdnIcon } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
-import type { MdnAPI, MdnDocument } from '#types/Mdn';
+import type { MdnAPI, MdnDocument } from '#types/Mdn.js';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
 import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
-import { fetch, FetchResultTypes } from '@sapphire/fetch';
+import { FetchResultTypes, fetch } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import {
 	Command,

@@ -329,3 +329,17 @@ Sapphire is the official bot framework for discordjs for starters. Take that for
 
 Other than that, the core reason to use Sapphire is because, sooner or later when writing any half serious bot, you'll be writing your own command handler if you don't use Sapphire, and why would you willingly maintain your own code, likely lacking features and potentially with bugs and/or crappy performance and/or non scalability, when you can use Sapphire which has all of the same features, guarantees near to no bugs (and any bugs get patched), great performance and great scalability? Saves you work on the menial tasks and frees that time to actually bring a bot to production, which was the original end goal.
 """
+
+[get-guildid-manually]
+keywords = ["get guild id manually", "guild id", "server id"]
+content = """
+**How to get the guild id of a server?**
+
+1. Open Discord and go to the server (guild) for which you want to find the ID.
+
+2. Make sure you have Developer Mode enabled in your Discord settings. To enable Developer Mode, go to your *Settings* and scroll down to the *Advanced* section. Enable the toggle switch for "Developer Mode" and save your settings.
+
+3. Once Developer Mode is enabled, right-click on the server name in the server list or the channel list within the server.
+
+4. A context menu will appear. Click on "Copy ID" or "Copy Server ID." This action will copy the Guild ID to your clipboard.
+"""

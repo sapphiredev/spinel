@@ -1,4 +1,4 @@
-import { findSimilarTag, loadTags } from '../src/lib/util/tags';
+import { findSimilarTag, loadTags } from '../src/lib/util/tags.js';
 
 describe('findSimilarTag', () => {
 	beforeAll(async () => {
@@ -10,14 +10,18 @@ describe('findSimilarTag', () => {
 
 		expect(foundTags).toEqual([
 			{ word: 'guide', distance: 1, name: 'guide' },
+			{
+				word: 'guild id',
+				distance: 0.8366666666666667,
+				name: 'get-guildid-manually'
+			},
 			{ word: 'firacode', distance: 0.6583333333333333, name: 'good-font' },
 			{
 				word: 'language codes',
 				distance: 0.6047619047619047,
 				name: 'i18n'
 			},
-			{ word: 'asking questions', distance: 0.6, name: 'asking' },
-			{ word: 'tsnode', distance: 0.5777777777777778, name: 'ts-node' }
+			{ word: 'asking questions', distance: 0.6, name: 'asking' }
 		]);
 	});
 

@@ -5,8 +5,10 @@ import { suggestionString } from '#utils/utils';
 import { Collection } from '@discordjs/collection';
 import { parse as parseToml } from '@ltd/j-toml';
 import { FetchResultTypes, fetch } from '@sapphire/fetch';
+import { envParseString } from '@skyra/env-utilities';
 import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { APISelectMenuOption } from 'discord-api-types/v10';
+import { readFile } from 'node:fs/promises';
 import { URL } from 'node:url';
 
 const TagUrl = new URL('https://raw.githubusercontent.com/sapphiredev/spinel/main/src/tags/tags.toml');
@@ -24,15 +26,20 @@ export function mapTagSimilarityEntry(entry: TagSimilarityEntry): APISelectMenuO
 }
 
 export async function loadTags() {
-	const file = await fetch(
-		TagUrl,
-		{
-			headers: {
-				'User-Agent': FetchUserAgent
-			}
-		},
-		FetchResultTypes.Text
-	);
+	let file: string;
+	if (envParseString('NODE_ENV') === 'production') {
+		file = await fetch(
+			TagUrl,
+			{
+				headers: {
+					'User-Agent': FetchUserAgent
+				}
+			},
+			FetchResultTypes.Text
+		);
+	} else {
+		file = await readFile(new URL('../../tags/tags.toml', import.meta.url), { encoding: 'utf-8' });
+	}
 
 	const data = parseToml(file, 1.0, '\n');
 

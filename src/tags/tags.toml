@@ -331,7 +331,7 @@ Other than that, the core reason to use Sapphire is because, sooner or later whe
 """
 
 [get-guildid-manually]
-keywords = ["get guild id manually", "guild id", "server id"]
+keywords = ["get-guildid-manually", "get guild id manually", "guild id", "server id"]
 content = """
 **How to get the guild id of a server?**
 

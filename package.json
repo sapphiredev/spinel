@@ -27,8 +27,8 @@
 		"postinstall": "husky install .github/husky"
 	},
 	"dependencies": {
-		"@discordjs/builders": "^1.6.1",
-		"@discordjs/collection": "^1.5.0",
+		"@discordjs/builders": "^1.6.3",
+		"@discordjs/collection": "^1.5.1",
 		"@ltd/j-toml": "~1.38.0",
 		"@sapphire/fetch": "^2.4.1",
 		"@sapphire/result": "^2.6.4",

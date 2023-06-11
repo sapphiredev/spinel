@@ -38,7 +38,7 @@ export async function loadTags() {
 			FetchResultTypes.Text
 		);
 	} else {
-		file = await readFile(new URL('../../tags/tags.toml', import.meta.url), { encoding: 'utf-8' });
+		file = await readFile(new URL('../../../src/tags/tags.toml', import.meta.url), { encoding: 'utf-8' });
 	}
 
 	const data = parseToml(file, 1.0, '\n');

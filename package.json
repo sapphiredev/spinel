@@ -43,8 +43,8 @@
 		"turndown": "^7.1.2"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.6.5",
-		"@commitlint/config-conventional": "^17.6.5",
+		"@commitlint/cli": "^17.6.6",
+		"@commitlint/config-conventional": "^17.6.6",
 		"@sapphire/eslint-config": "^4.4.2",
 		"@sapphire/prettier-config": "^1.4.5",
 		"@sapphire/ts-config": "^4.0.0",
@@ -55,7 +55,7 @@
 		"@typescript-eslint/parser": "^5.60.0",
 		"colorette": "^2.0.20",
 		"cz-conventional-changelog": "^3.3.0",
-		"esbuild": "^0.18.5",
+		"esbuild": "^0.18.7",
 		"eslint": "^8.43.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-prettier": "^4.2.1",

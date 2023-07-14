@@ -344,3 +344,44 @@ content = """
 
 4. A context menu will appear. Click on "Copy ID" or "Copy Server ID." This action will copy the Guild ID to your clipboard.
 """
+
+[transitive-dependencies]
+keywords = ["transitive-dependencies", "update-transitive", "transitive"]
+content = """
+**npm**
+npm doesn't have anything to update transitive dependencies so you'll have to provide `overrides`.
+In your `package.json`:
+```json
+{
+  "overrides": {
+    "package-name-here": "version"
+  }
+}
+```
+Then run `npm install`. You can verify the change by checking your `package-lock.json`
+
+**Yarn v1**
+Yarn v1 (**deprecated, recommend updating to v3** (see </tag:961379981123002398> `query:yarnv3` ) does not have a way to update transitive dependencies so a similar strategy is required as npm:
+In your `package.json`:
+```json
+{
+  "resolutions": {
+    "package-name-here": "version"
+  }
+}
+```
+Then run `yarn install`. You can verify the change by checking your `yarn.lock`
+
+
+**Yarn v3**
+Yarn v3 can update transitive dependencies so run the command:
+```sh
+yarn up -R package-name-here
+```
+
+**pnpm**
+pnpm can also update transitive dependencies so run the command:
+```sh
+pnpm --recursive update package-name-here@version
+```
+"""

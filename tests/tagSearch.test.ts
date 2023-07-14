@@ -70,10 +70,10 @@ describe('findSimilarTag', () => {
 
 		expect(foundTags).toEqual([
 			{ word: 'tsnode', distance: 0.6085185185185185, name: 'ts-node' },
+			{ word: 'transitive-dependencies', distance: 0.5964667992800985, name: 'transitive-dependencies' },
 			{ word: 'help', distance: 0.595679012345679, name: 'help' },
 			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' },
-			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' },
-			{ word: 'asking', distance: 0.5650205761316872, name: 'asking' }
+			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' }
 		]);
 	});
 });

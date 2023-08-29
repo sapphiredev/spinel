@@ -1,9 +1,13 @@
 {
-	"extends": "@sapphire/ts-config/extra-strict",
+	"extends": [
+		"@sapphire/ts-config",
+		"@sapphire/ts-config/extra-strict",
+		"@sapphire/ts-config/bundler",
+		"@sapphire/ts-config/verbatim",
+		"@sapphire/ts-config/decorators"
+	],
 	"compilerOptions": {
 		"lib": ["ESNext", "DOM"],
-		"emitDecoratorMetadata": false,
-		"target": "ESNext",
-		"moduleResolution": "node16"
+		"emitDecoratorMetadata": false
 	}
 }

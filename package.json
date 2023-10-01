@@ -43,19 +43,19 @@
 		"turndown": "^7.1.2"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.7.1",
+		"@commitlint/cli": "^17.7.2",
 		"@commitlint/config-conventional": "^17.7.0",
 		"@sapphire/eslint-config": "^5.0.2",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.0",
 		"@types/he": "^1.2.1",
-		"@types/node": "^20.6.4",
+		"@types/node": "^20.8.0",
 		"@types/turndown": "^5.0.2",
-		"@typescript-eslint/eslint-plugin": "^6.7.2",
-		"@typescript-eslint/parser": "^6.7.2",
+		"@typescript-eslint/eslint-plugin": "^6.7.3",
+		"@typescript-eslint/parser": "^6.7.3",
 		"colorette": "^2.0.20",
 		"cz-conventional-changelog": "^3.3.0",
-		"esbuild": "^0.19.3",
+		"esbuild": "^0.19.4",
 		"eslint": "^8.50.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-prettier": "^5.0.0",
@@ -65,7 +65,7 @@
 		"tsup": "^7.2.0",
 		"typescript": "^5.2.2",
 		"vite": "^4.4.9",
-		"vitest": "^0.34.5"
+		"vitest": "^0.34.6"
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",

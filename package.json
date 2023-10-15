@@ -23,8 +23,7 @@
 		"watch": "tsup --watch",
 		"dev": "tsup --watch --onSuccess \"yarn start\"",
 		"clean": "node scripts/clean.mjs",
-		"validate-tags": "node scripts/validateTags.mjs",
-		"postinstall": "husky install .github/husky"
+		"validate-tags": "node scripts/validateTags.mjs"
 	},
 	"dependencies": {
 		"@discordjs/builders": "^1.6.5",
@@ -59,7 +58,6 @@
 		"eslint": "^8.51.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-prettier": "^5.0.1",
-		"husky": "^8.0.3",
 		"lint-staged": "^15.0.1",
 		"prettier": "^3.0.3",
 		"tsup": "^7.2.0",

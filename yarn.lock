@@ -940,9 +940,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skyra/http-framework@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@skyra/http-framework@npm:1.1.1"
+"@skyra/http-framework@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@skyra/http-framework@npm:1.2.0"
   dependencies:
     "@discordjs/builders": ^1.6.5
     "@discordjs/collection": ^1.5.3
@@ -952,8 +952,8 @@ __metadata:
     "@sapphire/result": ^2.6.4
     "@sapphire/utilities": ^3.13.0
     "@vladfrangu/async_event_emitter": ^2.2.2
-    discord-api-types: ^0.37.56
-  checksum: 092d3c0435a947b2a5c8a23e6d9af1516c533c66275062bf8e4bc07b25239e66c40b9959c554582e44f277af6a06532b2eca6eecc27e795c475f5de13cba838a
+    discord-api-types: ^0.37.60
+  checksum: e10831a48f715ff7ca0374b7695305a78c156e8c116481267d75ded4accb17de5a4dcd274a9fd8b68d25f4db621d6466328311654632ad51a223696921aa5852
   languageName: node
   linkType: hard
 
@@ -2220,10 +2220,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discord-api-types@npm:^0.37.56":
-  version: 0.37.56
-  resolution: "discord-api-types@npm:0.37.56"
-  checksum: 797be690af70a846422f955d918a5713a2c8c37bea646e2120996522afbb47fc5893122c1ddcb8f57a285ace6e1fb0237d1e63105444ae52534f0570a2f87f34
+"discord-api-types@npm:^0.37.60":
+  version: 0.37.60
+  resolution: "discord-api-types@npm:0.37.60"
+  checksum: d5361e37f1fa3b06964db476a4a150fbfdcfdfe0f2b46c7eb3d225caf7128a83c2c726d35aaddce93eba07ac1d819e329bd7fcb0f8988aa51b56a307119312c4
   languageName: node
   linkType: hard
 
@@ -5223,7 +5223,7 @@ __metadata:
     "@sapphire/ts-config": ^5.0.0
     "@sapphire/utilities": ^3.13.0
     "@skyra/env-utilities": ^1.2.1
-    "@skyra/http-framework": ^1.1.1
+    "@skyra/http-framework": ^1.2.0
     "@skyra/jaro-winkler": ^1.1.0
     "@types/he": ^1.2.2
     "@types/node": ^20.8.7

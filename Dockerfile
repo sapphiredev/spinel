@@ -10,7 +10,7 @@ ENV YARN_DISABLE_GIT_HOOKS=1
 ENV CI=true
 ENV LOG_LEVEL=info
 
-# RUN apk add --no-cache dumb-init
+RUN apk add --no-cache dumb-init
 
 COPY --chown=node:node yarn.lock .
 COPY --chown=node:node package.json .

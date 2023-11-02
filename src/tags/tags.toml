@@ -127,7 +127,7 @@ content = """
 **Having issues installing packages when using NPM v7 / v8?**
 Add `--legacy-peer-deps` to your npm install command (every time) or run `npm config --global set legacy-peer-deps=true` just once to globally configure this same option.
 
-~~or use Yarn which also deduplicates your dependencies automatically and especially Yarn V3 is waaaay faster than npm~~
+~~or use Yarn which also deduplicates your dependencies automatically and especially Yarn v4 is waaaay faster than npm~~
 """
 
 [showcode]
@@ -271,18 +271,18 @@ Constantly logging in over and over again due to an auto-restarting process will
 However, this can be quite tedious so a great package to use instead is [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>).
 """
 
-[yarnv3]
-keywords = ["yarn", "yarnv3"]
+[yarnv4]
+keywords = ["yarn", "yarnv3", "yarnv4"]
 content = """
-Yarn v3 is new version of Yarn that we recommend switching to as Yarn v1 has been deprecated.
+Yarn v4 is new version of Yarn that we recommend switching to as Yarn v1 has long since been deprecated.
 
 > "But I don't see any update on [source]?"
 
-That is correct. Yarn v3 is installed through Yarn itself. Your global toolchain is and will always remain to be Yarn v1, however, you configure Yarn v3 on a per-project basis. How? Simply write:
+That is correct. Yarn v4 is installed through Yarn itself. You configure Yarn v4 on a per-project basis. How you installed Yarn globally is largely irrelevant to this (corepack, volta, something else). How to install Yarn v4 for your project? Simply write:
 ```sh
 yarn set version berry
 ```
-This will download the new Yarn v3 binary and put in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
+This will download the new Yarn v4 binary and put in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
 
 Next you probably also want to run the following 2 commands:
 ```sh
@@ -294,9 +294,9 @@ This will add to your `.yarnrc` file:
 enableGlobalCache: true
 nodeLinker: node-modules
 ```
-Which ensures that you just have a Yarn v1-like experience with `node_modules` and a global cache.
+This ensures you have a more traditional experience with `node_modules` and a global cache.
 
-Next step is to nuke your `node_modules` and `yarn.lock` and run `yarn install`
+The next step is to nuke your `node_modules` and `yarn.lock` and run `yarn install`
 
 Then some final adjustments. Put this in you `.gitignore`:
 ```properties
@@ -311,9 +311,9 @@ For example:
 	"format": "prettier --write \\"src/**/*.ts\\""
 }
 ```
-Mind you this last thing is good add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
+Mind you this last thing is a good thing to add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
 
-In short the command to set everything up you can run:
+In short, the command to set everything up you can run:
 ```sh
 yarn set version berry && yarn config set enableGlobalCache true && yarn config set nodeLinker node-modules && echo "" >> .gitignore && echo "# Yarn files" >> .gitignore && echo ".yarn/install-state.gz" >> .gitignore && echo ".yarn/build-state.yml" >> .gitignore
 ```
@@ -361,7 +361,7 @@ In your `package.json`:
 Then run `npm install`. You can verify the change by checking your `package-lock.json`
 
 **Yarn v1**
-Yarn v1 (**deprecated, recommend updating to v3** (see </tag:961379981123002398> `query:yarnv3` ) does not have a way to update transitive dependencies so a similar strategy is required as npm:
+Yarn v1 (**deprecated, recommend updating to v4** (see </tag:961379981123002398> `query:yarnv4` ) does not have a way to update transitive dependencies so a similar strategy is required as npm:
 In your `package.json`:
 ```json
 {
@@ -373,8 +373,8 @@ In your `package.json`:
 Then run `yarn install`. You can verify the change by checking your `yarn.lock`
 
 
-**Yarn v3**
-Yarn v3 can update transitive dependencies so run the command:
+**Yarn v4**
+Yarn v4 can update transitive dependencies so run the command:
 ```sh
 yarn up -R package-name-here
 ```

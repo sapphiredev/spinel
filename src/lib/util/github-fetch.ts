@@ -135,8 +135,8 @@ function getDataForPullRequest({ pullRequest, ...repository }: Repository): Issu
 		pullRequest?.state === 'CLOSED'
 			? new Date(pullRequest?.closedAt)
 			: pullRequest?.state === 'OPEN'
-			? new Date(pullRequest?.createdAt)
-			: new Date(pullRequest?.mergedAt);
+			  ? new Date(pullRequest?.createdAt)
+			  : new Date(pullRequest?.mergedAt);
 	const dateOffset = time(dateToUse, TimestampStyles.RelativeTime);
 	const dateStringPrefix = pullRequest?.state === 'CLOSED' ? 'closed' : pullRequest?.state === 'OPEN' ? 'opened' : 'merged';
 	const dateString = `${dateStringPrefix} ${dateOffset}`;
@@ -211,8 +211,8 @@ function getDataForIssuesAndPrSearch(
 			pullRequestsHaveExactNumber?.state === 'CLOSED'
 				? 'Closed Pull Request'
 				: pullRequestsHaveExactNumber?.state === 'OPEN'
-				? 'Open Pull Request'
-				: 'Merged Pull Request';
+				  ? 'Open Pull Request'
+				  : 'Merged Pull Request';
 
 		return [
 			{
@@ -375,8 +375,8 @@ interface GraphQLResponse<T extends 'searchRepositories' | 'searchIssuesAndPrs' 
 	data: T extends 'data'
 		? Record<'repository', Query['repository']>
 		: T extends 'searchRepositories'
-		? Record<'search', Query['search']>
-		: T extends 'searchIssuesAndPrs'
-		? Record<'repository', Query['repositoryIssuesAndPrs']>
-		: never;
+		  ? Record<'search', Query['search']>
+		  : T extends 'searchIssuesAndPrs'
+		    ? Record<'repository', Query['repositoryIssuesAndPrs']>
+		    : never;
 }

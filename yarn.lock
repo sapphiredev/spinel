@@ -244,7 +244,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/builders@npm:^1.6.5, @discordjs/builders@npm:^1.7.0":
+"@discordjs/builders@npm:^1.7.0":
   version: 1.7.0
   resolution: "@discordjs/builders@npm:1.7.0"
   dependencies:
@@ -282,7 +282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/rest@npm:^2.1.0":
+"@discordjs/rest@npm:^2.2.0":
   version: 2.2.0
   resolution: "@discordjs/rest@npm:2.2.0"
   dependencies:
@@ -1017,20 +1017,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@skyra/http-framework@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@skyra/http-framework@npm:1.2.1"
+"@skyra/http-framework@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@skyra/http-framework@npm:1.2.2"
   dependencies:
     "@discordjs/builders": "npm:^1.7.0"
     "@discordjs/collection": "npm:^1.5.3"
-    "@discordjs/rest": "npm:^2.1.0"
+    "@discordjs/rest": "npm:^2.2.0"
     "@discordjs/util": "npm:^1.0.2"
     "@sapphire/pieces": "npm:^3.10.0"
     "@sapphire/result": "npm:^2.6.4"
     "@sapphire/utilities": "npm:^3.13.0"
     "@vladfrangu/async_event_emitter": "npm:^2.2.2"
     discord-api-types: "npm:^0.37.63"
-  checksum: 9144a4c227981f291f77c279b7640f82dd45d490ebdb9f047abdd18fe3f530bc72c6e4887a6582f13bcf6dee44e9757eb9a115b5affd0d87c3c79e5f767badac
+  checksum: c7eadf9c5685314a966d2b570c8fe93116b5e28d625f67175b6cbf85cb44e892423f2c0b8276a4f46af6f6444f5fc4cfd021c05fc95535f919e08b69439db4b0
   languageName: node
   linkType: hard
 
@@ -5285,7 +5285,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": "npm:^18.4.2"
     "@commitlint/config-conventional": "npm:^18.4.2"
-    "@discordjs/builders": "npm:^1.6.5"
+    "@discordjs/builders": "npm:^1.7.0"
     "@discordjs/collection": "npm:^1.5.3"
     "@ltd/j-toml": "npm:~1.38.0"
     "@sapphire/eslint-config": "npm:^5.0.2"
@@ -5295,7 +5295,7 @@ __metadata:
     "@sapphire/ts-config": "npm:^5.0.0"
     "@sapphire/utilities": "npm:^3.13.0"
     "@skyra/env-utilities": "npm:^1.2.1"
-    "@skyra/http-framework": "npm:^1.2.1"
+    "@skyra/http-framework": "npm:^1.2.2"
     "@skyra/jaro-winkler": "npm:^1.1.0"
     "@types/he": "npm:^1.2.3"
     "@types/node": "npm:^20.9.2"

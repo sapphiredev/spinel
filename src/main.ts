@@ -1,4 +1,5 @@
 import '#utils/setup';
+
 import { registerCommands } from '#utils/register-commands';
 import { isNullish } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';
@@ -14,5 +15,3 @@ await client.listen({
 	port: isNullish(process.env.PORT) ? 3000 : Number(process.env.PORT),
 	address: '0.0.0.0'
 });
-
-console.log(`client listening on 0.0.0.0:${process.env.PORT || 3000}`);

@@ -67,7 +67,8 @@
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
-		"minimist": "^1.2.8"
+		"minimist": "^1.2.8",
+		"@skyra/http-framework": "portal:/F:/skyraproject/archid-components/packages/http-framework"
 	},
 	"commitlint": {
 		"extends": [

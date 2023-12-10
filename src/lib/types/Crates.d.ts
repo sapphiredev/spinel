@@ -1,10 +1,10 @@
 export type CrateResponse<T extends 'owners' | 'crates'> = T extends 'owners'
 	? {
 			users: CrateUser[];
-	  }
+		}
 	: {
 			crates: Crate[];
-	  };
+		};
 
 export interface Crate {
 	badges: never[];

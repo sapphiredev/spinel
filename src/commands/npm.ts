@@ -204,9 +204,9 @@ export class UserCommand extends Command {
 		// Parse the author url
 		const authorUrl = author.name.startsWith('@')
 			? // If the author is an organization then use the Organization url
-			  encodeURI(author.link ?? `https://www.npmjs.com/org/${author.name.slice(1)}`)
+				encodeURI(author.link ?? `https://www.npmjs.com/org/${author.name.slice(1)}`)
 			: // Otherwise use the User url
-			  encodeURI(author.link ?? `https://www.npmjs.com/~${author.name}`);
+				encodeURI(author.link ?? `https://www.npmjs.com/~${author.name}`);
 
 		return bold(hyperlink(author.name, hideLinkEmbed(authorUrl)));
 	}

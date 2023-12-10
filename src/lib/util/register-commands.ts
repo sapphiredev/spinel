@@ -1,12 +1,10 @@
 import { envParseString } from '@skyra/env-utilities';
-import { Registry } from '@skyra/http-framework';
+import { applicationCommandRegistry } from '@skyra/http-framework';
 
 export async function registerCommands() {
-	const registry = new Registry({});
-
 	if (envParseString('NODE_ENV') === 'development') {
-		await registry.registerGuildRestrictedCommands();
+		await applicationCommandRegistry.pushGuildRestrictedCommands();
 	} else {
-		await registry.registerGlobalCommands();
+		await applicationCommandRegistry.pushGlobalCommands();
 	}
 }

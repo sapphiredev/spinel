@@ -12,7 +12,7 @@ import { envParseString } from '@skyra/env-utilities';
 import {
 	Command,
 	RegisterCommand,
-	RegisterSubCommand,
+	RegisterSubcommand,
 	RestrictGuildIds,
 	type AutocompleteInteractionArguments,
 	type InteractionArguments,
@@ -63,8 +63,8 @@ export class UserCommand extends Command {
 		});
 	}
 
-	@RegisterSubCommand(buildSubcommandBuilders('docs', 'Search the sapphire documentation'))
-	@RegisterSubCommand(buildSubcommandBuilders('guide', 'Search the sapphire guide'))
+	@RegisterSubcommand(buildSubcommandBuilders('docs', 'Search the sapphire documentation'))
+	@RegisterSubcommand(buildSubcommandBuilders('guide', 'Search the sapphire guide'))
 	protected async sharedRun(interaction: Command.Interaction, { subCommand, query, target }: InteractionArguments<Args>) {
 		const docsOrGuide = cast<'docs' | 'guide'>(subCommand);
 

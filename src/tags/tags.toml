@@ -376,6 +376,7 @@ pnpm can also update transitive dependencies so run the command:
 ```sh
 pnpm --recursive update package-name-here@version
 ```
+"""
 [commands]
 keywords = ["commands", "all-commands", "list-commands"]
 content = """

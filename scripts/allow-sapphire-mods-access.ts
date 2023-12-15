@@ -1,16 +1,22 @@
 process.env.NODE_ENV ??= 'production';
 
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch';
-import { ApplicationCommandPermissionType, OAuth2Routes, RouteBases, Routes } from 'discord-api-types/v10';
-import { config } from 'dotenv-cra';
+import { envParseString, setup } from '@skyra/env-utilities';
+import {
+	type APIApplicationCommand,
+	ApplicationCommandPermissionType,
+	OAuth2Routes,
+	RouteBases,
+	Routes,
+	type RESTPostOAuth2ClientCredentialsResult
+} from 'discord-api-types/v10';
 import { stringify } from 'node:querystring';
-import { fileURLToPath } from 'node:url';
 import { inspect } from 'node:util';
 
-config({ path: fileURLToPath(new URL('../.env', import.meta.url)) });
+setup({ path: new URL('../.env', import.meta.url) });
 
-const ApplicationSecret = process.env.DISCORD_APPLICATION_SECRET;
-const ApplicationId = process.env.DISCORD_CLIENT_ID;
+const ApplicationSecret = envParseString('DISCORD_APPLICATION_SECRET');
+const ApplicationId = envParseString('DISCORD_CLIENT_ID');
 
 if (!ApplicationId || !ApplicationSecret) {
 	throw new Error('Please fill in all env variables in your ".env.local" file');
@@ -18,11 +24,10 @@ if (!ApplicationId || !ApplicationSecret) {
 
 /**
  * Retrieves a client_credentials access token from the Discord OAUTH API
- * @returns {Promise<string>} The access token to be used
+ * @returns The access token to be used
  */
-async function getBearerToken() {
-	/** @type {import('discord-api-types/v10').RESTPostOAuth2ClientCredentialsResult} */
-	const body = await fetch(
+async function getBearerToken(): Promise<string> {
+	const body = await fetch<RESTPostOAuth2ClientCredentialsResult>(
 		OAuth2Routes.tokenURL,
 		{
 			headers: {
@@ -45,10 +50,11 @@ async function getBearerToken() {
 
 /**
  * Updates permissions for the reload tags chat input command
- * @param {string} token The authentication token from Discord
- * @param {import('discord-api-types/v10').APIApplicationCommand} reloadTagsData The data from Discord for the reloadtags command
+ * @param token The authentication token from Discord
+ * @param staffId The ID of the Sapphire Staff role
+ * @param reloadTagsData The data from Discord for the reloadtags command
  */
-async function allowSapphireStaffToUseCommand(token, reloadTagsData) {
+async function allowSapphireStaffToUseCommand(token: string, staffId: string, reloadTagsData: APIApplicationCommand) {
 	try {
 		const res = await fetch(
 			`${RouteBases.api}${Routes.applicationCommandPermissions(ApplicationId, '737141877803057244', reloadTagsData.id)}`,
@@ -61,7 +67,7 @@ async function allowSapphireStaffToUseCommand(token, reloadTagsData) {
 				body: JSON.stringify({
 					permissions: [
 						{
-							id: '868612689977569341',
+							id: staffId,
 							type: ApplicationCommandPermissionType.Role,
 							permission: true
 						}
@@ -79,12 +85,11 @@ async function allowSapphireStaffToUseCommand(token, reloadTagsData) {
 
 /**
  * Updates global chat input commands
- * @param {string} token The authentication token from Discord
+ * @param token The authentication token from Discord
  */
-async function getReloadTagsCommand(token) {
+async function getReloadTagsCommand(token: string) {
 	try {
-		/** @type {Array<import('discord-api-types/v10').APIApplicationCommand>} */
-		const res = await fetch(
+		const res = await fetch<APIApplicationCommand[]>(
 			`${RouteBases.api}${Routes.applicationCommands(ApplicationId)}`,
 			{
 				headers: {
@@ -106,8 +111,17 @@ const token = await getBearerToken();
 
 const allCommandsData = await getReloadTagsCommand(token);
 
-const reloadTagCommand = allCommandsData.find((command) => command.name === 'reload-tags');
+if (allCommandsData) {
+	const reloadTagCommand = allCommandsData.find((command) => command.name === 'reload-tags');
 
-if (reloadTagCommand) {
-	await allowSapphireStaffToUseCommand(token, reloadTagCommand);
+	if (reloadTagCommand) {
+		await allowSapphireStaffToUseCommand(token, '868612689977569341', reloadTagCommand);
+	}
+}
+
+declare module '@skyra/env-utilities' {
+	interface Env {
+		DISCORD_CLIENT_ID: string;
+		DISCORD_APPLICATION_SECRET: string;
+	}
 }

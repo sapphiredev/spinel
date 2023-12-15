@@ -22,14 +22,14 @@
 		"build": "tsup",
 		"watch": "tsup --watch",
 		"dev": "tsup --watch --onSuccess \"yarn start\"",
-		"clean": "node scripts/clean.mjs",
-		"validate-tags": "node scripts/validateTags.mjs"
+		"clean": "rimraf dist/",
+		"validate-tags": "tsx scripts/validate-tags.ts"
 	},
 	"dependencies": {
 		"@discordjs/builders": "^1.7.0",
 		"@discordjs/collection": "^1.5.3",
 		"@ltd/j-toml": "~1.38.0",
-		"@sapphire/fetch": "^2.4.2",
+		"@sapphire/fetch": "^3.0.0",
 		"@sapphire/result": "^2.6.5",
 		"@sapphire/utilities": "^3.14.0",
 		"@skyra/env-utilities": "^1.2.2",
@@ -58,9 +58,11 @@
 		"eslint-plugin-prettier": "^5.0.1",
 		"lint-staged": "^15.2.0",
 		"prettier": "^3.1.1",
+		"rimraf": "^5.0.5",
 		"tsup": "^8.0.1",
+		"tsx": "^4.6.2",
 		"typescript": "^5.3.3",
-		"vite": "^5.0.7",
+		"vite": "^5.0.9",
 		"vitest": "^1.0.4"
 	},
 	"resolutions": {

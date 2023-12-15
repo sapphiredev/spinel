@@ -1,26 +1,27 @@
 import { parse as parseToml } from '@ltd/j-toml';
+import { objectEntries } from '@sapphire/utilities';
 import { green, red } from 'colorette';
 import { readFile } from 'node:fs/promises';
+import { Conflict, Tag } from '../src/lib/types/Tags';
 
 const tagsDir = new URL('../src/tags/', import.meta.url);
 
 const file = await readFile(new URL('tags.toml', tagsDir), { encoding: 'utf-8' });
 const data = parseToml(file, 1.0, '\n');
 
-/** @type {import('../src/lib/types/Tags').Conflict[]} */
-const conflicts = [];
+const conflicts: Conflict[] = [];
 let hoisted = 0;
 
-for (const [key, value] of Object.entries(data)) {
-	/** @type {import('../src/lib/types/Tags').Tag} */
-	const v = value;
+for (const [key, value] of objectEntries(data)) {
+	const typedValue = value as unknown as Tag;
+	const typedKey = key as string;
+
 	const codeBlockRegex = /(`{1,3}).+?\1/gs;
 	const detectionRegex = /\[[^\[\]]+?\]\([^<][^\(\)]+?[^>]\)/g;
-	const cleanedContent = v.content.replace(codeBlockRegex, '');
+	const cleanedContent = typedValue.content.replace(codeBlockRegex, '');
 
-	const conflictLinks = [];
-	/** @type {RegExpExecArray | null} */
-	let result;
+	const conflictLinks: string[] = [];
+	let result: RegExpExecArray | null;
 
 	while ((result = detectionRegex.exec(cleanedContent)) !== null) {
 		conflictLinks.push(result[0]);
@@ -28,49 +29,49 @@ for (const [key, value] of Object.entries(data)) {
 
 	if (conflictLinks.length) {
 		conflicts.push({
-			firstName: key,
+			firstName: typedKey,
 			secondName: '',
 			conflictKeyWords: conflictLinks,
 			type: 'unescapedLink'
 		});
 	}
 
-	if (v.hoisted) {
+	if (typedValue.hoisted) {
 		hoisted++;
 	}
 
-	for (const [otherKey, otherValue] of Object.entries(data)) {
-		/** @type {import('../src/lib/types/Tags').Tag} */
-		const oV = otherValue;
+	for (const [otherKey, otherValue] of objectEntries(data)) {
+		const typedOtherValue = otherValue as unknown as Tag;
+		const typedOtherKey = otherKey as string;
 
 		if (
-			(v.keywords.some((k) => !k.replace(/\s+/g, '').length) || !v.content.replace(/\s+/g, '').length) &&
-			!conflicts.some((c) => c.type === 'emptyKeyword' && c.firstName === key)
+			(typedValue.keywords.some((k) => !k.replace(/\s+/g, '').length) || !typedValue.content.replace(/\s+/g, '').length) &&
+			!conflicts.some((c) => c.type === 'emptyKeyword' && c.firstName === typedKey)
 		) {
 			conflicts.push({
-				firstName: key,
+				firstName: typedKey,
 				secondName: '',
 				conflictKeyWords: [],
 				type: 'emptyKeyword'
 			});
 		}
 
-		if (key !== otherKey) {
-			if (!v.keywords.includes(key) && !conflicts.some((c) => c.type === 'headerInKeywords' && c.firstName === key)) {
+		if (typedKey !== typedOtherKey) {
+			if (!typedValue.keywords.includes(typedKey) && !conflicts.some((c) => c.type === 'headerInKeywords' && c.firstName === typedKey)) {
 				conflicts.push({
-					firstName: key,
+					firstName: typedKey,
 					secondName: '',
 					conflictKeyWords: [],
 					type: 'headerInKeywords'
 				});
 			}
 
-			const conflictKeyWords = v.keywords.filter((k) => oV.keywords.includes(k));
+			const conflictKeyWords = typedValue.keywords.filter((k) => typedOtherValue.keywords.includes(k));
 
-			if (conflictKeyWords.length && !conflicts.some((c) => [c.firstName, c.secondName].every((e) => [key, otherKey].includes(e)))) {
+			if (conflictKeyWords.length && !conflicts.some((c) => [c.firstName, c.secondName].every((e) => [typedKey, typedOtherKey].includes(e)))) {
 				conflicts.push({
-					firstName: key,
-					secondName: otherKey,
+					firstName: typedKey,
+					secondName: typedOtherKey,
 					conflictKeyWords,
 					type: 'uniqueKeywords'
 				});
@@ -80,8 +81,13 @@ for (const [key, value] of Object.entries(data)) {
 }
 
 if (conflicts.length || hoisted > 20) {
-	const parts = [];
-	const { uniqueConflicts, headerConflicts, emptyConflicts, linkConflicts } = conflicts.reduce(
+	const parts: string[] = [];
+	const { uniqueConflicts, headerConflicts, emptyConflicts, linkConflicts } = conflicts.reduce<{
+		uniqueConflicts: Conflict[];
+		headerConflicts: Conflict[];
+		emptyConflicts: Conflict[];
+		linkConflicts: Conflict[];
+	}>(
 		(a, c) => {
 			switch (c.type) {
 				case 'uniqueKeywords':
@@ -99,13 +105,9 @@ if (conflicts.length || hoisted > 20) {
 			return a;
 		},
 		{
-			/** @type {import('../src/lib/types/Tags').Conflict[]} */
 			uniqueConflicts: [],
-			/** @type {import('../src/lib/types/Tags').Conflict[]} */
 			headerConflicts: [],
-			/** @type {import('../src/lib/types/Tags').Conflict[]} */
 			emptyConflicts: [],
-			/** @type {import('../src/lib/types/Tags').Conflict[]} */
 			linkConflicts: []
 		}
 	);

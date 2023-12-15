@@ -8,15 +8,15 @@ hoisted = true
 [djsquestions]
 keywords = ["djsquestions", "djs", "discordjs"]
 content = """
-For as far as Discord bot development is concerned, this server is primarily for Sapphire. While we can help you with Discord.js related problems, it is often advisable to join [the official Discord.js server](<https://discord.gg/djs>).
+For as far as Discord bot development is concerned, this server is primarily for Sapphire. While we can help you with Discord.js-related problems, it is often advisable to join [the official Discord.js server](<https://discord.gg/djs>).
 """
 
 [asking]
 keywords = ["asking", "asking questions", "questions", "how to ask questions"]
 content = """
-When asking for help, make sure to provide as much detail as possible. What have you tried so far? Do you have stacktraces that you can show us? What are you trying to achieve? Try to answer these questions and others, so we do not have to ask for them afterwards.
+When asking for help, make sure to provide as much detail as possible. What have you tried so far? Do you have stack traces that you can show us? What are you trying to achieve? Try to answer these questions and others, so we do not have to ask for them afterwards.
 > ❯ For a good guide on how to ask questions, see [the instructions that StackOverflow gives](<https://stackoverflow.com/help/how-to-ask>). You should try to always follow these guidelines.
-> ❯ For an excellent video that shows how **not** to ask technical questions is this, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>).
+> ❯ For an excellent video that shows how **not** to ask technical questions, watch [this YouTube video by LiveOverflow](<https://youtu.be/53zkBvL4ZB4>).
 > ❯ [Asking technical questions (Clarkson)](<https://www.cs.cornell.edu/courses/cs3110/2017fa/thoughtful.html>)
 > ❯ [How to ask questions the smart way (Raymond)](<http://www.catb.org/~esr/faqs/smart-questions.html>)
 """
@@ -92,7 +92,7 @@ Before you make a Discord Bot, you should have a good understanding of JavaScrip
 - Syntax
 - NodeJS module system
 
-If you aren't sure that your understanding of JavaScript is truly good enough to make a bot, you should really try to continue learning first. Here are good resources to learn both Javascript and NodeJS:
+If you aren't sure that your understanding of JavaScript is truly good enough to make a bot, you should try to continue learning first. Here are good resources to learn both Javascript and NodeJS:
 
 _Codecademy_: <https://www.codecademy.com/learn/javascript>
 _Udemy_: <https://www.udemy.com/javascript-essentials/>
@@ -105,10 +105,10 @@ _Pluralsight_: <https://www.codeschool.com/courses/real-time-web-with-node-js>
 
 Before you ask a question, you should ask these yourself:
 **1)** Is this question related to JavaScript, or the library I am using? - If it is the library you are using, go to the proper server. You would get better answers there.
-**2)** Have I tried to google and / or check StackOverflow? - Double check that you can't find anywhere that can lead you to a solution online.
-**3)** Have I tried to look on MDN or the library documentation? - You should always check documentations to make sure you aren't missing how any details.
+**2)** Have I tried to google and/or check StackOverflow? - Double-check that you can't find anywhere that can lead you to a solution online.
+**3)** Have I tried to look on MDN or the library documentation? - You should always check documentation to make sure you aren't missing any details.
 **4)** Does my question make enough sense so that people can understand it, and do they understand what I am trying to accomplish? - If no, revise your question. Give as much detail as possible. Include any error or code output that can help us help you.
-**5)** Am I aware of what I am doing, and not just mindlessly copy and pasting? - If you are just copy and pasting code from a guide, you are not going to be able to solve anything. Make sure you understand the code you are writing.
+**5)** Am I aware of what I am doing, and not just mindlessly copying and pasting? - If you are just copying and pasting code from a guide, you are not going to be able to solve anything. Make sure you understand the code you are writing.
 """
 
 [legacy-deps]
@@ -149,7 +149,7 @@ keywords = ["i18n", "internationalization", "i18next", "language codes"]
 content = """
 For [`@sapphire/plugin-i18next`](<https://www.npmjs.com/package/@sapphire/plugin-i18next>) we follow the standardized format of [`<ISO-639-1 language code>`](<https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>)`-`[`<ISO3166-1 Country Code>`](<https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes>) for the language directories.
 
-__Examples of valid languages codes are:__
+__Examples of valid language codes are:__
 
 **-** `de-DE` for German as spoken in Germany
 **-** `en-GB` for English as spoken in Great Britain
@@ -191,23 +191,25 @@ content = """
 [help]
 keywords = ["help", "built in help"]
 content = """
-Our experience in Klasa, and according to many Akairo users is that built-in help commands suck, and everyone customises them.
+Our experience from Klasa, and according to many Akairo users, is that built-in help commands suck, and everyone customises them.
 
-Furthermore, having built-in commands force you to add extra logic in your code (specifically everywhere that reads custom properties from commands), so if you rely on a property to exist, because it does in your commands, it'll break easily with built-in ones unless you overwrite them.
+Furthermore, having built-in commands forces you to add extra logic in your code (specifically everywhere that reads custom properties from commands), so if you rely on a property to exist, because it does in your commands, it'll break easily with built-in ones unless you overwrite them.
 
 A help command is even worse, they give special constraints that shouldn't exist and can be implemented as you desire.
 
-There's also the people who want to only show specific commands, a list of all commands in one embed, paginated commands, paginated lists of commands (based on categories), and all of that can be in either plain text, inside codeblocks (and from there, many syntaxes and formats), or embeds.
+There are also the people who want to only show specific commands, a list of all commands in one embed, paginated commands, paginated lists of commands (based on categories), and all of that can be in either plain text, inside code blocks (and from there, many syntaxes and formats), or embeds.
 
-And to take things further, there are people who simply want to show all commands, and people who show only the commands they can use.
+To take things further, some people simply want to show all commands, while some other people want to show only the commands the user can use.
 
-And so far we have only covered message based commands. Chat input commands are a whole different beast, because they have native descriptions and if you do have a /help for more details that could use autocomplete to fill out the command name.
+And so far we have only covered message-based commands. Chat input commands are a whole different beast because they have native descriptions and if you do have a /help for more details you could use autocomplete to fill out the command name.
 
 If you take all the different ways to format commands, you end up with hundreds or thousands of different possibilities.
 
-It is not possible for us to deliver a help command that complies to all those possibilities.
+We can't deliver a help command that complies with all those possibilities.
 
 Therefore, everyone will eventually replace the built-in one with their own, so why take the effort?
+
+That all said, if you're still looking to make your help command, you can also refer to </tag:961379981123002398> `query: commands` to learn how to get all the commands currently known to Sapphire, from different contexts.
 """
 
 [regular-problems]
@@ -218,7 +220,7 @@ content = """
 - Did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
 - What's your "main" property in `package.json`
 - Are you using TypeScript? And if so, how are you compiling and running your code? That is to say, what are your build and startup scripts?
-- In case you are using version 3.0.0 or higher of `@sapphire/framework`, and your problem related to message commands, did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
+- In case you are using version 3.0.0 or higher of `@sapphire/framework`, and your problem is related to message commands, did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
 
 Remember that if you are new to `@sapphire/framework` it is important that you read the [user guide](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>).
 
@@ -248,14 +250,14 @@ Which means to read some code, dump it in an `eval()` statement, print the resul
 
 **_A discord bot is not that._**
 
-A Discord bot sets up a permanent websocket connection to the discord server and connects to the rest gateway.
+A Discord bot sets up a permanent web socket connection to the Discord server and connects to the rest gateway.
 There is read yes, but **no eval**, **no print**, and **no loop**.
 
 **So what should you use instead?**
 
 The most ideal way is to just use the `watch` flag of `tsc` (`tsc --watch`) and run `node dist/index.js` to run your bot, then cancel that process and restart it when you have changes that require restarting.
 You would open 2 terminal tabs, 1 in which you run `tsc --watch` and another in which you run the bot.
-This is in particular the most ideal way, because Discord has a limit to the amount of times you can login with your bot, or register commands, per day.
+This is, in particular, the most ideal way, because Discord has a limit to the amount of times you can log in with your bot, or register commands, per day.
 Constantly logging in over and over again due to an auto-restarting process will get you close to that limit very quickly and once you exceed it, your development will be halted entirely for the current day.
 
 However, this can be quite tedious so a great package to use instead is [`tsc-watch`](<https://www.npmjs.com/package/tsc-watch>).
@@ -264,7 +266,7 @@ However, this can be quite tedious so a great package to use instead is [`tsc-wa
 [yarnv4]
 keywords = ["yarn", "yarnv3", "yarnv4"]
 content = """
-Yarn v4 is new version of Yarn that we recommend switching to as Yarn v1 has long since been deprecated.
+Yarn v4 is a new version of Yarn that we recommend switching to as Yarn v1 has long since been deprecated.
 
 > "But I don't see any update on [source]?"
 
@@ -272,7 +274,7 @@ That is correct. Yarn v4 is installed through Yarn itself. You configure Yarn v4
 ```sh
 yarn set version berry
 ```
-This will download the new Yarn v4 binary and put in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
+This will download the new Yarn v4 binary and put it in `.yarn/releases`, you should push this to your Git repository. It will also create a `.yarnrc.yml` file which configures the path which you should also commit.
 
 Next you probably also want to run the following 2 commands:
 ```sh
@@ -301,7 +303,7 @@ For example:
 	"format": "prettier --write \\"src/**/*.ts\\""
 }
 ```
-Mind you this last thing is a good thing to add regardless of script runner / package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
+Mind you this last thing is a good thing to add regardless of script runner/package bundler because it ensures the glob is performed by the library and not by your shell, which may differ when people develop on different operating systems.
 
 In short, the command to set everything up you can run:
 ```sh
@@ -316,15 +318,15 @@ content = """
 
 That's like asking what's so good about cornflakes. It'll get a very subjective answer.
 
-Sapphire is the official bot framework for discordjs for starters. Take that for what you will.
+Sapphire is the official bot framework for Discord.js for starters. Take that for what you will.
 
-Other than that, the core reason to use Sapphire is because, sooner or later when writing any half serious bot, you'll be writing your own command handler if you don't use Sapphire, and why would you willingly maintain your own code, likely lacking features and potentially with bugs and/or crappy performance and/or non scalability, when you can use Sapphire which has all of the same features, guarantees near to no bugs (and any bugs get patched), great performance and great scalability? Saves you work on the menial tasks and frees that time to actually bring a bot to production, which was the original end goal.
+Other than that, the core reason to use Sapphire is that sooner or later when writing any half-serious bot, you'll be writing your command handler if you don't use Sapphire, and why would you willingly maintain your code, likely lacking features and potentially with bugs and/or crappy performance and/or non-scalability, when you can use Sapphire which has all of the same features, guarantees near to no bugs (and any bugs get patched), great performance and great scalability? Saves you work on the menial tasks and frees that time to actually bring a bot to production, which was the original end goal.
 """
 
 [get-guildid-manually]
 keywords = ["get-guildid-manually", "get guild id manually", "guild id", "server id"]
 content = """
-**How to get the guild id of a server?**
+**How to get the guildId of a server?**
 
 1. Open Discord and go to the server (guild) for which you want to find the ID.
 
@@ -373,5 +375,23 @@ yarn up -R package-name-here
 pnpm can also update transitive dependencies so run the command:
 ```sh
 pnpm --recursive update package-name-here@version
+```
+[commands]
+keywords = ["commands", "all-commands", "list-commands"]
+content = """
+There are several ways to get the list of all commands, depending on the context of your current code. The following are the different methods:
+## Inside another command:
+```ts
+this.store // Store<Command> extends Collection<Command> extends Map<Command>
+```
+## Inside another piece:
+```ts
+this.container.stores.get('commands') // Store<Command> extends Collection<Command> extends Map<Command>
+```
+## Anywhere else:
+```ts
+import { container } from '@sapphire/framework';
+
+container.stores.get('commands') // Store<Command> extends Collection<Command> extends Map<Command>
 ```
 """

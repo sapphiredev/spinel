@@ -17,11 +17,15 @@ describe('findSimilarTag', () => {
 			},
 			{ word: 'firacode', distance: 0.6583333333333333, name: 'good-font' },
 			{
+				distance: 0.6102564102564102,
+				name: 'help',
+				word: 'built in help'
+			},
+			{
 				word: 'language codes',
 				distance: 0.6047619047619047,
 				name: 'i18n'
-			},
-			{ word: 'asking questions', distance: 0.6, name: 'asking' }
+			}
 		]);
 	});
 
@@ -70,8 +74,12 @@ describe('findSimilarTag', () => {
 
 		expect(foundTags).toEqual([
 			{ word: 'tsnode', distance: 0.6085185185185185, name: 'ts-node' },
-			{ word: 'transitive-dependencies', distance: 0.5964667992800985, name: 'transitive-dependencies' },
 			{ word: 'help', distance: 0.595679012345679, name: 'help' },
+			{
+				word: 'transitive-dependencies',
+				distance: 0.5847826086956522,
+				name: 'transitive-dependencies'
+			},
 			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' },
 			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' }
 		]);

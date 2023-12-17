@@ -12,9 +12,7 @@ declare module '@skyra/env-utilities' {
 		COMMAND_GUILD_IDS: ArrayString;
 		DJS_GUIDE_ALGOLIA_APPLICATION_ID: string;
 		DJS_GUIDE_ALGOLIA_APPLICATION_KEY: string;
-		DOTENV_DEBUG_ENABLED: BooleanString;
 		GH_API_KEY: string;
-		NODE_ENV: 'test' | 'development' | 'production';
 		NPM_ALGOLIA_APPLICATION_ID: string;
 		NPM_ALOGLIA_APPLICATION_KEY: string;
 		SAPPHIRE_DOCS_ALOGLIA_APPLICATION_ID: string;

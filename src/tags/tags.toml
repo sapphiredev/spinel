@@ -28,6 +28,7 @@ content = """
 # Discord Bots using @sapphire/framework
 ## v5.x
 - **[Gemboard ᴱ ᴰ](<https://github.com/sapphiredev/gemboard>)**
+- **[Skyra ᴱ ᴬ ᴰ](<https://github.com/skyra-project/skyra>)**
 - **[Dragonite ᴱ ᴰ](<https://github.com/favware/dragonite>)**
 - **[Archangel ᴱ ᴰ](<https://github.com/favware/archangel>)**
 - **[Official Bot Examples ᴱ ᴰ ᴶˢ](<https://github.com/sapphiredev/examples>)**
@@ -38,8 +39,6 @@ content = """
 - **[Birthdayy ᴰ](<https://github.com/BirthdayyBot/BirthdayyBotSapphire>)**
 - **[KBot ᴱ ᴬ ᴰ](<https://github.com/KBot-discord/KBot/tree/main/apps/bot/>)**
 - **[RTByte ᴱ ᴬ](<https://github.com/RTByte/rtbyte>)**
-## Outdated bots / honourable mentions
-- **[Skyra ᴬ ᴰ](<https://github.com/skyra-project/skyra>)**
 # Legend for the identifiers
 **ᴱ**: Uses ESM (if not specified then uses CJS)
 **ᴬ**: Advanced bot (if not specified it is a simple bot, or not graded)

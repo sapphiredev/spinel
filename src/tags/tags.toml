@@ -93,14 +93,14 @@ Before you make a Discord Bot, you should have a good understanding of JavaScrip
 
 If you aren't sure that your understanding of JavaScript is truly good enough to make a bot, you should try to continue learning first. Here are good resources to learn both Javascript and NodeJS:
 
-_Codecademy_: <https://www.codecademy.com/learn/javascript>
-_Udemy_: <https://www.udemy.com/javascript-essentials/>
-_Eloquent JavaScript, free book_: http://eloquentjavascript.net/
-_You-Dont-Know-JS_: <https://github.com/getify/You-Dont-Know-JS>
-_JavaScript Garden_: <https://bonsaiden.github.io/JavaScript-Garden/>
-_JavaScript reference/docs_: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>
-_Nodeschool_: <https://nodeschool.io/>
-_Pluralsight_: <https://www.codeschool.com/courses/real-time-web-with-node-js>
+- _Codecademy_: <https://www.codecademy.com/learn/javascript>
+- _Udemy_: <https://www.udemy.com/javascript-essentials/>
+- _Eloquent JavaScript, free book_: http://eloquentjavascript.net/
+- _You-Dont-Know-JS_: <https://github.com/getify/You-Dont-Know-JS>
+- _JavaScript Garden_: <https://bonsaiden.github.io/JavaScript-Garden/>
+- _JavaScript reference/docs_: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>
+- _Nodeschool_: <https://nodeschool.io/>
+- _Pluralsight_: <https://www.codeschool.com/courses/real-time-web-with-node-js>
 
 Before you ask a question, you should ask these yourself:
 1. Is this question related to JavaScript, or the library I am using?

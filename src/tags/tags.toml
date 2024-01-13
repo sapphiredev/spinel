@@ -404,14 +404,11 @@ container.stores.get('commands') // Store<Command> extends Collection<Command> e
 [pnpm-hoist]
 keywords = ["pnpm-hoist"]
 content = """
-When using pnpm you have to make sure that you have the [`shamefully-hoist`](<https://pnpm.io/npmrc#shamefully-hoist>)
-and [`public-hoist-pattern`](<https://pnpm.io/npmrc#public-hoist-pattern>) are set correctly in your
-[`.npmrc`](<https://pnpm.io/npmrc>) file.
+When using pnpm you have to make sure that you have the [`shamefully-hoist`](<https://pnpm.io/npmrc#shamefully-hoist>) and [`public-hoist-pattern`](<https://pnpm.io/npmrc#public-hoist-pattern>) are set correctly in your [`.npmrc`](<https://pnpm.io/npmrc>) file.
 
-This is because pnpm will not hoist any dependencies by default and that poses a problem with how Sapphire works
-with module augmentation and loading files from the filesystem.
+This is because pnpm will not hoist any dependencies by default and that poses a problem with how Sapphire works with module augmentation and loading files from the filesystem.
 
-Add this to the `.npmrc` file:
+Add this to your `.npmrc` file:
 ```properties
 shamefully-hoist=true
 public-hoist-pattern[]=@sapphire/*

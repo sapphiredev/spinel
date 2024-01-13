@@ -39,13 +39,17 @@ describe('findSimilarTag', () => {
 				distance: 0.6666666666666666,
 				name: 'matching-parameters'
 			},
+			{
+				word: 'pnpm-hoist',
+				distance: 0.6555555555555556,
+				name: 'pnpm-hoist'
+			},
 			{ word: 'chat input bots', distance: 0.6, name: 'bots' },
 			{
 				word: 'hostingproviders',
 				distance: 0.5972222222222222,
 				name: 'hostingproviders'
-			},
-			{ word: 'api', distance: 0.5555555555555555, name: 'apidocs' }
+			}
 		]);
 	});
 

@@ -103,11 +103,16 @@ _Nodeschool_: <https://nodeschool.io/>
 _Pluralsight_: <https://www.codeschool.com/courses/real-time-web-with-node-js>
 
 Before you ask a question, you should ask these yourself:
-**1)** Is this question related to JavaScript, or the library I am using? - If it is the library you are using, go to the proper server. You would get better answers there.
-**2)** Have I tried to google and/or check StackOverflow? - Double-check that you can't find anywhere that can lead you to a solution online.
-**3)** Have I tried to look on MDN or the library documentation? - You should always check documentation to make sure you aren't missing any details.
-**4)** Does my question make enough sense so that people can understand it, and do they understand what I am trying to accomplish? - If no, revise your question. Give as much detail as possible. Include any error or code output that can help us help you.
-**5)** Am I aware of what I am doing, and not just mindlessly copying and pasting? - If you are just copying and pasting code from a guide, you are not going to be able to solve anything. Make sure you understand the code you are writing.
+1. Is this question related to JavaScript, or the library I am using?
+ - If it is the library you are using, go to the proper server. You would get better answers there.
+2. Have I tried to google and/or check StackOverflow?
+ - Double-check that you can't find anywhere that can lead you to a solution online.
+3. Have I tried to look on MDN or the library documentation?
+ - You should always check documentation to make sure you aren't missing any details.
+4. Does my question make enough sense so that people can understand it, and do they understand what I am trying to accomplish?
+ - If no, revise your question. Give as much detail as possible. Include any error or code output that can help us help you.
+5. Am I aware of what I am doing, and not just mindlessly copying and pasting?
+ - If you are just copying and pasting code from a guide, you are not going to be able to solve anything. Make sure you understand the code you are writing.
 """
 
 [legacy-deps]
@@ -214,12 +219,13 @@ That all said, if you're still looking to make your help command, you can also r
 [regular-problems]
 keywords = ["regular-problems", "commands no working", "pieces no working", "listeners no working"]
 content = """
-- Which version of `@sapphire/framework` are you using?
-- What's your file/folder structure?
-- Did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
-- What's your "main" property in `package.json`
-- Are you using TypeScript? And if so, how are you compiling and running your code? That is to say, what are your build and startup scripts?
-- In case you are using version 3.0.0 or higher of `@sapphire/framework`, and your problem is related to message commands, did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
+1. Which version of `@sapphire/framework` are you using?
+2. What's your file/folder structure?
+3. Did you use the [CLI](<https://www.sapphirejs.dev/docs/Guide/CLI/introduction>) to generate your bot?
+4. What's your `main` (CJS) or `module` (ESM) property in `package.json`
+5. Are you using TypeScript? And if so, how are you compiling and running your code? That is to say, what are your build and startup scripts?
+ - Did you remove your output folder and rebuild then try again?
+6. Is your problem related to message commands? Did you add [`loadMessageCommandListeners`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#loadmessagecommandlisteners>) to your [`SapphireClient`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/classes/SapphireClient>) [`options`](<https://www.sapphirejs.dev/docs/Documentation/api-framework/interfaces/SapphireClientOptions#properties>)
 
 Remember that if you are new to `@sapphire/framework` it is important that you read the [user guide](<https://www.sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire>).
 
@@ -233,8 +239,8 @@ The order of function parameters must match between definition and function call
 function execute(client, message, args) { ... };
 execute(message, client, args);
 ```
-• mismatch! you pass a Message where the client is expected
-• mismatch! you pass the Client where a Message is expected
+- Mismatch! You passed a Message where the client was expected.
+- Mismatch! You passed the Client where a Message was expected.
 """
 
 [ts-node]

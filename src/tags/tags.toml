@@ -23,7 +23,17 @@ When asking for help, make sure to provide as much detail as possible. What have
 hoisted = true
 
 [bots]
-keywords = ["bots", "sapphire bots", "bots using sapphire", "example bots", "examples", "slashbots", "chat input bots", "slash commands", "application commands"]
+keywords = [
+	"bots",
+	"sapphire bots",
+	"bots using sapphire",
+	"example bots",
+	"examples",
+	"slashbots",
+	"chat input bots",
+	"slash commands",
+	"application commands",
+]
 content = """
 # Discord Bots using @sapphire/framework
 ## v5.x
@@ -61,7 +71,17 @@ When it's ready™️ *(+1 day whenever someone asks for an eta)* <a:_:735070572
 """
 
 [good-font]
-keywords = ["good-font", "best-font", "firacode", "jetbrainsmono", "jetbrains-mono", "coding-font", "cascadia-code", "hack", "source code pro"]
+keywords = [
+	"good-font",
+	"best-font",
+	"firacode",
+	"jetbrainsmono",
+	"jetbrains-mono",
+	"coding-font",
+	"cascadia-code",
+	"hack",
+	"source code pro",
+]
 content = """
 Here are some of the fonts we believe are the best when coding, in no specific order:
 
@@ -132,7 +152,12 @@ https://cdn.favware.tech/img/talkischeap.png
 hoisted = true
 
 [moduleaug]
-keywords = ["moduleaug", "module augmentation", "typescript declare module", "declare module"]
+keywords = [
+	"moduleaug",
+	"module augmentation",
+	"typescript declare module",
+	"declare module",
+]
 content = """
 If you're adding custom properties to your Client class and you want them to be accessible when accessing the client through something like `this.container.client` you'll have to add module augmentation:
 
@@ -217,7 +242,12 @@ That all said, if you're still looking to make your help command, you can also r
 """
 
 [regular-problems]
-keywords = ["regular-problems", "commands no working", "pieces no working", "listeners no working"]
+keywords = [
+	"regular-problems",
+	"commands no working",
+	"pieces no working",
+	"listeners no working",
+]
 content = """
 1. Which version of `@sapphire/framework` are you using?
 2. What's your file/folder structure?
@@ -232,7 +262,13 @@ Remember that if you are new to `@sapphire/framework` it is important that you r
 """
 
 [matching-parameters]
-keywords = ["matching-parameters", "params", "matching parameters", "matching params", "parameters"]
+keywords = [
+	"matching-parameters",
+	"params",
+	"matching parameters",
+	"matching params",
+	"parameters",
+]
 content = """
 The order of function parameters must match between definition and function call.
 ```js
@@ -319,17 +355,22 @@ yarn set version berry && yarn config set enableGlobalCache true && yarn config 
 [whysapphire]
 keywords = ["whysapphire", "sapphire"]
 content = """
-**What is so good about Sapphire?**
+**Why would I use Sapphire? What is so good about it?**
 
-That's like asking what's so good about cornflakes. It'll get a very subjective answer.
+First of all, you're asking this question in the Sapphire server. This means that you will always get a opinionated reply in favour of Sapphire. If that's not what you're looking for, you should ask the same question in a server like the [discord.js](<https://discord.gg/djs>) server.
 
-Sapphire is the official bot framework for Discord.js for starters. Take that for what you will.
+Secondly, Sapphire is the only framework for Discord.js that is currently listed in https://discord.com/channels/222078108977594368/729580210634358804. That is to say, it's unofficially the only official discord.js framework.
 
-Other than that, the core reason to use Sapphire is that sooner or later when writing any half-serious bot, you'll be writing your command handler if you don't use Sapphire, and why would you willingly maintain your code, likely lacking features and potentially with bugs and/or crappy performance and/or non-scalability, when you can use Sapphire which has all of the same features, guarantees near to no bugs (and any bugs get patched), great performance and great scalability? Saves you work on the menial tasks and frees that time to actually bring a bot to production, which was the original end goal.
+On to more subtantial reasoning. The core reason to use Sapphire is that sooner or later when writing a Discord bot, you'll be writing your command handler if you don't use Sapphire. At this point you can either choose to write your own framework, or use an existing one. That's where Sapphire comes in. Can you write your own framework? Sure, but why would you? It's a lot of work, and do you really want to maintain that, or do you want just want to write a Discord bot? Using Sapphire will save you the work on the menial tasks and frees that time to actually bring a bot to production, which was the original end goal of writing a bot.
 """
 
 [get-guildid-manually]
-keywords = ["get-guildid-manually", "get guild id manually", "guild id", "server id"]
+keywords = [
+	"get-guildid-manually",
+	"get guild id manually",
+	"guild id",
+	"server id",
+]
 content = """
 **How to get the guildId of a server?**
 
@@ -412,5 +453,18 @@ Add this to your `.npmrc` file:
 ```properties
 shamefully-hoist=true
 public-hoist-pattern[]=@sapphire/*
+```
+"""
+
+[experimental-decorators]
+keywords = ["experimental-decorators", "decorators"]
+content = """
+[In TypeScript v5](<https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators>) the TypeScript developers shipped initial support for the upcoming [Decorators proposal for JavaScript](<https://github.com/tc39/proposal-decorators>). This means that by default TypeScript will allow the usages of decorators in your TypeScript code, unlike before where it would throw an error when doing so without proper configuration. This is a pitfal however, as many libraries, including @sapphire/decorators, are not yet updated to use the new decorators proposal. This means that you will have to enable the experimental decorators in your `tsconfig.json` file. To do so, add the following to your `tsconfig.json` file:
+```json
+{
+	"compilerOptions": {
+		"experimentalDecorators": true
+	}
+}
 ```
 """

@@ -46,9 +46,9 @@ describe('findSimilarTag', () => {
 			},
 			{ word: 'chat input bots', distance: 0.6, name: 'bots' },
 			{
-				word: 'hostingproviders',
-				distance: 0.5972222222222222,
-				name: 'hostingproviders'
+				distance: 0.5990338164251208,
+				name: 'experimental-decorators',
+				word: 'experimental-decorators'
 			}
 		]);
 	});
@@ -64,12 +64,12 @@ describe('findSimilarTag', () => {
 			},
 			{ word: 'tsnode', distance: 0.6944444444444443, name: 'ts-node' },
 			{ word: 'docs', distance: 0.6888888888888889, name: 'apidocs' },
-			{ word: 'i18next', distance: 0.6428571428571429, name: 'i18n' },
 			{
-				word: 'hosting',
-				distance: 0.6428571428571429,
-				name: 'hostingproviders'
-			}
+				word: 'decorators',
+				distance: 0.645,
+				name: 'experimental-decorators'
+			},
+			{ word: 'i18next', distance: 0.6428571428571429, name: 'i18n' }
 		]);
 	});
 

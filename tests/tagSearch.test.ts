@@ -80,9 +80,9 @@ describe('findSimilarTag', () => {
 			{ word: 'tsnode', distance: 0.6085185185185185, name: 'ts-node' },
 			{ word: 'help', distance: 0.595679012345679, name: 'help' },
 			{
-				word: 'transitive-dependencies',
-				distance: 0.5847826086956522,
-				name: 'transitive-dependencies'
+				word: 'transient-dependencies',
+				distance: 0.5836910774410774,
+				name: 'transient-dependencies'
 			},
 			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' },
 			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' }

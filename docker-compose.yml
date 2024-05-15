@@ -1,7 +1,7 @@
 services:
   redis:
     command: 'redis-server --requirepass redis'
-    container_name: redis
+    container_name: spinel-redis
     image: 'redis:alpine'
     ports:
       - '6379:6379'

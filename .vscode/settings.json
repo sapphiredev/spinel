@@ -13,5 +13,9 @@
 		"**/.yarn": true,
 		"**/dist/": true,
 		"**/.git/": true
+	},
+	"sonarlint.connectedMode.project": {
+		"connectionId": "https-sonarqube-sapphirejs-dev",
+		"projectKey": "sapphiredev_spinel_1afab287-8814-4bc3-a4a9-268b81f380db"
 	}
 }

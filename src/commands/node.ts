@@ -4,7 +4,7 @@ import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { NodeDocs, NodeDocSimilarityEntry, NodeDocTypes, NodeQueryType } from '#types/NodeDocs.js';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
-import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
+import { bold, heading, HeadingLevel, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import {
@@ -88,7 +88,7 @@ export class UserCommand extends Command {
 			return interaction.replyEmpty();
 		}
 
-		const sortedFuzzyResults = fuzzyResults.sort((a, b) => b.distance - a.distance);
+		const sortedFuzzyResults = fuzzyResults.toSorted((a, b) => b.distance - a.distance);
 
 		const redisInsertPromises: Promise<'OK'>[] = [];
 		const results: APIApplicationCommandOptionChoice[] = [];
@@ -235,7 +235,7 @@ export class UserCommand extends Command {
 
 		const anchor = ['module', 'misc'].includes(result.type) ? '' : this.formatAnchor(result.textRaw);
 		const fullUrl = `${moduleUrl}.html${anchor}`;
-		const parts = [`${NodeIcon} \ ${underscore(bold(hyperlink(result.textRaw as string, hideLinkEmbed(fullUrl))))}`];
+		const parts = [`${NodeIcon}${'  '}${underscore(bold(hyperlink(result.textRaw, hideLinkEmbed(fullUrl))))}`];
 
 		const intro = this.#td.turndown(result.desc ?? '').split('\n\n')[0];
 		const linkReplaceRegex = /\[(.+?)\]\((.+?)\)/g;
@@ -247,8 +247,12 @@ export class UserCommand extends Command {
 				.replace(boldCodeBlockRegex, bold('`$1`')) //
 		);
 
+		if (target?.user.id) {
+			parts.unshift(heading(italic(`Documentation suggestion for ${userMention(target.user.id)}`), HeadingLevel.Three));
+		}
+
 		return {
-			content: `${target?.user.id ? `${italic(`Documentation suggestion for ${userMention(target.user.id)}:`)}\n` : ''}${parts.join('\n')}`,
+			content: parts.join('\n'),
 			allowed_mentions: {
 				users: target?.user.id ? [target?.user.id] : []
 			}

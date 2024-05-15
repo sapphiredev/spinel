@@ -6,8 +6,10 @@ import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
 import {
 	EmbedBuilder,
+	HeadingLevel,
 	TimestampStyles,
 	bold,
+	heading,
 	hideLinkEmbed,
 	hyperlink,
 	inlineCode,
@@ -165,7 +167,7 @@ export class UserCommand extends Command {
 			);
 
 		return {
-			content: target?.user.id ? `${italic(`Package suggestion for ${userMention(target.user.id)}:`)}` : undefined,
+			content: target?.user.id ? heading(italic(`Package suggestion for ${userMention(target.user.id)}`), HeadingLevel.Three) : undefined,
 			embeds: [embed.toJSON()],
 			allowed_mentions: {
 				users: target?.user.id ? [target.user.id] : []

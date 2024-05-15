@@ -2,10 +2,10 @@ import { FetchUserAgent } from '#constants/constants';
 import { DjsGuideIcon } from '#constants/emotes';
 import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { AlgoliaSearchResult, DocsearchHit } from '#types/Algolia.js';
-import { buildHierarchicalName, buildResponseContent } from '#utils/algolia-utils';
+import { buildHierarchicalName, buildResponseContent, replaceDotHtml } from '#utils/algolia-utils';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
-import { hideLinkEmbed, hyperlink, inlineCode } from '@discordjs/builders';
+import { hideLinkEmbed, hyperlink, inlineCode, unorderedList } from '@discordjs/builders';
 import { FetchMethods, FetchResultTypes, fetch } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseString } from '@skyra/env-utilities';
@@ -46,7 +46,18 @@ export class UserCommand extends Command {
 		const redisInsertPromises: Promise<'OK'>[] = [];
 		const results: APIApplicationCommandOptionChoice[] = [];
 
+		const seenUrls = new Set();
+
 		for (const [index, hit] of algoliaResponse.hits.entries()) {
+			hit.url = replaceDotHtml(hit.url);
+
+			// If the URL is already in the matched hits, skip it so it doesn't show twice
+			if (seenUrls.has(hit.url)) {
+				continue;
+			}
+
+			seenUrls.add(hit.url);
+
 			const hierarchicalName = buildHierarchicalName(hit.hierarchy);
 
 			if (hierarchicalName) {
@@ -102,18 +113,19 @@ export class UserCommand extends Command {
 			);
 		}
 
-		const results = algoliaResponse.hits.map(({ hierarchy, url }) =>
-			he.decode(
-				`• ${hierarchy.lvl0 ?? hierarchy.lvl1 ?? ''}: ${hyperlink(
-					`${hierarchy.lvl2 ?? hierarchy.lvl1 ?? 'click here'}`,
-					hideLinkEmbed(url)
-				)}${hierarchy.lvl3 ? ` - ${hierarchy.lvl3}` : ''}`
-			)
-		);
+		const results = algoliaResponse.hits
+			.map(({ hierarchy, url }) => {
+				const lvl3Text = hierarchy.lvl3 ? ` - ${hierarchy.lvl3}` : '';
+
+				const hitUrl = hyperlink(`${hierarchy.lvl2 ?? hierarchy.lvl1 ?? 'click here'}`, hideLinkEmbed(url));
+				const hitLabel = hierarchy.lvl0 ?? hierarchy.lvl1 ?? '';
+				return he.decode(`${hitLabel}: ${hitUrl}${lvl3Text}`);
+			})
+			.map(replaceDotHtml);
 
 		return interaction.reply({
 			content: buildResponseContent({
-				content: results,
+				content: unorderedList([...new Set(results)]),
 				target: target?.user.id,
 				headerText: this.#responseHeaderText,
 				icon: DjsGuideIcon

@@ -4,7 +4,7 @@ import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { MdnAPI, MdnDocument } from '#types/Mdn.js';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
-import { bold, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
+import { HeadingLevel, bold, heading, hideLinkEmbed, hyperlink, inlineCode, italic, underscore, userMention } from '@discordjs/builders';
 import { FetchResultTypes, fetch } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import {
@@ -37,7 +37,7 @@ import { URL } from 'node:url';
 )
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {
-	#mdnUrl = `https://developer.mozilla.org` as const;
+	#mdnUrl = `https://developer.mozilla.org`;
 
 	public override async autocompleteRun(interaction: Command.AutocompleteInteraction, args: AutocompleteInteractionArguments<Args>) {
 		if (args.focused !== 'query' || isNullishOrEmpty(args.query)) {
@@ -99,7 +99,6 @@ export class UserCommand extends Command {
 			fullUrl,
 			{
 				headers: {
-					'Content-Type': 'application/json',
 					'User-Agent': FetchUserAgent
 				}
 			},
@@ -117,10 +116,14 @@ export class UserCommand extends Command {
 			.replace(linkReplaceRegex, hyperlink('$1', hideLinkEmbed(`${this.#mdnUrl}$2`))) //
 			.replace(boldCodeBlockRegex, bold('`$1`'));
 
-		const parts = [`${MdnIcon} \ ${underscore(bold(hyperlink(mdnDocument.title, hideLinkEmbed(url))))}`, intro];
+		const parts = [`${MdnIcon}${'  '}${underscore(bold(hyperlink(mdnDocument.title, hideLinkEmbed(url))))}`, intro];
+
+		if (target?.user.id) {
+			parts.unshift(heading(italic(`Documentation suggestion for ${userMention(target.user.id)}`), HeadingLevel.Three));
+		}
 
 		return {
-			content: `${target?.user.id ? `${italic(`Documentation suggestion for ${userMention(target.user.id)}:`)}\n` : ''}${parts.join('\n')}`,
+			content: parts.join('\n'),
 			allowed_mentions: {
 				users: target?.user.id ? [target.user.id] : []
 			}

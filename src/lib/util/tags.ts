@@ -51,7 +51,7 @@ export async function loadTags() {
 export function findTag(query: string, target?: string) {
 	const tag = tagCache.get(query) ?? tagCache.find((v) => v.keywords.includes(query));
 	if (!tag) return null;
-	return suggestionString('tag', tag.content, target);
+	return suggestionString(tag.content, target);
 }
 
 export function findSimilarTag(query: string): TagSimilarityEntry[] {
@@ -63,7 +63,7 @@ export function findSimilarTag(query: string): TagSimilarityEntry[] {
 				possible.push({ word, distance: jaroWinkler(query.toLowerCase(), word.toLowerCase()), name: key });
 			}
 
-			return possible.sort((a, b) => b.distance - a.distance)[0];
+			return possible.toSorted((a, b) => b.distance - a.distance).at(0)!;
 		})
 		.sort((a, b) => b.distance - a.distance)
 		.slice(0, 5);

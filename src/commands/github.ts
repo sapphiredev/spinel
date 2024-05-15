@@ -1,7 +1,7 @@
 import { fetchIssuesAndPrs, fuzzilySearchForIssuesAndPullRequests, fuzzilySearchForRepository } from '#utils/github-fetch';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds, getKnownGitHubOrganizationsForServerId } from '#utils/utils';
-import { hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
+import { HeadingLevel, heading, hideLinkEmbed, hyperlink, italic, userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { Command, RegisterCommand, RestrictGuildIds, type AutocompleteInteractionArguments, type TransformedArguments } from '@skyra/http-framework';
 
@@ -84,20 +84,21 @@ export class UserCommand extends Command {
 				return this.failResponse(interaction, target);
 			}
 
-			const parts = [
-				`${data.emoji} ${hyperlink(`#${data.number} in ${data.owner}/${data.repository}`, hideLinkEmbed(data.url))} by ${hyperlink(
-					data.author.login,
-					hideLinkEmbed(data.author.url)
-				)} ${data.dateString}`,
-				data.title
-			];
+			const issuePrLink = hyperlink(`#${data.number} in ${data.owner}/${data.repository}`, hideLinkEmbed(data.url));
+			const issuePrAuthor = hyperlink(data.author.login, hideLinkEmbed(data.author.url));
+			const parts: string[] = [`${data.emoji} ${issuePrLink} by ${issuePrAuthor} ${data.dateString}`, data.title];
+
+			if (target?.user.id) {
+				parts.unshift(
+					heading(
+						italic(`GitHub ${data.issueOrPr === 'PR' ? 'Pull Request' : 'Issue'} data for ${userMention(target?.user.id)}`),
+						HeadingLevel.Three
+					)
+				);
+			}
 
 			return interaction.reply({
-				content: `${
-					target?.user.id
-						? `${italic(`GitHub ${data.issueOrPr === 'PR' ? 'Pull Request' : 'Issue'} data for ${userMention(target?.user.id)}:`)}\n`
-						: ''
-				}${parts.join('\n')}`,
+				content: parts.join('\n'),
 				allowed_mentions: {
 					users: target?.user.id ? [target?.user.id] : []
 				}

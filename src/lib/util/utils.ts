@@ -1,5 +1,5 @@
 import { KnownServerIdsToGitHubOrganizations, preferredRepositories, sapphirePreferredRepositories } from '#constants/constants';
-import { userMention } from '@discordjs/builders';
+import { HeadingLevel, heading, italic, userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import { envParseArray } from '@skyra/env-utilities';
 import type { MessageResponseOptions } from '@skyra/http-framework';
@@ -9,25 +9,14 @@ export function getGuildIds(): readonly string[] {
 	return envParseArray('COMMAND_GUILD_IDS', []);
 }
 
-export function suggestionString(suggestionType: string, guaranteed?: string, target?: string): string {
-	const messageParts = [];
-	const [first, ...rest] = suggestionType;
+export function suggestionString(tagContent: string, target?: string): string {
+	const messageParts: string[] = [tagContent];
 
 	if (target) {
-		messageParts.push(`*${first.toUpperCase()}${rest.join('')} suggestion`);
-
-		if (target) {
-			messageParts.push(` for ${userMention(target)}`);
-		}
-
-		messageParts.push(':*\n');
+		messageParts.unshift(heading(italic(`Tag suggestion for ${userMention(target)}`), HeadingLevel.Three));
 	}
 
-	if (guaranteed) {
-		messageParts.push(guaranteed);
-	}
-
-	return messageParts.join('');
+	return messageParts.join('\n');
 }
 
 /**
@@ -80,7 +69,7 @@ export function buildSelectMenuResponse(
 				type: ComponentType.ActionRow,
 				components: [
 					{
-						type: ComponentType.SelectMenu,
+						type: ComponentType.StringSelect,
 						custom_id: customId,
 						options: selectMenuOptions
 					}

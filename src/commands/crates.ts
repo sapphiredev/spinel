@@ -3,7 +3,19 @@ import { RedisKeys } from '#lib/redis-cache/RedisCacheClient';
 import type { Crate, CrateResponse } from '#types/Crates.js';
 import { errorResponse } from '#utils/response-utils';
 import { getGuildIds } from '#utils/utils';
-import { EmbedBuilder, TimestampStyles, bold, hideLinkEmbed, hyperlink, inlineCode, italic, time, userMention } from '@discordjs/builders';
+import {
+	EmbedBuilder,
+	HeadingLevel,
+	TimestampStyles,
+	bold,
+	heading,
+	hideLinkEmbed,
+	hyperlink,
+	inlineCode,
+	italic,
+	time,
+	userMention
+} from '@discordjs/builders';
 import { FetchResultTypes, fetch } from '@sapphire/fetch';
 import { cutText, isNullishOrEmpty } from '@sapphire/utilities';
 import {
@@ -139,7 +151,7 @@ export class UserCommand extends Command {
 			);
 
 		return {
-			content: target?.user.id ? `${italic(`Crate suggestion for ${userMention(target.user.id)}:`)}` : undefined,
+			content: target?.user.id ? heading(italic(`Crate suggestion for ${userMention(target.user.id)}`), HeadingLevel.Three) : undefined,
 			embeds: [embed.toJSON()],
 			allowed_mentions: {
 				users: target?.user.id ? [target.user.id] : []

@@ -117,6 +117,7 @@ export interface DocsearchHit {
 	content: string | null;
 	hierarchy: AlgoliaHitHierarchy;
 	url: string;
+	url_without_anchor?: string;
 }
 
 export interface AlgoliaHitHierarchy {

@@ -3,13 +3,13 @@ import { loadTags, tagCache } from '#utils/tags';
 import { getGuildIds } from '#utils/utils';
 import { roleMention, userMention } from '@discordjs/builders';
 import { Command, RegisterCommand, RestrictGuildIds } from '@skyra/http-framework';
-import { MessageFlags } from 'discord-api-types/v10';
+import { MessageFlags, PermissionFlagsBits } from 'discord-api-types/v10';
 
 @RegisterCommand((builder) =>
 	builder //
 		.setName('reload-tags')
 		.setDescription('Reload the tags cache in memory. This can only be used by Sapphire staff.')
-		.setDefaultPermission(false)
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 )
 @RestrictGuildIds(getGuildIds())
 export class UserCommand extends Command {

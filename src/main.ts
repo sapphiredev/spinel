@@ -15,4 +15,4 @@ await client.listen({
 	address: '0.0.0.0'
 });
 
-console.log(`client listening on 0.0.0.0:${process.env.PORT || 3000}`);
+console.log(`client listening on 0.0.0.0:${process.env.PORT ?? 3000}`);

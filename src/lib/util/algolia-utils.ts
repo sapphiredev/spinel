@@ -1,23 +1,20 @@
 import type { AlgoliaHitHierarchy } from '#types/Algolia.js';
-import { bold, italic, userMention } from '@discordjs/builders';
+import { HeadingLevel, bold, heading, italic, userMention } from '@discordjs/builders';
 import { isNullishOrEmpty } from '@sapphire/utilities';
 import he from 'he';
 
 export function buildResponseContent({ content, headerText, icon, target }: BuildResponseContentParameters) {
-	return [
-		target ? `${italic(`Documentation suggestion for ${userMention(target)}:`)}\n` : undefined, //
-		icon,
-		' ',
-		bold(headerText),
-		'\n',
-		Array.isArray(content) ? content.join('\n') : content
-	]
-		.filter(Boolean)
-		.join('');
+	const parts: string[] = [icon, ' ', bold(headerText), '\n', content];
+
+	if (target) {
+		parts.unshift(heading(italic(`Documentation suggestion for ${userMention(target)}`), HeadingLevel.Three), '\n');
+	}
+
+	return parts.join('');
 }
 
 interface BuildResponseContentParameters {
-	content: string | string[];
+	content: string;
 	target: string | undefined;
 	icon: string;
 	headerText: string;
@@ -75,4 +72,13 @@ export function buildHierarchicalName(hierarchy: AlgoliaHitHierarchy, withSpaces
 	}
 
 	return he.decode(hierarchicalName);
+}
+
+/**
+ * Replaces the .html extension from a URL
+ * @param url - The URL to replace the .html extension from
+ * @returns The URL without the .html extension
+ */
+export function replaceDotHtml(url: string) {
+	return url.replace(/\.html/, '');
 }

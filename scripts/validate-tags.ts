@@ -1,4 +1,4 @@
-import { parse as parseToml } from '@ltd/j-toml';
+import { parse as parseToml } from 'smol-toml';
 import { objectEntries } from '@sapphire/utilities';
 import { green, red } from 'colorette';
 import { readFile } from 'node:fs/promises';
@@ -7,7 +7,7 @@ import { Conflict, Tag } from '../src/lib/types/Tags';
 const tagsDir = new URL('../src/tags/', import.meta.url);
 
 const file = await readFile(new URL('tags.toml', tagsDir), { encoding: 'utf-8' });
-const data = parseToml(file, 1.0, '\n');
+const data = parseToml(file);
 
 const conflicts: Conflict[] = [];
 let hoisted = 0;

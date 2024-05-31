@@ -15,16 +15,12 @@ describe('findSimilarTag', () => {
 				distance: 0.8366666666666667,
 				name: 'get-guildid-manually'
 			},
+			{ word: 'dragonite', distance: 0.6648148148148149, name: 'dragonite' },
 			{ word: 'firacode', distance: 0.6583333333333333, name: 'good-font' },
 			{
 				distance: 0.6102564102564102,
 				name: 'help',
 				word: 'built in help'
-			},
-			{
-				word: 'language codes',
-				distance: 0.6047619047619047,
-				name: 'i18n'
 			}
 		]);
 	});
@@ -62,14 +58,14 @@ describe('findSimilarTag', () => {
 				distance: 0.8888888888888888,
 				name: 'dotnetfirstjslater'
 			},
+			{ word: 'dragonite', distance: 0.7566666666666668, name: 'dragonite' },
 			{ word: 'tsnode', distance: 0.6944444444444443, name: 'ts-node' },
 			{ word: 'docs', distance: 0.6888888888888889, name: 'apidocs' },
 			{
 				word: 'decorators',
 				distance: 0.645,
 				name: 'experimental-decorators'
-			},
-			{ word: 'i18next', distance: 0.6428571428571429, name: 'i18n' }
+			}
 		]);
 	});
 
@@ -84,8 +80,8 @@ describe('findSimilarTag', () => {
 				distance: 0.5836910774410774,
 				name: 'transient-dependencies'
 			},
-			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' },
-			{ word: 'eta', distance: 0.5679012345679012, name: 'eta' }
+			{ word: 'dragonite', distance: 0.5792181069958847, name: 'dragonite' },
+			{ word: 'slashies', distance: 0.5745884773662552, name: 'slashies' }
 		]);
 	});
 });

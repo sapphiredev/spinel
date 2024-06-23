@@ -48,8 +48,8 @@
 		"@types/he": "^1.2.3",
 		"@types/node": "^20.14.2",
 		"@types/turndown": "^5.0.4",
-		"@typescript-eslint/eslint-plugin": "^7.13.0",
-		"@typescript-eslint/parser": "^7.13.0",
+		"@typescript-eslint/eslint-plugin": "^7.13.1",
+		"@typescript-eslint/parser": "^7.13.1",
 		"colorette": "^2.0.20",
 		"cz-conventional-changelog": "^3.3.0",
 		"esbuild": "^0.21.5",
@@ -60,8 +60,8 @@
 		"prettier": "^3.3.2",
 		"rimraf": "^5.0.7",
 		"tsup": "^8.1.0",
-		"tsx": "^4.15.5",
-		"typescript": "^5.4.5",
+		"tsx": "^4.15.7",
+		"typescript": "^5.5.2",
 		"vite": "^5.3.1",
 		"vitest": "^1.6.0"
 	},
@@ -87,5 +87,5 @@
 	"eslintConfig": {
 		"extends": "@sapphire"
 	},
-	"packageManager": "yarn@4.3.0"
+	"packageManager": "yarn@4.3.1"
 }

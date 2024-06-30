@@ -36,7 +36,7 @@
 		"@skyra/jaro-winkler": "^1.1.1",
 		"he": "^1.2.0",
 		"ioredis": "^5.4.1",
-		"smol-toml": "^1.2.1",
+		"smol-toml": "^1.2.2",
 		"turndown": "^7.2.0"
 	},
 	"devDependencies": {
@@ -46,7 +46,7 @@
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.1",
 		"@types/he": "^1.2.3",
-		"@types/node": "^20.14.8",
+		"@types/node": "^20.14.9",
 		"@types/turndown": "^5.0.4",
 		"@typescript-eslint/eslint-plugin": "^7.13.1",
 		"@typescript-eslint/parser": "^7.13.1",
@@ -60,9 +60,9 @@
 		"prettier": "^3.3.2",
 		"rimraf": "^5.0.7",
 		"tsup": "^8.1.0",
-		"tsx": "^4.15.7",
+		"tsx": "^4.16.0",
 		"typescript": "~5.4.5",
-		"vite": "^5.3.1",
+		"vite": "^5.3.2",
 		"vitest": "^1.6.0"
 	},
 	"resolutions": {

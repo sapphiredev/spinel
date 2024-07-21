@@ -3,7 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
 	clean: true,
 	dts: false,
-	entry: ['src/**'],
+	entry: ['src/**', '!src/tags/tags.toml'],
 	format: ['esm'],
 	minify: false,
 	skipNodeModulesBundle: true,

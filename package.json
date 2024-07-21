@@ -36,7 +36,7 @@
 		"@skyra/jaro-winkler": "^1.1.1",
 		"he": "^1.2.0",
 		"ioredis": "^5.4.1",
-		"smol-toml": "^1.2.2",
+		"smol-toml": "^1.3.0",
 		"turndown": "^7.2.0"
 	},
 	"devDependencies": {
@@ -46,7 +46,7 @@
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.1",
 		"@types/he": "^1.2.3",
-		"@types/node": "^20.14.10",
+		"@types/node": "^20.14.11",
 		"@types/turndown": "^5.0.4",
 		"@typescript-eslint/eslint-plugin": "^7.13.1",
 		"@typescript-eslint/parser": "^7.13.1",
@@ -55,15 +55,15 @@
 		"esbuild": "^0.23.0",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-prettier": "^5.1.3",
+		"eslint-plugin-prettier": "^5.2.1",
 		"lint-staged": "^15.2.7",
 		"prettier": "^3.3.3",
 		"rimraf": "^6.0.1",
-		"tsup": "^8.1.0",
+		"tsup": "^8.2.1",
 		"tsx": "^4.16.2",
 		"typescript": "~5.4.5",
-		"vite": "^5.3.3",
-		"vitest": "^2.0.2"
+		"vite": "^5.3.4",
+		"vitest": "^2.0.3"
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",

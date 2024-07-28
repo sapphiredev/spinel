@@ -1035,10 +1035,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/utilities@npm:^3.15.2, @sapphire/utilities@npm:^3.15.3, @sapphire/utilities@npm:^3.16.2":
-  version: 3.16.2
-  resolution: "@sapphire/utilities@npm:3.16.2"
-  checksum: 10/9801f26cc7c37f1c4d56231d2e3967e7ac072d037dbc11b577d1ecf09fe7c6e4141bd1d1a10490f3c51eeeaf81eac0373502d41366dc68627b490597ea6d1ebe
+"@sapphire/utilities@npm:^3.15.2, @sapphire/utilities@npm:^3.15.3, @sapphire/utilities@npm:^3.17.0":
+  version: 3.17.0
+  resolution: "@sapphire/utilities@npm:3.17.0"
+  checksum: 10/cfdf604be06e1e4f7fd26f10c198586eef9012001b83dcc8178886d88145334db06e164725aadf5bfb065b39ecdefaa8286c695576e7674b5a3bc9280ce02e0d
   languageName: node
   linkType: hard
 
@@ -1099,19 +1099,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.14.11":
-  version: 20.14.11
-  resolution: "@types/node@npm:20.14.11"
+"@types/node@npm:*, @types/node@npm:^20.14.13":
+  version: 20.14.13
+  resolution: "@types/node@npm:20.14.13"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/344e1ce1ed16c86ed1c4209ab4d1de67db83dd6b694a6fabe295c47144dde2c58dabddae9f39a0a2bdd246e95f8d141ccfe848e464884b48b8918df4f7788025
+  checksum: 10/749160b6bd9866e6169cb1a222e75aaf81da3868af1fda1e1e66d33c7e182be381f98a42b7d231fddf470f6389f2052ee842e776b3fdc677df798b933617866d
   languageName: node
   linkType: hard
 
-"@types/turndown@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "@types/turndown@npm:5.0.4"
-  checksum: 10/500ba3a40952a5e41d99e407d83df70066408eb78d92e5f1f5f27bf70939aad11dcb64ae36872289b9c11948aa9bc4242d63d4898ad4bd91e9a41e1eb368c24f
+"@types/turndown@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "@types/turndown@npm:5.0.5"
+  checksum: 10/8b5e246f4fec5135d3313954b2be32aa24d599fbae15d75a1627066e1279098f260eaaf191fd8a43bf4a0678f8cf5d120e7fb19839668c237d5569b0836324fd
   languageName: node
   linkType: hard
 
@@ -4737,13 +4737,13 @@ __metadata:
     "@sapphire/prettier-config": "npm:^2.0.0"
     "@sapphire/result": "npm:^2.6.6"
     "@sapphire/ts-config": "npm:^5.0.1"
-    "@sapphire/utilities": "npm:^3.16.2"
+    "@sapphire/utilities": "npm:^3.17.0"
     "@skyra/env-utilities": "npm:^1.3.0"
     "@skyra/http-framework": "npm:^2.1.0"
     "@skyra/jaro-winkler": "npm:^1.1.1"
     "@types/he": "npm:^1.2.3"
-    "@types/node": "npm:^20.14.11"
-    "@types/turndown": "npm:^5.0.4"
+    "@types/node": "npm:^20.14.13"
+    "@types/turndown": "npm:^5.0.5"
     "@typescript-eslint/eslint-plugin": "npm:^7.17.0"
     "@typescript-eslint/parser": "npm:^7.17.0"
     colorette: "npm:^2.0.20"
@@ -4758,11 +4758,11 @@ __metadata:
     prettier: "npm:^3.3.3"
     rimraf: "npm:^6.0.1"
     smol-toml: "npm:^1.3.0"
-    tsup: "npm:^8.2.2"
+    tsup: "npm:^8.2.3"
     tsx: "npm:^4.16.2"
     turndown: "npm:^7.2.0"
     typescript: "npm:~5.4.5"
-    vite: "npm:^5.3.4"
+    vite: "npm:^5.3.5"
     vitest: "npm:^2.0.4"
   languageName: unknown
   linkType: soft
@@ -5092,9 +5092,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsup@npm:^8.2.2":
-  version: 8.2.2
-  resolution: "tsup@npm:8.2.2"
+"tsup@npm:^8.2.3":
+  version: 8.2.3
+  resolution: "tsup@npm:8.2.3"
   dependencies:
     bundle-require: "npm:^5.0.0"
     cac: "npm:^6.7.14"
@@ -5129,7 +5129,7 @@ __metadata:
   bin:
     tsup: dist/cli-default.js
     tsup-node: dist/cli-node.js
-  checksum: 10/f0d25756d4760d76f0d75118cd222791ad630ae2e89dfc3341d1e2d96b20614d37d1e8a0a541f3a342348cdfb0b24d3df2e2e3ba7590e462630be969803ee6c3
+  checksum: 10/2523611f5879fe408e8cb6d1fbae18d9e7617d2ef47258f6be8c11323c6d5d6aad296f6004d3fa6dc94e5f5b4c70b3eae677ac3d5ce0e9e1e4925715ee8b69b9
   languageName: node
   linkType: hard
 
@@ -5307,9 +5307,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0, vite@npm:^5.3.4":
-  version: 5.3.4
-  resolution: "vite@npm:5.3.4"
+"vite@npm:^5.0.0, vite@npm:^5.3.5":
+  version: 5.3.5
+  resolution: "vite@npm:5.3.5"
   dependencies:
     esbuild: "npm:^0.21.3"
     fsevents: "npm:~2.3.3"
@@ -5343,7 +5343,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10/9eadb261be1f5f6335a67cb44a8803febd8b190202909385fd2ae7849991095ee13c5af914da53da48a421ee0901a8fedbb7519dc7d1b8ade3ea6e42bd9b2b39
+  checksum: 10/5672dde4a969349d9cf90a9e43029c8489dfff60fb04d6a10717d6224553cf12283a8cace633fa80b006df6037f72d08a459a38bf8ea66cb19075d60fe159482
   languageName: node
   linkType: hard
 

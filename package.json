@@ -40,13 +40,13 @@
 		"turndown": "^7.2.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.3.0",
+		"@commitlint/cli": "^19.4.0",
 		"@commitlint/config-conventional": "^19.2.2",
 		"@sapphire/eslint-config": "^5.0.5",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.1",
 		"@types/he": "^1.2.3",
-		"@types/node": "^20.14.14",
+		"@types/node": "^20.14.15",
 		"@types/turndown": "^5.0.5",
 		"@typescript-eslint/eslint-plugin": "^7.17.0",
 		"@typescript-eslint/parser": "^7.17.0",
@@ -60,9 +60,9 @@
 		"prettier": "^3.3.3",
 		"rimraf": "^6.0.1",
 		"tsup": "^8.2.4",
-		"tsx": "^4.16.5",
+		"tsx": "^4.17.0",
 		"typescript": "~5.4.5",
-		"vite": "^5.3.5",
+		"vite": "^5.4.0",
 		"vitest": "^2.0.5"
 	},
 	"resolutions": {

@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: CI
 
 on:
   push:
@@ -7,90 +7,29 @@ on:
   pull_request:
 
 jobs:
-  Linting:
+  linting:
     name: Linting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Add problem matcher
-        run: echo "::add-matcher::.github/problemMatchers/eslint.json"
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Run ESLint
-        run: yarn lint --fix=false
+    uses: sapphiredev/.github/.github/workflows/reusable-lint.yml@main
 
-  TypeChecking:
-    name: Typecheck source code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Add problem matcher
-        run: echo "::add-matcher::.github/problemMatchers/tsc.json"
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Typecheck Code
-        run: yarn typecheck
+  build:
+    name: Building
+    uses: sapphiredev/.github/.github/workflows/reusable-build.yml@main
 
-  Building:
-    name: Build source code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Build Code
-        run: yarn build
+  typecheck:
+    name: Typecheck node
+    uses: sapphiredev/.github/.github/workflows/reusable-typecheck.yml@main
 
   ValidateTags:
     name: Validate Tags
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Validate tags
-        run: yarn validate-tags
+    uses: sapphiredev/.github/.github/workflows/reusable-yarn-job.yml@main
+    with:
+      script-name: validate-tags
 
-  UnitTesting:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-        with:
-          submodules: true
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Run unit tests
-        run: yarn test
-        env:
-          DISCORD_PUBLIC_KEY: 'nah'
+  test:
+    name: Tests
+    uses: sapphiredev/.github/.github/workflows/reusable-tests.yml@main
+    with:
+      enable-sonar: true
+    secrets:
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

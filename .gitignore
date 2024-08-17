@@ -3,6 +3,7 @@ node_modules/
 .vs/
 .idea/
 *.iml
+.tsup/
 
 # Yarn files
 .yarn/install-state.gz

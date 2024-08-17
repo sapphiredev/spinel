@@ -13,7 +13,8 @@ export default defineConfig({
 	test: {
 		globals: true,
 		coverage: {
-			enabled: false
+			enabled: true,
+			reporter: ['text', 'lcov']
 		}
 	}
 });

@@ -44,12 +44,8 @@ content = """
 - **[Official Bot Examples ᴱ ᴰ ᴶˢ](<https://github.com/sapphiredev/examples>)**
 - **[KBot ᴱ ᴬ ᴰ](<https://github.com/KBot-discord/KBot/tree/main/apps/bot/>)**
 - **[Perpetual Mechanical Array ᴰ](<https://github.com/MRDGH2821/Perpetual-Mechanical-Array-Bot>)**
-## v4.x
-- **[Radon ᴱ ᴬ](<https://github.com/EvolutionX-10/Radon>)**
-- **[Sapphire Application Commands Examples ᴱ](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
-- **[Zeyr ᴰ ᴬ](<https://github.com/zeyrbot/zeyr/tree/main/apps/zeyr/>)**
 - **[Birthdayy ᴰ](<https://github.com/BirthdayyBot/BirthdayyBotSapphire>)**
-- **[RTByte ᴱ ᴬ](<https://github.com/RTByte/rtbyte>)**
+- **[Sapphire Application Commands Examples ᴱ](<https://github.com/vladfrangu/sapphire-application-commands-examples>)**
 # Legend for the identifiers
 **ᴱ**: Uses ESM (if not specified then uses CJS)
 **ᴬ**: Advanced bot (if not specified it is a simple bot, or not graded)

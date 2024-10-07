@@ -469,12 +469,7 @@ content = """
 [sapphire-bot]
 keywords = ["sapphire-bot", "not-a-bot"]
 content = """
-I'd just like to interject for a moment. What we're referring to as Sapphire, is in fact, Sapphire/Sapphire.JS, or as I've recently taken to calling it, Sapphire plus JavaScript. Sapphire is not a Discord bot unto itself, but rather another free component of the name of a fully functioning Sapphire.JS framework made useful by the JavaScript libraries, bot utilities, kyra's lore writing grabbers and vital system components comprising a full framework as defined by modern development standards.
-
-Many Discord users use a bot written in Sapphire.JS every day, without realizing it. Through a peculiar turn of events, a bot which is widely used today is often just called “Sapphire”, and many of its users are not aware that it is distinctly different from the Sapphire.JS framework, developed specifically for JavaScript bot creation.
-
-There really is a Sapphire bot, and these users are interacting with it, but it is just a part of the ecosystem they engage with. Sapphire the bot is a standalone program that operates within Discord servers to perform various tasks. The bot itself is an essential part of many communities, but unrelated to the framework; it can only function in the context of being a pre-made bot. Sapphire is normally confused with Sapphire.JS: the whole confusion is basically Sapphire with JavaScript added, or Sapphire/Sapphire.JS. The actual bot and the framework called Sapphire.JS are really two distinct entities!
-
+You seem to be asking a question related to the "Sapphire" bot, not the "Sapphire" framework. These are separate projects that share the same name but have no relation to one another.
 You may instead be looking for https://discord.gg/EXqShySz8h
 """
 

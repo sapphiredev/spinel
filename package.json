@@ -46,7 +46,7 @@
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.1",
 		"@types/he": "^1.2.3",
-		"@types/node": "^22.13.11",
+		"@types/node": "^22.13.14",
 		"@types/turndown": "^5.0.5",
 		"@typescript-eslint/eslint-plugin": "^7.18.0",
 		"@typescript-eslint/parser": "^7.18.0",
@@ -56,7 +56,7 @@
 		"esbuild": "^0.25.1",
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^10.1.1",
-		"eslint-plugin-prettier": "^5.2.3",
+		"eslint-plugin-prettier": "^5.2.5",
 		"lint-staged": "^15.5.0",
 		"prettier": "^3.5.3",
 		"rimraf": "^6.0.1",
@@ -88,5 +88,5 @@
 	"eslintConfig": {
 		"extends": "@sapphire"
 	},
-	"packageManager": "yarn@4.7.0"
+	"packageManager": "yarn@4.8.0"
 }

@@ -46,11 +46,11 @@
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.1",
 		"@types/he": "^1.2.3",
-		"@types/node": "^22.15.29",
+		"@types/node": "^22.15.30",
 		"@types/turndown": "^5.0.5",
 		"@typescript-eslint/eslint-plugin": "^7.18.0",
 		"@typescript-eslint/parser": "^7.18.0",
-		"@vitest/coverage-v8": "^3.2.0",
+		"@vitest/coverage-v8": "^3.2.2",
 		"colorette": "^2.0.20",
 		"cz-conventional-changelog": "^3.3.0",
 		"esbuild": "^0.25.5",
@@ -64,7 +64,7 @@
 		"tsx": "^4.19.4",
 		"typescript": "~5.4.5",
 		"vite": "^6.3.5",
-		"vitest": "^3.2.0"
+		"vitest": "^3.2.2"
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
@@ -88,5 +88,5 @@
 	"eslintConfig": {
 		"extends": "@sapphire"
 	},
-	"packageManager": "yarn@4.9.1"
+	"packageManager": "yarn@4.9.2"
 }

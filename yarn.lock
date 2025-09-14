@@ -1006,12 +1006,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.18.1":
-  version: 22.18.1
-  resolution: "@types/node@npm:22.18.1"
+"@types/node@npm:*, @types/node@npm:^22.18.3":
+  version: 22.18.3
+  resolution: "@types/node@npm:22.18.3"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10/da67f3c3fa4107fbca704e7a71fee36c27f3b6f44af1c466cd5c71eab76a9ffcd6a16f3b97d1e757b9763f1fa1085eebb60cb648c272e36794aca7305b2a15d9
+  checksum: 10/6acec9f6efbd1afe7bb4168ccbec60933a6c5562e8d2cd3912e4ec4c291fbafd3c75c939d478f20156dc808b6533685b59e202a2b952964b3fac2be5d3ed4f11
   languageName: node
   linkType: hard
 
@@ -4643,7 +4643,7 @@ __metadata:
     "@skyra/http-framework": "npm:^2.2.1"
     "@skyra/jaro-winkler": "npm:^1.1.1"
     "@types/he": "npm:^1.2.3"
-    "@types/node": "npm:^22.18.1"
+    "@types/node": "npm:^22.18.3"
     "@types/turndown": "npm:^5.0.5"
     "@typescript-eslint/eslint-plugin": "npm:^7.18.0"
     "@typescript-eslint/parser": "npm:^7.18.0"
@@ -4664,7 +4664,7 @@ __metadata:
     tsx: "npm:^4.20.5"
     turndown: "npm:^7.2.1"
     typescript: "npm:~5.4.5"
-    vite: "npm:^7.1.4"
+    vite: "npm:^7.1.5"
     vitest: "npm:^3.2.4"
   languageName: unknown
   linkType: soft
@@ -5244,7 +5244,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0, vite@npm:^7.1.4":
+"vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0, vite@npm:^7.1.5":
   version: 7.1.5
   resolution: "vite@npm:7.1.5"
   dependencies:

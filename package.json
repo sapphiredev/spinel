@@ -29,13 +29,13 @@
 		"@discordjs/builders": "^1.8.2",
 		"@discordjs/collection": "^2.1.0",
 		"@sapphire/fetch": "^3.0.5",
-		"@sapphire/result": "^2.7.2",
+		"@sapphire/result": "^2.7.3",
 		"@sapphire/utilities": "^3.18.2",
 		"@skyra/env-utilities": "^2.0.1",
 		"@skyra/http-framework": "^2.2.1",
 		"@skyra/jaro-winkler": "^1.1.1",
 		"he": "^1.2.0",
-		"ioredis": "^5.7.0",
+		"ioredis": "^5.8.0",
 		"smol-toml": "^1.4.2",
 		"turndown": "^7.2.1"
 	},
@@ -57,13 +57,13 @@
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-prettier": "^5.5.4",
-		"lint-staged": "^16.1.6",
+		"lint-staged": "^16.2.1",
 		"prettier": "^3.6.2",
 		"rimraf": "^6.0.1",
 		"tsup": "^8.5.0",
-		"tsx": "^4.20.5",
+		"tsx": "^4.20.6",
 		"typescript": "~5.4.5",
-		"vite": "^7.1.6",
+		"vite": "^7.1.7",
 		"vitest": "^3.2.4"
 	},
 	"resolutions": {
@@ -88,5 +88,5 @@
 	"eslintConfig": {
 		"extends": "@sapphire"
 	},
-	"packageManager": "yarn@4.10.0"
+	"packageManager": "yarn@4.10.3"
 }

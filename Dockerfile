@@ -2,7 +2,7 @@
 #    Base Stage    #
 # ================ #
 
-FROM node:22-alpine as base
+FROM node:24-alpine as base
 
 WORKDIR /usr/src/app
 

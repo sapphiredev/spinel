@@ -36,7 +36,7 @@
 		"@skyra/jaro-winkler": "^1.1.1",
 		"he": "^1.2.0",
 		"ioredis": "^5.8.2",
-		"smol-toml": "^1.4.2",
+		"smol-toml": "^1.5.2",
 		"turndown": "^7.2.2"
 	},
 	"devDependencies": {
@@ -44,27 +44,27 @@
 		"@commitlint/config-conventional": "^20.0.0",
 		"@sapphire/eslint-config": "^5.0.6",
 		"@sapphire/prettier-config": "^2.0.0",
-		"@sapphire/ts-config": "^5.0.1",
+		"@sapphire/ts-config": "^5.0.2",
 		"@types/he": "^1.2.3",
-		"@types/node": "^22.19.0",
+		"@types/node": "^22.19.1",
 		"@types/turndown": "^5.0.6",
 		"@typescript-eslint/eslint-plugin": "^7.18.0",
 		"@typescript-eslint/parser": "^7.18.0",
-		"@vitest/coverage-v8": "^4.0.8",
+		"@vitest/coverage-v8": "^4.0.14",
 		"colorette": "^2.0.20",
 		"cz-conventional-changelog": "^3.3.0",
-		"esbuild": "^0.25.12",
+		"esbuild": "^0.27.0",
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-prettier": "^5.5.4",
-		"lint-staged": "^16.2.6",
-		"prettier": "^3.6.2",
-		"rimraf": "^6.1.0",
-		"tsup": "^8.5.0",
+		"lint-staged": "^16.2.7",
+		"prettier": "^3.7.1",
+		"rimraf": "^6.1.2",
+		"tsup": "^8.5.1",
 		"tsx": "^4.20.6",
 		"typescript": "~5.4.5",
-		"vite": "^7.2.2",
-		"vitest": "^4.0.8"
+		"vite": "^7.2.4",
+		"vitest": "^4.0.14"
 	},
 	"resolutions": {
 		"ansi-regex": "^5.0.1",
@@ -88,5 +88,5 @@
 	"eslintConfig": {
 		"extends": "@sapphire"
 	},
-	"packageManager": "yarn@4.11.0"
+	"packageManager": "yarn@4.12.0"
 }

@@ -4993,10 +4993,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"smol-toml@npm:^1.5.2":
-  version: 1.5.2
-  resolution: "smol-toml@npm:1.5.2"
-  checksum: 10/0a7e9192d1cbd04c3122224306de33962f4f5ac7e78a48b7c3795a675683b6efeb8f73ad3fabda7635926a510948cb4654a729d17b35ec43d56d35a71cf906f4
+"smol-toml@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "smol-toml@npm:1.6.1"
+  checksum: 10/9a0d86cc7f8abef429c915b373b9a1f369fe57a87efbbec46b967fb41dc28af753a2fa62c9c4848907c3b47c282be15c8854aa4e2942ef1fa86ff95a76d13856
   languageName: node
   linkType: hard
 
@@ -5062,7 +5062,7 @@ __metadata:
     lint-staged: "npm:^16.2.7"
     prettier: "npm:^3.7.3"
     rimraf: "npm:^6.1.2"
-    smol-toml: "npm:^1.5.2"
+    smol-toml: "npm:^1.6.1"
     tsdown: "npm:^0.16.8"
     tsx: "npm:^4.20.6"
     turndown: "npm:^7.2.2"

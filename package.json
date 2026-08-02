@@ -35,7 +35,7 @@
 		"@skyra/http-framework": "^2.2.1",
 		"@skyra/jaro-winkler": "^1.1.1",
 		"he": "^1.2.0",
-		"ioredis": "^5.8.2",
+		"ioredis": "^6.0.0",
 		"smol-toml": "^1.5.2",
 		"turndown": "^7.2.2"
 	},

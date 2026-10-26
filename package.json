@@ -50,7 +50,7 @@
 		"@types/turndown": "^5.0.6",
 		"@typescript-eslint/eslint-plugin": "^7.18.0",
 		"@typescript-eslint/parser": "^7.18.0",
-		"@vitest/coverage-v8": "^4.0.14",
+		"@vitest/coverage-v8": "^5.0.5",
 		"colorette": "^2.0.20",
 		"cz-conventional-changelog": "^3.3.0",
 		"esbuild": "^0.27.0",
@@ -64,7 +64,7 @@
 		"tsx": "^4.20.6",
 		"typescript": "~5.9.3",
 		"vite": "^7.2.4",
-		"vitest": "^4.0.14"
+		"vitest": "^5.0.5"
 	},
 	"commitlint": {
 		"extends": [
